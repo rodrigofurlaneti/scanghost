@@ -1,9 +1,11 @@
 using FluentValidation;
 using GhostScan.Api.Hubs;
 using GhostScan.Api.Middleware;
+using GhostScan.Application.Behaviors;
 using GhostScan.Application.Validators;
 using GhostScan.Domain.Services;
 using GhostScan.Infrastructure;
+using MediatR;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,7 +24,10 @@ builder.Services.AddControllers()
 
 // ── MediatR ───────────────────────────────────────────────────────────────────
 builder.Services.AddMediatR(cfg =>
-    cfg.RegisterServicesFromAssembly(typeof(GhostScan.Application.Commands.StartScan.StartScanCommand).Assembly));
+{
+    cfg.RegisterServicesFromAssembly(typeof(GhostScan.Application.Commands.StartScan.StartScanCommand).Assembly);
+    cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehavior<,>));
+});
 
 // ── FluentValidation ──────────────────────────────────────────────────────────
 builder.Services.AddValidatorsFromAssemblyContaining<StartScanCommandValidator>();

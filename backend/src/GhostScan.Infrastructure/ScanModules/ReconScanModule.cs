@@ -130,7 +130,7 @@ public sealed class ReconScanModule : IScanModule
                 {
                     var result = await client.QueryAsync(domain, rType, cancellationToken: cancellationToken);
                     var values = result.AllRecords
-                        .Select(r => r.RecordToString())
+                        .Select(r => r.ToString() ?? string.Empty)
                         .Where(s => !string.IsNullOrEmpty(s))
                         .ToList();
 

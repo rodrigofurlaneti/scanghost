@@ -320,7 +320,8 @@ public sealed class WebAnalysisScanModule : IScanModule
                 doc.LoadHtml(content);
 
                 // Extract links
-                foreach (var node in doc.DocumentNode.SelectNodes("//a[@href]") ?? [])
+                var linkNodes = doc.DocumentNode.SelectNodes("//a[@href]");
+                foreach (var node in linkNodes ?? Enumerable.Empty<HtmlNode>())
                 {
                     var href = node.GetAttributeValue("href", "");
                     var absoluteUrl = ResolveUrl(baseUrl, href);
@@ -329,7 +330,8 @@ public sealed class WebAnalysisScanModule : IScanModule
                 }
 
                 // Extract forms
-                foreach (var formNode in doc.DocumentNode.SelectNodes("//form") ?? [])
+                var formNodes = doc.DocumentNode.SelectNodes("//form");
+                foreach (var formNode in formNodes ?? Enumerable.Empty<HtmlNode>())
                 {
                     var action = formNode.GetAttributeValue("action", url);
                     var method = formNode.GetAttributeValue("method", "GET").ToUpperInvariant();

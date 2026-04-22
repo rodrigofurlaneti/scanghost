@@ -3,6 +3,7 @@ using GhostScan.Domain.Entities;
 using GhostScan.Domain.ValueObjects;
 using GhostScan.Infrastructure.ScanModules.Base;
 using GhostScan.Infrastructure.Tools;
+using GhostScan.Infrastructure.WafBypass;
 using Microsoft.Extensions.Logging;
 
 namespace GhostScan.Infrastructure.ScanModules;
@@ -76,6 +77,17 @@ public sealed class VulnDetectionScanModule : IScanModule
         try
         {
             var httpClient = CreateHttpClient(configuration);
+
+            // Activate WAF bypass headers when profile requests it
+            if (configuration.Profile.EnableWafBypass)
+            {
+                var detectedWaf = context.Get<string>("waf_name") ?? "generic";
+                var wafBypass = new WafBypassEngine(detectedWaf, configuration.Profile.Intensity);
+                wafBypass.ApplyToClient(httpClient);
+                _logger.LogInformation("[Vuln] WAF bypass active — profile: {Waf}, intensity: {Intensity}",
+                    wafBypass.WafName, configuration.Profile.Intensity);
+            }
+
             var baseUrls = context.GetBaseUrls().ToList();
             var baseUrl = baseUrls.FirstOrDefault() ?? target.ToBaseUrl();
             var endpoints = context.GetEndpoints().ToList();

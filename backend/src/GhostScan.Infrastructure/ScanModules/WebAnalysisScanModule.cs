@@ -96,6 +96,11 @@ public sealed class WebAnalysisScanModule : IScanModule
             _logger.LogInformation("[Web] WAF detection for {Target}", target.Value);
             var wafResult = await DetectWafAsync(effectiveBase, httpClient, cancellationToken);
             data["waf"] = wafResult;
+            // Share detected WAF name via context so downstream modules (VulnDetection) can use it
+            var detectedWafName = wafResult.Detected
+                ? wafResult.WafInfo.TryGetValue("name", out var n) ? n?.ToString() ?? "generic" : "generic"
+                : "generic";
+            context.Set("waf_name", detectedWafName);
 
             // 2. Interesting path probing
             _logger.LogInformation("[Web] Probing {Count} interesting paths", InterestingPaths.Length);

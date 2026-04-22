@@ -21,16 +21,12 @@ jobs:
           dotnet-version: '8.x'
 
       - name: Restore dependencies
-        # Apontando para a pasta onde está o GhostScan.sln
-        run: dotnet restore backend/
+        run: dotnet restore backend/GhostScan.sln
 
       - name: Build
-        # Build da solução completa para garantir que Application, Domain, etc, sejam compilados
-        run: dotnet build backend/ --configuration Release --no-restore
+        run: dotnet build backend/GhostScan.sln --configuration Release --no-restore
 
       - name: Publish
-        # PUBLICAR APENAS O PROJETO DA API (O que vai para o Azure)
-        # Caminho conforme sua imagem: backend/src/GhostScan.Api/GhostScan.Api.csproj
         run: dotnet publish backend/src/GhostScan.Api/GhostScan.Api.csproj -c Release -o ./publish_api
 
       - name: Login to Azure

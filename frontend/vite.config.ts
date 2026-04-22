@@ -22,6 +22,34 @@ export default defineConfig({
       format: 'esm',
     },
   },
+  build: {
+    rollupOptions: {
+      // Suppress the harmless SignalR /*#__PURE__*/ position warnings
+      onwarn(warning, warn) {
+        if (
+          warning.code === 'INVALID_ANNOTATION' &&
+          warning.id?.includes('@microsoft/signalr')
+        ) return
+        warn(warning)
+      },
+      output: {
+        manualChunks: {
+          // React core — almost never changes
+          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+          // Heavy animation lib
+          'vendor-motion': ['framer-motion'],
+          // Data-fetching + state
+          'vendor-query': ['@tanstack/react-query'],
+          // Real-time transport
+          'vendor-signalr': ['@microsoft/signalr'],
+          // i18n strings
+          'vendor-i18n': ['i18next', 'react-i18next'],
+          // Icon set (lucide ships every icon, bulk of the bytes)
+          'vendor-icons': ['lucide-react'],
+        },
+      },
+    },
+  },
   server: {
     port: 5173,
     proxy: {

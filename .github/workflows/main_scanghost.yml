@@ -7,73 +7,43 @@ on:
   workflow_dispatch:
 
 jobs:
-  # --- JOB 1: BACKEND (ASP.NET CORE para Azure Web App) ---
+  # --- BACKEND ---
   build-and-deploy-backend:
-    if: contains(github.event.head_commit.message, '[skip backend]') == false
     runs-on: ubuntu-latest
-    name: Backend Build & Deploy
-    
-    permissions:
-      id-token: write
-      contents: read
-
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
+      - uses: actions/checkout@v4
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.x'
 
-      - name: Debug Structure
+      - name: Build & Publish
         run: |
-          echo "Verificando estrutura de pastas para resolver erro de caminho:"
-          ls -R
-
-      - name: Restore & Build
-        run: |
-          # Busca recursivamente por qualquer arquivo de solução e restaura
           find . -name "*.sln" -exec dotnet restore {} \;
-          # Busca recursivamente por qualquer arquivo de solução e builda
           find . -name "*.sln" -exec dotnet build {} --configuration Release --no-restore \;
-
-      - name: Publish API
-        run: |
-          # Localiza o caminho do projeto da API e publica na pasta ./publish_api
           API_PROJECT=$(find . -name "GhostScan.Api.csproj" | head -n 1)
-          echo "Publicando projeto encontrado em: $API_PROJECT"
           dotnet publish "$API_PROJECT" -c Release -o ./publish_api
 
-      - name: Login to Azure
-        uses: azure/login@v2
-        with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_66E32F74FE5443699D0BAE4D4BE6B28A }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_482A09C166224A6DA38F179AE4E8FF65 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_FD69E84DB5214C67A09274DABF25461F }}
-
-      - name: Deploy to Azure Web App
+      - name: Deploy API
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'WebApplication-ScanGhost'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: ./publish_api
 
-  # --- JOB 2: FRONTEND (Azure Static Web Apps) ---
+  # --- FRONTEND ---
   build-and-deploy-frontend:
     runs-on: ubuntu-latest
-    name: Frontend Build & Deploy
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           submodules: true
-
-      - name: Build And Deploy Static Web App
+      - name: Deploy Static Web App
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_AGREEABLE_CLIFF_05893530F }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          app_location: "/frontend" 
+          app_location: "/frontend"
           api_location: ""
-          output_location: "dist" 
+          output_location: "dist"

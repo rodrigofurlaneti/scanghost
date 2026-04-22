@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  # --- JOB 1: BACKEND (ASP.NET CORE) ---
+# --- JOB 1: BACKEND (ASP.NET CORE) ---
   build-and-deploy-backend:
     if: contains(github.event.head_commit.message, '[skip backend]') == false
     runs-on: ubuntu-latest
@@ -21,13 +21,14 @@ jobs:
           dotnet-version: '8.x'
 
       - name: Restore & Build
-        # Ajustado para o nome da pasta em minúsculo 'backend'
+        # Usamos o caminho da pasta. O dotnet buscará o .sln ou .csproj lá dentro.
         run: |
-          dotnet restore backend/ScanGhost.sln
-          dotnet build backend/ScanGhost.sln --configuration Release --no-restore
+          dotnet restore backend/
+          dotnet build backend/ --configuration Release --no-restore
 
       - name: Publish
-        run: dotnet publish backend/ScanGhost.sln -c Release -o ./publish_api
+        # Publicamos o projeto apontando para a pasta do backend
+        run: dotnet publish backend/ -c Release -o ./publish_api
 
       - name: Login to Azure
         uses: azure/login@v2

@@ -6,6 +6,7 @@ using GhostScan.Application.Validators;
 using GhostScan.Domain.Services;
 using GhostScan.Infrastructure;
 using MediatR;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -95,10 +96,18 @@ var app = builder.Build();
 
 // ── Pipeline de Execução ─────────────────────────────────────────────────────
 
-// Azure App Service termina TLS no load balancer e encaminha HTTP internamente.
-// UseHttpsRedirection() redireciona requisições HTTP para HTTPS no nível do app,
-// necessário para evitar conteúdo misto no Swagger UI.
-app.UseHttpsRedirection();
+// ForwardedHeaders: necessário no Azure App Service (e qualquer reverse proxy).
+// O Azure termina TLS no load balancer e encaminha internamente como HTTP.
+// Sem isto, Request.Scheme = "http" mesmo quando o cliente usou HTTPS,
+// o que quebra URLs geradas pelo Swagger UI e redirecionamentos.
+app.UseForwardedHeaders(new ForwardedHeadersOptions
+{
+    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto,
+});
+
+// NÃO usar UseHttpsRedirection() no Azure App Service.
+// O redirect HTTP→HTTPS acontece no load balancer (ative "HTTPS Only" no portal Azure).
+// Usar UseHttpsRedirection() aqui causaria loop de redirect no Azure.
 
 if (app.Environment.IsDevelopment())
 {

@@ -1,0 +1,80 @@
+name: Build Android APK
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+
+    steps:
+      # ── 1. Checkout ────────────────────────────────────────────────────────────
+      - uses: actions/checkout@v4
+
+      # ── 2. Node.js ─────────────────────────────────────────────────────────────
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      # ── 3. Java 17 (necessário para Gradle / Android SDK) ─────────────────────
+      - name: Setup Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      # ── 4. Android SDK ─────────────────────────────────────────────────────────
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      # ── 5. Instalar dependências npm ───────────────────────────────────────────
+      - name: Install npm dependencies
+        working-directory: frontend
+        run: npm ci
+
+      # ── 6. Build Vite (produção → aponta para API Azure) ─────────────────────
+      - name: Build web assets
+        working-directory: frontend
+        env:
+          VITE_API_BASE_URL: https://webapplication-scanghost.azurewebsites.net
+        run: npm run build
+
+      # ── 7. Bootstrap Android (só na primeira vez; ignora se já existe) ────────
+      - name: Bootstrap Capacitor Android platform
+        working-directory: frontend
+        run: |
+          if [ ! -d "android" ]; then
+            echo "Criando projeto Android pela primeira vez..."
+            npx cap add android
+          else
+            echo "Projeto Android já existe, pulando cap add."
+          fi
+
+      # ── 8. Sync assets web → Android WebView ─────────────────────────────────
+      - name: Sync web assets to Android
+        working-directory: frontend
+        run: npx cap sync android --no-open
+
+      # ── 9. Permissão de execução para Gradle wrapper ──────────────────────────
+      - name: Grant execute permission for Gradlew
+        working-directory: frontend/android
+        run: chmod +x gradlew
+
+      # ── 10. Build APK debug (não exige keystore) ──────────────────────────────
+      - name: Build Debug APK
+        working-directory: frontend/android
+        run: ./gradlew assembleDebug --no-daemon
+
+      # ── 11. Upload APK como artefato do workflow ──────────────────────────────
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: GhostScan-debug-${{ github.sha }}
+          path: frontend/android/app/build/outputs/apk/debug/app-debug.apk
+          retention-days: 30

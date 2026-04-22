@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Build output (web)
+dist/
+
+# Vite
+.vite/
+
+# Env files
+.env.local
+.env.*.local
+
+# Editor
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Android build outputs (manter o projeto, excluir apenas build)
+android/.gradle/
+android/app/build/
+android/build/
+android/local.properties
+
+# iOS build outputs (caso iOS seja adicionado futuramente)
+ios/App/Pods/
+ios/App/App.xcworkspace/
+ios/.xcode.env.local

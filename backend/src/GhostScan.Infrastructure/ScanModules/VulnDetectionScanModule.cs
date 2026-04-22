@@ -93,6 +93,18 @@ public sealed class VulnDetectionScanModule : IScanModule
             var endpoints = context.GetEndpoints().ToList();
             var injectableEndpoints = BuildInjectableEndpoints(endpoints);
 
+            // If no crawled endpoints with query strings were found, probe the base URL
+            // with common parameter names so XSS/SQLi tests actually run against the target.
+            if (injectableEndpoints.Count == 0)
+            {
+                injectableEndpoints.Add((baseUrl, new Dictionary<string, string>
+                {
+                    ["id"] = "1", ["q"] = "test", ["search"] = "test",
+                    ["page"] = "1", ["query"] = "test",
+                }));
+                _logger.LogDebug("[Vuln] No endpoints with query params found — testing base URL with common params");
+            }
+
             // 1. SQL Injection
             if (configuration.Profile.EnableSqli)
             {
@@ -732,11 +744,8 @@ public sealed class VulnDetectionScanModule : IScanModule
             result.Add((clean, parameters));
         }
 
-        // Add default injectable params if none found
-        if (result.Count == 0)
-        {
-            result.Add(($"https://placeholder", new Dictionary<string, string> { ["id"] = "1", ["q"] = "test" }));
-        }
+        // No injectable endpoints found — caller must handle empty result gracefully
+        // (do NOT add a placeholder URL; testing a fake host produces no useful results)
 
         return result.Take(20).ToList();
     }

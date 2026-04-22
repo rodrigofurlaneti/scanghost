@@ -841,17 +841,31 @@ public sealed class WebAnalysisScanModule : IScanModule
     private static async Task<string> ResolveEffectiveBaseUrlAsync(
         string startUrl, HttpClient httpClient, CancellationToken cancellationToken)
     {
+        // Try primary URL (follow redirects to get canonical URL)
         try
         {
             var response = await httpClient.GetAsync(startUrl, cancellationToken);
             var finalUrl = response.RequestMessage?.RequestUri?.ToString() ?? startUrl;
-            // Normalise: strip trailing slash
             return finalUrl.TrimEnd('/');
         }
-        catch
+        catch { }
+
+        // If primary URL failed and was HTTPS, try HTTP fallback
+        if (startUrl.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
         {
-            return startUrl;
+            var httpFallback = "http://" + startUrl["https://".Length..];
+            try
+            {
+                var response = await httpClient.GetAsync(httpFallback, cancellationToken);
+                var finalUrl = response.RequestMessage?.RequestUri?.ToString() ?? httpFallback;
+                return finalUrl.TrimEnd('/');
+            }
+            catch { }
+
+            return httpFallback; // at least use the HTTP form so downstream modules don't keep failing on 443
         }
+
+        return startUrl;
     }
 
     // ── API Endpoint Extraction from JS ───────────────────────────────────────

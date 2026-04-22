@@ -107,7 +107,7 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
     app.UseSwagger();
     app.UseSwaggerUI(options =>
     {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "GhostScan API v1");
+        options.SwaggerEndpoint("swagger/v1/swagger.json", "GhostScan API v1");
         options.RoutePrefix = string.Empty; // Swagger at root "/"
         options.DocumentTitle = "GhostScan API";
         options.DefaultModelsExpandDepth(-1);

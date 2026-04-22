@@ -13,9 +13,9 @@
     "startScan": "Iniciar Scan",
     "profile": "Perfil de Scan",
     "profiles": {
-      "Quick": "Rápido — Recon e headers",
-      "Standard": "Padrão — Análise completa",
-      "Deep": "Profundo — Todos os módulos + brute force"
+      "stealth":    "Stealth — Só recon passivo · 5 threads · sem XSS/SQLi · furtivo",
+      "standard":   "Standard — Análise completa · 20 threads · XSS + SQLi ativos",
+      "aggressive": "Aggressive — Todos os módulos · 50 threads · brute force · bypass de WAF · paralelo"
     },
     "recentScans": "Scans Recentes",
     "noScans": "Nenhum scan ainda. Inicialize seu primeiro alvo.",

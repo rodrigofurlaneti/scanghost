@@ -18,14 +18,14 @@ import { startScan, getScans } from '@/api/client'
 import { formatDate, formatDuration } from '@/lib/utils'
 import type { ScanProfile } from '@/types'
 
-const PROFILES: ScanProfile[] = ['Quick', 'Standard', 'Deep']
+const PROFILES: ScanProfile[] = ['stealth', 'standard', 'aggressive']
 
 export function Dashboard() {
   const { t } = useTranslation()
   const navigate = useNavigate()
 
   const [target, setTarget] = useState('')
-  const [profile, setProfile] = useState<ScanProfile>('Standard')
+  const [profile, setProfile] = useState<ScanProfile>('standard')
   const [error, setError] = useState('')
 
   const { data: scansData } = useQuery({
@@ -182,9 +182,9 @@ export function Dashboard() {
                       `}
                     >
                       <span className="flex items-center gap-1.5">
-                        {p === 'Quick' && <Zap size={11} />}
-                        {p === 'Standard' && <Shield size={11} />}
-                        {p === 'Deep' && <Target size={11} />}
+                        {p === 'stealth'    && <Zap size={11} />}
+                        {p === 'standard'   && <Shield size={11} />}
+                        {p === 'aggressive' && <Target size={11} />}
                         {p}
                       </span>
                     </button>

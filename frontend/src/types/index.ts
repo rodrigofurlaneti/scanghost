@@ -7,7 +7,7 @@ export type ScanStatus =
   | 'Failed'
   | 'Cancelled';
 
-export type ScanProfile = 'Quick' | 'Standard' | 'Deep';
+export type ScanProfile = 'stealth' | 'standard' | 'aggressive';
 
 export type Severity = 'CRITICAL' | 'HIGH' | 'MEDIUM' | 'LOW' | 'INFO';
 

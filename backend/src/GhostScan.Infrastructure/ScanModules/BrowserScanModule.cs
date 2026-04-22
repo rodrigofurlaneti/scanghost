@@ -416,7 +416,7 @@ public sealed class BrowserScanModule : IScanModule
             """;
 
         // Write the script to a temp file and run it
-        var scriptPath = $"/tmp/ghostscan_browser_{Guid.NewGuid():N}.js";
+        var scriptPath = Path.Combine(Path.GetTempPath(), $"ghostscan_browser_{Guid.NewGuid():N}.js");
         await File.WriteAllTextAsync(scriptPath, script, ct);
 
         try

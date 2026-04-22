@@ -28,8 +28,9 @@ export function useSignalR({ scanId, onProgress, onCompleted, onFailed }: UseSig
 
     const connection = new signalR.HubConnectionBuilder()
       .withUrl('/hubs/scan')
-      .withAutomaticReconnect([1000, 2000, 5000, 10000])
-      .configureLogging(signalR.LogLevel.Warning)
+      .withAutomaticReconnect([2000, 5000, 10000, 30000])
+      // Suppress verbose SignalR console noise — backend may not be up yet
+      .configureLogging(signalR.LogLevel.None)
       .build()
 
     connectionRef.current = connection
@@ -49,18 +50,23 @@ export function useSignalR({ scanId, onProgress, onCompleted, onFailed }: UseSig
     connection.onclose(() => setState('disconnected'))
 
     setState('connecting')
+
     connection
       .start()
       .then(() => {
         setState('connected')
         return connection.invoke('SubscribeToScan', scanId)
       })
-      .catch(() => setState('error'))
+      .catch(() => {
+        // Backend not available — silently fall back to HTTP polling
+        setState('error')
+      })
 
     return () => {
-      if (connection.state !== signalR.HubConnectionState.Disconnected) {
-        connection.invoke('UnsubscribeFromScan', scanId).catch(() => {})
-        connection.stop().catch(() => {})
+      const conn = connectionRef.current
+      if (conn && conn.state !== signalR.HubConnectionState.Disconnected) {
+        conn.invoke('UnsubscribeFromScan', scanId).catch(() => {})
+        conn.stop().catch(() => {})
       }
       connectionRef.current = null
     }

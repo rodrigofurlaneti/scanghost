@@ -112,8 +112,15 @@ public sealed class VulnDetectionScanModule : IScanModule
             if (baseUrl.StartsWith("https://"))
             {
                 _logger.LogInformation("[Vuln] SSL/TLS analysis");
-                var sslFindings = await AnalyzeSslAsync(baseUrl, configuration, cancellationToken);
-                findings.AddRange(sslFindings);
+                try
+                {
+                    var sslFindings = await AnalyzeSslAsync(baseUrl, configuration, cancellationToken);
+                    findings.AddRange(sslFindings);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogDebug(ex, "[Vuln] SSL analysis skipped — target unreachable on HTTPS");
+                }
             }
 
             // 5. Open Redirect Testing

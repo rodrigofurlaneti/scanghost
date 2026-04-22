@@ -2,30 +2,176 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ══════════════════════════════════════════════════════════════════
+   THEME VARIABLES
+   All terminal/* and matrix-400 Tailwind tokens reference these.
+   Change data-theme on <html> to switch theme.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* ── Matrix Dark (default) ──────────────────────────────────────── */
+:root,
+[data-theme="matrix"] {
+  --radius: 0.375rem;
+
+  --color-bg:      3 10 3;
+  --color-surface: 10 18 10;
+  --color-border:  13 43 13;
+  --color-muted:   26 58 26;
+  --color-accent:  0 255 65;
+  --color-dim:     0 170 42;
+  --color-ghost:   0 85 20;
+
+  /* Glow layers — set to 0 alpha in light themes */
+  --glow-80: rgba(0, 255, 65, 0.8);
+  --glow-60: rgba(0, 255, 65, 0.6);
+  --glow-40: rgba(0, 255, 65, 0.4);
+  --glow-20: rgba(0, 255, 65, 0.2);
+  --glow-05: rgba(0, 255, 65, 0.05);
+
+  /* Scan background radials */
+  --scan-radial-1: rgba(0, 255, 65, 0.04);
+  --scan-radial-2: rgba(0, 255, 65, 0.03);
+
+  /* Card gradient */
+  --card-grad-a: rgba(10, 18, 10, 0.95);
+  --card-grad-b: rgba(3, 10, 3, 0.95);
+  --card-tint:   rgba(0, 255, 65, 0.03);
+
+  /* Selection */
+  --selection-bg: rgba(0, 255, 65, 0.25);
+  --selection-fg: #00FF41;
+
+  /* Scrollbar */
+  --scrollbar-thumb: rgb(0 85 20);
+  --scrollbar-hover: rgb(0 170 42);
+
+  /* Severity badges */
+  --badge-critical-bg: rgb(69 10 10);
+  --badge-high-bg:     rgb(67 20 7);
+  --badge-medium-bg:   rgb(66 32 7);
+  --badge-low-bg:      rgb(7 32 66);
+  --badge-info-bg:     rgb(24 24 27);
+}
+
+/* ── BlueSky Pro (A) — Corporate deep blue ──────────────────────── */
+[data-theme="bluesky-pro"] {
+  --radius: 0.375rem;
+
+  --color-bg:      240 246 255;
+  --color-surface: 255 255 255;
+  --color-border:  200 222 255;
+  --color-muted:   210 230 255;
+  --color-accent:  0 87 204;
+  --color-dim:     58 90 140;
+  --color-ghost:   122 156 200;
+
+  --glow-80: transparent;
+  --glow-60: transparent;
+  --glow-40: transparent;
+  --glow-20: rgba(0, 87, 204, 0.12);
+  --glow-05: rgba(0, 87, 204, 0.04);
+
+  --scan-radial-1: rgba(0, 87, 204, 0.05);
+  --scan-radial-2: rgba(0, 87, 204, 0.03);
+
+  --card-grad-a: rgba(255, 255, 255, 0.97);
+  --card-grad-b: rgba(240, 246, 255, 0.97);
+  --card-tint:   rgba(0, 87, 204, 0.02);
+
+  --selection-bg: rgba(0, 87, 204, 0.2);
+  --selection-fg: #0057CC;
+
+  --scrollbar-thumb: rgb(200 222 255);
+  --scrollbar-hover: rgb(0 87 204);
+
+  --badge-critical-bg: rgb(254 226 226);
+  --badge-high-bg:     rgb(255 237 213);
+  --badge-medium-bg:   rgb(254 249 195);
+  --badge-low-bg:      rgb(219 234 254);
+  --badge-info-bg:     rgb(241 245 249);
+}
+
+/* ── Cyber Day (B) — Electric sky blue ──────────────────────────── */
+[data-theme="cyber-day"] {
+  --radius: 0.375rem;
+
+  --color-bg:      248 251 255;
+  --color-surface: 238 244 255;
+  --color-border:  184 208 255;
+  --color-muted:   210 228 255;
+  --color-accent:  0 153 255;
+  --color-dim:     0 68 153;
+  --color-ghost:   102 143 195;
+
+  --glow-80: transparent;
+  --glow-60: transparent;
+  --glow-40: transparent;
+  --glow-20: rgba(0, 153, 255, 0.15);
+  --glow-05: rgba(0, 153, 255, 0.05);
+
+  --scan-radial-1: rgba(0, 153, 255, 0.06);
+  --scan-radial-2: rgba(0, 153, 255, 0.04);
+
+  --card-grad-a: rgba(238, 244, 255, 0.95);
+  --card-grad-b: rgba(248, 251, 255, 0.95);
+  --card-tint:   rgba(0, 153, 255, 0.03);
+
+  --selection-bg: rgba(0, 153, 255, 0.2);
+  --selection-fg: #0099FF;
+
+  --scrollbar-thumb: rgb(184 208 255);
+  --scrollbar-hover: rgb(0 153 255);
+
+  --badge-critical-bg: rgb(254 226 226);
+  --badge-high-bg:     rgb(255 237 213);
+  --badge-medium-bg:   rgb(254 249 195);
+  --badge-low-bg:      rgb(224 242 254);
+  --badge-info-bg:     rgb(241 245 249);
+}
+
+/* ── BlueSky Soft (C) — Soft sky, Tailwind blue ─────────────────── */
+[data-theme="bluesky-soft"] {
+  --radius: 0.375rem;
+
+  --color-bg:      250 252 255;
+  --color-surface: 240 247 255;
+  --color-border:  208 228 255;
+  --color-muted:   220 235 255;
+  --color-accent:  37 99 235;
+  --color-dim:     71 85 105;
+  --color-ghost:   148 163 184;
+
+  --glow-80: transparent;
+  --glow-60: transparent;
+  --glow-40: transparent;
+  --glow-20: rgba(37, 99, 235, 0.1);
+  --glow-05: rgba(37, 99, 235, 0.03);
+
+  --scan-radial-1: rgba(37, 99, 235, 0.04);
+  --scan-radial-2: rgba(37, 99, 235, 0.02);
+
+  --card-grad-a: rgba(255, 255, 255, 0.98);
+  --card-grad-b: rgba(240, 247, 255, 0.98);
+  --card-tint:   rgba(37, 99, 235, 0.02);
+
+  --selection-bg: rgba(37, 99, 235, 0.15);
+  --selection-fg: #2563EB;
+
+  --scrollbar-thumb: rgb(208 228 255);
+  --scrollbar-hover: rgb(37 99 235);
+
+  --badge-critical-bg: rgb(254 226 226);
+  --badge-high-bg:     rgb(255 237 213);
+  --badge-medium-bg:   rgb(254 249 195);
+  --badge-low-bg:      rgb(219 234 254);
+  --badge-info-bg:     rgb(248 250 252);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   BASE STYLES
+   ══════════════════════════════════════════════════════════════════ */
+
 @layer base {
-  :root {
-    --radius: 0.375rem;
-
-    /* Matrix terminal palette */
-    --background:       3 10 3;
-    --surface:          10 18 10;
-    --border:           13 43 13;
-    --muted:            26 58 26;
-    --primary:          0 255 65;
-    --primary-dim:      0 170 42;
-    --primary-ghost:    0 85 20;
-    --text-primary:     0 255 65;
-    --text-secondary:   0 170 42;
-    --text-muted:       0 100 30;
-
-    /* Severity colors */
-    --critical:         255 0 51;
-    --high:             255 102 0;
-    --medium:           255 204 0;
-    --low:              0 170 255;
-    --info:             136 136 136;
-  }
-
   * {
     box-sizing: border-box;
     margin: 0;
@@ -36,9 +182,13 @@
     scroll-behavior: smooth;
   }
 
+  html, body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
   body {
-    background-color: rgb(var(--background));
-    color: rgb(var(--primary));
+    background-color: rgb(var(--color-bg));
+    color: rgb(var(--color-accent));
     font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
     font-size: 14px;
     line-height: 1.5;
@@ -47,75 +197,74 @@
     overflow-x: hidden;
   }
 
+  /* Light themes: switch to Inter for better readability */
+  [data-theme="bluesky-pro"] body,
+  [data-theme="cyber-day"] body,
+  [data-theme="bluesky-soft"] body {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
   /* Scrollbar */
-  ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background: rgb(var(--surface));
-  }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: rgb(var(--color-surface)); }
   ::-webkit-scrollbar-thumb {
-    background: rgb(var(--primary-ghost));
+    background: var(--scrollbar-thumb);
     border-radius: 3px;
   }
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgb(var(--primary-dim));
-  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-hover); }
 
   /* Selection */
   ::selection {
-    background: rgba(0, 255, 65, 0.25);
-    color: #00FF41;
+    background: var(--selection-bg);
+    color: var(--selection-fg);
+  }
+
+  /* Watch (160px) — ultra-compact base */
+  @media (max-width: 319px) {
+    body { font-size: 10px; }
   }
 }
 
+/* ══════════════════════════════════════════════════════════════════
+   COMPONENT CLASSES (theme-aware)
+   ══════════════════════════════════════════════════════════════════ */
+
 @layer components {
-  /* ── Terminal card ─────────────────────────── */
+  /* ── Terminal card ─────────────────────────────────────────────── */
   .terminal-card {
     @apply relative rounded-sm border border-terminal-border bg-terminal-surface;
-    background: linear-gradient(
-      135deg,
-      rgba(10, 18, 10, 0.95) 0%,
-      rgba(3, 10, 3, 0.95) 100%
-    );
+    background: linear-gradient(135deg, var(--card-grad-a) 0%, var(--card-grad-b) 100%);
+    transition: border-color 0.2s, background 0.2s;
   }
   .terminal-card::before {
     content: '';
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    background: linear-gradient(
-      135deg,
-      rgba(0, 255, 65, 0.03) 0%,
-      transparent 50%,
-      rgba(0, 255, 65, 0.01) 100%
-    );
+    background: linear-gradient(135deg, var(--card-tint) 0%, transparent 50%, var(--card-tint) 100%);
     pointer-events: none;
   }
 
-  /* ── Neon border glow ──────────────────────── */
+  /* ── Neon border glow ─────────────────────────────────────────── */
   .neon-border {
-    border-color: #00FF41;
+    border-color: rgb(var(--color-accent));
     box-shadow:
-      0 0 5px rgba(0, 255, 65, 0.4),
-      0 0 15px rgba(0, 255, 65, 0.2),
-      inset 0 0 5px rgba(0, 255, 65, 0.05);
+      0 0 5px var(--glow-40),
+      0 0 15px var(--glow-20),
+      inset 0 0 5px var(--glow-05);
   }
 
-  /* ── Neon text glow ────────────────────────── */
+  /* ── Neon text glow ───────────────────────────────────────────── */
   .neon-text {
-    color: #00FF41;
+    color: rgb(var(--color-accent));
     text-shadow:
-      0 0 7px rgba(0, 255, 65, 0.8),
-      0 0 14px rgba(0, 255, 65, 0.6),
-      0 0 21px rgba(0, 255, 65, 0.4);
+      0 0 7px  var(--glow-80),
+      0 0 14px var(--glow-60),
+      0 0 21px var(--glow-40);
   }
 
-  /* ── Glitch wrapper ────────────────────────── */
-  .glitch {
-    position: relative;
-  }
+  /* ── Glitch wrapper ───────────────────────────────────────────── */
+  .glitch { position: relative; }
   .glitch::before,
   .glitch::after {
     content: attr(data-text);
@@ -123,19 +272,20 @@
     inset: 0;
     background: transparent;
   }
-  .glitch.active::before {
+  /* Glitch effect only meaningful in matrix theme */
+  [data-theme="matrix"] .glitch.active::before {
     color: #ff0033;
     animation: glitch-1 0.3s linear infinite;
     left: 2px;
   }
-  .glitch.active::after {
+  [data-theme="matrix"] .glitch.active::after {
     color: #00ffff;
     animation: glitch-2 0.3s linear infinite;
     left: -2px;
   }
 
-  /* ── Scanline overlay ──────────────────────── */
-  .scanlines::after {
+  /* ── Scanline overlay — matrix only ──────────────────────────── */
+  [data-theme="matrix"] .scanlines::after {
     content: '';
     position: fixed;
     inset: 0;
@@ -150,7 +300,7 @@
     z-index: 9999;
   }
 
-  /* ── Terminal input ────────────────────────── */
+  /* ── Terminal input ───────────────────────────────────────────── */
   .terminal-input {
     @apply w-full bg-terminal-bg border border-terminal-border rounded-sm
            px-3 py-2 font-mono text-sm text-matrix-400
@@ -158,52 +308,116 @@
            focus:outline-none focus:border-matrix-400 focus:ring-1 focus:ring-matrix-400/30
            transition-all duration-200;
   }
+  /* Light themes: use Inter in inputs too */
+  [data-theme]:not([data-theme="matrix"]) .terminal-input {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
 
-  /* ── Terminal button ───────────────────────── */
+  /* ── CTA button ───────────────────────────────────────────────── */
   .btn-ghost-scan {
     @apply relative overflow-hidden font-mono font-semibold uppercase tracking-widest
            border border-matrix-400 text-matrix-400
            px-6 py-2 rounded-sm
            transition-all duration-300
-           hover:bg-matrix-400 hover:text-terminal-bg hover:shadow-[0_0_20px_rgba(0,255,65,0.5)]
+           hover:bg-matrix-400 hover:text-terminal-bg
            active:scale-95;
   }
+  [data-theme="matrix"] .btn-ghost-scan:hover {
+    box-shadow: 0 0 20px var(--glow-40);
+  }
+  /* Light themes: filled hover */
+  [data-theme]:not([data-theme="matrix"]) .btn-ghost-scan {
+    font-family: 'Inter', system-ui, sans-serif;
+    letter-spacing: 0.05em;
+    text-transform: none;
+    font-weight: 600;
+  }
 
-  /* ── Severity badge ────────────────────────── */
-  .badge-critical { @apply bg-red-950 text-red-400 border border-red-800; }
-  .badge-high     { @apply bg-orange-950 text-orange-400 border border-orange-800; }
-  .badge-medium   { @apply bg-yellow-950 text-yellow-400 border border-yellow-800; }
-  .badge-low      { @apply bg-blue-950 text-blue-400 border border-blue-800; }
-  .badge-info     { @apply bg-zinc-900 text-zinc-400 border border-zinc-700; }
+  /* ── Severity badges ─────────────────────────────────────────── */
+  .badge-critical {
+    background: var(--badge-critical-bg);
+    @apply text-red-600 border border-red-400;
+  }
+  .badge-high {
+    background: var(--badge-high-bg);
+    @apply text-orange-600 border border-orange-400;
+  }
+  .badge-medium {
+    background: var(--badge-medium-bg);
+    @apply text-yellow-600 border border-yellow-500;
+  }
+  .badge-low {
+    background: var(--badge-low-bg);
+    @apply text-blue-600 border border-blue-400;
+  }
+  .badge-info {
+    background: var(--badge-info-bg);
+    @apply text-slate-500 border border-slate-400;
+  }
+  /* Matrix theme: darker badge backgrounds */
+  [data-theme="matrix"] .badge-critical { @apply bg-red-950 text-red-400 border-red-800; }
+  [data-theme="matrix"] .badge-high     { @apply bg-orange-950 text-orange-400 border-orange-800; }
+  [data-theme="matrix"] .badge-medium   { @apply bg-yellow-950 text-yellow-400 border-yellow-800; }
+  [data-theme="matrix"] .badge-low      { @apply bg-blue-950 text-blue-400 border-blue-800; }
+  [data-theme="matrix"] .badge-info     { @apply bg-zinc-900 text-zinc-400 border-zinc-700; }
 
-  /* ── Status badge ──────────────────────────── */
+  /* ── Status badges ───────────────────────────────────────────── */
   .status-running   { @apply text-matrix-400 border border-matrix-400; }
-  .status-completed { @apply text-blue-400 border border-blue-700; }
-  .status-failed    { @apply text-red-400 border border-red-700; }
-  .status-pending   { @apply text-yellow-400 border border-yellow-700; }
-  .status-cancelled { @apply text-zinc-400 border border-zinc-700; }
+  .status-completed { @apply text-blue-500 border border-blue-400; }
+  .status-failed    { @apply text-red-500 border border-red-400; }
+  .status-pending   { @apply text-yellow-500 border border-yellow-400; }
+  .status-cancelled { @apply text-slate-500 border border-slate-400; }
 
-  /* ── Progress bar ──────────────────────────── */
+  /* ── Progress bar ────────────────────────────────────────────── */
   .progress-matrix {
     @apply h-1.5 rounded-full bg-terminal-border overflow-hidden;
   }
   .progress-matrix-fill {
     @apply h-full rounded-full bg-matrix-400 transition-all duration-500;
-    box-shadow: 0 0 8px rgba(0, 255, 65, 0.7);
+  }
+  [data-theme="matrix"] .progress-matrix-fill {
+    box-shadow: 0 0 8px var(--glow-60);
+  }
+
+  /* ── Theme switcher tooltip ──────────────────────────────────── */
+  .theme-tooltip {
+    @apply absolute bottom-full left-1/2 -translate-x-1/2 mb-2
+           px-2 py-1 rounded-sm
+           bg-terminal-surface border border-terminal-border
+           font-mono text-xs text-terminal-dim whitespace-nowrap
+           pointer-events-none z-50
+           opacity-0 group-hover:opacity-100
+           transition-opacity duration-150;
+  }
+  .theme-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 4px solid transparent;
+    border-top-color: rgb(var(--color-border));
   }
 }
 
+/* ══════════════════════════════════════════════════════════════════
+   UTILITIES
+   ══════════════════════════════════════════════════════════════════ */
+
 @layer utilities {
-  .text-glow {
-    text-shadow: 0 0 10px currentColor;
-  }
-  .border-glow {
-    box-shadow: 0 0 8px currentColor;
-  }
+  .text-glow  { text-shadow: 0 0 10px currentColor; }
+  .border-glow { box-shadow: 0 0 8px currentColor; }
+
+  /* Background with subtle radial accents — adapts per theme */
   .bg-scan {
     background:
-      radial-gradient(ellipse at 20% 50%, rgba(0, 255, 65, 0.04) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 20%, rgba(0, 255, 65, 0.03) 0%, transparent 50%),
-      rgb(var(--background));
+      radial-gradient(ellipse at 20% 50%, var(--scan-radial-1) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, var(--scan-radial-2) 0%, transparent 50%),
+      rgb(var(--color-bg));
+  }
+
+  /* Watch screen — hide decorative elements */
+  @media (max-width: 319px) {
+    .watch-hide { display: none !important; }
   }
 }

@@ -16,6 +16,15 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- Theme flash prevention: apply saved theme before React hydrates -->
+    <script>
+      try {
+        var t = localStorage.getItem('ghostscan-theme') || 'matrix';
+        document.documentElement.setAttribute('data-theme', t);
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute('content', t === 'matrix' ? '#030a03' : '#f0f6ff');
+      } catch(e) {}
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

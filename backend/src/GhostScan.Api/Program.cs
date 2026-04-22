@@ -99,22 +99,24 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// ── Middleware Pipeline ────────────────────────────────────────────────────────
-app.UseMiddleware<ValidationExceptionMiddleware>();
+if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
+{
+    app.UseDeveloperExceptionPage();
+}
 
 if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     app.UseSwagger();
     app.UseSwaggerUI(options =>
     {
-        options.SwaggerEndpoint("swagger/v1/swagger.json", "GhostScan API v1");
-        options.RoutePrefix = string.Empty; // Swagger at root "/"
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "GhostScan API v1");
+        options.RoutePrefix = string.Empty;
         options.DocumentTitle = "GhostScan API";
-        options.DefaultModelsExpandDepth(-1);
-        options.DisplayRequestDuration();
     });
 }
 
+// ── Middleware Pipeline ────────────────────────────────────────────────────────
+app.UseMiddleware<ValidationExceptionMiddleware>();
 app.UseCors();
 app.UseRouting();
 app.MapControllers();
@@ -125,7 +127,7 @@ app.MapGet("/health", () => Results.Ok(new
 {
     Status = "Healthy",
     Version = "3.0.0",
-    Timestamp = DateTime.UtcNow,
+    Timestamp = DateTime.Now,
     Message = "GhostScan API is running.",
 })).WithTags("Health");
 

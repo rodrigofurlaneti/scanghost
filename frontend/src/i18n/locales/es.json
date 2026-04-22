@@ -1,0 +1,141 @@
+{
+  "nav": {
+    "dashboard": "Panel",
+    "scan": "Nuevo Scan",
+    "history": "Historial",
+    "results": "Resultados"
+  },
+  "dashboard": {
+    "title": "GhostScan",
+    "subtitle": "Escáner Avanzado de Vulnerabilidades Web",
+    "quickScan": "Scan Rápido",
+    "targetPlaceholder": "Ingresa URL o dominio objetivo...",
+    "startScan": "Iniciar Scan",
+    "profile": "Perfil de Scan",
+    "profiles": {
+      "stealth":    "Stealth — Solo reconocimiento pasivo · 5 hilos · sin XSS/SQLi · evasión WAF",
+      "standard":   "Standard — Análisis completo · 20 hilos · XSS + SQLi habilitados",
+      "aggressive": "Aggressive — Todos los módulos · 50 hilos · fuerza bruta · bypass WAF · paralelo"
+    },
+    "recentScans": "Scans Recientes",
+    "noScans": "Sin scans aún. Inicializa tu primer objetivo.",
+    "stats": {
+      "totalScans": "Total de Scans",
+      "critical": "Críticos",
+      "high": "Alta Severidad",
+      "targets": "Objetivos Escaneados"
+    },
+    "viewReport": "Ver Reporte",
+    "scanAgain": "Escanear de Nuevo"
+  },
+  "scan": {
+    "title": "Scan en Progreso",
+    "phase": "Fase",
+    "activity": "Actividad",
+    "findings": "Hallazgos",
+    "progress": "Progreso",
+    "elapsed": "Transcurrido",
+    "terminal": "Salida del Terminal",
+    "cancel": "Abortar Scan",
+    "connecting": "Conectando al motor de scan...",
+    "completed": "Scan completado",
+    "failed": "Scan fallido",
+    "viewReport": "Ver Reporte"
+  },
+  "report": {
+    "title": "Reporte de Vulnerabilidades",
+    "summary": "Resumen",
+    "findings": "Hallazgos",
+    "intelligence": "Inteligencia",
+    "correlations": "Correlaciones de Ataque",
+    "recommendations": "Recomendaciones",
+    "rankedTargets": "Objetivos Prioritarios",
+    "noFindings": "Sin hallazgos para este filtro de severidad.",
+    "severity": {
+      "CRITICAL": "Crítico",
+      "HIGH": "Alto",
+      "MEDIUM": "Medio",
+      "LOW": "Bajo",
+      "INFO": "Info"
+    },
+    "filter": {
+      "all": "Todas las Severidades",
+      "minSeverity": "Severidad Mínima"
+    },
+    "finding": {
+      "detail": "Detalle",
+      "evidence": "Evidencia",
+      "remediation": "Remediación",
+      "attackPath": "Ruta de Ataque",
+      "url": "URL",
+      "score": "Puntuación",
+      "confirmed": "Confirmado",
+      "discoveredAt": "Descubierto"
+    },
+    "recon": {
+      "title": "Reconocimiento",
+      "subdomains": "Subdominios",
+      "dns": "Registros DNS",
+      "ports": "Puertos Abiertos",
+      "emails": "Emails Descubiertos",
+      "zoneTransfer": "Transferencia de Zona DNS",
+      "succeeded": "Exitoso",
+      "failed": "No vulnerable"
+    },
+    "web": {
+      "title": "Análisis Web",
+      "endpoints": "Endpoints",
+      "baseUrls": "URLs Base",
+      "waf": "Detección de WAF",
+      "technologies": "Tecnologías",
+      "jsSecrets": "Secretos en JS",
+      "missingHeaders": "Headers Faltantes",
+      "dangerousHeaders": "Headers Peligrosos",
+      "detected": "Detectado",
+      "notDetected": "No detectado",
+      "confidence": "Confianza"
+    },
+    "intel": {
+      "totalRaw": "Total Bruto",
+      "totalScored": "Total Puntuado",
+      "deduplicated": "Tras Dedup",
+      "correlations": "Correlaciones",
+      "attackSurface": "Superficie de Ataque"
+    }
+  },
+  "history": {
+    "title": "Historial de Scans",
+    "target": "Objetivo",
+    "profile": "Perfil",
+    "status": "Estado",
+    "started": "Iniciado",
+    "duration": "Duración",
+    "findings": "Hallazgos",
+    "actions": "Acciones",
+    "noHistory": "Sin historial encontrado.",
+    "filter": {
+      "all": "Todos los Estados",
+      "search": "Buscar objetivo..."
+    },
+    "page": "Página {{page}} de {{total}}"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "retry": "Reintentar",
+    "back": "Volver",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "copy": "Copiar",
+    "copied": "¡Copiado!",
+    "notAvailable": "N/D",
+    "viewDetails": "Ver Detalles"
+  },
+  "status": {
+    "Pending":   "Pendiente",
+    "Running":   "Ejecutando",
+    "Completed": "Completado",
+    "Failed":    "Fallido",
+    "Cancelled": "Cancelado"
+  }
+}

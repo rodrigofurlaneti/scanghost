@@ -9,6 +9,7 @@ import {
 } from 'lucide-react'
 
 import { MatrixRain } from '@/components/shared/MatrixRain'
+import { useTheme } from '@/contexts/ThemeContext'
 import { GlitchText } from '@/components/shared/GlitchText'
 import { StatCard } from '@/components/shared/StatCard'
 import { TerminalCard } from '@/components/shared/TerminalCard'
@@ -24,6 +25,7 @@ const PROFILES: ScanProfile[] = ['stealth', 'standard', 'aggressive']
 export function Dashboard() {
   const { t } = useTranslation()
   const navigate = useNavigate()
+  const { isDark } = useTheme()
 
   const [target, setTarget] = useState('')
   const [profile, setProfile] = useState<ScanProfile>('standard')
@@ -58,10 +60,12 @@ export function Dashboard() {
 
   return (
     <div className="relative min-h-full overflow-auto">
-      {/* Matrix rain background */}
-      <div className="fixed inset-0 pointer-events-none">
-        <MatrixRain opacity={0.08} speed={0.7} density={0.025} />
-      </div>
+      {/* Matrix rain background — only in dark/matrix theme */}
+      {isDark && (
+        <div className="fixed inset-0 pointer-events-none">
+          <MatrixRain opacity={0.08} speed={0.7} density={0.025} />
+        </div>
+      )}
 
       <div className="relative z-10 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-10">
 

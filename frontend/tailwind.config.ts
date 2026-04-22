@@ -10,13 +10,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Matrix Terminal Green palette
+        // All terminal/* and matrix.400 are CSS-variable-driven so themes auto-adapt
         matrix: {
           50:  '#e6fff0',
           100: '#b3ffd0',
           200: '#66ffaa',
           300: '#33ff8c',
-          400: '#00FF41', // Primary terminal green
+          // PRIMARY accent — resolved from CSS variable per theme
+          400: 'rgb(var(--color-accent) / <alpha-value>)',
           500: '#00cc34',
           600: '#009927',
           700: '#006619',
@@ -24,13 +25,13 @@ const config: Config = {
           900: '#001a06',
         },
         terminal: {
-          bg:      '#030a03',
-          surface: '#0a120a',
-          border:  '#0d2b0d',
-          muted:   '#1a3a1a',
-          text:    '#00FF41',
-          dim:     '#00aa2a',
-          ghost:   '#005514',
+          bg:      'rgb(var(--color-bg)      / <alpha-value>)',
+          surface: 'rgb(var(--color-surface) / <alpha-value>)',
+          border:  'rgb(var(--color-border)  / <alpha-value>)',
+          muted:   'rgb(var(--color-muted)   / <alpha-value>)',
+          text:    'rgb(var(--color-accent)  / <alpha-value>)',
+          dim:     'rgb(var(--color-dim)     / <alpha-value>)',
+          ghost:   'rgb(var(--color-ghost)   / <alpha-value>)',
         },
         severity: {
           critical: '#ff0033',
@@ -84,8 +85,8 @@ const config: Config = {
           '80%':      { clip: 'rect(30px, 9999px, 45px, 0px)', transform: 'skewX(-2deg)' },
         },
         'pulse-green': {
-          '0%, 100%': { boxShadow: '0 0 5px #00FF41, 0 0 10px #00FF41' },
-          '50%':      { boxShadow: '0 0 20px #00FF41, 0 0 40px #00FF41, 0 0 60px #00FF41' },
+          '0%, 100%': { boxShadow: '0 0 5px rgb(var(--color-accent)), 0 0 10px rgb(var(--color-accent))' },
+          '50%':      { boxShadow: '0 0 20px rgb(var(--color-accent)), 0 0 40px rgb(var(--color-accent))' },
         },
         'flicker': {
           '0%, 19%, 21%, 23%, 25%, 54%, 56%, 100%': { opacity: '1' },
@@ -103,16 +104,21 @@ const config: Config = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to:   { height: '0' },
         },
+        'theme-fade': {
+          'from': { opacity: '0' },
+          'to':   { opacity: '1' },
+        },
       },
       animation: {
-        'blink':        'blink 1s step-end infinite',
-        'scan-line':    'scan-line 4s linear infinite',
-        'glitch-1':     'glitch-1 0.3s linear infinite',
-        'glitch-2':     'glitch-2 0.3s linear infinite',
-        'pulse-green':  'pulse-green 2s ease-in-out infinite',
-        'flicker':      'flicker 3s linear infinite',
+        'blink':          'blink 1s step-end infinite',
+        'scan-line':      'scan-line 4s linear infinite',
+        'glitch-1':       'glitch-1 0.3s linear infinite',
+        'glitch-2':       'glitch-2 0.3s linear infinite',
+        'pulse-green':    'pulse-green 2s ease-in-out infinite',
+        'flicker':        'flicker 3s linear infinite',
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up':   'accordion-up 0.2s ease-out',
+        'theme-fade':     'theme-fade 0.3s ease-out',
       },
       screens: {
         'watch': '160px',

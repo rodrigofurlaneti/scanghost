@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    AnimatedVectorDrawable: anima o grupo "scan_beam" dentro do ic_launcher_foreground.
+    O beam varre verticalmente de translateY=-24 (topo do ghost) a translateY=+24 (base),
+    em modo "reverse" (vai e volta) com duração de 2s por passagem.
+    Requer API 21+.
+-->
+<animated-vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:drawable="@drawable/ic_launcher_foreground">
+
+    <target android:name="scan_beam">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:propertyName="translateY"
+                android:valueFrom="-24"
+                android:valueTo="24"
+                android:duration="1800"
+                android:repeatCount="infinite"
+                android:repeatMode="reverse"
+                android:interpolator="@android:interpolator/accelerate_decelerate"/>
+        </aapt:attr>
+    </target>
+
+</animated-vector>

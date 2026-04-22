@@ -24,6 +24,17 @@ const LANGS = [
   { code: 'es',    label: 'ES', full: 'Español' },
 ]
 
+/**
+ * Normaliza códigos de idioma do navigator/i18next para um dos 3 suportados.
+ * Ex: "en-US" → "en", "pt" → "pt-BR", "es-MX" → "es"
+ */
+function normalizeLangCode(code: string): string {
+  const lower = code.toLowerCase()
+  if (lower.startsWith('pt')) return 'pt-BR'
+  if (lower.startsWith('es')) return 'es'
+  return 'en'
+}
+
 interface LayoutProps {
   children: React.ReactNode
 }
@@ -34,9 +45,11 @@ export function Layout({ children }: LayoutProps) {
   const { isDark } = useTheme()
   const [mobileOpen, setMobileOpen] = useState(false)
 
-  const currentLangIdx = LANGS.findIndex(l => l.code === i18n.language) ?? 0
-  const currentLang = LANGS[Math.max(0, currentLangIdx)]
-  const nextLang = LANGS[(Math.max(0, currentLangIdx) + 1) % LANGS.length]
+  const normalizedLang = normalizeLangCode(i18n.language)
+  const currentLangIdx = LANGS.findIndex(l => l.code === normalizedLang)
+  const safeIdx = currentLangIdx >= 0 ? currentLangIdx : 0
+  const currentLang = LANGS[safeIdx]
+  const nextLang = LANGS[(safeIdx + 1) % LANGS.length]
 
   const cycleLang = () => i18n.changeLanguage(nextLang.code)
 

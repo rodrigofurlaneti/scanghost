@@ -14,6 +14,7 @@ import { StatCard } from '@/components/shared/StatCard'
 import { TerminalCard } from '@/components/shared/TerminalCard'
 import { SeverityBadge } from '@/components/shared/SeverityBadge'
 import { StatusBadge } from '@/components/shared/StatusBadge'
+import { ScanDocs } from '@/components/shared/ScanDocs'
 import { startScan, getScans } from '@/api/client'
 import { formatDate, formatDuration } from '@/lib/utils'
 import type { ScanProfile } from '@/types'
@@ -163,9 +164,12 @@ export function Dashboard() {
 
               {/* Profile selection */}
               <div>
-                <label className="block font-mono text-xs text-terminal-dim uppercase tracking-widest mb-2">
-                  {t('dashboard.profile')}
-                </label>
+                <div className="flex items-center gap-2 mb-2">
+                  <label className="font-mono text-xs text-terminal-dim uppercase tracking-widest">
+                    {t('dashboard.profile')}
+                  </label>
+                  <ScanDocs />
+                </div>
                 <div className="flex flex-wrap gap-2">
                   {PROFILES.map(p => (
                     <button

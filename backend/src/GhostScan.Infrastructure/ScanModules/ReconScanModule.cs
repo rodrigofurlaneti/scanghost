@@ -57,6 +57,7 @@ public sealed class ReconScanModule : IScanModule
                 _logger.LogInformation("[Recon] DNS enumeration for {Target}", target.Value);
                 var dnsRecords = await EnumerateDnsAsync(target.Value, cancellationToken);
                 data["dns_records"] = dnsRecords;
+                context.Set("dns_records", dnsRecords); // persist to context for report handler
 
                 var dnsFindings = AnalyzeDnsRecords(dnsRecords, target.Value);
                 findings.AddRange(dnsFindings);
@@ -129,7 +130,7 @@ public sealed class ReconScanModule : IScanModule
                 kv => (object)kv.Value);
             context.Set("open_ports", openPortsAsObj);
             context.Set("banners", banners);
-            context.Set("dns_records", dnsRecords);
+            // dns_records is set inside the if(!IsIpAddress) block above (it's only available there)
             if (data.TryGetValue("subdomains", out var subs))
                 context.Set("subdomains", subs);
 

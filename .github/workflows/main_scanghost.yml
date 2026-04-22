@@ -1,4 +1,4 @@
-﻿name: CI/CD ScanGhost - Full Stack
+name: CI/CD ScanGhost - Full Stack
 
 on:
   push:
@@ -47,3 +47,5 @@ jobs:
           app_location: "/frontend"
           api_location: ""
           output_location: "dist"
+        env:
+          VITE_API_BASE_URL: https://webapplication-scanghost.azurewebsites.net

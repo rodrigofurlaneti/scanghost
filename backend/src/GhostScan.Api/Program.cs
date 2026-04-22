@@ -65,6 +65,17 @@ builder.Services.AddSwaggerGen(options =>
     options.EnableAnnotations();
 });
 
+// ── ForwardedHeaders (must be configured before app.Build()) ──────────────────
+// Clear the default whitelist so Azure's load-balancer IPs are trusted.
+// Without this, UseForwardedHeaders() ignores the X-Forwarded-Proto header
+// because Azure's IPs are not loopback addresses.
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+    options.KnownNetworks.Clear();
+    options.KnownProxies.Clear();
+});
+
 // ── CORS ──────────────────────────────────────────────────────────────────────
 var allowedOrigins = builder.Configuration
     .GetSection("AllowedOrigins")
@@ -100,10 +111,8 @@ var app = builder.Build();
 // O Azure termina TLS no load balancer e encaminha internamente como HTTP.
 // Sem isto, Request.Scheme = "http" mesmo quando o cliente usou HTTPS,
 // o que quebra URLs geradas pelo Swagger UI e redirecionamentos.
-app.UseForwardedHeaders(new ForwardedHeadersOptions
-{
-    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto,
-});
+// Uses the ForwardedHeadersOptions configured in the DI container above.
+app.UseForwardedHeaders();
 
 // NÃO usar UseHttpsRedirection() no Azure App Service.
 // O redirect HTTP→HTTPS acontece no load balancer (ative "HTTPS Only" no portal Azure).

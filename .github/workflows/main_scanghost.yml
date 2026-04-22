@@ -25,17 +25,14 @@ jobs:
         with:
           dotnet-version: '8.x'
 
-      - name: List Files (Debug)
-        run: ls -R
-
       - name: Restore dependencies
-        run: dotnet restore GhostScan.sln
+        run: dotnet restore backend/
 
       - name: Build
-        run: dotnet build GhostScan.sln --configuration Release --no-restore
+        run: dotnet build backend/ --configuration Release --no-restore
 
       - name: Publish
-        run: dotnet publish src/GhostScan.Api/GhostScan.Api.csproj -c Release -o ../publish_api
+        run: dotnet publish backend/src/GhostScan.Api/GhostScan.Api.csproj -c Release -o ./publish_api
 
       - name: Login to Azure
         uses: azure/login@v2

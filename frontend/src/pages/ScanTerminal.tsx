@@ -95,31 +95,53 @@ export function ScanTerminal() {
     ])
   }, [])
 
-  // SignalR
-  const onProgress = useCallback((e: ScanProgressEvent) => {
-    setProgress(e.percentComplete)
-    setPhase(e.phase)
-    setActivity(e.activity)
-    setFindings(e.findingsCount)
+  // SignalR — .NET hubs send PascalCase by default; normalise to camelCase here
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function norm<T>(e: any, camel: string, pascal: string, fallback: T): T {
+    return e[camel] ?? e[pascal] ?? fallback
+  }
+
+  const onProgress = useCallback((raw: ScanProgressEvent) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const e = raw as any
+    const pct      = norm(e, 'percentComplete', 'PercentComplete', 0)
+    const ph       = norm(e, 'phase',           'Phase',           '')
+    const act      = norm(e, 'activity',        'Activity',        '')
+    const found    = norm(e, 'findingsCount',   'FindingsCount',   0)
+
+    setProgress(pct)
+    setPhase(ph)
+    setActivity(act)
+    setFindings(found)
+
     const type: LogLine['type'] =
-      e.findingsCount > findings ? 'finding'
-      : e.phase.toLowerCase().includes('error') ? 'warn'
+      found > findings    ? 'finding'
+      : (ph as string).toLowerCase().includes('error') ? 'warn'
       : 'info'
-    addLog(e.activity, e.phase, type)
+    addLog(act, ph, type)
   }, [findings, addLog])
 
-  const onCompleted = useCallback((e: ScanCompletedEvent) => {
+  const onCompleted = useCallback((raw: ScanCompletedEvent) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const e = raw as any
+    const found    = norm(e, 'findingsCount', 'FindingsCount', 0)
+    const duration = norm(e, 'duration',      'Duration',      '')
+
     setProgress(100)
-    setFindings(e.findingsCount)
+    setFindings(found)
     setDone(true)
     setActivity(t('scan.completed'))
-    addLog(`Scan completed — ${e.findingsCount} findings — ${e.duration}`, 'COMPLETE', 'complete')
+    addLog(`Scan completed — ${found} findings — ${duration}`, 'COMPLETE', 'complete')
   }, [t, addLog])
 
-  const onFailed = useCallback((e: ScanFailedEvent) => {
+  const onFailed = useCallback((raw: ScanFailedEvent) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const e = raw as any
+    const err = norm(e, 'error', 'Error', 'Unknown error')
+
     setFailed(true)
     setActivity(t('scan.failed'))
-    addLog(`Scan failed: ${e.error}`, 'FAILED', 'error')
+    addLog(`Scan failed: ${err}`, 'FAILED', 'error')
   }, [t, addLog])
 
   const { state: signalRState } = useSignalR({
@@ -215,14 +237,14 @@ export function ScanTerminal() {
             {
               icon: Activity,
               label: t('scan.progress'),
-              value: `${progress}%`,
+              value: `${progress ?? 0}%`,
               color: '#00FF41',
             },
             {
               icon: AlertTriangle,
               label: t('scan.findings'),
-              value: findings.toString(),
-              color: findings > 0 ? '#ffcc00' : '#00FF41',
+              value: (findings ?? 0).toString(),
+              color: (findings ?? 0) > 0 ? '#ffcc00' : '#00FF41',
             },
             {
               icon: Clock,
@@ -263,12 +285,12 @@ export function ScanTerminal() {
             <span className="font-mono text-xs text-terminal-dim uppercase tracking-widest">
               {activity}
             </span>
-            <span className="font-mono text-xs text-matrix-400">{progress}%</span>
+            <span className="font-mono text-xs text-matrix-400">{progress ?? 0}%</span>
           </div>
           <div className="progress-matrix">
             <motion.div
               className="progress-matrix-fill"
-              animate={{ width: `${progress}%` }}
+              animate={{ width: `${progress ?? 0}%` }}
               transition={{ duration: 0.5, ease: 'easeOut' }}
             />
           </div>
@@ -341,7 +363,7 @@ export function ScanTerminal() {
               {done ? (
                 <>
                   <p className="text-lg font-bold mb-2 neon-text">{t('scan.completed')}</p>
-                  <p className="text-terminal-dim mb-4">{findings} findings detected</p>
+                  <p className="text-terminal-dim mb-4">{findings ?? 0} findings detected</p>
                   <button
                     onClick={() => navigate(`/report/${scanId}`)}
                     className="btn-ghost-scan inline-flex items-center gap-2"

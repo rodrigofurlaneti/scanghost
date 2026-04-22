@@ -1,0 +1,141 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "scan": "New Scan",
+    "history": "History",
+    "results": "Results"
+  },
+  "dashboard": {
+    "title": "GhostScan",
+    "subtitle": "Advanced Web Vulnerability Scanner",
+    "quickScan": "Quick Scan",
+    "targetPlaceholder": "Enter target URL or domain...",
+    "startScan": "Initialize Scan",
+    "profile": "Scan Profile",
+    "profiles": {
+      "Quick": "Quick — Fast recon & headers",
+      "Standard": "Standard — Full analysis",
+      "Deep": "Deep — All modules + brute force"
+    },
+    "recentScans": "Recent Scans",
+    "noScans": "No scans yet. Initialize your first target.",
+    "stats": {
+      "totalScans": "Total Scans",
+      "critical": "Critical",
+      "high": "High Severity",
+      "targets": "Targets Scanned"
+    },
+    "viewReport": "View Report",
+    "scanAgain": "Scan Again"
+  },
+  "scan": {
+    "title": "Scan in Progress",
+    "phase": "Phase",
+    "activity": "Activity",
+    "findings": "Findings",
+    "progress": "Progress",
+    "elapsed": "Elapsed",
+    "terminal": "Terminal Output",
+    "cancel": "Abort Scan",
+    "connecting": "Connecting to scan engine...",
+    "completed": "Scan completed",
+    "failed": "Scan failed",
+    "viewReport": "View Report"
+  },
+  "report": {
+    "title": "Vulnerability Report",
+    "summary": "Summary",
+    "findings": "Findings",
+    "recon": "Reconnaissance",
+    "web": "Web Analysis",
+    "intelligence": "Intelligence",
+    "correlations": "Attack Correlations",
+    "recommendations": "Recommendations",
+    "rankedTargets": "Ranked Targets",
+    "noFindings": "No findings detected for this severity filter.",
+    "severity": {
+      "CRITICAL": "Critical",
+      "HIGH": "High",
+      "MEDIUM": "Medium",
+      "LOW": "Low",
+      "INFO": "Info"
+    },
+    "filter": {
+      "all": "All Severities",
+      "minSeverity": "Min Severity"
+    },
+    "finding": {
+      "detail": "Detail",
+      "evidence": "Evidence",
+      "remediation": "Remediation",
+      "attackPath": "Attack Path",
+      "url": "URL",
+      "score": "Score",
+      "confirmed": "Confirmed",
+      "discoveredAt": "Discovered"
+    },
+    "recon": {
+      "subdomains": "Subdomains",
+      "dns": "DNS Records",
+      "ports": "Open Ports",
+      "emails": "Discovered Emails",
+      "zoneTransfer": "DNS Zone Transfer",
+      "succeeded": "Succeeded",
+      "failed": "Not vulnerable"
+    },
+    "web": {
+      "endpoints": "Endpoints",
+      "baseUrls": "Base URLs",
+      "waf": "WAF Detection",
+      "technologies": "Technologies",
+      "jsSecrets": "JS Secrets",
+      "missingHeaders": "Missing Headers",
+      "dangerousHeaders": "Dangerous Headers",
+      "detected": "Detected",
+      "notDetected": "Not detected",
+      "confidence": "Confidence"
+    },
+    "intel": {
+      "totalRaw": "Total Raw",
+      "totalScored": "Total Scored",
+      "deduplicated": "After Dedup",
+      "correlations": "Correlations",
+      "attackSurface": "Attack Surface"
+    }
+  },
+  "history": {
+    "title": "Scan History",
+    "target": "Target",
+    "profile": "Profile",
+    "status": "Status",
+    "started": "Started",
+    "duration": "Duration",
+    "findings": "Findings",
+    "actions": "Actions",
+    "noHistory": "No scan history found.",
+    "filter": {
+      "all": "All Statuses",
+      "search": "Search target..."
+    },
+    "page": "Page {{page}} of {{total}}"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Retry",
+    "back": "Back",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "notAvailable": "N/A",
+    "viewDetails": "View Details"
+  },
+  "status": {
+    "Pending":   "Pending",
+    "Running":   "Running",
+    "Completed": "Completed",
+    "Failed":    "Failed",
+    "Cancelled": "Cancelled"
+  }
+}

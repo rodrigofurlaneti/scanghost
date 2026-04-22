@@ -1,0 +1,141 @@
+{
+  "nav": {
+    "dashboard": "Painel",
+    "scan": "Novo Scan",
+    "history": "Histórico",
+    "results": "Resultados"
+  },
+  "dashboard": {
+    "title": "GhostScan",
+    "subtitle": "Scanner Avançado de Vulnerabilidades Web",
+    "quickScan": "Scan Rápido",
+    "targetPlaceholder": "Insira a URL ou domínio alvo...",
+    "startScan": "Iniciar Scan",
+    "profile": "Perfil de Scan",
+    "profiles": {
+      "Quick": "Rápido — Recon e headers",
+      "Standard": "Padrão — Análise completa",
+      "Deep": "Profundo — Todos os módulos + brute force"
+    },
+    "recentScans": "Scans Recentes",
+    "noScans": "Nenhum scan ainda. Inicialize seu primeiro alvo.",
+    "stats": {
+      "totalScans": "Total de Scans",
+      "critical": "Críticos",
+      "high": "Alta Severidade",
+      "targets": "Alvos Escaneados"
+    },
+    "viewReport": "Ver Relatório",
+    "scanAgain": "Escanear Novamente"
+  },
+  "scan": {
+    "title": "Scan em Progresso",
+    "phase": "Fase",
+    "activity": "Atividade",
+    "findings": "Descobertas",
+    "progress": "Progresso",
+    "elapsed": "Decorrido",
+    "terminal": "Saída do Terminal",
+    "cancel": "Abortar Scan",
+    "connecting": "Conectando ao motor de scan...",
+    "completed": "Scan concluído",
+    "failed": "Scan falhou",
+    "viewReport": "Ver Relatório"
+  },
+  "report": {
+    "title": "Relatório de Vulnerabilidades",
+    "summary": "Resumo",
+    "findings": "Descobertas",
+    "recon": "Reconhecimento",
+    "web": "Análise Web",
+    "intelligence": "Inteligência",
+    "correlations": "Correlações de Ataque",
+    "recommendations": "Recomendações",
+    "rankedTargets": "Alvos Prioritários",
+    "noFindings": "Nenhuma descoberta para este filtro de severidade.",
+    "severity": {
+      "CRITICAL": "Crítico",
+      "HIGH": "Alto",
+      "MEDIUM": "Médio",
+      "LOW": "Baixo",
+      "INFO": "Info"
+    },
+    "filter": {
+      "all": "Todas as Severidades",
+      "minSeverity": "Severidade Mínima"
+    },
+    "finding": {
+      "detail": "Detalhe",
+      "evidence": "Evidência",
+      "remediation": "Remediação",
+      "attackPath": "Caminho de Ataque",
+      "url": "URL",
+      "score": "Pontuação",
+      "confirmed": "Confirmado",
+      "discoveredAt": "Descoberto em"
+    },
+    "recon": {
+      "subdomains": "Subdomínios",
+      "dns": "Registros DNS",
+      "ports": "Portas Abertas",
+      "emails": "E-mails Descobertos",
+      "zoneTransfer": "Transferência de Zona DNS",
+      "succeeded": "Bem-sucedido",
+      "failed": "Não vulnerável"
+    },
+    "web": {
+      "endpoints": "Endpoints",
+      "baseUrls": "URLs Base",
+      "waf": "Detecção de WAF",
+      "technologies": "Tecnologias",
+      "jsSecrets": "Segredos em JS",
+      "missingHeaders": "Headers Ausentes",
+      "dangerousHeaders": "Headers Perigosos",
+      "detected": "Detectado",
+      "notDetected": "Não detectado",
+      "confidence": "Confiança"
+    },
+    "intel": {
+      "totalRaw": "Total Bruto",
+      "totalScored": "Total Pontuado",
+      "deduplicated": "Após Dedup",
+      "correlations": "Correlações",
+      "attackSurface": "Superfície de Ataque"
+    }
+  },
+  "history": {
+    "title": "Histórico de Scans",
+    "target": "Alvo",
+    "profile": "Perfil",
+    "status": "Status",
+    "started": "Iniciado",
+    "duration": "Duração",
+    "findings": "Descobertas",
+    "actions": "Ações",
+    "noHistory": "Nenhum histórico encontrado.",
+    "filter": {
+      "all": "Todos os Status",
+      "search": "Buscar alvo..."
+    },
+    "page": "Página {{page}} de {{total}}"
+  },
+  "common": {
+    "loading": "Carregando...",
+    "error": "Erro",
+    "retry": "Tentar novamente",
+    "back": "Voltar",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "copy": "Copiar",
+    "copied": "Copiado!",
+    "notAvailable": "N/D",
+    "viewDetails": "Ver Detalhes"
+  },
+  "status": {
+    "Pending":   "Pendente",
+    "Running":   "Executando",
+    "Completed": "Concluído",
+    "Failed":    "Falhou",
+    "Cancelled": "Cancelado"
+  }
+}

@@ -138,13 +138,18 @@ public sealed class WebAnalysisScanModule : IScanModule
             data["js_secrets"] = jsSecrets;
             context.Set("js_secrets", jsSecrets);
 
-            // 6. Technology detection (whatweb)
+            // 6. Technology detection — whatweb if available, otherwise HTTP header + HTML fingerprint
+            Dictionary<string, object> technologies;
             if (_toolRunner.IsAvailable("whatweb"))
             {
-                var technologies = await RunWhatWebAsync(baseUrls.First(), cancellationToken);
-                data["technologies"] = technologies;
-                context.Set("technologies", technologies);
+                technologies = await RunWhatWebAsync(effectiveBase, cancellationToken);
             }
+            else
+            {
+                technologies = await DetectTechnologiesFromHttpAsync(effectiveBase, httpClient, cancellationToken);
+            }
+            data["technologies"] = technologies;
+            context.Set("technologies", technologies);
 
             // 7. Dir brute-force (gobuster / ffuf)
             var dirBrute = await RunDirectoryBruteAsync(effectiveBase, configuration, cancellationToken);
@@ -562,6 +567,122 @@ public sealed class WebAnalysisScanModule : IScanModule
         }
 
         return (secrets, findings);
+    }
+
+    /// <summary>
+    /// Pure HTTP-based technology fingerprinting — no external tools required.
+    /// Detects server, CMS, framework, language, and CDN from response headers and HTML.
+    /// </summary>
+    private async Task<Dictionary<string, object>> DetectTechnologiesFromHttpAsync(
+        string baseUrl, HttpClient httpClient, CancellationToken cancellationToken)
+    {
+        var tech = new Dictionary<string, object>
+        {
+            ["server"]    = new List<string>(),
+            ["cms"]       = new List<string>(),
+            ["framework"] = new List<string>(),
+            ["language"]  = new List<string>(),
+            ["cdn"]       = new List<string>(),
+        };
+
+        try
+        {
+            var response = await httpClient.GetAsync(baseUrl, cancellationToken);
+            var html = await response.Content.ReadAsStringAsync(cancellationToken);
+
+            var allHeaders = response.Headers
+                .Concat(response.Content.Headers)
+                .ToDictionary(h => h.Key.ToLowerInvariant(),
+                              h => string.Join(", ", h.Value),
+                              StringComparer.OrdinalIgnoreCase);
+
+            var serverList    = (List<string>)tech["server"];
+            var cmsList       = (List<string>)tech["cms"];
+            var frameworkList = (List<string>)tech["framework"];
+            var languageList  = (List<string>)tech["language"];
+            var cdnList       = (List<string>)tech["cdn"];
+
+            // ── Server / framework headers ──────────────────────────────────────
+            if (allHeaders.TryGetValue("server", out var srv) && !string.IsNullOrWhiteSpace(srv))
+                serverList.Add(srv.Trim());
+
+            if (allHeaders.TryGetValue("x-powered-by", out var powered))
+                frameworkList.Add(powered.Trim());
+
+            if (allHeaders.TryGetValue("x-aspnet-version", out var aspnetVer))
+            {
+                frameworkList.Add($"ASP.NET {aspnetVer.Trim()}");
+                if (!languageList.Contains("ASP.NET")) languageList.Add("ASP.NET");
+            }
+
+            if (allHeaders.TryGetValue("x-aspnetmvc-version", out var mvcVer))
+                frameworkList.Add($"ASP.NET MVC {mvcVer.Trim()}");
+
+            if (allHeaders.TryGetValue("x-generator", out var gen))
+                cmsList.Add(gen.Trim());
+
+            // ── CDN / security layer fingerprinting ─────────────────────────────
+            if (allHeaders.ContainsKey("cf-ray") || allHeaders.ContainsKey("cf-cache-status"))
+                cdnList.Add("Cloudflare");
+            if (allHeaders.ContainsKey("x-amz-cf-id") || allHeaders.ContainsKey("x-amzn-requestid"))
+                cdnList.Add("AWS CloudFront");
+            if (allHeaders.ContainsKey("x-akamai-transformed") || allHeaders.ContainsKey("akamai-origin-hop"))
+                cdnList.Add("Akamai");
+            if (allHeaders.TryGetValue("x-cache", out var xcache) && xcache.Contains("Azion", StringComparison.OrdinalIgnoreCase))
+                cdnList.Add("Azion CDN");
+            if (allHeaders.ContainsKey("x-served-by") && allHeaders["x-served-by"].Contains("Fastly", StringComparison.OrdinalIgnoreCase))
+                cdnList.Add("Fastly");
+            if (allHeaders.ContainsKey("via") && allHeaders["via"].Contains("Varnish", StringComparison.OrdinalIgnoreCase))
+                cdnList.Add("Varnish");
+
+            // ── HTML-based CMS detection ─────────────────────────────────────────
+            if (html.Contains("wp-content/", StringComparison.OrdinalIgnoreCase) ||
+                html.Contains("wp-includes/", StringComparison.OrdinalIgnoreCase))
+                cmsList.Add("WordPress");
+
+            if (html.Contains("/sites/default/", StringComparison.OrdinalIgnoreCase) ||
+                html.Contains("Drupal.settings", StringComparison.OrdinalIgnoreCase))
+                cmsList.Add("Drupal");
+
+            if (html.Contains("/media/joomla/", StringComparison.OrdinalIgnoreCase) ||
+                html.Contains("Joomla!", StringComparison.OrdinalIgnoreCase))
+                cmsList.Add("Joomla");
+
+            if (html.Contains("__next", StringComparison.OrdinalIgnoreCase) ||
+                html.Contains("_next/static", StringComparison.OrdinalIgnoreCase))
+                frameworkList.Add("Next.js");
+
+            if (html.Contains("ng-version", StringComparison.OrdinalIgnoreCase) ||
+                html.Contains("ng-app", StringComparison.OrdinalIgnoreCase))
+                frameworkList.Add("Angular");
+
+            if (html.Contains("data-reactroot", StringComparison.OrdinalIgnoreCase) ||
+                html.Contains("__NEXT_DATA__", StringComparison.OrdinalIgnoreCase))
+                frameworkList.Add("React");
+
+            // ── meta generator tag ───────────────────────────────────────────────
+            var metaGen = Regex.Match(html,
+                @"<meta\s+name=[""']generator[""']\s+content=[""']([^""']+)[""']",
+                RegexOptions.IgnoreCase);
+            if (metaGen.Success && !string.IsNullOrWhiteSpace(metaGen.Groups[1].Value))
+                cmsList.Add(metaGen.Groups[1].Value.Trim());
+
+            // ── PHP detection from headers ───────────────────────────────────────
+            if (allHeaders.TryGetValue("x-php-version", out var phpVer))
+                languageList.Add($"PHP {phpVer}");
+            else if (allHeaders.TryGetValue("x-powered-by", out var pb) &&
+                     pb.Contains("php", StringComparison.OrdinalIgnoreCase))
+                languageList.Add("PHP");
+
+            _logger.LogInformation("[Web] Technology detection (HTTP): server={Server}, cms={Cms}, cdn={Cdn}",
+                string.Join(",", serverList), string.Join(",", cmsList), string.Join(",", cdnList));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogDebug(ex, "[Web] Technology detection failed for {Url}", baseUrl);
+        }
+
+        return tech;
     }
 
     private async Task<Dictionary<string, object>> RunWhatWebAsync(

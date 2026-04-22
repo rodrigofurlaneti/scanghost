@@ -121,8 +121,15 @@ public sealed class ReconScanModule : IScanModule
             var banners = await GrabBannersAsync(openPorts, cancellationToken);
             if (banners.Count > 0) data["banners"] = banners;
 
-            context.Set("open_ports", openPorts);
+            // Store openPorts as Dictionary<string,object> so GetOpenPorts() type-cast works.
+            // Dictionary<string,List<int>> cannot be cast to Dictionary<string,object> in C#
+            // (generics are invariant), so we must convert before storing in ScanContext.
+            var openPortsAsObj = openPorts.ToDictionary(
+                kv => kv.Key,
+                kv => (object)kv.Value);
+            context.Set("open_ports", openPortsAsObj);
             context.Set("banners", banners);
+            context.Set("dns_records", dnsRecords);
             if (data.TryGetValue("subdomains", out var subs))
                 context.Set("subdomains", subs);
 
@@ -155,7 +162,9 @@ public sealed class ReconScanModule : IScanModule
                 try
                 {
                     var result = await client.QueryAsync(domain, rType, cancellationToken: cancellationToken);
-                    var values = result.AllRecords
+                    // Use Answers only — AllRecords also includes OPT (EDNS) and SOA authority records
+                    // which pollute the output with noise entries like ". 0 512 OPT OPT 512."
+                    var values = result.Answers
                         .Select(r => r.ToString() ?? string.Empty)
                         .Where(s => !string.IsNullOrEmpty(s))
                         .ToList();
@@ -174,7 +183,8 @@ public sealed class ReconScanModule : IScanModule
             {
                 var dmarcResult = await client.QueryAsync($"_dmarc.{domain}", QueryType.TXT,
                     cancellationToken: cancellationToken);
-                var dmarcValues = dmarcResult.AllRecords
+                // Use Answers only — avoid OPT/SOA noise from AllRecords
+                var dmarcValues = dmarcResult.Answers
                     .Select(r => r.ToString() ?? string.Empty)
                     .Where(s => !string.IsNullOrEmpty(s))
                     .ToList();

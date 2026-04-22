@@ -233,7 +233,8 @@ public sealed class GetScanReportQueryHandler : IRequestHandler<GetScanReportQue
 
     private static IntelligenceResultDto? BuildIntelligenceResults(Scan scan, int totalScored)
     {
-        var intData = GetModuleData<Dictionary<string, object>>(scan, "IntelligenceEngine");
+        // Module name is "Intelligence" (IntelligenceEngineScanModule.Name = "Intelligence")
+        var intData = GetModuleData<Dictionary<string, object>>(scan, "Intelligence");
         if (intData is null) return null;
 
         var correlations = intData.TryGetValue("correlations", out var c) && c is int ci ? ci : 0;
@@ -272,7 +273,7 @@ public sealed class GetScanReportQueryHandler : IRequestHandler<GetScanReportQue
 
     private static IReadOnlyList<RankedTargetDto> BuildRankedTargets(Scan scan)
     {
-        var intData = GetModuleData<Dictionary<string, object>>(scan, "IntelligenceEngine");
+        var intData = GetModuleData<Dictionary<string, object>>(scan, "Intelligence");
         if (intData is null) return [];
 
         if (!intData.TryGetValue("ranked_targets", out var raw)) return [];
@@ -294,7 +295,7 @@ public sealed class GetScanReportQueryHandler : IRequestHandler<GetScanReportQue
 
     private static IReadOnlyList<RecommendationDto> BuildRecommendations(Scan scan)
     {
-        var intData = GetModuleData<Dictionary<string, object>>(scan, "IntelligenceEngine");
+        var intData = GetModuleData<Dictionary<string, object>>(scan, "Intelligence");
         if (intData is null) return [];
 
         if (!intData.TryGetValue("recommendations", out var raw)) return [];

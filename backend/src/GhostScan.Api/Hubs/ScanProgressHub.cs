@@ -46,13 +46,19 @@ public sealed class SignalRScanProgressNotifier : IScanProgressNotifier
     }
 
     public async Task NotifyCompletedAsync(
-        Guid scanId, int totalFindings, CancellationToken cancellationToken = default)
+        Guid scanId, int findingsCount, TimeSpan duration, CancellationToken cancellationToken = default)
     {
+        var d = duration;
+        var durationStr = d.TotalHours >= 1
+            ? $"{(int)d.TotalHours:D2}:{d.Minutes:D2}:{d.Seconds:D2}"
+            : $"{d.Minutes:D2}:{d.Seconds:D2}";
+
         await _hubContext.Clients.Group($"scan_{scanId}")
             .SendAsync("ScanCompleted", new
             {
                 ScanId = scanId,
-                TotalFindings = totalFindings,
+                FindingsCount = findingsCount,
+                Duration = durationStr,
                 CompletedAt = DateTime.UtcNow,
             }, cancellationToken);
     }

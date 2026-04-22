@@ -46,8 +46,6 @@
     "title": "Vulnerability Report",
     "summary": "Summary",
     "findings": "Findings",
-    "recon": "Reconnaissance",
-    "web": "Web Analysis",
     "intelligence": "Intelligence",
     "correlations": "Attack Correlations",
     "recommendations": "Recommendations",
@@ -75,6 +73,7 @@
       "discoveredAt": "Discovered"
     },
     "recon": {
+      "title": "Reconnaissance",
       "subdomains": "Subdomains",
       "dns": "DNS Records",
       "ports": "Open Ports",
@@ -84,6 +83,7 @@
       "failed": "Not vulnerable"
     },
     "web": {
+      "title": "Web Analysis",
       "endpoints": "Endpoints",
       "baseUrls": "Base URLs",
       "waf": "WAF Detection",

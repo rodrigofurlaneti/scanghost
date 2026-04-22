@@ -5,7 +5,7 @@ public interface IScanProgressNotifier
     Task NotifyProgressAsync(Guid scanId, int percentComplete, string phase,
         string activity, int findingsCount, CancellationToken cancellationToken = default);
 
-    Task NotifyCompletedAsync(Guid scanId, int totalFindings,
+    Task NotifyCompletedAsync(Guid scanId, int findingsCount, TimeSpan duration,
         CancellationToken cancellationToken = default);
 
     Task NotifyFailedAsync(Guid scanId, string errorMessage,

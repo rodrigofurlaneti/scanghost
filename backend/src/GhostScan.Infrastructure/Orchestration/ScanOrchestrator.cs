@@ -87,7 +87,7 @@ public sealed class ScanOrchestrator : IScanOrchestrator
             await _scanRepository.SaveAsync(scan, cancellationToken);
 
             await _progressNotifier.NotifyCompletedAsync(
-                scan.Id, scan.FindingsCount, cancellationToken);
+                scan.Id, scan.FindingsCount, scan.Duration ?? TimeSpan.Zero, cancellationToken);
 
             _logger.LogInformation("[Orchestrator] [{ScanId}] Scan completed. {Count} findings total.",
                 scan.Id, scan.FindingsCount);

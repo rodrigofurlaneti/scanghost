@@ -46,8 +46,6 @@
     "title": "Relatório de Vulnerabilidades",
     "summary": "Resumo",
     "findings": "Descobertas",
-    "recon": "Reconhecimento",
-    "web": "Análise Web",
     "intelligence": "Inteligência",
     "correlations": "Correlações de Ataque",
     "recommendations": "Recomendações",
@@ -75,6 +73,7 @@
       "discoveredAt": "Descoberto em"
     },
     "recon": {
+      "title": "Reconhecimento",
       "subdomains": "Subdomínios",
       "dns": "Registros DNS",
       "ports": "Portas Abertas",
@@ -84,6 +83,7 @@
       "failed": "Não vulnerável"
     },
     "web": {
+      "title": "Análise Web",
       "endpoints": "Endpoints",
       "baseUrls": "URLs Base",
       "waf": "Detecção de WAF",

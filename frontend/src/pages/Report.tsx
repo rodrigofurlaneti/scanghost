@@ -210,8 +210,8 @@ export function Report() {
 
   const TABS = [
     { key: 'findings',     label: t('report.findings'),     icon: Shield,        count: report.summary.total },
-    { key: 'recon',        label: t('report.recon'),        icon: Search,        count: report.reconResults?.subdomains.length },
-    { key: 'web',          label: t('report.web'),          icon: Globe,         count: report.webResults?.endpoints.length },
+    { key: 'recon',        label: t('report.recon.title'),  icon: Search,        count: report.reconResults?.subdomains.length },
+    { key: 'web',          label: t('report.web.title'),    icon: Globe,         count: report.webResults?.endpoints.length },
     { key: 'intel',        label: t('report.intelligence'), icon: Brain,         count: report.intelligenceResults?.totalScored },
     { key: 'correlations', label: t('report.correlations'), icon: Zap,           count: report.correlations.length },
   ] as const

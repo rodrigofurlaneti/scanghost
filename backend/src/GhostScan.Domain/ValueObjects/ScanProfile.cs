@@ -22,6 +22,17 @@ public sealed class ScanProfile : ValueObject
         enableXss: true, enableSqli: true, enableBrute: true,
         enableParallel: true, enableWafBypass: true);
 
+    /// <summary>
+    /// Ghost — perfil máximo: 100 threads paralelos, wordlist XL, rate limit mínimo,
+    /// todos os módulos ativos, WAF bypass completo e brute force simultâneo.
+    /// Use apenas em alvos que você possui ou tem autorização explícita.
+    /// </summary>
+    public static readonly ScanProfile Ghost = new(
+        "ghost", intensity: "maximum", threads: 100,
+        rateLimit: 0.01, wordlistSize: "xlarge",
+        enableXss: true, enableSqli: true, enableBrute: true,
+        enableParallel: true, enableWafBypass: true);
+
     public string Name { get; }
     public string Intensity { get; }
     public int Threads { get; }
@@ -51,10 +62,11 @@ public sealed class ScanProfile : ValueObject
 
     public static Result<ScanProfile> FromString(string name) => name.ToLowerInvariant() switch
     {
-        "stealth" => Result<ScanProfile>.Success(Stealth),
-        "standard" => Result<ScanProfile>.Success(Standard),
+        "stealth"    => Result<ScanProfile>.Success(Stealth),
+        "standard"   => Result<ScanProfile>.Success(Standard),
         "aggressive" => Result<ScanProfile>.Success(Aggressive),
-        _ => Result<ScanProfile>.Failure($"Unknown profile: '{name}'. Use stealth, standard, or aggressive.")
+        "ghost"      => Result<ScanProfile>.Success(Ghost),
+        _ => Result<ScanProfile>.Failure($"Unknown profile: '{name}'. Use stealth, standard, aggressive, or ghost.")
     };
 
     protected override IEnumerable<object?> GetEqualityComponents()

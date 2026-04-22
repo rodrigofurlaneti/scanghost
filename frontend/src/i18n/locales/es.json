@@ -15,7 +15,8 @@
     "profiles": {
       "stealth":    "Stealth — Solo reconocimiento pasivo · 5 hilos · sin XSS/SQLi · evasión WAF",
       "standard":   "Standard — Análisis completo · 20 hilos · XSS + SQLi habilitados",
-      "aggressive": "Aggressive — Todos los módulos · 50 hilos · fuerza bruta · bypass WAF · paralelo"
+      "aggressive": "Aggressive — Todos los módulos · 50 hilos · fuerza bruta · bypass WAF · paralelo",
+      "ghost":      "Ghost — Máximo · 100 hilos · todos los módulos · bypass WAF total · solo objetivos autorizados"
     },
     "recentScans": "Scans Recientes",
     "noScans": "Sin scans aún. Inicializa tu primer objetivo.",

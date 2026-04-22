@@ -20,7 +20,7 @@ import { startScan, getScans } from '@/api/client'
 import { formatDate, formatDuration } from '@/lib/utils'
 import type { ScanProfile } from '@/types'
 
-const PROFILES: ScanProfile[] = ['stealth', 'standard', 'aggressive']
+const PROFILES: ScanProfile[] = ['stealth', 'standard', 'aggressive', 'ghost']
 
 export function Dashboard() {
   const { t } = useTranslation()

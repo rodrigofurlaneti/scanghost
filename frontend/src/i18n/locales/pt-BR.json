@@ -15,7 +15,8 @@
     "profiles": {
       "stealth":    "Stealth — Só recon passivo · 5 threads · sem XSS/SQLi · furtivo",
       "standard":   "Standard — Análise completa · 20 threads · XSS + SQLi ativos",
-      "aggressive": "Aggressive — Todos os módulos · 50 threads · brute force · bypass de WAF · paralelo"
+      "aggressive": "Aggressive — Todos os módulos · 50 threads · brute force · bypass de WAF · paralelo",
+      "ghost":      "Ghost — Máximo · 100 threads · todos os módulos · bypass total de WAF · somente alvos autorizados"
     },
     "recentScans": "Scans Recentes",
     "noScans": "Nenhum scan ainda. Inicialize seu primeiro alvo.",

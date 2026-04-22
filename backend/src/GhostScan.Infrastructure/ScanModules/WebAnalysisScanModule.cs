@@ -85,9 +85,15 @@ public sealed class WebAnalysisScanModule : IScanModule
 
             // Resolve effective base URL — follow redirect so that if gru.com.br → www.gru.com.br
             // the rest of the analysis uses the final host, avoiding scope filter false-negatives.
+            // If HTTPS fails (host has no port 443), falls back to HTTP automatically.
             var effectiveBase = await ResolveEffectiveBaseUrlAsync(baseUrls.First(), httpClient, cancellationToken);
-            if (!baseUrls.Contains(effectiveBase))
-                baseUrls.Insert(0, effectiveBase);
+
+            // Always put effectiveBase FIRST so all downstream modules (VulnDetection, Browser, etc.)
+            // use the correct scheme when they call context.GetBaseUrls().FirstOrDefault().
+            baseUrls.Remove(effectiveBase);
+            baseUrls.Insert(0, effectiveBase);
+
+            _logger.LogInformation("[Web] Effective base URL: {Url}", effectiveBase);
 
             data["base_urls"] = baseUrls;
             context.Set("base_urls", baseUrls);

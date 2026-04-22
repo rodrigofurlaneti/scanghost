@@ -1,4 +1,4 @@
-using FluentValidation;
+﻿using FluentValidation;
 using GhostScan.Api.Hubs;
 using GhostScan.Api.Middleware;
 using GhostScan.Application.Behaviors;
@@ -74,7 +74,7 @@ builder.Services.AddSwaggerGen(options =>
         Contact = new OpenApiContact
         {
             Name = "GhostScan",
-            Url = new Uri("https://github.com/scf13/ghostscan"),
+            Url = new Uri("https://github.com/rodrigofurlaneti/scanghost"),
         },
         License = new OpenApiLicense { Name = "MIT" },
     });

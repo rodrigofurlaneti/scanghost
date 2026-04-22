@@ -70,7 +70,6 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_AGREEABLE_CLIFF_05893530F }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          # Certifique-se que o nome da pasta no GitHub é 'frontend' (minúsculo)
           app_location: "/frontend" 
           api_location: ""
-          output_location: "dist" # Se for React sem Vite, mude para "build"
+          output_location: "dist" 

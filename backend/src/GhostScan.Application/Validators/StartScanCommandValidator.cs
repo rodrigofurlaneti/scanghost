@@ -5,7 +5,7 @@ namespace GhostScan.Application.Validators;
 
 public sealed class StartScanCommandValidator : AbstractValidator<StartScanCommand>
 {
-    private static readonly string[] ValidProfiles = ["stealth", "standard", "aggressive"];
+    private static readonly string[] ValidProfiles = ["stealth", "standard", "aggressive", "ghost"];
     private static readonly string[] ValidSeverities = ["critical", "high", "medium", "low", "info"];
     private static readonly string[] ValidWafProfiles =
         ["cloudflare", "akamai", "aws-waf", "f5", "imperva", "modsecurity", "wordfence", "sucuri", "generic"];

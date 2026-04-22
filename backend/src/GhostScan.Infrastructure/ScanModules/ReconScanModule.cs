@@ -139,7 +139,7 @@ public sealed class ReconScanModule : IScanModule
 
             // Banner Grabbing — after port scan
             _logger.LogInformation("[Recon] Banner grabbing on open ports");
-            var banners = await GrabBannersAsync(openPorts, cancellationToken);
+            var banners = await GrabBannersAsync(openPorts, configuration.Profile.Threads, cancellationToken);
             if (banners.Count > 0) data["banners"] = banners;
 
             // Store openPorts as Dictionary<string,object> so GetOpenPorts() type-cast works.
@@ -356,10 +356,10 @@ public sealed class ReconScanModule : IScanModule
     // ── Banner Grabbing ───────────────────────────────────────────────────────
 
     private async Task<Dictionary<string, string>> GrabBannersAsync(
-        Dictionary<string, List<int>> openPorts, CancellationToken cancellationToken)
+        Dictionary<string, List<int>> openPorts, int maxConcurrency, CancellationToken cancellationToken)
     {
         var banners = new Dictionary<string, string>();
-        var semaphore = new SemaphoreSlim(20);
+        var semaphore = new SemaphoreSlim(Math.Max(1, maxConcurrency));
 
         var tasks = openPorts.SelectMany(kvp =>
             kvp.Value.Select(port => GrabSingleBannerAsync(kvp.Key, port, semaphore, banners, cancellationToken)));
@@ -604,7 +604,7 @@ public sealed class ReconScanModule : IScanModule
         {
             foreach (var host in hosts.Take(3))
             {
-                var openPorts = await SocketScanAsync(host, configuration.Ports.ToList(), cancellationToken);
+                var openPorts = await SocketScanAsync(host, configuration.Ports.ToList(), cancellationToken, configuration.Profile.Threads);
                 if (openPorts.Count > 0)
                     results[host] = openPorts;
             }
@@ -614,7 +614,7 @@ public sealed class ReconScanModule : IScanModule
     }
 
     private static async Task<List<int>> SocketScanAsync(
-        string host, List<string> ports, CancellationToken cancellationToken)
+        string host, List<string> ports, CancellationToken cancellationToken, int maxConcurrency = 50)
     {
         var openPorts = new List<int>();
         var portNumbers = ports
@@ -622,7 +622,7 @@ public sealed class ReconScanModule : IScanModule
             .Distinct()
             .ToList();
 
-        var semaphore = new SemaphoreSlim(50);
+        var semaphore = new SemaphoreSlim(Math.Max(1, maxConcurrency));
         var tasks = portNumbers.Select(async port =>
         {
             await semaphore.WaitAsync(cancellationToken);

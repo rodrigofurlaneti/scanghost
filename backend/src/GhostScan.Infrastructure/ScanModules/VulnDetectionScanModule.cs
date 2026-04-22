@@ -118,7 +118,7 @@ public sealed class VulnDetectionScanModule : IScanModule
             if (configuration.Profile.EnableXss)
             {
                 _logger.LogInformation("[Vuln] XSS probing");
-                var xssFindings = await TestXssAsync(baseUrl, injectableEndpoints, httpClient, cancellationToken);
+                var xssFindings = await TestXssAsync(baseUrl, injectableEndpoints, httpClient, configuration.Profile.Threads, cancellationToken);
                 findings.AddRange(xssFindings);
                 data["xss_findings"] = xssFindings.Count;
             }
@@ -235,89 +235,109 @@ public sealed class VulnDetectionScanModule : IScanModule
             return findings;
         }
 
-        // Fallback: built-in error-based + boolean detection
-        foreach (var (url, parameters) in targets.Take(5))
+        // Fallback: built-in error-based + boolean detection (parallel per endpoint)
+        var semaphore = new SemaphoreSlim(Math.Max(1, configuration.Profile.Threads));
+        var endpointTasks = targets.Take(configuration.Profile.Threads).Select(async entry =>
         {
-            if (parameters.Count == 0) continue;
+            var (url, parameters) = entry;
+            if (parameters.Count == 0) return;
 
-            string? baseline = null;
+            await semaphore.WaitAsync(cancellationToken);
             try
             {
-                baseline = await httpClient.GetStringAsync(
-                    $"{url}?{string.Join("&", parameters.Select(p => $"{p.Key}={p.Value}"))}",
-                    cancellationToken);
-            }
-            catch { continue; }
-
-            foreach (var payload in BuiltinSqliPayloads.Take(8))
-            {
+                string? baseline = null;
                 try
                 {
-                    var injected = parameters.ToDictionary(p => p.Key, p => p.Value + payload);
-                    var testUrl = $"{url}?{string.Join("&", injected.Select(p => $"{p.Key}={Uri.EscapeDataString(p.Value)}"))}";
-                    var response = await httpClient.GetStringAsync(testUrl, cancellationToken);
+                    baseline = await httpClient.GetStringAsync(
+                        $"{url}?{string.Join("&", parameters.Select(p => $"{p.Key}={p.Value}"))}",
+                        cancellationToken);
+                }
+                catch { return; }
 
-                    foreach (var pattern in SqliErrorPatterns)
+                foreach (var payload in BuiltinSqliPayloads.Take(8))
+                {
+                    try
                     {
-                        var match = pattern.Match(response);
-                        if (match.Success)
+                        var injected = parameters.ToDictionary(p => p.Key, p => p.Value + payload);
+                        var testUrl = $"{url}?{string.Join("&", injected.Select(p => $"{p.Key}={Uri.EscapeDataString(p.Value)}"))}";
+                        var response = await httpClient.GetStringAsync(testUrl, cancellationToken);
+
+                        foreach (var pattern in SqliErrorPatterns)
                         {
-                            findings.Add(Finding.Create(
-                                Severity.Critical, FindingCategory.SQLi,
-                                $"SQL error detected at {url}",
-                                evidence: $"Error pattern: {match.Value[..Math.Min(80, match.Value.Length)]}",
-                                url: testUrl,
-                                remediation: "Use parameterized queries. Never concatenate user input in SQL.",
-                                impact: 10.0, confidence: 0.90,
-                                vulnType: "sqli"));
-                            goto NextEndpoint;
+                            var match = pattern.Match(response);
+                            if (match.Success)
+                            {
+                                lock (findings)
+                                {
+                                    findings.Add(Finding.Create(
+                                        Severity.Critical, FindingCategory.SQLi,
+                                        $"SQL error detected at {url}",
+                                        evidence: $"Error pattern: {match.Value[..Math.Min(80, match.Value.Length)]}",
+                                        url: testUrl,
+                                        remediation: "Use parameterized queries. Never concatenate user input in SQL.",
+                                        impact: 10.0, confidence: 0.90,
+                                        vulnType: "sqli"));
+                                }
+                                return; // found — stop testing this endpoint
+                            }
                         }
                     }
+                    catch { }
+                    await Task.Delay((int)(configuration.Profile.RateLimit * 1000), cancellationToken);
                 }
-                catch { }
-                await Task.Delay((int)(configuration.Profile.RateLimit * 1000), cancellationToken);
             }
-            NextEndpoint:;
-        }
+            finally { semaphore.Release(); }
+        });
 
+        await Task.WhenAll(endpointTasks);
         return findings;
     }
 
     private async Task<List<Finding>> TestXssAsync(
         string baseUrl, List<(string Url, Dictionary<string, string> Params)> targets,
-        HttpClient httpClient, CancellationToken cancellationToken)
+        HttpClient httpClient, int threads, CancellationToken cancellationToken)
     {
         var findings = new List<Finding>();
+        var semaphore = new SemaphoreSlim(Math.Max(1, threads));
 
-        foreach (var (url, parameters) in targets.Take(10))
+        var endpointTasks = targets.Take(threads).Select(async entry =>
         {
-            foreach (var payload in BuiltinXssPayloads)
+            var (url, parameters) = entry;
+            await semaphore.WaitAsync(cancellationToken);
+            try
             {
-                try
+                foreach (var payload in BuiltinXssPayloads)
                 {
-                    var injected = parameters.ToDictionary(p => p.Key, _ => payload);
-                    var testUrl = $"{url}?{string.Join("&", injected.Select(p => $"{p.Key}={Uri.EscapeDataString(p.Value)}"))}";
-                    var response = await httpClient.GetStringAsync(testUrl, cancellationToken);
-
-                    if (response.Contains(payload) &&
-                        Regex.IsMatch(response, @"<script|onerror|onload|javascript:", RegexOptions.IgnoreCase))
+                    try
                     {
-                        findings.Add(Finding.Create(
-                            Severity.High, FindingCategory.XSS,
-                            $"Reflected XSS at {url}",
-                            evidence: $"Payload reflected: {payload[..Math.Min(60, payload.Length)]}",
-                            url: testUrl,
-                            remediation: "Encode output. Implement strict Content-Security-Policy.",
-                            impact: 6.0, confidence: 0.60,
-                            vulnType: "xss_reflected"));
-                        goto NextXssEndpoint;
-                    }
-                }
-                catch { }
-            }
-            NextXssEndpoint:;
-        }
+                        var injected = parameters.ToDictionary(p => p.Key, _ => payload);
+                        var testUrl = $"{url}?{string.Join("&", injected.Select(p => $"{p.Key}={Uri.EscapeDataString(p.Value)}"))}";
+                        var response = await httpClient.GetStringAsync(testUrl, cancellationToken);
 
+                        if (response.Contains(payload) &&
+                            Regex.IsMatch(response, @"<script|onerror|onload|javascript:", RegexOptions.IgnoreCase))
+                        {
+                            lock (findings)
+                            {
+                                findings.Add(Finding.Create(
+                                    Severity.High, FindingCategory.XSS,
+                                    $"Reflected XSS at {url}",
+                                    evidence: $"Payload reflected: {payload[..Math.Min(60, payload.Length)]}",
+                                    url: testUrl,
+                                    remediation: "Encode output. Implement strict Content-Security-Policy.",
+                                    impact: 6.0, confidence: 0.60,
+                                    vulnType: "xss_reflected"));
+                            }
+                            return; // found — stop testing this endpoint
+                        }
+                    }
+                    catch { }
+                }
+            }
+            finally { semaphore.Release(); }
+        });
+
+        await Task.WhenAll(endpointTasks);
         return findings;
     }
 

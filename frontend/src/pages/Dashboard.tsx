@@ -5,7 +5,7 @@ import { useQuery, useMutation } from '@tanstack/react-query'
 import { motion } from 'framer-motion'
 import {
   Search, Shield, Activity, Target, AlertTriangle,
-  ChevronRight, Clock, Loader2, Zap,
+  ChevronRight, Clock, Loader2, Zap, Ghost,
 } from 'lucide-react'
 
 import { MatrixRain } from '@/components/shared/MatrixRain'
@@ -193,6 +193,7 @@ export function Dashboard() {
                         {p === 'stealth'    && <Zap size={11} />}
                         {p === 'standard'   && <Shield size={11} />}
                         {p === 'aggressive' && <Target size={11} />}
+                        {p === 'ghost'      && <Ghost size={11} />}
                         {p}
                       </span>
                     </button>

@@ -111,7 +111,7 @@ public sealed class WebAnalysisScanModule : IScanModule
             // 2. Interesting path probing
             _logger.LogInformation("[Web] Probing {Count} interesting paths", InterestingPaths.Length);
             var (discoveredEndpoints, pathFindings) = await ProbeInterestingPathsAsync(
-                effectiveBase, httpClient, cancellationToken);
+                effectiveBase, httpClient, configuration.Profile.Threads, cancellationToken);
             findings.AddRange(pathFindings);
             data["endpoints"] = discoveredEndpoints;
             context.Set("endpoints", discoveredEndpoints);
@@ -280,11 +280,11 @@ public sealed class WebAnalysisScanModule : IScanModule
     }
 
     private async Task<(List<string> Endpoints, List<Finding> Findings)> ProbeInterestingPathsAsync(
-        string baseUrl, HttpClient httpClient, CancellationToken cancellationToken)
+        string baseUrl, HttpClient httpClient, int maxConcurrency, CancellationToken cancellationToken)
     {
         var endpoints = new List<string>();
         var findings = new List<Finding>();
-        var semaphore = new SemaphoreSlim(20);
+        var semaphore = new SemaphoreSlim(Math.Max(1, maxConcurrency));
 
         var tasks = InterestingPaths.Select(async path =>
         {

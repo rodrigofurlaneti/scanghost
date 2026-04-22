@@ -50,6 +50,7 @@ public sealed class StartScanCommandValidatorTests
     [InlineData("stealth")]
     [InlineData("standard")]
     [InlineData("aggressive")]
+    [InlineData("ghost")]
     public void Validate_WithValidProfile_ShouldPass(string profile)
     {
         var command = new StartScanCommand(new StartScanRequest

@@ -584,11 +584,11 @@ public sealed class VulnDetectionScanModule : IScanModule
             if (!headers.TryGetValue("Content-Security-Policy", out var csp))
             {
                 findings.Add(Finding.Create(
-                    Severity.High, FindingCategory.CSP,
-                    "Content-Security-Policy header missing",
-                    detail: "No CSP header. XSS attacks lack browser-level mitigation.",
+                    Severity.High, FindingCategory.Headers,
+                    "Missing: Content-Security-Policy",
+                    detail: "No CSP. XSS attacks lack browser-level mitigation.",
                     url: baseUrl,
-                    remediation: "Implement a strict CSP: default-src 'none'; script-src 'self'; etc.",
+                    remediation: "Implement a strict Content-Security-Policy.",
                     impact: 5.0, confidence: 0.99,
                     vulnType: "missing_csp"));
                 return findings;
@@ -608,12 +608,12 @@ public sealed class VulnDetectionScanModule : IScanModule
 
             var weaknesses = new[]
             {
-                ("'unsafe-inline'", "Weak CSP: 'unsafe-inline' allows inline script execution (XSS bypass)", 4.0),
-                ("'unsafe-eval'",   "Weak CSP: 'unsafe-eval' allows eval() — SSTI/XSS amplifier",         3.5),
-                ("data:",           "Weak CSP: data: URI in sources enables data exfiltration",            3.0),
+                ("'unsafe-inline'", "Weak CSP: 'unsafe-inline' in script-src — inline JS permitted",    "Harden CSP to remove unsafe directives.", 4.0),
+                ("'unsafe-eval'",   "Weak CSP: 'unsafe-eval' in script-src — eval() permitted",         "Harden CSP to remove unsafe directives.", 3.5),
+                ("data:",           "Weak CSP: data: URI in script-src — data exfiltration possible",    "Harden CSP to remove unsafe directives.", 3.0),
             };
 
-            foreach (var (token, title, impact) in weaknesses)
+            foreach (var (token, title, remediation, impact) in weaknesses)
             {
                 if (csp.Contains(token, StringComparison.OrdinalIgnoreCase))
                 {
@@ -621,7 +621,7 @@ public sealed class VulnDetectionScanModule : IScanModule
                         Severity.Medium, FindingCategory.CSP,
                         title,
                         url: baseUrl,
-                        remediation: $"Remove '{token}' from CSP. Use nonces or hashes instead.",
+                        remediation: remediation,
                         impact: impact, confidence: 0.99, vulnType: "weak_csp"));
                 }
             }

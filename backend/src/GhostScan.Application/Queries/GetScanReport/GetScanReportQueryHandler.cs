@@ -191,9 +191,27 @@ public sealed class GetScanReportQueryHandler : IRequestHandler<GetScanReportQue
             Value   = s.GetValueOrDefault("value", ""),
         }).ToList();
 
-        var missingHeaders = GetContextList<string>(scan, "ctx:missing_headers") ?? [];
-        var headerAudit = missingHeaders.Count > 0
-            ? new HeaderAuditDto { MissingHeaders = missingHeaders.AsReadOnly() }
+        // Derive missing headers from findings (WebAnalysis sets ctx:missing_headers,
+        // but also fall back to scanning findings in the "Headers" category)
+        var missingHeaders = GetContextList<string>(scan, "ctx:missing_headers")
+            ?? scan.Findings
+                   .Where(f => f.Category.Name.Equals("Headers", StringComparison.OrdinalIgnoreCase)
+                            && f.Title.StartsWith("Missing:", StringComparison.OrdinalIgnoreCase))
+                   .Select(f => f.Title["Missing: ".Length..].Trim())
+                   .ToList();
+
+        var dangerousHeaders = scan.Findings
+            .Where(f => f.Category.Name.Equals("Headers", StringComparison.OrdinalIgnoreCase)
+                     && f.Title.StartsWith("Information disclosure", StringComparison.OrdinalIgnoreCase))
+            .Select(f => f.Title)
+            .ToList();
+
+        var headerAudit = missingHeaders.Count > 0 || dangerousHeaders.Count > 0
+            ? new HeaderAuditDto
+            {
+                MissingHeaders  = missingHeaders.AsReadOnly(),
+                DangerousHeaders = dangerousHeaders.AsReadOnly(),
+            }
             : null;
 
         if (endpoints.Count == 0 && baseUrls.Count == 0 && waf is null &&

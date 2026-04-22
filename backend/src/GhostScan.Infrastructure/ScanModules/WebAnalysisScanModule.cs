@@ -80,28 +80,34 @@ public sealed class WebAnalysisScanModule : IScanModule
         try
         {
             var baseUrls = BuildBaseUrls(target);
+            var httpClient = CreateHttpClient(configuration);
+
+            // Resolve effective base URL — follow redirect so that if gru.com.br → www.gru.com.br
+            // the rest of the analysis uses the final host, avoiding scope filter false-negatives.
+            var effectiveBase = await ResolveEffectiveBaseUrlAsync(baseUrls.First(), httpClient, cancellationToken);
+            if (!baseUrls.Contains(effectiveBase))
+                baseUrls.Insert(0, effectiveBase);
+
             data["base_urls"] = baseUrls;
             context.Set("base_urls", baseUrls);
 
-            var httpClient = CreateHttpClient(configuration);
-
             // 1. WAF Detection
             _logger.LogInformation("[Web] WAF detection for {Target}", target.Value);
-            var wafResult = await DetectWafAsync(baseUrls.First(), httpClient, cancellationToken);
+            var wafResult = await DetectWafAsync(effectiveBase, httpClient, cancellationToken);
             data["waf"] = wafResult;
 
             // 2. Interesting path probing
             _logger.LogInformation("[Web] Probing {Count} interesting paths", InterestingPaths.Length);
             var (discoveredEndpoints, pathFindings) = await ProbeInterestingPathsAsync(
-                baseUrls.First(), httpClient, cancellationToken);
+                effectiveBase, httpClient, cancellationToken);
             findings.AddRange(pathFindings);
             data["endpoints"] = discoveredEndpoints;
             context.Set("endpoints", discoveredEndpoints);
 
             // 3. Web crawling for endpoints + forms
-            _logger.LogInformation("[Web] Crawling {Url}", baseUrls.First());
+            _logger.LogInformation("[Web] Crawling {Url}", effectiveBase);
             var (crawledEndpoints, forms) = await CrawlAsync(
-                baseUrls.First(), httpClient, configuration.CrawlDepth, cancellationToken);
+                effectiveBase, httpClient, configuration.CrawlDepth, cancellationToken);
             foreach (var ep in crawledEndpoints)
             {
                 if (!discoveredEndpoints.Contains(ep))
@@ -113,8 +119,16 @@ public sealed class WebAnalysisScanModule : IScanModule
             // 4. Security header audit
             _logger.LogInformation("[Web] Security header audit");
             var headerFindings = await AuditSecurityHeadersAsync(
-                baseUrls.First(), httpClient, cancellationToken);
+                effectiveBase, httpClient, cancellationToken);
             findings.AddRange(headerFindings);
+
+            // Persist missing header names to context so IntelligenceEngine + report can use them
+            var missingHeaderNames = headerFindings
+                .Where(f => f.Title.StartsWith("Missing:", StringComparison.OrdinalIgnoreCase))
+                .Select(f => f.Title["Missing: ".Length..].Trim())
+                .ToList();
+            if (missingHeaderNames.Count > 0)
+                context.Set("missing_headers", missingHeaderNames);
 
             // 5. JS secret scanning
             _logger.LogInformation("[Web] Scanning JavaScript files for secrets");
@@ -133,13 +147,13 @@ public sealed class WebAnalysisScanModule : IScanModule
             }
 
             // 7. Dir brute-force (gobuster / ffuf)
-            var dirBrute = await RunDirectoryBruteAsync(baseUrls.First(), configuration, cancellationToken);
+            var dirBrute = await RunDirectoryBruteAsync(effectiveBase, configuration, cancellationToken);
             data["dir_brute"] = dirBrute;
 
             // 8. API endpoint extraction from JS via XHR/fetch regex
             _logger.LogInformation("[Web] Extracting API endpoints from JavaScript files");
             var apiEndpoints = await ExtractApiEndpointsFromJsAsync(
-                discoveredEndpoints, httpClient, baseUrls.First(), cancellationToken);
+                discoveredEndpoints, httpClient, effectiveBase, cancellationToken);
             if (apiEndpoints.Count > 0)
             {
                 data["api_endpoints"] = apiEndpoints;
@@ -151,11 +165,11 @@ public sealed class WebAnalysisScanModule : IScanModule
             // 9. Error disclosure detection
             _logger.LogInformation("[Web] Scanning for error disclosure");
             var errorFindings = await DetectErrorDisclosureAsync(
-                discoveredEndpoints.Take(20).ToList(), httpClient, baseUrls.First(), cancellationToken);
+                discoveredEndpoints.Take(20).ToList(), httpClient, effectiveBase, cancellationToken);
             findings.AddRange(errorFindings);
 
             // 10. SSL/TLS scan
-            if (baseUrls.First().StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+            if (effectiveBase.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
             {
                 _logger.LogInformation("[Web] SSL/TLS analysis");
                 var sslFindings = await RunSslScanAsync(target.Value, cancellationToken);
@@ -165,7 +179,7 @@ public sealed class WebAnalysisScanModule : IScanModule
 
             // 11. Nikto scan
             _logger.LogInformation("[Web] Nikto web server scan");
-            var niktoFindings = await RunNiktoAsync(baseUrls.First(), cancellationToken);
+            var niktoFindings = await RunNiktoAsync(effectiveBase, cancellationToken);
             findings.AddRange(niktoFindings);
             data["nikto_findings"] = niktoFindings.Select(f => f.Title).ToList();
 
@@ -178,14 +192,14 @@ public sealed class WebAnalysisScanModule : IScanModule
             if (isWordPress)
             {
                 _logger.LogInformation("[Web] WordPress site detected — running WPScan");
-                var wpFindings = await RunWpScanAsync(baseUrls.First(), cancellationToken);
+                var wpFindings = await RunWpScanAsync(effectiveBase, cancellationToken);
                 findings.AddRange(wpFindings);
                 data["cms_findings"] = wpFindings.Select(f => f.Title).ToList();
             }
 
             // 13. Nuclei template scan
             _logger.LogInformation("[Web] Nuclei template scan");
-            var nucleiFindings = await RunNucleiAsync(baseUrls.First(), cancellationToken);
+            var nucleiFindings = await RunNucleiAsync(effectiveBase, cancellationToken);
             findings.AddRange(nucleiFindings);
             data["nuclei_findings"] = nucleiFindings.Select(f => f.Title).ToList();
 
@@ -665,7 +679,38 @@ public sealed class WebAnalysisScanModule : IScanModule
     {
         if (!Uri.TryCreate(url, UriKind.Absolute, out var uri)) return false;
         if (!Uri.TryCreate(baseUrl, UriKind.Absolute, out var baseUri)) return false;
-        return uri.Host.Equals(baseUri.Host, StringComparison.OrdinalIgnoreCase);
+
+        var uriHost  = uri.Host.ToLowerInvariant();
+        var baseHost = baseUri.Host.ToLowerInvariant();
+
+        // Exact match
+        if (uriHost == baseHost) return true;
+
+        // www.domain matches domain and vice-versa
+        var baseStripped = baseHost.StartsWith("www.") ? baseHost[4..] : baseHost;
+        var uriStripped  = uriHost.StartsWith("www.")  ? uriHost[4..]  : uriHost;
+
+        return baseStripped == uriStripped;
+    }
+
+    /// <summary>
+    /// Follows redirects to discover the canonical base URL.
+    /// e.g. http://gru.com.br → https://www.gru.com.br
+    /// </summary>
+    private static async Task<string> ResolveEffectiveBaseUrlAsync(
+        string startUrl, HttpClient httpClient, CancellationToken cancellationToken)
+    {
+        try
+        {
+            var response = await httpClient.GetAsync(startUrl, cancellationToken);
+            var finalUrl = response.RequestMessage?.RequestUri?.ToString() ?? startUrl;
+            // Normalise: strip trailing slash
+            return finalUrl.TrimEnd('/');
+        }
+        catch
+        {
+            return startUrl;
+        }
     }
 
     // ── API Endpoint Extraction from JS ───────────────────────────────────────

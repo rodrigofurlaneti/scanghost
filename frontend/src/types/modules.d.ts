@@ -1,3 +1,13 @@
+/// <reference types="vite/client" />
+
+// Explicit Vite env typing (fallback if vite/client reference doesn't resolve)
+interface ImportMetaEnv {
+  readonly VITE_API_BASE_URL?: string
+}
+interface ImportMeta {
+  readonly env: ImportMetaEnv
+}
+
 // Ambient declarations for packages whose .d.ts wasn't unpacked in this environment.
 // On a full npm install the real types will take precedence.
 

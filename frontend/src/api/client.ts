@@ -8,8 +8,14 @@ import type {
   Severity,
 } from '@/types'
 
+// Em desenvolvimento: usa proxy Vite (/api → localhost:5000)
+// Em produção (Azure): define VITE_API_BASE_URL no App Service → Application Settings
+const BASE_URL = import.meta.env.VITE_API_BASE_URL
+  ? `${import.meta.env.VITE_API_BASE_URL}/api`
+  : '/api'
+
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: BASE_URL,
   headers: { 'Content-Type': 'application/json' },
   timeout: 30_000,
 })

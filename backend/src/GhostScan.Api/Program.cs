@@ -65,37 +65,61 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 // ── CORS ──────────────────────────────────────────────────────────────────────
+var allowedOrigins = builder.Configuration
+    .GetSection("AllowedOrigins")
+    .Get<string[]>() ?? [];
+
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
-        policy.AllowAnyOrigin()
-              .AllowAnyMethod()
-              .AllowAnyHeader());
+    {
+        if (allowedOrigins.Length > 0)
+        {
+            // Production: specific origins (required for SignalR WebSocket + credentials)
+            policy.WithOrigins(allowedOrigins)
+                  .AllowAnyMethod()
+                  .AllowAnyHeader()
+                  .AllowCredentials();
+        }
+        else
+        {
+            // Development fallback: allow any origin (no credentials)
+            policy.AllowAnyOrigin()
+                  .AllowAnyMethod()
+                  .AllowAnyHeader();
+        }
+    });
 });
 
 var app = builder.Build();
 
 // ── Pipeline de Execução ─────────────────────────────────────────────────────
 
-// IMPORTANTE: Em Produção no Azure, nunca use app.UseHttpsRedirection() 
-// se estiver tendo problemas de certificado no container.
+// Azure App Service termina TLS no load balancer e encaminha HTTP internamente.
+// UseHttpsRedirection() redireciona requisições HTTP para HTTPS no nível do app,
+// necessário para evitar conteúdo misto no Swagger UI.
+app.UseHttpsRedirection();
 
-if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
+if (app.Environment.IsDevelopment())
 {
-    // Ativa para ver o erro real na tela enquanto debuga o deploy
     app.UseDeveloperExceptionPage();
-
-    app.UseSwagger();
-    app.UseSwaggerUI(options =>
-    {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "GhostScan API v1");
-        options.RoutePrefix = string.Empty; // Swagger na raiz
-        options.DocumentTitle = "GhostScan API";
-    });
 }
 
+// Swagger disponível em todos os ambientes (protegido por rede no Azure)
+app.UseSwagger();
+app.UseSwaggerUI(options =>
+{
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "GhostScan API v1");
+    // Rota padrão /swagger — NÃO usar string.Empty (causa conflito na raiz com HTTPS)
+    options.RoutePrefix = "swagger";
+    options.DocumentTitle = "GhostScan API";
+});
+
+// Health check na raiz — útil para Azure App Service health probe
+app.MapGet("/", () => Results.Redirect("/swagger")).ExcludeFromDescription();
+
 app.UseMiddleware<ValidationExceptionMiddleware>();
-app.UseCors();
+app.UseCors();       // CORS antes de routing
 app.UseRouting();
 
 app.MapControllers();

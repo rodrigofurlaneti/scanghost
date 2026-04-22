@@ -26,8 +26,9 @@ export function useSignalR({ scanId, onProgress, onCompleted, onFailed }: UseSig
   useEffect(() => {
     if (!scanId) return
 
+    const hubBase = import.meta.env.VITE_API_BASE_URL ?? ''
     const connection = new signalR.HubConnectionBuilder()
-      .withUrl('/hubs/scan')
+      .withUrl(`${hubBase}/hubs/scan`)
       .withAutomaticReconnect([2000, 5000, 10000, 30000])
       // Suppress verbose SignalR console noise — backend may not be up yet
       .configureLogging(signalR.LogLevel.None)

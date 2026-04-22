@@ -7,6 +7,11 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
+      // Use the CJS bundle for framer-motion since the ESM build is incomplete in this env
+      'framer-motion': path.resolve(
+        __dirname,
+        'node_modules/framer-motion/dist/framer-motion.js'
+      ),
     },
   },
   server: {
@@ -22,5 +27,8 @@ export default defineConfig({
         ws: true,
       },
     },
+  },
+  optimizeDeps: {
+    include: ['framer-motion'],
   },
 })

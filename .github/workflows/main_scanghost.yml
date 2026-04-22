@@ -57,7 +57,6 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_AGREEABLE_CLIFF_05893530F }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          ###### CONFIGURAÇÃO DE PASTAS CORRIGIDA ######
-          app_location: "/frontend"      # Pasta em minúsculo conforme seu repo
-          api_location: ""               # Deixe vazio pois a API está em outro serviço
-          output_location: "dist"        # Geralmente 'dist' ou 'build', verifique seu framework (React/Vue)
+          app_location: "/frontend"
+          api_location: ""
+          output_location: "dist"

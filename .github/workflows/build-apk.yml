@@ -59,7 +59,7 @@ jobs:
       # ── 8. Sync assets web → Android WebView ─────────────────────────────────
       - name: Sync web assets to Android
         working-directory: frontend
-        run: npx cap sync android --no-open
+        run: npx cap sync android
 
       # ── 9. Permissão de execução para Gradle wrapper ──────────────────────────
       - name: Grant execute permission for Gradlew

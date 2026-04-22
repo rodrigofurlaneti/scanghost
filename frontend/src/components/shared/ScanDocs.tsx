@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
-  HelpCircle, X, Zap, Shield, Target, ChevronRight,
+  HelpCircle, X, Zap, Shield, Target, Ghost, ChevronRight,
   Terminal, FlaskConical, Clock, AlertTriangle, Lock,
 } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
@@ -54,6 +54,22 @@ const PROFILES = [
     useCases: {
       en: ['Authorized pentests', 'Dev/test environments', 'CTF challenges'],
       pt: ['Pentests autorizados', 'Ambientes de dev/test', 'Desafios CTF'],
+    },
+  },
+  {
+    id: 'ghost',
+    icon: Ghost,
+    color: '#cc00ff',
+    threads: 100,
+    rate: '0.01 s',
+    sqli: true,
+    xss: true,
+    brute: true,
+    waf: true,
+    label: { en: 'Maximum intensity. 100 parallel threads, full WAF bypass, all modules at once.', pt: 'Intensidade máxima. 100 threads paralelos, bypass total de WAF, todos os módulos simultaneamente.' },
+    useCases: {
+      en: ['Authorized penetration tests only', 'Isolated lab environments', 'Red team operations'],
+      pt: ['Somente pentests autorizados', 'Ambientes de lab isolados', 'Operações de red team'],
     },
   },
 ]

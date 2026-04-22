@@ -7,11 +7,19 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
-      // Use the CJS bundle for framer-motion since the ESM build is incomplete in this env
+      // Use the CJS build — Vite/esbuild converts CJS→ESM, preserving named exports.
+      // The ESM build (dist/es/) is incomplete in this install; UMD doesn't expose names.
       'framer-motion': path.resolve(
         __dirname,
-        'node_modules/framer-motion/dist/framer-motion.js'
+        'node_modules/framer-motion/dist/cjs/index.js'
       ),
+    },
+  },
+  optimizeDeps: {
+    include: ['framer-motion'],
+    // Force esbuild to pre-bundle framer-motion as CJS→ESM so named imports work
+    esbuildOptions: {
+      format: 'esm',
     },
   },
   server: {
@@ -27,8 +35,5 @@ export default defineConfig({
         ws: true,
       },
     },
-  },
-  optimizeDeps: {
-    include: ['framer-motion'],
   },
 })

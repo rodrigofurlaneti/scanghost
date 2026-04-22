@@ -47,30 +47,7 @@ builder.Services.AddSwaggerGen(options =>
     {
         Title = "GhostScan API",
         Version = "v1",
-        Description = """
-            ## GhostScan v3 — Elite Vulnerability Scanner API
-
-            Submit a target (domain, IP, or CIDR) and receive a full vulnerability report.
-
-            ### Quick Start
-            1. **POST** `/api/scans` with your target to start a scan
-            2. **GET** `/api/scans/{scanId}/status` to poll progress
-            3. **GET** `/api/scans/{scanId}/report` to retrieve the report
-
-            ### Scan Profiles
-            | Profile | Threads | Rate | SQLi | XSS | Brute | WAF Bypass |
-            |---------|---------|------|------|-----|-------|------------|
-            | stealth | 5 | 2s | ✗ | ✗ | ✗ | ✗ |
-            | standard | 20 | 0.1s | ✓ | ✓ | ✗ | auto |
-            | aggressive | 50 | 0.05s | ✓ | ✓ | ✓ | ✓ |
-
-            ### Scoring Formula
-            ```
-            score = (impact × 0.6) + (confidence × 0.4) × exploitability × businessImpact
-            ```
-
-            > ⚠️ **Authorized use only.** Unauthorized security testing is illegal.
-            """,
+        Description = "## GhostScan v3 — Elite Vulnerability Scanner API",
         Contact = new OpenApiContact
         {
             Name = "GhostScan",
@@ -79,7 +56,6 @@ builder.Services.AddSwaggerGen(options =>
         License = new OpenApiLicense { Name = "MIT" },
     });
 
-    // Include XML comments for better Swagger docs
     var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     if (File.Exists(xmlPath))
@@ -88,7 +64,7 @@ builder.Services.AddSwaggerGen(options =>
     options.EnableAnnotations();
 });
 
-// ── CORS (for browser-based Swagger) ─────────────────────────────────────────
+// ── CORS ──────────────────────────────────────────────────────────────────────
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
@@ -99,26 +75,29 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
-{
-    app.UseDeveloperExceptionPage();
-}
+// ── Pipeline de Execução ─────────────────────────────────────────────────────
+
+// IMPORTANTE: Em Produção no Azure, nunca use app.UseHttpsRedirection() 
+// se estiver tendo problemas de certificado no container.
 
 if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
+    // Ativa para ver o erro real na tela enquanto debuga o deploy
+    app.UseDeveloperExceptionPage();
+
     app.UseSwagger();
     app.UseSwaggerUI(options =>
     {
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "GhostScan API v1");
-        options.RoutePrefix = string.Empty;
+        options.RoutePrefix = string.Empty; // Swagger na raiz
         options.DocumentTitle = "GhostScan API";
     });
 }
 
-// ── Middleware Pipeline ────────────────────────────────────────────────────────
 app.UseMiddleware<ValidationExceptionMiddleware>();
 app.UseCors();
 app.UseRouting();
+
 app.MapControllers();
 app.MapHub<ScanProgressHub>("/hubs/scan");
 
@@ -127,7 +106,7 @@ app.MapGet("/health", () => Results.Ok(new
 {
     Status = "Healthy",
     Version = "3.0.0",
-    Timestamp = DateTime.Now,
+    Timestamp = DateTime.UtcNow, // Use UtcNow para servidores
     Message = "GhostScan API is running.",
 })).WithTags("Health");
 

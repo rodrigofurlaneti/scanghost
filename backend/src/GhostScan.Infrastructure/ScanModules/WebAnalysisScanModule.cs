@@ -79,6 +79,7 @@ public sealed class WebAnalysisScanModule : IScanModule
 
         try
         {
+            SetTarget(target.Value); // needed by IsInScope substring check
             var baseUrls = BuildBaseUrls(target);
             var httpClient = CreateHttpClient(configuration);
 
@@ -576,13 +577,15 @@ public sealed class WebAnalysisScanModule : IScanModule
     private async Task<Dictionary<string, object>> DetectTechnologiesFromHttpAsync(
         string baseUrl, HttpClient httpClient, CancellationToken cancellationToken)
     {
+        // Keys mirror the POC web_analysis.py _detect_tech() fallback exactly:
+        //   tech["server"], tech["backend"], tech["cms"], tech["frontend"]
         var tech = new Dictionary<string, object>
         {
-            ["server"]    = new List<string>(),
-            ["cms"]       = new List<string>(),
-            ["framework"] = new List<string>(),
-            ["language"]  = new List<string>(),
-            ["cdn"]       = new List<string>(),
+            ["server"]   = new List<string>(),
+            ["backend"]  = new List<string>(),
+            ["cms"]      = new List<string>(),
+            ["frontend"] = new List<string>(),
+            ["cdn"]      = new List<string>(),
         };
 
         try
@@ -596,86 +599,89 @@ public sealed class WebAnalysisScanModule : IScanModule
                               h => string.Join(", ", h.Value),
                               StringComparer.OrdinalIgnoreCase);
 
-            var serverList    = (List<string>)tech["server"];
-            var cmsList       = (List<string>)tech["cms"];
-            var frameworkList = (List<string>)tech["framework"];
-            var languageList  = (List<string>)tech["language"];
-            var cdnList       = (List<string>)tech["cdn"];
+            var serverList   = (List<string>)tech["server"];
+            var backendList  = (List<string>)tech["backend"];
+            var cmsList      = (List<string>)tech["cms"];
+            var frontendList = (List<string>)tech["frontend"];
+            var cdnList      = (List<string>)tech["cdn"];
 
-            // ── Server / framework headers ──────────────────────────────────────
+            // ── Server / backend headers — matches POC h.get("Server") / h.get("X-Powered-By") ──
             if (allHeaders.TryGetValue("server", out var srv) && !string.IsNullOrWhiteSpace(srv))
                 serverList.Add(srv.Trim());
 
             if (allHeaders.TryGetValue("x-powered-by", out var powered))
-                frameworkList.Add(powered.Trim());
+                backendList.Add(powered.Trim());
 
             if (allHeaders.TryGetValue("x-aspnet-version", out var aspnetVer))
-            {
-                frameworkList.Add($"ASP.NET {aspnetVer.Trim()}");
-                if (!languageList.Contains("ASP.NET")) languageList.Add("ASP.NET");
-            }
+                backendList.Add($"ASP.NET {aspnetVer.Trim()}");
 
             if (allHeaders.TryGetValue("x-aspnetmvc-version", out var mvcVer))
-                frameworkList.Add($"ASP.NET MVC {mvcVer.Trim()}");
+                backendList.Add($"ASP.NET MVC {mvcVer.Trim()}");
 
             if (allHeaders.TryGetValue("x-generator", out var gen))
                 cmsList.Add(gen.Trim());
 
-            // ── CDN / security layer fingerprinting ─────────────────────────────
+            // ── Cookie-based backend detection — mirrors POC: sc = h.get("Set-Cookie","") ────────
+            var setCookie = allHeaders.GetValueOrDefault("set-cookie", "");
+            if (setCookie.Contains("PHPSESSID",       StringComparison.OrdinalIgnoreCase)) backendList.Add("PHP");
+            if (setCookie.Contains("JSESSIONID",      StringComparison.OrdinalIgnoreCase)) backendList.Add("Java");
+            if (setCookie.Contains("ASP.NET_SessionId",StringComparison.OrdinalIgnoreCase)) backendList.Add("ASP.NET");
+
+            // ── CDN fingerprinting ────────────────────────────────────────────────────────────────
             if (allHeaders.ContainsKey("cf-ray") || allHeaders.ContainsKey("cf-cache-status"))
                 cdnList.Add("Cloudflare");
             if (allHeaders.ContainsKey("x-amz-cf-id") || allHeaders.ContainsKey("x-amzn-requestid"))
                 cdnList.Add("AWS CloudFront");
             if (allHeaders.ContainsKey("x-akamai-transformed") || allHeaders.ContainsKey("akamai-origin-hop"))
                 cdnList.Add("Akamai");
-            if (allHeaders.TryGetValue("x-cache", out var xcache) && xcache.Contains("Azion", StringComparison.OrdinalIgnoreCase))
+            if (allHeaders.TryGetValue("x-cache", out var xcache) &&
+                xcache.Contains("Azion", StringComparison.OrdinalIgnoreCase))
                 cdnList.Add("Azion CDN");
-            if (allHeaders.ContainsKey("x-served-by") && allHeaders["x-served-by"].Contains("Fastly", StringComparison.OrdinalIgnoreCase))
+            if (allHeaders.ContainsKey("x-served-by") &&
+                allHeaders["x-served-by"].Contains("Fastly", StringComparison.OrdinalIgnoreCase))
                 cdnList.Add("Fastly");
-            if (allHeaders.ContainsKey("via") && allHeaders["via"].Contains("Varnish", StringComparison.OrdinalIgnoreCase))
+            if (allHeaders.ContainsKey("via") &&
+                allHeaders["via"].Contains("Varnish", StringComparison.OrdinalIgnoreCase))
                 cdnList.Add("Varnish");
 
-            // ── HTML-based CMS detection ─────────────────────────────────────────
+            // ── HTML-based detection — matches POC body checks ────────────────────────────────────
             if (html.Contains("wp-content/", StringComparison.OrdinalIgnoreCase) ||
                 html.Contains("wp-includes/", StringComparison.OrdinalIgnoreCase))
                 cmsList.Add("WordPress");
 
-            if (html.Contains("/sites/default/", StringComparison.OrdinalIgnoreCase) ||
-                html.Contains("Drupal.settings", StringComparison.OrdinalIgnoreCase))
+            if (html.Contains("Drupal", StringComparison.OrdinalIgnoreCase) ||
+                html.Contains("/sites/default/", StringComparison.OrdinalIgnoreCase))
                 cmsList.Add("Drupal");
 
-            if (html.Contains("/media/joomla/", StringComparison.OrdinalIgnoreCase) ||
-                html.Contains("Joomla!", StringComparison.OrdinalIgnoreCase))
+            if (html.Contains("Joomla", StringComparison.OrdinalIgnoreCase))
                 cmsList.Add("Joomla");
 
-            if (html.Contains("__next", StringComparison.OrdinalIgnoreCase) ||
-                html.Contains("_next/static", StringComparison.OrdinalIgnoreCase))
-                frameworkList.Add("Next.js");
+            if (html.Contains("cdn.shopify.com", StringComparison.OrdinalIgnoreCase))
+                cmsList.Add("Shopify");
+
+            if (html.Contains("cdn.magento.com", StringComparison.OrdinalIgnoreCase) ||
+                html.Contains("Mage.Cookies", StringComparison.OrdinalIgnoreCase))
+                cmsList.Add("Magento");
 
             if (html.Contains("ng-version", StringComparison.OrdinalIgnoreCase) ||
                 html.Contains("ng-app", StringComparison.OrdinalIgnoreCase))
-                frameworkList.Add("Angular");
+                frontendList.Add("Angular");
 
-            if (html.Contains("data-reactroot", StringComparison.OrdinalIgnoreCase) ||
-                html.Contains("__NEXT_DATA__", StringComparison.OrdinalIgnoreCase))
-                frameworkList.Add("React");
+            if (html.Contains("__NEXT_DATA__", StringComparison.OrdinalIgnoreCase))
+                frontendList.Add("Next.js");
 
-            // ── meta generator tag ───────────────────────────────────────────────
+            if (html.Contains("data-reactroot", StringComparison.OrdinalIgnoreCase))
+                frontendList.Add("React");
+
+            // ── meta generator tag ────────────────────────────────────────────────────────────────
             var metaGen = Regex.Match(html,
                 @"<meta\s+name=[""']generator[""']\s+content=[""']([^""']+)[""']",
                 RegexOptions.IgnoreCase);
             if (metaGen.Success && !string.IsNullOrWhiteSpace(metaGen.Groups[1].Value))
                 cmsList.Add(metaGen.Groups[1].Value.Trim());
 
-            // ── PHP detection from headers ───────────────────────────────────────
-            if (allHeaders.TryGetValue("x-php-version", out var phpVer))
-                languageList.Add($"PHP {phpVer}");
-            else if (allHeaders.TryGetValue("x-powered-by", out var pb) &&
-                     pb.Contains("php", StringComparison.OrdinalIgnoreCase))
-                languageList.Add("PHP");
-
-            _logger.LogInformation("[Web] Technology detection (HTTP): server={Server}, cms={Cms}, cdn={Cdn}",
-                string.Join(",", serverList), string.Join(",", cmsList), string.Join(",", cdnList));
+            _logger.LogInformation("[Web] Technology detection: server={Server}, backend={Backend}, cms={Cms}",
+                string.Join(",", serverList), string.Join(",", backendList), string.Join(",", cmsList));
         }
         catch (Exception ex)
         {
@@ -796,7 +802,13 @@ public sealed class WebAnalysisScanModule : IScanModule
         return null;
     }
 
-    private static bool IsInScope(string url, string baseUrl)
+    /// <summary>
+    /// Mirrors POC web_analysis.py _same_domain() exactly:
+    ///   target = self.target.lstrip("www.")
+    ///   return target in url_host or url_host == base_host
+    /// Uses substring match so "gru.com.br" matches "www.gru.com.br", "sub.gru.com.br", etc.
+    /// </summary>
+    private bool IsInScope(string url, string baseUrl)
     {
         if (!Uri.TryCreate(url, UriKind.Absolute, out var uri)) return false;
         if (!Uri.TryCreate(baseUrl, UriKind.Absolute, out var baseUri)) return false;
@@ -804,15 +816,18 @@ public sealed class WebAnalysisScanModule : IScanModule
         var uriHost  = uri.Host.ToLowerInvariant();
         var baseHost = baseUri.Host.ToLowerInvariant();
 
-        // Exact match
-        if (uriHost == baseHost) return true;
+        // Strip leading www. from the configured scan target — same as POC
+        var target = _target.TrimStart().ToLowerInvariant();
+        if (target.StartsWith("www.")) target = target[4..];
 
-        // www.domain matches domain and vice-versa
-        var baseStripped = baseHost.StartsWith("www.") ? baseHost[4..] : baseHost;
-        var uriStripped  = uriHost.StartsWith("www.")  ? uriHost[4..]  : uriHost;
-
-        return baseStripped == uriStripped;
+        // POC: return target in url_host or url_host == base_host
+        return uriHost.Contains(target, StringComparison.OrdinalIgnoreCase)
+            || uriHost == baseHost;
     }
+
+    // Backing field for target value needed by IsInScope (set from module constructor context)
+    private string _target = "";
+    private void SetTarget(string target) => _target = target;
 
     /// <summary>
     /// Follows redirects to discover the canonical base URL.

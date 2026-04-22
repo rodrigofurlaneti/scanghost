@@ -81,6 +81,23 @@ public sealed class ReconScanModule : IScanModule
                             remediation: "Audit all subdomains for stale or unprotected services.",
                             impact: 3.0, confidence: 0.99));
                     }
+
+                    // Resolve each subdomain to IPs — mirrors POC _build_scan_targets():
+                    //   for sub in results["subdomains"]: targets.add(sub["ips"])
+                    // Collect all unique IPs so port scan covers the real attack surface.
+                    var subdomainIps = new HashSet<string>();
+                    foreach (var sub in subdomains)
+                    {
+                        try
+                        {
+                            var addrs = await Dns.GetHostAddressesAsync(sub, cancellationToken);
+                            foreach (var a in addrs.Take(2))
+                                subdomainIps.Add(a.ToString());
+                        }
+                        catch { /* skip unresolvable subdomains */ }
+                    }
+                    data["subdomain_ips"] = subdomainIps.ToList();
+                    context.Set("subdomain_ips", subdomainIps.ToList());
                 }
 
                 // OSINT — theHarvester
@@ -94,8 +111,11 @@ public sealed class ReconScanModule : IScanModule
                 if (whoisData.Count > 0) data["whois"] = whoisData;
             }
 
-            _logger.LogInformation("[Recon] Port scanning {Target}", target.Value);
-            var openPorts = await ScanPortsAsync(target.Value, configuration, cancellationToken);
+            // Build the full target set for port scanning — like POC _build_scan_targets()
+            var subIps = context.Get<List<string>>("subdomain_ips") ?? [];
+            _logger.LogInformation("[Recon] Port scanning {Target} + {Count} subdomain IPs",
+                target.Value, subIps.Count);
+            var openPorts = await ScanPortsAsync(target.Value, configuration, subIps, cancellationToken);
             data["open_ports"] = openPorts;
 
             foreach (var (host, hostPorts) in openPorts)
@@ -528,29 +548,42 @@ public sealed class ReconScanModule : IScanModule
         return found.ToList();
     }
 
+    /// <summary>
+    /// Mirrors POC _build_scan_targets() + _port_scan_all():
+    /// resolves the main target to IP(s), adds subdomain IPs, then scans all.
+    /// </summary>
     private async Task<Dictionary<string, List<int>>> ScanPortsAsync(
-        string target, ScanConfiguration configuration, CancellationToken cancellationToken)
+        string target, ScanConfiguration configuration,
+        IEnumerable<string> additionalIps, CancellationToken cancellationToken)
     {
         var results = new Dictionary<string, List<int>>();
-        var hosts = new List<string>();
+        var seen    = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        var hosts   = new List<string>();
 
-        // Resolve to IP if domain
+        // 1. Resolve main target → IP(s) — like POC socket.gethostbyname(self.target)
         if (!target.Contains('/'))
         {
             try
             {
                 var addresses = await Dns.GetHostAddressesAsync(target, cancellationToken);
-                hosts.AddRange(addresses.Select(a => a.ToString()).Take(3));
+                foreach (var a in addresses.Take(3))
+                    if (seen.Add(a.ToString())) hosts.Add(a.ToString());
             }
             catch
             {
-                hosts.Add(target);
+                if (seen.Add(target)) hosts.Add(target);
             }
         }
         else
         {
             hosts.Add(target);
+            seen.Add(target);
         }
+
+        // 2. Add subdomain IPs — mirrors POC:
+        //   for sub in results["subdomains"]: for ip in sub["ips"]: targets.add(ip)
+        foreach (var ip in additionalIps)
+            if (seen.Add(ip)) hosts.Add(ip);
 
         // Try nmap first
         if (_toolRunner.IsAvailable("nmap"))
@@ -678,10 +711,13 @@ public sealed class ReconScanModule : IScanModule
                 impact: 4.0, confidence: 0.99, vulnType: "info_disclosure"));
         }
 
-        // DMARC — lives in TXT records of _dmarc.{domain}, checked separately
-        // The key "_dmarc" is injected by EnumerateDnsAsync
-        var dmarcTxt = records.GetValueOrDefault("_dmarc", []);
-        if (!dmarcTxt.Any(t => t.Contains("DMARC1")))
+        // DMARC — POC checks ROOT TXT records for "DMARC1" (same array as SPF).
+        // This mirrors recon.py _analyze_findings() exactly:
+        //   txt = results.get("dns_records", {}).get("TXT", [])
+        //   if not any("DMARC1" in t for t in txt): → finding
+        // _dmarc.{domain} is still queried and stored for data purposes, but the
+        // finding logic must match the POC (root TXT check).
+        if (!txt.Any(t => t.Contains("DMARC1")))
         {
             findings.Add(Finding.Create(
                 Severity.Medium, FindingCategory.DNS,

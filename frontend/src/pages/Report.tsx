@@ -10,7 +10,7 @@ import {
 import {
   ChevronLeft, ChevronDown, ChevronUp, Shield, Globe,
   Search, Zap, Brain, Target, AlertTriangle, CheckCircle,
-  ExternalLink, Terminal, Lock, Wifi,
+  ExternalLink, Terminal, Lock, Wifi, Download,
 } from 'lucide-react'
 
 import { TerminalCard } from '@/components/shared/TerminalCard'
@@ -192,6 +192,33 @@ export function Report() {
     )
   }
 
+  // ── JSON export ─────────────────────────────────────────────────────────────
+  const handleExportJson = () => {
+    const payload = {
+      exportedAt: new Date().toISOString(),
+      scanId,
+      target:     report.target,
+      profile:    report.profile,
+      startedAt:  report.startedAt,
+      completedAt: report.completedAt,
+      summary:    report.summary,
+      findings:   report.findings,
+      reconResults:         report.reconResults        ?? null,
+      webResults:           report.webResults          ?? null,
+      intelligenceResults:  report.intelligenceResults ?? null,
+      correlations:         report.correlations,
+      recommendations:      report.recommendations,
+    }
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' })
+    const url  = URL.createObjectURL(blob)
+    const a    = document.createElement('a')
+    const safe = report.target.replace(/[^a-z0-9]/gi, '_').toLowerCase()
+    a.href     = url
+    a.download = `ghostscan_${safe}_${scanId?.slice(0, 8)}.json`
+    a.click()
+    URL.revokeObjectURL(url)
+  }
+
   // Chart data
   const barData = SEVERITY_ORDER
     .filter(s => (report.summary.bySeverity[s] ?? 0) > 0)
@@ -237,6 +264,22 @@ export function Report() {
               {report.target} • {report.profile} • {formatDate(report.startedAt)}
             </p>
           </div>
+
+          {/* Export button */}
+          <button
+            onClick={handleExportJson}
+            className="
+              flex items-center gap-2 px-3 py-2 mt-8
+              font-mono text-xs uppercase tracking-widest
+              border border-terminal-border text-terminal-dim
+              hover:border-matrix-400 hover:text-matrix-400
+              transition-all duration-200 rounded-sm flex-shrink-0
+            "
+            title="Export full report as JSON"
+          >
+            <Download size={13} />
+            <span className="hidden sm:inline">Export JSON</span>
+          </button>
         </div>
 
         {/* ── Summary cards ─────────────────────────────────── */}

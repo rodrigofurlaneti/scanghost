@@ -421,7 +421,7 @@ public sealed class WebAnalysisScanModule : IScanModule
                     var severity = Severity.FromString(info[0]).Value ?? Severity.Medium;
                     findings.Add(Finding.Create(
                         severity, FindingCategory.Headers,
-                        $"Missing security header: {headerName}",
+                        $"Missing: {headerName}",
                         detail: info[1],
                         url: baseUrl,
                         remediation: info[2],

@@ -168,6 +168,22 @@ public sealed class ReconScanModule : IScanModule
                     // Skip individual record type failures
                 }
             }
+
+            // DMARC lives at _dmarc.{domain} — query it explicitly and store under "_dmarc" key
+            try
+            {
+                var dmarcResult = await client.QueryAsync($"_dmarc.{domain}", QueryType.TXT,
+                    cancellationToken: cancellationToken);
+                var dmarcValues = dmarcResult.AllRecords
+                    .Select(r => r.ToString() ?? string.Empty)
+                    .Where(s => !string.IsNullOrEmpty(s))
+                    .ToList();
+                records["_dmarc"] = dmarcValues; // may be empty list — that means DMARC absent
+            }
+            catch
+            {
+                records["_dmarc"] = [];
+            }
         }
         catch (Exception ex)
         {
@@ -638,8 +654,9 @@ public sealed class ReconScanModule : IScanModule
         Dictionary<string, List<string>> records, string domain)
     {
         var findings = new List<Finding>();
-        var txt = records.GetValueOrDefault("TXT", []);
 
+        // SPF — lives in TXT records of the root domain
+        var txt = records.GetValueOrDefault("TXT", []);
         if (!txt.Any(t => t.Contains("v=spf1")))
         {
             findings.Add(Finding.Create(
@@ -650,7 +667,10 @@ public sealed class ReconScanModule : IScanModule
                 impact: 4.0, confidence: 0.99, vulnType: "info_disclosure"));
         }
 
-        if (!txt.Any(t => t.Contains("DMARC1")))
+        // DMARC — lives in TXT records of _dmarc.{domain}, checked separately
+        // The key "_dmarc" is injected by EnumerateDnsAsync
+        var dmarcTxt = records.GetValueOrDefault("_dmarc", []);
+        if (!dmarcTxt.Any(t => t.Contains("DMARC1")))
         {
             findings.Add(Finding.Create(
                 Severity.Medium, FindingCategory.DNS,

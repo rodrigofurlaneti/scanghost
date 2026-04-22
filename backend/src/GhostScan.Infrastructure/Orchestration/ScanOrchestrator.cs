@@ -89,6 +89,10 @@ public sealed class ScanOrchestrator : IScanOrchestrator
                         _logger.LogWarning("[Orchestrator] [{ScanId}] {Module} failed: {Error}",
                             scan.Id, module.Name, result.ErrorMessage);
                     }
+
+                    // Persist module result data keyed by module name for report generation
+                    if (result.Data.Count > 0)
+                        scan.SetModuleData(module.Name, result.Data);
                 }
                 catch (OperationCanceledException)
                 {
@@ -104,6 +108,9 @@ public sealed class ScanOrchestrator : IScanOrchestrator
                 completedModules++;
                 await _scanRepository.SaveAsync(scan, cancellationToken);
             }
+
+            // Persist ScanContext shared state so the report handler can access cross-module data
+            PersistContextToScan(scan, context);
 
             scan.Complete();
             await _scanRepository.SaveAsync(scan, cancellationToken);
@@ -126,6 +133,28 @@ public sealed class ScanOrchestrator : IScanOrchestrator
             scan.Fail($"Unexpected error: {ex.Message}");
             await _scanRepository.SaveAsync(scan, CancellationToken.None);
             await _progressNotifier.NotifyFailedAsync(scan.Id, ex.Message, CancellationToken.None);
+        }
+    }
+
+    /// <summary>
+    /// Dumps relevant ScanContext keys into the Scan aggregate so the report handler
+    /// can build reconResults, webResults, and intelligenceResults DTOs.
+    /// </summary>
+    private static void PersistContextToScan(Scan scan, ScanContext context)
+    {
+        var contextKeys = new[]
+        {
+            "subdomains", "dns_records", "open_ports", "banners", "emails",
+            "endpoints", "base_urls", "technologies", "waf", "js_secrets",
+            "forms", "missing_headers", "sqli_findings", "xss_findings", "cve_findings",
+        };
+
+        foreach (var key in contextKeys)
+        {
+            if (!context.Has(key)) continue;
+            var value = context.Get<object>(key);
+            if (value is not null)
+                scan.SetModuleData($"ctx:{key}", value);
         }
     }
 

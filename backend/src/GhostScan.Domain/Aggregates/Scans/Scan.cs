@@ -8,6 +8,7 @@ namespace GhostScan.Domain.Aggregates.Scans;
 public sealed class Scan : AggregateRoot
 {
     private readonly FindingCollection _findings = new();
+    private readonly Dictionary<string, object> _moduleData = new(StringComparer.OrdinalIgnoreCase);
 
     public ScanTarget Target { get; }
     public ScanConfiguration Configuration { get; }
@@ -19,6 +20,11 @@ public sealed class Scan : AggregateRoot
     public IReadOnlyList<Finding> Findings => _findings.Items;
     public int FindingsCount => _findings.Count;
     public TimeSpan? Duration => CompletedAt.HasValue ? CompletedAt - StartedAt : null;
+
+    /// <summary>Persisted module output — keyed by module name or context key.</summary>
+    public IReadOnlyDictionary<string, object> ModuleData => _moduleData;
+
+    public void SetModuleData(string key, object value) => _moduleData[key] = value;
 
     private Scan(Guid id, ScanTarget target, ScanConfiguration configuration) : base(id)
     {

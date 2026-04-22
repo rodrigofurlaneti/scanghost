@@ -136,6 +136,59 @@ public sealed class WebAnalysisScanModule : IScanModule
             var dirBrute = await RunDirectoryBruteAsync(baseUrls.First(), configuration, cancellationToken);
             data["dir_brute"] = dirBrute;
 
+            // 8. API endpoint extraction from JS via XHR/fetch regex
+            _logger.LogInformation("[Web] Extracting API endpoints from JavaScript files");
+            var apiEndpoints = await ExtractApiEndpointsFromJsAsync(
+                discoveredEndpoints, httpClient, baseUrls.First(), cancellationToken);
+            if (apiEndpoints.Count > 0)
+            {
+                data["api_endpoints"] = apiEndpoints;
+                context.Set("api_endpoints", apiEndpoints);
+                foreach (var ep in apiEndpoints)
+                    if (!discoveredEndpoints.Contains(ep)) discoveredEndpoints.Add(ep);
+            }
+
+            // 9. Error disclosure detection
+            _logger.LogInformation("[Web] Scanning for error disclosure");
+            var errorFindings = await DetectErrorDisclosureAsync(
+                discoveredEndpoints.Take(20).ToList(), httpClient, baseUrls.First(), cancellationToken);
+            findings.AddRange(errorFindings);
+
+            // 10. SSL/TLS scan
+            if (baseUrls.First().StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+            {
+                _logger.LogInformation("[Web] SSL/TLS analysis");
+                var sslFindings = await RunSslScanAsync(target.Value, cancellationToken);
+                findings.AddRange(sslFindings);
+                data["ssl_findings"] = sslFindings.Select(f => f.Title).ToList();
+            }
+
+            // 11. Nikto scan
+            _logger.LogInformation("[Web] Nikto web server scan");
+            var niktoFindings = await RunNiktoAsync(baseUrls.First(), cancellationToken);
+            findings.AddRange(niktoFindings);
+            data["nikto_findings"] = niktoFindings.Select(f => f.Title).ToList();
+
+            // 12. WPScan (if WordPress detected)
+            var detectedTech = data.TryGetValue("technologies", out var tech)
+                ? tech as Dictionary<string, object> : null;
+            var isWordPress = detectedTech?.TryGetValue("cms", out var cms) == true
+                && cms is List<string> cmsList
+                && cmsList.Any(c => c.Contains("WordPress", StringComparison.OrdinalIgnoreCase));
+            if (isWordPress)
+            {
+                _logger.LogInformation("[Web] WordPress site detected — running WPScan");
+                var wpFindings = await RunWpScanAsync(baseUrls.First(), cancellationToken);
+                findings.AddRange(wpFindings);
+                data["cms_findings"] = wpFindings.Select(f => f.Title).ToList();
+            }
+
+            // 13. Nuclei template scan
+            _logger.LogInformation("[Web] Nuclei template scan");
+            var nucleiFindings = await RunNucleiAsync(baseUrls.First(), cancellationToken);
+            findings.AddRange(nucleiFindings);
+            data["nuclei_findings"] = nucleiFindings.Select(f => f.Title).ToList();
+
             return ScanModuleResult.Succeeded(findings, data);
         }
         catch (Exception ex)
@@ -613,5 +666,357 @@ public sealed class WebAnalysisScanModule : IScanModule
         if (!Uri.TryCreate(url, UriKind.Absolute, out var uri)) return false;
         if (!Uri.TryCreate(baseUrl, UriKind.Absolute, out var baseUri)) return false;
         return uri.Host.Equals(baseUri.Host, StringComparison.OrdinalIgnoreCase);
+    }
+
+    // ── API Endpoint Extraction from JS ───────────────────────────────────────
+
+    private static readonly Regex[] ApiExtractPatterns =
+    [
+        new Regex(@"fetch\s*\(\s*['""`]([/][^'""` ]+)['""`]", RegexOptions.Compiled),
+        new Regex(@"axios\s*\.\s*(?:get|post|put|patch|delete)\s*\(\s*['""`]([/][^'""` ]+)['""`]", RegexOptions.Compiled),
+        new Regex(@"(?:url|endpoint|path|api)\s*[:=]\s*['""`]([/][a-zA-Z0-9_/\-\.]{3,})['""`]", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+        new Regex(@"XMLHttpRequest[^;]+open\s*\([^,]+,\s*['""`]([/][^'""` ]+)['""`]", RegexOptions.Compiled),
+        new Regex(@"\$\.(?:get|post|ajax)\s*\(\s*['""`]([/][^'""` ]+)['""`]", RegexOptions.Compiled),
+    ];
+
+    private async Task<List<string>> ExtractApiEndpointsFromJsAsync(
+        List<string> endpoints, HttpClient httpClient, string baseUrl, CancellationToken ct)
+    {
+        var apiEndpoints = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+        var jsUrls = endpoints
+            .Where(e => e.EndsWith(".js", StringComparison.OrdinalIgnoreCase))
+            .Take(20)
+            .ToList();
+
+        foreach (var jsUrl in jsUrls)
+        {
+            try
+            {
+                var content = await httpClient.GetStringAsync(jsUrl, ct);
+
+                foreach (var pattern in ApiExtractPatterns)
+                {
+                    foreach (Match m in pattern.Matches(content))
+                    {
+                        var rawPath = m.Groups[1].Value;
+                        if (rawPath.Length > 100) continue;
+
+                        // Resolve against baseUrl
+                        if (Uri.TryCreate(new Uri(baseUrl), rawPath, out var resolved))
+                            apiEndpoints.Add(resolved.ToString());
+                    }
+                }
+            }
+            catch { }
+        }
+
+        _logger.LogInformation("[Web] Found {Count} API endpoints from JS analysis", apiEndpoints.Count);
+        return apiEndpoints.ToList();
+    }
+
+    // ── Error Disclosure Detection ────────────────────────────────────────────
+
+    private static readonly (Regex Pattern, string Title, string Type)[] ErrorPatterns =
+    [
+        (new Regex(@"(?:at\s+[\w\.]+\s+in\s+|Stack trace:|System\.Exception|NullReferenceException)",
+            RegexOptions.Compiled | RegexOptions.IgnoreCase),
+            ".NET stack trace disclosed", "error_disclosure"),
+        (new Regex(@"(?:Fatal error|Warning:|Notice:)\s+.*\s+in\s+/.+\.php\s+on\s+line\s+\d+",
+            RegexOptions.Compiled), "PHP error disclosed", "error_disclosure"),
+        (new Regex(@"(?:Traceback \(most recent call last\)|File ""/.+\.py"", line \d+)",
+            RegexOptions.Compiled), "Python traceback disclosed", "error_disclosure"),
+        (new Regex(@"(?:ORA-\d{5}|SQLSTATE\[|You have an error in your SQL syntax|mysql_fetch_array)",
+            RegexOptions.Compiled | RegexOptions.IgnoreCase), "SQL error / DBMS info disclosed", "sql_injection"),
+        (new Regex(@"(?:at java\.|org\.springframework\.|javax\.|Exception in thread)",
+            RegexOptions.Compiled), "Java/Spring stack trace disclosed", "error_disclosure"),
+        (new Regex(@"<title>\s*(?:Application Error|500 Internal Server Error|Whoops|DebugKit)",
+            RegexOptions.Compiled | RegexOptions.IgnoreCase), "Debug/error page exposed", "error_disclosure"),
+    ];
+
+    private async Task<List<Finding>> DetectErrorDisclosureAsync(
+        List<string> endpoints, HttpClient httpClient, string baseUrl, CancellationToken ct)
+    {
+        var findings = new List<Finding>();
+        var seen = new HashSet<string>();
+
+        // Also probe error-trigger paths
+        var errorTriggers = new[]
+        {
+            $"{baseUrl.TrimEnd('/')}/'", $"{baseUrl.TrimEnd('/')}/?id=1'",
+            $"{baseUrl.TrimEnd('/')}/nonexistent", $"{baseUrl.TrimEnd('/')}/%3Cscript%3E",
+        };
+
+        var urlsToCheck = endpoints.Concat(errorTriggers).Distinct().Take(25).ToList();
+
+        foreach (var url in urlsToCheck)
+        {
+            if (ct.IsCancellationRequested) break;
+            try
+            {
+                var response = await httpClient.GetAsync(url, ct);
+                var content = await response.Content.ReadAsStringAsync(ct);
+
+                foreach (var (pattern, title, vulnType) in ErrorPatterns)
+                {
+                    if (!pattern.IsMatch(content)) continue;
+                    if (!seen.Add(title)) continue; // dedup per title
+
+                    findings.Add(Finding.Create(
+                        Severity.Medium, FindingCategory.Web,
+                        title,
+                        detail: $"Error disclosure detected at {url}. Exposes internal file paths, "
+                              + "technology stack and potentially SQL schema.",
+                        url: url,
+                        remediation: "Configure custom error pages. Disable detailed errors in production. "
+                                   + "Set 'customErrors mode=\"On\"' or equivalent.",
+                        impact: 4.0, confidence: 0.90,
+                        vulnType: vulnType));
+                }
+            }
+            catch { }
+        }
+
+        return findings;
+    }
+
+    // ── SSL/TLS Scan ──────────────────────────────────────────────────────────
+
+    private async Task<List<Finding>> RunSslScanAsync(string host, CancellationToken ct)
+    {
+        var findings = new List<Finding>();
+        if (!_toolRunner.IsAvailable("sslscan"))
+        {
+            _logger.LogDebug("[Web] sslscan not available, skipping SSL analysis");
+            return findings;
+        }
+
+        var (_, stdout, _) = await _toolRunner.RunAsync("sslscan", $"--no-colour {host}", 60, ct);
+
+        if (stdout.Contains("SSLv2") || stdout.Contains("SSLv3"))
+        {
+            findings.Add(Finding.Create(
+                Severity.High, FindingCategory.SSL,
+                "Deprecated SSL protocol enabled (SSLv2/SSLv3)",
+                detail: "Server supports deprecated SSL protocols vulnerable to POODLE/DROWN attacks.",
+                remediation: "Disable SSLv2/SSLv3. Use TLS 1.2 or 1.3 only.",
+                impact: 6.0, confidence: 0.99, vulnType: "ssl_weak_protocol"));
+        }
+
+        if (Regex.IsMatch(stdout, @"TLSv1\.0\s+enabled|TLSv1\s+enabled"))
+        {
+            findings.Add(Finding.Create(
+                Severity.Medium, FindingCategory.SSL,
+                "TLS 1.0 enabled",
+                detail: "TLS 1.0 has known vulnerabilities (BEAST, POODLE). PCI-DSS requires disabling it.",
+                remediation: "Disable TLS 1.0. Enable TLS 1.2 and TLS 1.3 only.",
+                impact: 4.0, confidence: 0.99, vulnType: "ssl_weak_protocol"));
+        }
+
+        if (Regex.IsMatch(stdout, @"RC4|DES|3DES|NULL|EXPORT|anon",
+                RegexOptions.IgnoreCase))
+        {
+            findings.Add(Finding.Create(
+                Severity.High, FindingCategory.SSL,
+                "Weak cipher suite(s) enabled",
+                detail: "Server advertises weak cipher suites (RC4/DES/EXPORT/NULL).",
+                remediation: "Configure server to use only AES-256-GCM and ChaCha20-Poly1305.",
+                impact: 6.0, confidence: 0.95, vulnType: "ssl_weak_cipher"));
+        }
+
+        if (stdout.Contains("Self-signed") || stdout.Contains("self signed"))
+        {
+            findings.Add(Finding.Create(
+                Severity.Medium, FindingCategory.SSL,
+                "Self-signed certificate",
+                detail: "Self-signed certificate allows trivial MitM attacks.",
+                remediation: "Use a certificate from a trusted CA (Let's Encrypt, DigiCert, etc.).",
+                impact: 5.0, confidence: 0.99));
+        }
+
+        return findings;
+    }
+
+    // ── Nikto ─────────────────────────────────────────────────────────────────
+
+    private async Task<List<Finding>> RunNiktoAsync(string baseUrl, CancellationToken ct)
+    {
+        var findings = new List<Finding>();
+        if (!_toolRunner.IsAvailable("nikto"))
+        {
+            _logger.LogDebug("[Web] nikto not available, skipping");
+            return findings;
+        }
+
+        var (_, stdout, _) = await _toolRunner.RunAsync(
+            "nikto", $"-h {baseUrl} -Format json -nointeractive -C all", 300, ct);
+
+        try
+        {
+            // Try JSON parse first
+            using var doc = System.Text.Json.JsonDocument.Parse(stdout);
+            var items = doc.RootElement
+                .GetProperty("vulnerabilities")
+                .EnumerateArray();
+
+            foreach (var item in items)
+            {
+                var msg = item.TryGetProperty("msg", out var m) ? m.GetString() ?? "" : "";
+                if (string.IsNullOrWhiteSpace(msg)) continue;
+
+                var osvdb = item.TryGetProperty("OSVDB", out var o) ? o.GetString() ?? "" : "";
+                var uri   = item.TryGetProperty("uri", out var u) ? u.GetString() ?? baseUrl : baseUrl;
+
+                var sev = msg.Contains("outdated", StringComparison.OrdinalIgnoreCase)
+                       || msg.Contains("vulnerable", StringComparison.OrdinalIgnoreCase)
+                    ? Severity.High : Severity.Medium;
+
+                findings.Add(Finding.Create(
+                    sev, FindingCategory.Web,
+                    $"Nikto: {msg[..Math.Min(msg.Length, 120)]}",
+                    detail: osvdb.Length > 0 ? $"OSVDB-{osvdb}: {msg}" : msg,
+                    url: uri.StartsWith("http") ? uri : $"{baseUrl.TrimEnd('/')}{uri}",
+                    remediation: "Apply vendor patches and remove unnecessary services.",
+                    impact: sev == Severity.High ? 6.0 : 4.0, confidence: 0.75));
+            }
+        }
+        catch
+        {
+            // Fallback: line-by-line parse
+            foreach (var line in stdout.Split('\n', StringSplitOptions.RemoveEmptyEntries))
+            {
+                if (!line.Contains("+ ")) continue;
+                var msg = line.TrimStart('+', ' ');
+                if (msg.Length < 10) continue;
+
+                findings.Add(Finding.Create(
+                    Severity.Medium, FindingCategory.Web,
+                    $"Nikto: {msg[..Math.Min(msg.Length, 120)]}",
+                    url: baseUrl,
+                    impact: 4.0, confidence: 0.70));
+            }
+        }
+
+        _logger.LogInformation("[Web] Nikto: {Count} findings", findings.Count);
+        return findings;
+    }
+
+    // ── WPScan ────────────────────────────────────────────────────────────────
+
+    private async Task<List<Finding>> RunWpScanAsync(string baseUrl, CancellationToken ct)
+    {
+        var findings = new List<Finding>();
+        if (!_toolRunner.IsAvailable("wpscan"))
+        {
+            _logger.LogDebug("[Web] wpscan not available, skipping");
+            return findings;
+        }
+
+        var (_, stdout, _) = await _toolRunner.RunAsync(
+            "wpscan", $"--url {baseUrl} --format json --no-banner", 180, ct);
+
+        try
+        {
+            using var doc = System.Text.Json.JsonDocument.Parse(stdout);
+
+            // Vulnerabilities
+            if (doc.RootElement.TryGetProperty("vulnerabilities", out var vulns))
+            {
+                foreach (var vuln in vulns.EnumerateArray())
+                {
+                    var title = vuln.TryGetProperty("title", out var t) ? t.GetString() ?? "" : "";
+                    var cvssScore = vuln.TryGetProperty("cvss", out var c)
+                        && c.TryGetProperty("score", out var sc) ? sc.GetDouble() : 0;
+
+                    var sev = cvssScore >= 9 ? Severity.Critical
+                            : cvssScore >= 7 ? Severity.High
+                            : cvssScore >= 4 ? Severity.Medium
+                            : Severity.Low;
+
+                    if (!string.IsNullOrEmpty(title))
+                        findings.Add(Finding.Create(
+                            sev, FindingCategory.Cms,
+                            $"WordPress vulnerability: {title}",
+                            detail: $"CVSS: {cvssScore}",
+                            url: baseUrl,
+                            remediation: "Update WordPress core, themes, and plugins to latest versions.",
+                            impact: Math.Max(cvssScore, 5.0), confidence: 0.90,
+                            vulnType: "cms_vulnerability"));
+                }
+            }
+
+            // Outdated plugins
+            if (doc.RootElement.TryGetProperty("plugins", out var plugins))
+            {
+                foreach (var plugin in plugins.EnumerateObject())
+                {
+                    if (plugin.Value.TryGetProperty("outdated", out var outdated)
+                        && outdated.GetBoolean())
+                    {
+                        findings.Add(Finding.Create(
+                            Severity.Medium, FindingCategory.Cms,
+                            $"Outdated WordPress plugin: {plugin.Name}",
+                            url: baseUrl,
+                            remediation: $"Update plugin '{plugin.Name}' to the latest version.",
+                            impact: 4.0, confidence: 0.99));
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogDebug(ex, "[Web] WPScan JSON parse failed");
+        }
+
+        _logger.LogInformation("[Web] WPScan: {Count} findings", findings.Count);
+        return findings;
+    }
+
+    // ── Nuclei ────────────────────────────────────────────────────────────────
+
+    private async Task<List<Finding>> RunNucleiAsync(string baseUrl, CancellationToken ct)
+    {
+        var findings = new List<Finding>();
+        if (!_toolRunner.IsAvailable("nuclei"))
+        {
+            _logger.LogDebug("[Web] nuclei not available, skipping");
+            return findings;
+        }
+
+        var (_, stdout, _) = await _toolRunner.RunAsync(
+            "nuclei", $"-u {baseUrl} -severity critical,high,medium -json -silent -timeout 10", 600, ct);
+
+        foreach (var line in stdout.Split('\n', StringSplitOptions.RemoveEmptyEntries))
+        {
+            try
+            {
+                using var doc = System.Text.Json.JsonDocument.Parse(line);
+                var root = doc.RootElement;
+
+                var templateId = root.TryGetProperty("template-id", out var tid) ? tid.GetString() ?? "" : "";
+                var name       = root.TryGetProperty("info", out var info)
+                                 && info.TryGetProperty("name", out var n) ? n.GetString() ?? "" : templateId;
+                var severityStr = root.TryGetProperty("info", out var info2)
+                                  && info2.TryGetProperty("severity", out var sv) ? sv.GetString() ?? "medium" : "medium";
+                var matchedAt  = root.TryGetProperty("matched-at", out var ma) ? ma.GetString() ?? baseUrl : baseUrl;
+
+                var sev = Severity.FromString(severityStr).Value ?? Severity.Medium;
+
+                if (!string.IsNullOrEmpty(name))
+                    findings.Add(Finding.Create(
+                        sev, FindingCategory.Web,
+                        $"Nuclei [{templateId}]: {name}",
+                        url: matchedAt,
+                        remediation: "Review Nuclei template advisory for remediation guidance.",
+                        impact: sev == Severity.Critical ? 9.0
+                               : sev == Severity.High ? 7.0 : 5.0,
+                        confidence: 0.85,
+                        vulnType: templateId));
+            }
+            catch { }
+        }
+
+        _logger.LogInformation("[Web] Nuclei: {Count} findings", findings.Count);
+        return findings;
     }
 }

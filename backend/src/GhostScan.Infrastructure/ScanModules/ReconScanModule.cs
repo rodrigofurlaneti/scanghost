@@ -1,7 +1,10 @@
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using DnsClient;
+using DnsClient.Protocol;
 using GhostScan.Domain.Entities;
 using GhostScan.Domain.ValueObjects;
 using GhostScan.Infrastructure.ScanModules.Base;
@@ -58,6 +61,11 @@ public sealed class ReconScanModule : IScanModule
                 var dnsFindings = AnalyzeDnsRecords(dnsRecords, target.Value);
                 findings.AddRange(dnsFindings);
 
+                // Zone Transfer (AXFR) — CRITICAL if successful
+                _logger.LogInformation("[Recon] Attempting zone transfer for {Target}", target.Value);
+                var axfrFindings = await AttemptZoneTransferAsync(target.Value, dnsRecords, cancellationToken);
+                findings.AddRange(axfrFindings);
+
                 if (!configuration.NoSubdomains)
                 {
                     _logger.LogInformation("[Recon] Subdomain enumeration for {Target}", target.Value);
@@ -73,6 +81,16 @@ public sealed class ReconScanModule : IScanModule
                             impact: 3.0, confidence: 0.99));
                     }
                 }
+
+                // OSINT — theHarvester
+                _logger.LogInformation("[Recon] OSINT harvest for {Target}", target.Value);
+                var osintData = await OsintHarvestAsync(target.Value, cancellationToken);
+                if (osintData.Count > 0) data["osint"] = osintData;
+
+                // WHOIS
+                _logger.LogInformation("[Recon] WHOIS lookup for {Target}", target.Value);
+                var whoisData = await WhoisLookupAsync(target.Value, cancellationToken);
+                if (whoisData.Count > 0) data["whois"] = whoisData;
             }
 
             _logger.LogInformation("[Recon] Port scanning {Target}", target.Value);
@@ -98,7 +116,13 @@ public sealed class ReconScanModule : IScanModule
                 }
             }
 
+            // Banner Grabbing — after port scan
+            _logger.LogInformation("[Recon] Banner grabbing on open ports");
+            var banners = await GrabBannersAsync(openPorts, cancellationToken);
+            if (banners.Count > 0) data["banners"] = banners;
+
             context.Set("open_ports", openPorts);
+            context.Set("banners", banners);
             if (data.TryGetValue("subdomains", out var subs))
                 context.Set("subdomains", subs);
 
@@ -118,10 +142,12 @@ public sealed class ReconScanModule : IScanModule
         try
         {
             var client = new LookupClient();
+            // Extended record types — includes SOA, SRV, CAA beyond basic set
             var recordTypes = new[]
             {
                 QueryType.A, QueryType.AAAA, QueryType.MX,
-                QueryType.NS, QueryType.TXT, QueryType.CNAME
+                QueryType.NS, QueryType.TXT, QueryType.CNAME,
+                QueryType.SOA, QueryType.SRV, QueryType.CAA
             };
 
             foreach (var rType in recordTypes)
@@ -149,6 +175,287 @@ public sealed class ReconScanModule : IScanModule
         }
 
         return records;
+    }
+
+    // ── Zone Transfer (AXFR) ──────────────────────────────────────────────────
+
+    private async Task<List<Finding>> AttemptZoneTransferAsync(
+        string domain,
+        Dictionary<string, List<string>> dnsRecords,
+        CancellationToken cancellationToken)
+    {
+        var findings = new List<Finding>();
+
+        // Extract nameservers from already-resolved NS records
+        var nameservers = new List<string>();
+        if (dnsRecords.TryGetValue("NS", out var nsRecords))
+        {
+            foreach (var ns in nsRecords)
+            {
+                // NS records look like "0 ns1.example.com." — extract the last token
+                var parts = ns.Trim().Split(' ');
+                var nsHost = parts[^1].TrimEnd('.');
+                if (!string.IsNullOrEmpty(nsHost))
+                    nameservers.Add(nsHost);
+            }
+        }
+
+        if (nameservers.Count == 0) return findings;
+
+        // Try `dig` if available, otherwise raw TCP AXFR
+        foreach (var ns in nameservers)
+        {
+            try
+            {
+                string axfrOutput;
+
+                if (_toolRunner.IsAvailable("dig"))
+                {
+                    var (exitCode, stdout, _) = await _toolRunner.RunAsync(
+                        "dig", $"@{ns} {domain} AXFR", 30, cancellationToken);
+                    axfrOutput = stdout;
+                }
+                else
+                {
+                    axfrOutput = await RawAxfrAsync(ns, domain, cancellationToken);
+                }
+
+                if (!string.IsNullOrWhiteSpace(axfrOutput)
+                    && axfrOutput.Contains(domain)
+                    && !axfrOutput.Contains("Transfer failed")
+                    && !axfrOutput.Contains("; XFR size: 0"))
+                {
+                    _logger.LogWarning("[Recon] Zone transfer succeeded on {NS} for {Domain}", ns, domain);
+                    findings.Add(Finding.Create(
+                        Severity.Critical, FindingCategory.DNS,
+                        $"Zone transfer (AXFR) allowed on {ns}",
+                        detail: $"The nameserver {ns} permits unauthenticated zone transfers for {domain}. " +
+                                "This exposes the full DNS zone, including internal subdomains and IP addresses.",
+                        remediation: "Restrict AXFR to authorized secondary nameservers only (ACL or TSIG keys).",
+                        impact: 9.0, confidence: 1.0, vulnType: "info_disclosure",
+                        url: $"dns://{ns}"));
+                    break; // One success is enough
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogDebug(ex, "[Recon] AXFR attempt failed for {NS}/{Domain}", ns, domain);
+            }
+        }
+
+        return findings;
+    }
+
+    /// <summary>Raw TCP AXFR request — fallback when dig is unavailable.</summary>
+    private static async Task<string> RawAxfrAsync(string nameserver, string domain, CancellationToken ct)
+    {
+        var sb = new StringBuilder();
+        try
+        {
+            var nsIp = (await Dns.GetHostAddressesAsync(nameserver, ct)).FirstOrDefault();
+            if (nsIp is null) return string.Empty;
+
+            using var tcp = new TcpClient();
+            var connectTask = tcp.ConnectAsync(nsIp, 53, ct).AsTask();
+            if (await Task.WhenAny(connectTask, Task.Delay(5000, ct)) != connectTask || connectTask.IsFaulted)
+                return string.Empty;
+
+            using var stream = tcp.GetStream();
+
+            // Build AXFR DNS query
+            var labels = domain.Split('.');
+            var qname = new List<byte>();
+            foreach (var label in labels)
+            {
+                var bytes = Encoding.ASCII.GetBytes(label);
+                qname.Add((byte)bytes.Length);
+                qname.AddRange(bytes);
+            }
+            qname.Add(0); // root label
+
+            var query = new List<byte>
+            {
+                0x00, 0x01, // ID
+                0x00, 0x00, // Flags: standard query
+                0x00, 0x01, // QDCOUNT
+                0x00, 0x00, // ANCOUNT
+                0x00, 0x00, // NSCOUNT
+                0x00, 0x00, // ARCOUNT
+            };
+            query.AddRange(qname);
+            query.AddRange([0x00, 0xFC]); // QTYPE=AXFR
+            query.AddRange([0x00, 0x01]); // QCLASS=IN
+
+            var payload = query.ToArray();
+            var length = new byte[] { (byte)(payload.Length >> 8), (byte)(payload.Length & 0xFF) };
+            await stream.WriteAsync(length, ct);
+            await stream.WriteAsync(payload, ct);
+            await stream.FlushAsync(ct);
+
+            using var cts2 = new CancellationTokenSource(5000);
+            var buf = new byte[4096];
+            try
+            {
+                var read = await stream.ReadAsync(buf, cts2.Token);
+                if (read > 0) sb.Append(Encoding.ASCII.GetString(buf, 0, read));
+            }
+            catch (OperationCanceledException) { }
+        }
+        catch { }
+
+        return sb.ToString();
+    }
+
+    // ── Banner Grabbing ───────────────────────────────────────────────────────
+
+    private async Task<Dictionary<string, string>> GrabBannersAsync(
+        Dictionary<string, List<int>> openPorts, CancellationToken cancellationToken)
+    {
+        var banners = new Dictionary<string, string>();
+        var semaphore = new SemaphoreSlim(20);
+
+        var tasks = openPorts.SelectMany(kvp =>
+            kvp.Value.Select(port => GrabSingleBannerAsync(kvp.Key, port, semaphore, banners, cancellationToken)));
+
+        await Task.WhenAll(tasks);
+        return banners;
+    }
+
+    private async Task GrabSingleBannerAsync(
+        string host, int port, SemaphoreSlim semaphore,
+        Dictionary<string, string> banners, CancellationToken ct)
+    {
+        await semaphore.WaitAsync(ct);
+        try
+        {
+            using var client = new TcpClient();
+            var connectTask = client.ConnectAsync(host, port, ct).AsTask();
+            using var timeoutCts = new CancellationTokenSource(3000);
+            if (await Task.WhenAny(connectTask, Task.Delay(3000, timeoutCts.Token)) != connectTask
+                || connectTask.IsFaulted)
+                return;
+
+            using var stream = client.GetStream();
+            stream.ReadTimeout = 3000;
+
+            // HTTP probe first
+            if (port is 80 or 8080 or 8000 or 8008 or 3000 or 5000 or 443 or 8443)
+            {
+                var probe = Encoding.ASCII.GetBytes($"HEAD / HTTP/1.0\r\nHost: {host}\r\n\r\n");
+                await stream.WriteAsync(probe, ct);
+            }
+
+            var buf = new byte[512];
+            try
+            {
+                var read = await stream.ReadAsync(buf, 0, buf.Length, ct);
+                if (read > 0)
+                {
+                    var banner = Encoding.UTF8.GetString(buf, 0, read)
+                        .Split('\n')[0].Trim();
+                    if (!string.IsNullOrWhiteSpace(banner))
+                        banners[$"{host}:{port}"] = banner[..Math.Min(banner.Length, 200)];
+                }
+            }
+            catch (Exception ex) when (ex is IOException or TimeoutException or OperationCanceledException) { }
+        }
+        catch { }
+        finally { semaphore.Release(); }
+    }
+
+    // ── OSINT / theHarvester ──────────────────────────────────────────────────
+
+    private async Task<Dictionary<string, object>> OsintHarvestAsync(
+        string domain, CancellationToken cancellationToken)
+    {
+        var result = new Dictionary<string, object>();
+        if (!_toolRunner.IsAvailable("theHarvester"))
+        {
+            _logger.LogDebug("[Recon] theHarvester not available, skipping OSINT");
+            return result;
+        }
+
+        try
+        {
+            var (_, stdout, _) = await _toolRunner.RunAsync(
+                "theHarvester", $"-d {domain} -b all", 120, cancellationToken);
+
+            var emails = new HashSet<string>();
+            var hosts  = new HashSet<string>();
+
+            foreach (var line in stdout.Split('\n', StringSplitOptions.RemoveEmptyEntries))
+            {
+                var l = line.Trim();
+                // Email pattern
+                if (Regex.IsMatch(l, @"^[\w\.\+\-]+@[\w\.\-]+\.[a-z]{2,}$",
+                        RegexOptions.IgnoreCase))
+                    emails.Add(l.ToLowerInvariant());
+
+                // Subdomain/host pattern
+                if (l.EndsWith(domain, StringComparison.OrdinalIgnoreCase) && l.Contains('.'))
+                    hosts.Add(l.ToLowerInvariant());
+            }
+
+            if (emails.Count > 0) result["emails"] = emails.ToList();
+            if (hosts.Count > 0)  result["hosts"]  = hosts.ToList();
+
+            _logger.LogInformation("[Recon] OSINT: {Emails} emails, {Hosts} hosts found",
+                emails.Count, hosts.Count);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogDebug(ex, "[Recon] theHarvester failed for {Domain}", domain);
+        }
+
+        return result;
+    }
+
+    // ── WHOIS ─────────────────────────────────────────────────────────────────
+
+    private async Task<Dictionary<string, string>> WhoisLookupAsync(
+        string domain, CancellationToken cancellationToken)
+    {
+        var result = new Dictionary<string, string>();
+        if (!_toolRunner.IsAvailable("whois"))
+        {
+            _logger.LogDebug("[Recon] whois not available, skipping");
+            return result;
+        }
+
+        try
+        {
+            var (_, stdout, _) = await _toolRunner.RunAsync(
+                "whois", domain, 30, cancellationToken);
+
+            var interestingKeys = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+            {
+                "Registrar", "Registrant", "Creation Date", "Updated Date",
+                "Registry Expiry Date", "Name Server", "DNSSEC",
+                "Registrar Abuse Contact Email", "Registrar Abuse Contact Phone"
+            };
+
+            foreach (var line in stdout.Split('\n', StringSplitOptions.RemoveEmptyEntries))
+            {
+                var colonIdx = line.IndexOf(':');
+                if (colonIdx < 0) continue;
+
+                var key   = line[..colonIdx].Trim();
+                var value = line[(colonIdx + 1)..].Trim();
+
+                if (string.IsNullOrEmpty(value)) continue;
+                if (interestingKeys.Contains(key) && !result.ContainsKey(key))
+                    result[key] = value;
+            }
+
+            _logger.LogInformation("[Recon] WHOIS: {Count} fields parsed for {Domain}",
+                result.Count, domain);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogDebug(ex, "[Recon] WHOIS failed for {Domain}", domain);
+        }
+
+        return result;
     }
 
     private async Task<List<string>> EnumerateSubdomainsAsync(

@@ -20,6 +20,7 @@ public sealed class FindingCategory : ValueObject
     public static readonly FindingCategory Plugin = new("Plugin");
     public static readonly FindingCategory CSP = new("CSP");
     public static readonly FindingCategory Intelligence = new("Intelligence");
+    public static readonly FindingCategory Cms = new("CMS");
 
     public string Name { get; }
 

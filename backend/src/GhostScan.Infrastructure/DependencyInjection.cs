@@ -17,6 +17,7 @@ public static class DependencyInjection
 
         // External tool runner
         services.AddSingleton<ExternalToolRunner>();
+        services.AddSingleton<SafeExecutor>();
 
         // HTTP Client for scanning (ignore SSL errors for pentest)
         services.AddHttpClient("scanner", client =>
@@ -38,6 +39,7 @@ public static class DependencyInjection
         services.AddScoped<ReconScanModule>();
         services.AddScoped<WebAnalysisScanModule>();
         services.AddScoped<VulnDetectionScanModule>();
+        services.AddScoped<BrowserScanModule>();
         services.AddScoped<IntelligenceEngineScanModule>();
 
         // Orchestration

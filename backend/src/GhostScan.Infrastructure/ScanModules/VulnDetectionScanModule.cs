@@ -121,12 +121,36 @@ public sealed class VulnDetectionScanModule : IScanModule
             var redirectFindings = await TestOpenRedirectsAsync(baseUrl, injectableEndpoints, httpClient, cancellationToken);
             findings.AddRange(redirectFindings);
 
-            // 6. Brute-force (if enabled)
+            // 6. Stored/POST XSS in forms
+            if (configuration.Profile.EnableXss)
+            {
+                _logger.LogInformation("[Vuln] Testing POST forms for XSS");
+                var postXssFindings = await TestPostFormsXssAsync(context, httpClient, cancellationToken);
+                findings.AddRange(postXssFindings);
+                data["post_xss_findings"] = postXssFindings.Count;
+            }
+
+            // 7. HTTP → HTTPS redirect check
+            _logger.LogInformation("[Vuln] HTTP→HTTPS redirect check");
+            var redirectCheckFindings = await CheckHttpToHttpsRedirectAsync(baseUrl, httpClient, cancellationToken);
+            findings.AddRange(redirectCheckFindings);
+
+            // 8. CSP hardness analysis
+            _logger.LogInformation("[Vuln] CSP hardness analysis");
+            var cspFindings = await AuditCspHardnessAsync(baseUrl, httpClient, cancellationToken);
+            findings.AddRange(cspFindings);
+            context.Set("missing_csp", cspFindings.Any(f => f.Title.Contains("missing", StringComparison.OrdinalIgnoreCase)));
+
+            // 9. Brute-force (if enabled) — services + HTTP forms
             if (configuration.Profile.EnableBrute)
             {
                 _logger.LogInformation("[Vuln] Authentication brute-force");
                 var bruteFindings = await RunBruteForceAsync(target.Value, context, configuration, cancellationToken);
                 findings.AddRange(bruteFindings);
+
+                _logger.LogInformation("[Vuln] HTTP form brute-force");
+                var httpBruteFindings = await RunHttpFormBruteForceAsync(context, configuration, cancellationToken);
+                findings.AddRange(httpBruteFindings);
             }
 
             return ScanModuleResult.Succeeded(findings, data);
@@ -446,6 +470,232 @@ public sealed class VulnDetectionScanModule : IScanModule
         return findings;
     }
 
+    // ── POST XSS ──────────────────────────────────────────────────────────────
+
+    private async Task<List<Finding>> TestPostFormsXssAsync(
+        ScanContext context, HttpClient httpClient, CancellationToken ct)
+    {
+        var findings = new List<Finding>();
+        var forms = context.Get<List<Dictionary<string, string>>>("forms") ?? [];
+
+        foreach (var form in forms.Where(f =>
+            f.GetValueOrDefault("method", "GET").Equals("POST", StringComparison.OrdinalIgnoreCase)).Take(5))
+        {
+            var action = form.GetValueOrDefault("action", "");
+            if (string.IsNullOrEmpty(action)) continue;
+
+            foreach (var payload in BuiltinXssPayloads.Take(5))
+            {
+                try
+                {
+                    // POST the payload into every field
+                    var postData = new FormUrlEncodedContent(
+                        form.Where(kv => kv.Key is not ("action" or "method"))
+                            .Select(kv => new KeyValuePair<string, string>(kv.Key, payload)));
+
+                    var response = await httpClient.PostAsync(action, postData, ct);
+                    var content = await response.Content.ReadAsStringAsync(ct);
+
+                    if (content.Contains(payload) &&
+                        Regex.IsMatch(content, @"<script|onerror|onload|javascript:", RegexOptions.IgnoreCase))
+                    {
+                        findings.Add(Finding.Create(
+                            Severity.High, FindingCategory.XSS,
+                            $"Reflected XSS in POST form at {action}",
+                            evidence: $"Payload reflected: {payload[..Math.Min(60, payload.Length)]}",
+                            url: action,
+                            remediation: "Encode all output. Apply strict CSP. Validate input server-side.",
+                            impact: 6.0, confidence: 0.65,
+                            vulnType: "xss_reflected"));
+                        break;
+                    }
+                }
+                catch { }
+            }
+        }
+
+        return findings;
+    }
+
+    // ── HTTP → HTTPS Redirect Check ───────────────────────────────────────────
+
+    private async Task<List<Finding>> CheckHttpToHttpsRedirectAsync(
+        string baseUrl, HttpClient httpClient, CancellationToken ct)
+    {
+        var findings = new List<Finding>();
+        if (!baseUrl.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+            return findings; // Only makes sense if target is HTTPS
+
+        var httpUrl = baseUrl.Replace("https://", "http://", StringComparison.OrdinalIgnoreCase);
+
+        try
+        {
+            // Use a client that doesn't follow redirects
+            using var tempHandler = new HttpClientHandler { AllowAutoRedirect = false };
+            using var tempClient = new HttpClient(tempHandler) { Timeout = TimeSpan.FromSeconds(10) };
+
+            var response = await tempClient.GetAsync(httpUrl, ct);
+            var statusCode = (int)response.StatusCode;
+
+            if (statusCode is not (301 or 302 or 307 or 308))
+            {
+                findings.Add(Finding.Create(
+                    Severity.Medium, FindingCategory.SSL,
+                    "No HTTP → HTTPS redirect",
+                    detail: $"HTTP {statusCode} returned for {httpUrl} instead of a redirect. "
+                          + "Users accessing via HTTP are not automatically secured.",
+                    url: httpUrl,
+                    remediation: "Configure a 301 permanent redirect from HTTP to HTTPS.",
+                    impact: 4.0, confidence: 0.99,
+                    vulnType: "missing_hsts"));
+            }
+            else
+            {
+                var location = response.Headers.Location?.ToString() ?? "";
+                if (!location.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+                {
+                    findings.Add(Finding.Create(
+                        Severity.Low, FindingCategory.SSL,
+                        "HTTP → HTTPS redirect points to non-HTTPS URL",
+                        detail: $"Redirect location: {location}",
+                        url: httpUrl,
+                        remediation: "Ensure the redirect target uses HTTPS.",
+                        impact: 2.0, confidence: 0.90));
+                }
+            }
+        }
+        catch { }
+
+        return findings;
+    }
+
+    // ── CSP Hardness Analysis ─────────────────────────────────────────────────
+
+    private async Task<List<Finding>> AuditCspHardnessAsync(
+        string baseUrl, HttpClient httpClient, CancellationToken ct)
+    {
+        var findings = new List<Finding>();
+        try
+        {
+            var response = await httpClient.GetAsync(baseUrl, ct);
+            var headers = response.Headers.ToDictionary(
+                h => h.Key, h => string.Join(", ", h.Value), StringComparer.OrdinalIgnoreCase);
+
+            if (!headers.TryGetValue("Content-Security-Policy", out var csp))
+            {
+                findings.Add(Finding.Create(
+                    Severity.High, FindingCategory.CSP,
+                    "Content-Security-Policy header missing",
+                    detail: "No CSP header. XSS attacks lack browser-level mitigation.",
+                    url: baseUrl,
+                    remediation: "Implement a strict CSP: default-src 'none'; script-src 'self'; etc.",
+                    impact: 5.0, confidence: 0.99,
+                    vulnType: "missing_csp"));
+                return findings;
+            }
+
+            // CSP is present — audit for weaknesses
+            if (Regex.IsMatch(csp, @"script-src\s+['\""*]?\*"))
+            {
+                findings.Add(Finding.Create(
+                    Severity.High, FindingCategory.CSP,
+                    "Wildcard script-src — CSP is effectively disabled",
+                    detail: "script-src: * allows any external script to execute.",
+                    url: baseUrl,
+                    remediation: "Remove wildcard from script-src. Use 'self' or specific origins.",
+                    impact: 5.0, confidence: 0.99, vulnType: "weak_csp"));
+            }
+
+            var weaknesses = new[]
+            {
+                ("'unsafe-inline'", "Weak CSP: 'unsafe-inline' allows inline script execution (XSS bypass)", 4.0),
+                ("'unsafe-eval'",   "Weak CSP: 'unsafe-eval' allows eval() — SSTI/XSS amplifier",         3.5),
+                ("data:",           "Weak CSP: data: URI in sources enables data exfiltration",            3.0),
+            };
+
+            foreach (var (token, title, impact) in weaknesses)
+            {
+                if (csp.Contains(token, StringComparison.OrdinalIgnoreCase))
+                {
+                    findings.Add(Finding.Create(
+                        Severity.Medium, FindingCategory.CSP,
+                        title,
+                        url: baseUrl,
+                        remediation: $"Remove '{token}' from CSP. Use nonces or hashes instead.",
+                        impact: impact, confidence: 0.99, vulnType: "weak_csp"));
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogDebug(ex, "[Vuln] CSP audit failed for {Url}", baseUrl);
+        }
+
+        return findings;
+    }
+
+    // ── HTTP Form Brute-Force ─────────────────────────────────────────────────
+
+    private async Task<List<Finding>> RunHttpFormBruteForceAsync(
+        ScanContext context, ScanConfiguration configuration, CancellationToken ct)
+    {
+        var findings = new List<Finding>();
+        if (!_toolRunner.IsAvailable("hydra")) return findings;
+
+        var forms = context.Get<List<Dictionary<string, string>>>("forms") ?? [];
+        var loginForms = forms.Where(f =>
+        {
+            var action = f.GetValueOrDefault("action", "").ToLowerInvariant();
+            return action.Contains("login") || action.Contains("signin")
+                || action.Contains("auth") || action.Contains("session");
+        }).Take(2).ToList();
+
+        if (loginForms.Count == 0) return findings;
+
+        const string userWordlist  = "/usr/share/seclists/Usernames/top-usernames-shortlist.txt";
+        const string passWordlist  = "/usr/share/seclists/Passwords/Common-Credentials/top-20-common-SSH-passwords.txt";
+
+        var userFile = File.Exists(userWordlist) ? userWordlist : null;
+        var passFile = File.Exists(passWordlist) ? passWordlist : null;
+        if (userFile is null || passFile is null) return findings;
+
+        foreach (var form in loginForms)
+        {
+            var action = form.GetValueOrDefault("action", "");
+            if (!Uri.TryCreate(action, UriKind.Absolute, out _)) continue;
+
+            var userField = form.Keys.FirstOrDefault(k =>
+                k.Contains("user", StringComparison.OrdinalIgnoreCase) ||
+                k.Contains("email", StringComparison.OrdinalIgnoreCase) ||
+                k.Contains("login", StringComparison.OrdinalIgnoreCase));
+            var passField = form.Keys.FirstOrDefault(k =>
+                k.Contains("pass", StringComparison.OrdinalIgnoreCase) ||
+                k.Contains("pwd", StringComparison.OrdinalIgnoreCase));
+
+            if (userField is null || passField is null) continue;
+
+            var formParams = $"{userField}=^USER^&{passField}=^PASS^:F=Invalid";
+            var (_, stdout, _) = await _toolRunner.RunAsync(
+                "hydra",
+                $"-L {userFile} -P {passFile} -t 4 -f {action} http-form-post \"{formParams}\"",
+                120, ct);
+
+            var credMatch = Regex.Match(stdout, @"login: (\S+)\s+password: (\S+)");
+            if (credMatch.Success)
+            {
+                findings.Add(Finding.Create(
+                    Severity.Critical, FindingCategory.BruteForce,
+                    $"HTTP login cracked at {action}: {credMatch.Groups[1].Value}:{credMatch.Groups[2].Value}",
+                    url: action,
+                    remediation: "Change credentials immediately. Implement account lockout, CAPTCHA, and MFA.",
+                    impact: 9.0, confidence: 0.98,
+                    vulnType: "weak_credentials", isConfirmed: true));
+            }
+        }
+
+        return findings;
+    }
+
     private static List<(string Url, Dictionary<string, string> Params)> BuildInjectableEndpoints(
         List<string> endpoints)
     {
@@ -545,6 +795,18 @@ public sealed class VulnDetectionScanModule : IScanModule
             ["PAN-OS", "GlobalProtect", "Palo Alto"],
             "Unauthenticated command injection → root RCE.",
             "Apply PAN-OS security update."),
+        ["CVE-2021-3156"] = new("Baron Samedit — sudo Heap Overflow LPE", "HIGH",
+            ["sudo", "sudoedit"],
+            "Heap overflow allows local privilege escalation to root.",
+            "Upgrade sudo to 1.9.5p2+."),
+        ["CVE-2022-27924"] = new("Zimbra CRLF Injection Credential Theft", "HIGH",
+            ["zimbra", "Zimbra"],
+            "Memcache poisoning via CRLF injection → plaintext credential theft.",
+            "Patch ZCS 8.8.15 P30 / 9.0.0 P23."),
+        ["CVE-2023-23397"] = new("Microsoft Outlook Zero-Click NTLM Hash Theft", "CRITICAL",
+            ["Microsoft Outlook", "Exchange", "SMTP"],
+            "Zero-click UNC path forces Net-NTLMv2 hash leak without user interaction.",
+            "Apply March 2023 Outlook patch (KB5023374)."),
     };
 }
 

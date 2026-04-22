@@ -14,6 +14,7 @@ public sealed class ScanOrchestrator : IScanOrchestrator
     private readonly ReconScanModule _reconModule;
     private readonly WebAnalysisScanModule _webModule;
     private readonly VulnDetectionScanModule _vulnModule;
+    private readonly BrowserScanModule _browserModule;
     private readonly IntelligenceEngineScanModule _intelligenceModule;
     private readonly ILogger<ScanOrchestrator> _logger;
 
@@ -23,6 +24,7 @@ public sealed class ScanOrchestrator : IScanOrchestrator
         ReconScanModule reconModule,
         WebAnalysisScanModule webModule,
         VulnDetectionScanModule vulnModule,
+        BrowserScanModule browserModule,
         IntelligenceEngineScanModule intelligenceModule,
         ILogger<ScanOrchestrator> logger)
     {
@@ -31,6 +33,7 @@ public sealed class ScanOrchestrator : IScanOrchestrator
         _reconModule = reconModule;
         _webModule = webModule;
         _vulnModule = vulnModule;
+        _browserModule = browserModule;
         _intelligenceModule = intelligenceModule;
         _logger = logger;
     }
@@ -138,7 +141,10 @@ public sealed class ScanOrchestrator : IScanOrchestrator
             pipeline.Add((_webModule, "Web Analysis", 40));
 
         if (config.RunVuln)
-            pipeline.Add((_vulnModule, "Vulnerability Detection", 20));
+            pipeline.Add((_vulnModule, "Vulnerability Detection", 15));
+
+        if (config.RunWeb)
+            pipeline.Add((_browserModule, "Browser/DOM Analysis", 15));
 
         // Intelligence always runs last
         pipeline.Add((_intelligenceModule, "Intelligence Analysis", 10));

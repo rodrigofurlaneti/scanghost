@@ -2,6 +2,7 @@ using FluentAssertions;
 using GhostScan.Domain.Aggregates.Scans;
 using GhostScan.Domain.Entities;
 using GhostScan.Domain.ValueObjects;
+using Xunit;
 
 namespace GhostScan.Domain.Tests;
 

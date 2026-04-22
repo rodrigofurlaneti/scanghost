@@ -3,6 +3,7 @@ using FluentValidation;
 using GhostScan.Application.Commands.StartScan;
 using GhostScan.Application.DTOs;
 using GhostScan.Application.Validators;
+using Xunit;
 
 namespace GhostScan.Application.Tests;
 

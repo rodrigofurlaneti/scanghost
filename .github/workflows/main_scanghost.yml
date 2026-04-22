@@ -12,6 +12,11 @@ jobs:
     if: contains(github.event.head_commit.message, '[skip backend]') == false
     runs-on: ubuntu-latest
     name: Backend Build & Deploy
+    
+    defaults:
+      run:
+        working-directory: backend
+
     steps:
       - uses: actions/checkout@v4
 
@@ -20,14 +25,17 @@ jobs:
         with:
           dotnet-version: '8.x'
 
+      - name: List Files (Debug)
+        run: ls -R
+
       - name: Restore dependencies
-        run: dotnet restore backend/GhostScan.sln
+        run: dotnet restore GhostScan.sln
 
       - name: Build
-        run: dotnet build backend/GhostScan.sln --configuration Release --no-restore
+        run: dotnet build GhostScan.sln --configuration Release --no-restore
 
       - name: Publish
-        run: dotnet publish backend/src/GhostScan.Api/GhostScan.Api.csproj -c Release -o ./publish_api
+        run: dotnet publish src/GhostScan.Api/GhostScan.Api.csproj -c Release -o ../publish_api
 
       - name: Login to Azure
         uses: azure/login@v2

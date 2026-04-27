@@ -286,6 +286,14 @@ public sealed class WebAnalysisScanModule : IScanModule
         var findings = new List<Finding>();
         var semaphore = new SemaphoreSlim(Math.Max(1, maxConcurrency));
 
+        // ── SPA false-positive guard ─────────────────────────────────────────────
+        // Azure Static Web Apps, Netlify, Vercel, etc. serve index.html (HTTP 200)
+        // for ALL unmatched routes via their navigationFallback / SPA routing rules.
+        // We fetch the root page first so we can detect when a probed path just
+        // returns the same HTML shell instead of the actual requested file.
+        var (rootBody, rootLength) = await FetchRootBodyFingerprintAsync(
+            baseUrl, httpClient, cancellationToken);
+
         var tasks = InterestingPaths.Select(async path =>
         {
             await semaphore.WaitAsync(cancellationToken);
@@ -296,14 +304,38 @@ public sealed class WebAnalysisScanModule : IScanModule
 
                 if (response.IsSuccessStatusCode)
                 {
+                    // Read body once — used for both SPA detection and content verification
+                    var body = await response.Content.ReadAsStringAsync(cancellationToken);
+
+                    // ── SPA fallback filter ──────────────────────────────────────────
+                    // If the response body is identical (or nearly identical) to the root
+                    // page, the server is returning index.html as a catch-all, not the
+                    // actual file we asked for. Skip — this is a false positive.
+                    if (IsSpaFallback(body, rootBody, rootLength))
+                        return ((string?)null, (Finding?)null);
+
+                    // ── Content verification ─────────────────────────────────────────
+                    // Require that the body matches what we'd actually expect from this
+                    // file type. Eliminates custom 200 error pages and soft 404s.
+                    if (!IsContentVerifiedForPath(path, body))
+                        return ((string?)null, (Finding?)null);
+
                     endpoints.Add(url);
+
+                    // ── Special: .NET appsettings.json — embed content as evidence ──
+                    if (path.Contains("appsettings", StringComparison.OrdinalIgnoreCase)
+                        && path.EndsWith(".json", StringComparison.OrdinalIgnoreCase))
+                    {
+                        return (url, CreateAppsettingsFinding(path, url, body));
+                    }
+
                     var finding = CreateFindingForSensitivePath(path, url, (int)response.StatusCode);
                     if (finding is not null)
                         return (url, finding);
                 }
                 else if ((int)response.StatusCode == 403)
                 {
-                    // 403 means it exists but is protected — still interesting
+                    // 403 means the resource exists but is protected — still noteworthy
                     endpoints.Add(url);
                 }
             }
@@ -323,6 +355,191 @@ public sealed class WebAnalysisScanModule : IScanModule
         }
 
         return (endpoints, findings);
+    }
+
+    /// <summary>
+    /// Fetches the root URL body to use as a fingerprint for SPA fallback detection.
+    /// Returns (body, length). On network failure returns empty values so that the
+    /// SPA guard degrades gracefully (no false negatives).
+    /// </summary>
+    private static async Task<(string Body, int Length)> FetchRootBodyFingerprintAsync(
+        string baseUrl, HttpClient httpClient, CancellationToken ct)
+    {
+        try
+        {
+            var response = await httpClient.GetAsync(baseUrl.TrimEnd('/') + "/", ct);
+            if (response.IsSuccessStatusCode)
+            {
+                var body = await response.Content.ReadAsStringAsync(ct);
+                return (body, body.Length);
+            }
+        }
+        catch { }
+        return (string.Empty, 0);
+    }
+
+    /// <summary>
+    /// Returns true when the probed path's response body appears to be the SPA
+    /// index.html fallback rather than the actual requested file.
+    /// </summary>
+    private static bool IsSpaFallback(string body, string rootBody, int rootLength)
+    {
+        if (string.IsNullOrEmpty(rootBody) || rootLength == 0)
+            return false;
+
+        // Exact match — most common with Azure Static Web Apps
+        if (body == rootBody)
+            return true;
+
+        // Within 2 % of root length AND first 200 chars match — handles minor
+        // dynamic injections (nonce values, timestamps) in the shell HTML.
+        if (Math.Abs(body.Length - rootLength) < rootLength * 0.02)
+        {
+            var rootPrefix = rootBody.Length > 200 ? rootBody[..200] : rootBody;
+            var bodyPrefix = body.Length   > 200 ? body[..200]   : body;
+            if (string.Equals(rootPrefix, bodyPrefix, StringComparison.Ordinal))
+                return true;
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// Verifies that the response body actually matches the content signature
+    /// expected for the given path. Returns false for HTML error/redirect pages,
+    /// soft 404s, and any response that doesn't look like the claimed file type.
+    /// </summary>
+    private static bool IsContentVerifiedForPath(string path, string body)
+    {
+        var trimmed = body.TrimStart();
+        var lower   = path.ToLowerInvariant();
+
+        // Git objects
+        if (lower.EndsWith("/.git/head"))
+            return trimmed.StartsWith("ref: ", StringComparison.Ordinal)
+                || Regex.IsMatch(trimmed.Trim(), @"^[0-9a-f]{40}$");
+
+        if (lower.Contains("/.git/config"))
+            return trimmed.StartsWith("[", StringComparison.Ordinal);
+
+        // Environment files — at least one KEY=VALUE line
+        if (lower.Contains(".env"))
+            return Regex.IsMatch(body, @"(?m)^\w[\w\d_]*\s*=", RegexOptions.Multiline);
+
+        // .NET configuration files — must be a JSON object
+        if (lower.Contains("appsettings") && lower.EndsWith(".json"))
+            return trimmed.StartsWith("{") && body.Contains(":");
+
+        // XML-based config / map files
+        if (lower.EndsWith("web.config") || lower.EndsWith("crossdomain.xml")
+            || lower.EndsWith("sitemap.xml"))
+            return trimmed.StartsWith("<");
+
+        // SQL dumps
+        if (lower.EndsWith(".sql") || lower.Contains("dump") || lower.Contains("backup"))
+            return body.Contains("CREATE TABLE", StringComparison.OrdinalIgnoreCase)
+                || body.Contains("INSERT INTO",  StringComparison.OrdinalIgnoreCase)
+                || body.Contains("-- MySQL",     StringComparison.OrdinalIgnoreCase)
+                || body.Contains("PGDUMP",       StringComparison.OrdinalIgnoreCase);
+
+        // PHP files
+        if (lower.EndsWith(".php"))
+            return body.Contains("<?php",       StringComparison.OrdinalIgnoreCase)
+                || body.Contains("PHP Version", StringComparison.OrdinalIgnoreCase);
+
+        // htpasswd (user:hash lines)
+        if (lower.EndsWith(".htpasswd"))
+            return Regex.IsMatch(body, @"^\w+:[^\s]+$", RegexOptions.Multiline);
+
+        // htaccess (Apache directives)
+        if (lower.EndsWith(".htaccess"))
+            return body.Contains("RewriteRule",  StringComparison.OrdinalIgnoreCase)
+                || body.Contains("Options ",     StringComparison.OrdinalIgnoreCase)
+                || body.Contains("Allow from",   StringComparison.OrdinalIgnoreCase);
+
+        // robots.txt
+        if (lower.EndsWith("robots.txt"))
+            return body.Contains("User-agent:", StringComparison.OrdinalIgnoreCase)
+                || body.Contains("Disallow:",   StringComparison.OrdinalIgnoreCase);
+
+        // Swagger / OpenAPI
+        if (lower.EndsWith("swagger.json") || lower.EndsWith("openapi.json")
+            || lower.EndsWith("api-docs"))
+            return trimmed.StartsWith("{")
+                && (body.Contains("\"swagger\"") || body.Contains("\"openapi\""));
+
+        // .DS_Store binary
+        if (lower.EndsWith(".ds_store"))
+            return body.StartsWith("\0\0\0", StringComparison.Ordinal)
+                || body.Contains("Bud1");
+
+        // No specific check defined for this path — accept the 200 as-is
+        // (preserves original behaviour for paths not in the list above)
+        return true;
+    }
+
+    /// <summary>
+    /// Creates a Critical finding for an exposed .NET appsettings.json, embedding
+    /// a redacted copy of the configuration as evidence so analysts can immediately
+    /// see which credentials or settings were exposed without leaving the report.
+    /// </summary>
+    private static Finding CreateAppsettingsFinding(string path, string url, string body)
+    {
+        var evidence = BuildRedactedAppsettings(body);
+
+        return Finding.Create(
+            Severity.Critical, FindingCategory.Web,
+            $"Sensitive configuration file exposed: {path}",
+            detail: "The .NET application settings file is publicly accessible. " +
+                    "This may expose database connection strings, JWT secrets, API keys, " +
+                    "and other sensitive configuration values.",
+            url: url,
+            evidence: evidence,
+            remediation: "Block access to appsettings*.json via web server rules or static-site " +
+                         "routing configuration. Rotate any exposed credentials immediately " +
+                         "(database password, JWT secret key, API client secrets). " +
+                         "Move secrets to environment variables or Azure Key Vault.",
+            impact: 10.0, confidence: 0.99,
+            vulnType: "appsettings_exposed",
+            isConfirmed: true);
+    }
+
+    /// <summary>
+    /// Returns the appsettings JSON with secret values replaced by [REDACTED],
+    /// preserving key names so analysts know exactly what was exposed.
+    /// </summary>
+    private static string BuildRedactedAppsettings(string json)
+    {
+        try
+        {
+            var secretKeywords = new[]
+            {
+                "password", "pwd", "secret", "key", "token", "connectionstring",
+                "clientsecret", "apikey", "credential", "certbase64", "keybase64",
+                "accesskey", "privatekey",
+            };
+
+            // Redact string values whose key name contains a secret keyword
+            var redacted = Regex.Replace(
+                json,
+                @"""([^""]+)""\s*:\s*""([^""]*)""",
+                m =>
+                {
+                    var keyLower = m.Groups[1].Value.ToLowerInvariant();
+                    return secretKeywords.Any(kw => keyLower.Contains(kw))
+                        ? $"\"{m.Groups[1].Value}\": \"[REDACTED]\""
+                        : m.Value;
+                },
+                RegexOptions.IgnoreCase);
+
+            return redacted.Length > 4000
+                ? redacted[..4000] + "\n... (truncated)"
+                : redacted;
+        }
+        catch
+        {
+            return "(could not parse configuration — raw length: " + json.Length + " bytes)";
+        }
     }
 
     private static Finding? CreateFindingForSensitivePath(string path, string url, int statusCode)
@@ -1055,53 +1272,28 @@ public sealed class WebAnalysisScanModule : IScanModule
         }
 
         var (_, stdout, _) = await _toolRunner.RunAsync(
-            "nikto", $"-h {baseUrl} -Format json -nointeractive -C all", 300, ct);
+            "nikto", $"-h {baseUrl} -Format json -nointeractive -timeout 10", 300, ct);
 
         try
         {
-            // Try JSON parse first
             using var doc = System.Text.Json.JsonDocument.Parse(stdout);
-            var items = doc.RootElement
-                .GetProperty("vulnerabilities")
-                .EnumerateArray();
-
-            foreach (var item in items)
+            if (doc.RootElement.TryGetProperty("vulnerabilities", out var vulns))
             {
-                var msg = item.TryGetProperty("msg", out var m) ? m.GetString() ?? "" : "";
-                if (string.IsNullOrWhiteSpace(msg)) continue;
-
-                var osvdb = item.TryGetProperty("OSVDB", out var o) ? o.GetString() ?? "" : "";
-                var uri   = item.TryGetProperty("uri", out var u) ? u.GetString() ?? baseUrl : baseUrl;
-
-                var sev = msg.Contains("outdated", StringComparison.OrdinalIgnoreCase)
-                       || msg.Contains("vulnerable", StringComparison.OrdinalIgnoreCase)
-                    ? Severity.High : Severity.Medium;
-
-                findings.Add(Finding.Create(
-                    sev, FindingCategory.Web,
-                    $"Nikto: {msg[..Math.Min(msg.Length, 120)]}",
-                    detail: osvdb.Length > 0 ? $"OSVDB-{osvdb}: {msg}" : msg,
-                    url: uri.StartsWith("http") ? uri : $"{baseUrl.TrimEnd('/')}{uri}",
-                    remediation: "Apply vendor patches and remove unnecessary services.",
-                    impact: sev == Severity.High ? 6.0 : 4.0, confidence: 0.75));
+                foreach (var vuln in vulns.EnumerateArray())
+                {
+                    var msg = vuln.TryGetProperty("msg", out var m) ? m.GetString() ?? "" : "";
+                    var url = vuln.TryGetProperty("url", out var u) ? u.GetString() : baseUrl;
+                    if (!string.IsNullOrEmpty(msg))
+                        findings.Add(Finding.Create(
+                            Severity.Medium, FindingCategory.Web,
+                            $"Nikto: {msg}",
+                            url: url,
+                            remediation: "Review Nikto finding and apply appropriate hardening.",
+                            impact: 5.0, confidence: 0.80));
+                }
             }
         }
-        catch
-        {
-            // Fallback: line-by-line parse
-            foreach (var line in stdout.Split('\n', StringSplitOptions.RemoveEmptyEntries))
-            {
-                if (!line.Contains("+ ")) continue;
-                var msg = line.TrimStart('+', ' ');
-                if (msg.Length < 10) continue;
-
-                findings.Add(Finding.Create(
-                    Severity.Medium, FindingCategory.Web,
-                    $"Nikto: {msg[..Math.Min(msg.Length, 120)]}",
-                    url: baseUrl,
-                    impact: 4.0, confidence: 0.70));
-            }
-        }
+        catch { }
 
         _logger.LogInformation("[Web] Nikto: {Count} findings", findings.Count);
         return findings;

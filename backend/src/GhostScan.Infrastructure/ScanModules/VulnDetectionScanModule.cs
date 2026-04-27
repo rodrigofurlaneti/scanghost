@@ -645,8 +645,23 @@ public sealed class VulnDetectionScanModule : IScanModule
                 return findings;
             }
 
+            // ── Parse CSP into per-directive dictionary ─────────────────────────────
+            // A raw Contains() search on the full CSP string produces false positives:
+            // e.g. "data:" in "img-src 'self' data:" would incorrectly trigger the
+            // "data: URI in script-src" finding. We must check each directive
+            // individually so that permissive tokens in safe directives (img-src,
+            // font-src, media-src) do not pollute the script execution analysis.
+            var directives = ParseCspDirectives(csp);
+
+            // Resolve the effective script execution policy:
+            // script-src takes precedence; fall back to default-src if absent.
+            var scriptSrc = directives.GetValueOrDefault("script-src")
+                         ?? directives.GetValueOrDefault("default-src")
+                         ?? string.Empty;
+
             // CSP is present — audit for weaknesses
-            if (Regex.IsMatch(csp, @"script-src\s+['\""*]?\*"))
+            if (Regex.IsMatch(csp, @"script-src\s+['\""*]?\*")
+                || (scriptSrc.Trim() == "*"))
             {
                 findings.Add(Finding.Create(
                     Severity.High, FindingCategory.CSP,
@@ -657,16 +672,18 @@ public sealed class VulnDetectionScanModule : IScanModule
                     impact: 5.0, confidence: 0.99, vulnType: "weak_csp"));
             }
 
-            var weaknesses = new[]
+            // Check dangerous tokens ONLY in the effective script-src / default-src —
+            // never in directives like img-src, font-src, or style-src.
+            var scriptSrcWeaknesses = new[]
             {
-                ("'unsafe-inline'", "Weak CSP: 'unsafe-inline' in script-src — inline JS permitted",    "Harden CSP to remove unsafe directives.", 4.0),
-                ("'unsafe-eval'",   "Weak CSP: 'unsafe-eval' in script-src — eval() permitted",         "Harden CSP to remove unsafe directives.", 3.5),
-                ("data:",           "Weak CSP: data: URI in script-src — data exfiltration possible",    "Harden CSP to remove unsafe directives.", 3.0),
+                ("'unsafe-inline'", "Weak CSP: 'unsafe-inline' in script-src — inline JS permitted",   "Remove 'unsafe-inline' from script-src. Use nonces or hashes instead.", 4.0),
+                ("'unsafe-eval'",   "Weak CSP: 'unsafe-eval' in script-src — eval() permitted",        "Remove 'unsafe-eval' from script-src.", 3.5),
+                ("data:",           "Weak CSP: data: URI in script-src — data exfiltration possible",   "Remove data: from script-src.", 3.0),
             };
 
-            foreach (var (token, title, remediation, impact) in weaknesses)
+            foreach (var (token, title, remediation, impact) in scriptSrcWeaknesses)
             {
-                if (csp.Contains(token, StringComparison.OrdinalIgnoreCase))
+                if (scriptSrc.Contains(token, StringComparison.OrdinalIgnoreCase))
                 {
                     findings.Add(Finding.Create(
                         Severity.Medium, FindingCategory.CSP,
@@ -683,6 +700,44 @@ public sealed class VulnDetectionScanModule : IScanModule
         }
 
         return findings;
+    }
+
+    /// <summary>
+    /// Parses a Content-Security-Policy header value into a dictionary keyed by
+    /// directive name (lower-case), with the directive's value as the entry.
+    /// Example: "script-src 'self' 'unsafe-inline'; img-src 'self' data:"
+    ///   → { "script-src": "'self' 'unsafe-inline'", "img-src": "'self' data:" }
+    ///
+    /// This allows per-directive checks instead of searching the entire CSP string,
+    /// which would produce false positives (e.g. "data:" in img-src triggering a
+    /// "data: in script-src" finding).
+    /// </summary>
+    private static Dictionary<string, string> ParseCspDirectives(string csp)
+    {
+        var result = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        if (string.IsNullOrWhiteSpace(csp))
+            return result;
+
+        foreach (var segment in csp.Split(';', StringSplitOptions.RemoveEmptyEntries))
+        {
+            var trimmed = segment.Trim();
+            if (string.IsNullOrEmpty(trimmed)) continue;
+
+            var spaceIndex = trimmed.IndexOf(' ');
+            if (spaceIndex < 0)
+            {
+                // Directive with no value (e.g. "upgrade-insecure-requests")
+                result[trimmed.ToLowerInvariant()] = string.Empty;
+            }
+            else
+            {
+                var directiveName  = trimmed[..spaceIndex].ToLowerInvariant();
+                var directiveValue = trimmed[(spaceIndex + 1)..].Trim();
+                result[directiveName] = directiveValue;
+            }
+        }
+
+        return result;
     }
 
     // ── HTTP Form Brute-Force ─────────────────────────────────────────────────

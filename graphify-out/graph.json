@@ -9,8 +9,17 @@
       "source_file": "backend/src/GhostScan.Api/Program.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_api_program_cs",
-      "community": 54,
+      "community": 61,
       "norm_label": "program.cs"
+    },
+    {
+      "label": "playwright.ps1",
+      "file_type": "code",
+      "source_file": "backend/src/GhostScan.Api/bin/Debug/net8.0/playwright.ps1",
+      "source_location": "L1",
+      "id": "backend_src_ghostscan_api_bin_debug_net8_0_playwright_ps1",
+      "community": 62,
+      "norm_label": "playwright.ps1"
     },
     {
       "label": "ScansController.cs",
@@ -18,7 +27,7 @@
       "source_file": "backend/src/GhostScan.Api/Controllers/ScansController.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_api_controllers_scanscontroller_cs",
-      "community": 22,
+      "community": 23,
       "norm_label": "scanscontroller.cs"
     },
     {
@@ -27,7 +36,7 @@
       "source_file": "backend/src/GhostScan.Api/Controllers/ScansController.cs",
       "source_location": "L16",
       "id": "controllers_scanscontroller_scanscontroller",
-      "community": 22,
+      "community": 23,
       "norm_label": "scanscontroller"
     },
     {
@@ -36,7 +45,7 @@
       "source_file": "",
       "source_location": "",
       "id": "controllerbase",
-      "community": 22,
+      "community": 23,
       "norm_label": "controllerbase"
     },
     {
@@ -45,7 +54,7 @@
       "source_file": "backend/src/GhostScan.Api/Controllers/ScansController.cs",
       "source_location": "L21",
       "id": "imediator",
-      "community": 22,
+      "community": 23,
       "norm_label": "imediator"
     },
     {
@@ -54,7 +63,7 @@
       "source_file": "backend/src/GhostScan.Api/Controllers/ScansController.cs",
       "source_location": "L35",
       "id": "controllers_scanscontroller_scanscontroller_startscan",
-      "community": 22,
+      "community": 23,
       "norm_label": ".startscan()"
     },
     {
@@ -63,7 +72,7 @@
       "source_file": "backend/src/GhostScan.Api/Controllers/ScansController.cs",
       "source_location": "L58",
       "id": "controllers_scanscontroller_scanscontroller_getscanstatus",
-      "community": 22,
+      "community": 23,
       "norm_label": ".getscanstatus()"
     },
     {
@@ -72,7 +81,7 @@
       "source_file": "backend/src/GhostScan.Api/Controllers/ScansController.cs",
       "source_location": "L75",
       "id": "controllers_scanscontroller_scanscontroller_getreport",
-      "community": 22,
+      "community": 23,
       "norm_label": ".getreport()"
     },
     {
@@ -81,7 +90,7 @@
       "source_file": "backend/src/GhostScan.Api/Controllers/ScansController.cs",
       "source_location": "L109",
       "id": "controllers_scanscontroller_scanscontroller_cancelscan",
-      "community": 22,
+      "community": 23,
       "norm_label": ".cancelscan()"
     },
     {
@@ -90,7 +99,7 @@
       "source_file": "backend/src/GhostScan.Api/Controllers/ScansController.cs",
       "source_location": "L124",
       "id": "controllers_scanscontroller_scanscontroller_gethistory",
-      "community": 22,
+      "community": 23,
       "norm_label": ".gethistory()"
     },
     {
@@ -99,7 +108,7 @@
       "source_file": "backend/src/GhostScan.Api/Controllers/ScansController.cs",
       "source_location": "L140",
       "id": "controllers_scanscontroller_scanscontroller_quickscan",
-      "community": 22,
+      "community": 23,
       "norm_label": ".quickscan()"
     },
     {
@@ -108,7 +117,7 @@
       "source_file": "backend/src/GhostScan.Api/Controllers/ScansController.cs",
       "source_location": "L177",
       "id": "controllers_scanscontroller_startscanresponse",
-      "community": 22,
+      "community": 23,
       "norm_label": "startscanresponse"
     },
     {
@@ -279,7 +288,7 @@
       "source_file": "backend/src/GhostScan.Api/obj/Debug/net8.0/GhostScan.Api.AssemblyInfo.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_api_obj_debug_net8_0_ghostscan_api_assemblyinfo_cs",
-      "community": 55,
+      "community": 63,
       "norm_label": "ghostscan.api.assemblyinfo.cs"
     },
     {
@@ -288,7 +297,7 @@
       "source_file": "backend/src/GhostScan.Api/obj/Debug/net8.0/GhostScan.Api.GlobalUsings.g.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_api_obj_debug_net8_0_ghostscan_api_globalusings_g_cs",
-      "community": 56,
+      "community": 64,
       "norm_label": "ghostscan.api.globalusings.g.cs"
     },
     {
@@ -297,7 +306,7 @@
       "source_file": "backend/src/GhostScan.Api/obj/Debug/net8.0/GhostScan.Api.MvcApplicationPartsAssemblyInfo.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_api_obj_debug_net8_0_ghostscan_api_mvcapplicationpartsassemblyinfo_cs",
-      "community": 57,
+      "community": 65,
       "norm_label": "ghostscan.api.mvcapplicationpartsassemblyinfo.cs"
     },
     {
@@ -306,7 +315,7 @@
       "source_file": "backend/src/GhostScan.Api/obj/Release/net8.0/GhostScan.Api.AssemblyInfo.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_api_obj_release_net8_0_ghostscan_api_assemblyinfo_cs",
-      "community": 58,
+      "community": 66,
       "norm_label": "ghostscan.api.assemblyinfo.cs"
     },
     {
@@ -315,7 +324,7 @@
       "source_file": "backend/src/GhostScan.Api/obj/Release/net8.0/GhostScan.Api.GlobalUsings.g.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_api_obj_release_net8_0_ghostscan_api_globalusings_g_cs",
-      "community": 59,
+      "community": 67,
       "norm_label": "ghostscan.api.globalusings.g.cs"
     },
     {
@@ -324,7 +333,7 @@
       "source_file": "backend/src/GhostScan.Application/Behaviors/ValidationPipelineBehavior.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_application_behaviors_validationpipelinebehavior_cs",
-      "community": 29,
+      "community": 31,
       "norm_label": "validationpipelinebehavior.cs"
     },
     {
@@ -333,7 +342,7 @@
       "source_file": "backend/src/GhostScan.Application/Behaviors/ValidationPipelineBehavior.cs",
       "source_location": "L11",
       "id": "behaviors_validationpipelinebehavior_validationpipelinebehavior",
-      "community": 29,
+      "community": 31,
       "norm_label": "validationpipelinebehavior"
     },
     {
@@ -342,7 +351,7 @@
       "source_file": "",
       "source_location": "",
       "id": "ipipelinebehavior",
-      "community": 29,
+      "community": 31,
       "norm_label": "ipipelinebehavior"
     },
     {
@@ -351,7 +360,7 @@
       "source_file": "backend/src/GhostScan.Application/Behaviors/ValidationPipelineBehavior.cs",
       "source_location": "L15",
       "id": "ienumerable",
-      "community": 29,
+      "community": 31,
       "norm_label": "ienumerable"
     },
     {
@@ -360,7 +369,7 @@
       "source_file": "backend/src/GhostScan.Application/Behaviors/ValidationPipelineBehavior.cs",
       "source_location": "L22",
       "id": "behaviors_validationpipelinebehavior_validationpipelinebehavior_handle",
-      "community": 29,
+      "community": 31,
       "norm_label": ".handle()"
     },
     {
@@ -369,7 +378,7 @@
       "source_file": "backend/src/GhostScan.Application/Commands/CancelScan/CancelScanCommand.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_application_commands_cancelscan_cancelscancommand_cs",
-      "community": 60,
+      "community": 68,
       "norm_label": "cancelscancommand.cs"
     },
     {
@@ -423,7 +432,7 @@
       "source_file": "backend/src/GhostScan.Application/Commands/StartScan/StartScanCommand.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_application_commands_startscan_startscancommand_cs",
-      "community": 61,
+      "community": 69,
       "norm_label": "startscancommand.cs"
     },
     {
@@ -468,7 +477,7 @@
       "source_file": "backend/src/GhostScan.Application/DTOs/FindingDto.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_application_dtos_findingdto_cs",
-      "community": 46,
+      "community": 53,
       "norm_label": "findingdto.cs"
     },
     {
@@ -477,7 +486,7 @@
       "source_file": "backend/src/GhostScan.Application/DTOs/FindingDto.cs",
       "source_location": "L3",
       "id": "dtos_findingdto_findingdto",
-      "community": 46,
+      "community": 53,
       "norm_label": "findingdto"
     },
     {
@@ -486,7 +495,7 @@
       "source_file": "backend/src/GhostScan.Application/DTOs/ScanStatusDto.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_application_dtos_scanstatusdto_cs",
-      "community": 47,
+      "community": 54,
       "norm_label": "scanstatusdto.cs"
     },
     {
@@ -495,7 +504,7 @@
       "source_file": "backend/src/GhostScan.Application/DTOs/ScanStatusDto.cs",
       "source_location": "L3",
       "id": "dtos_scanstatusdto_scanstatusdto",
-      "community": 47,
+      "community": 54,
       "norm_label": "scanstatusdto"
     },
     {
@@ -504,7 +513,7 @@
       "source_file": "backend/src/GhostScan.Application/DTOs/StartScanRequest.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_application_dtos_startscanrequest_cs",
-      "community": 48,
+      "community": 55,
       "norm_label": "startscanrequest.cs"
     },
     {
@@ -513,7 +522,7 @@
       "source_file": "backend/src/GhostScan.Application/DTOs/StartScanRequest.cs",
       "source_location": "L3",
       "id": "dtos_startscanrequest_startscanrequest",
-      "community": 48,
+      "community": 55,
       "norm_label": "startscanrequest"
     },
     {
@@ -522,7 +531,7 @@
       "source_file": "backend/src/GhostScan.Application/DTOs/VulnerabilityReportDto.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_application_dtos_vulnerabilityreportdto_cs",
-      "community": 19,
+      "community": 18,
       "norm_label": "vulnerabilityreportdto.cs"
     },
     {
@@ -531,7 +540,7 @@
       "source_file": "backend/src/GhostScan.Application/DTOs/VulnerabilityReportDto.cs",
       "source_location": "L3",
       "id": "dtos_vulnerabilityreportdto_vulnerabilityreportdto",
-      "community": 19,
+      "community": 18,
       "norm_label": "vulnerabilityreportdto"
     },
     {
@@ -540,7 +549,7 @@
       "source_file": "backend/src/GhostScan.Application/DTOs/VulnerabilityReportDto.cs",
       "source_location": "L24",
       "id": "dtos_vulnerabilityreportdto_summarydto",
-      "community": 19,
+      "community": 18,
       "norm_label": "summarydto"
     },
     {
@@ -549,7 +558,7 @@
       "source_file": "backend/src/GhostScan.Application/DTOs/VulnerabilityReportDto.cs",
       "source_location": "L35",
       "id": "dtos_vulnerabilityreportdto_correlationdto",
-      "community": 19,
+      "community": 18,
       "norm_label": "correlationdto"
     },
     {
@@ -558,7 +567,7 @@
       "source_file": "backend/src/GhostScan.Application/DTOs/VulnerabilityReportDto.cs",
       "source_location": "L47",
       "id": "dtos_vulnerabilityreportdto_rankedtargetdto",
-      "community": 19,
+      "community": 18,
       "norm_label": "rankedtargetdto"
     },
     {
@@ -567,7 +576,7 @@
       "source_file": "backend/src/GhostScan.Application/DTOs/VulnerabilityReportDto.cs",
       "source_location": "L55",
       "id": "dtos_vulnerabilityreportdto_recommendationdto",
-      "community": 19,
+      "community": 18,
       "norm_label": "recommendationdto"
     },
     {
@@ -576,7 +585,7 @@
       "source_file": "backend/src/GhostScan.Application/DTOs/VulnerabilityReportDto.cs",
       "source_location": "L63",
       "id": "dtos_vulnerabilityreportdto_reconresultdto",
-      "community": 19,
+      "community": 18,
       "norm_label": "reconresultdto"
     },
     {
@@ -585,7 +594,7 @@
       "source_file": "backend/src/GhostScan.Application/DTOs/VulnerabilityReportDto.cs",
       "source_location": "L72",
       "id": "dtos_vulnerabilityreportdto_portinfodto",
-      "community": 19,
+      "community": 18,
       "norm_label": "portinfodto"
     },
     {
@@ -594,7 +603,7 @@
       "source_file": "backend/src/GhostScan.Application/DTOs/VulnerabilityReportDto.cs",
       "source_location": "L82",
       "id": "dtos_vulnerabilityreportdto_webanalysisresultdto",
-      "community": 19,
+      "community": 18,
       "norm_label": "webanalysisresultdto"
     },
     {
@@ -603,7 +612,7 @@
       "source_file": "backend/src/GhostScan.Application/DTOs/VulnerabilityReportDto.cs",
       "source_location": "L93",
       "id": "dtos_vulnerabilityreportdto_wafdetectiondto",
-      "community": 19,
+      "community": 18,
       "norm_label": "wafdetectiondto"
     },
     {
@@ -612,7 +621,7 @@
       "source_file": "backend/src/GhostScan.Application/DTOs/VulnerabilityReportDto.cs",
       "source_location": "L100",
       "id": "dtos_vulnerabilityreportdto_jssecretdto",
-      "community": 19,
+      "community": 18,
       "norm_label": "jssecretdto"
     },
     {
@@ -621,7 +630,7 @@
       "source_file": "backend/src/GhostScan.Application/DTOs/VulnerabilityReportDto.cs",
       "source_location": "L108",
       "id": "dtos_vulnerabilityreportdto_directorybruteresultdto",
-      "community": 19,
+      "community": 18,
       "norm_label": "directorybruteresultdto"
     },
     {
@@ -630,7 +639,7 @@
       "source_file": "backend/src/GhostScan.Application/DTOs/VulnerabilityReportDto.cs",
       "source_location": "L115",
       "id": "dtos_vulnerabilityreportdto_headerauditdto",
-      "community": 19,
+      "community": 18,
       "norm_label": "headerauditdto"
     },
     {
@@ -639,7 +648,7 @@
       "source_file": "backend/src/GhostScan.Application/DTOs/VulnerabilityReportDto.cs",
       "source_location": "L122",
       "id": "dtos_vulnerabilityreportdto_intelligenceresultdto",
-      "community": 19,
+      "community": 18,
       "norm_label": "intelligenceresultdto"
     },
     {
@@ -648,7 +657,7 @@
       "source_file": "backend/src/GhostScan.Application/obj/Debug/net8.0/GhostScan.Application.AssemblyInfo.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_application_obj_debug_net8_0_ghostscan_application_assemblyinfo_cs",
-      "community": 62,
+      "community": 70,
       "norm_label": "ghostscan.application.assemblyinfo.cs"
     },
     {
@@ -657,7 +666,7 @@
       "source_file": "backend/src/GhostScan.Application/obj/Debug/net8.0/GhostScan.Application.GlobalUsings.g.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_application_obj_debug_net8_0_ghostscan_application_globalusings_g_cs",
-      "community": 63,
+      "community": 71,
       "norm_label": "ghostscan.application.globalusings.g.cs"
     },
     {
@@ -666,7 +675,7 @@
       "source_file": "backend/src/GhostScan.Application/obj/Release/net8.0/GhostScan.Application.AssemblyInfo.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_application_obj_release_net8_0_ghostscan_application_assemblyinfo_cs",
-      "community": 64,
+      "community": 72,
       "norm_label": "ghostscan.application.assemblyinfo.cs"
     },
     {
@@ -675,7 +684,7 @@
       "source_file": "backend/src/GhostScan.Application/obj/Release/net8.0/GhostScan.Application.GlobalUsings.g.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_application_obj_release_net8_0_ghostscan_application_globalusings_g_cs",
-      "community": 65,
+      "community": 73,
       "norm_label": "ghostscan.application.globalusings.g.cs"
     },
     {
@@ -684,7 +693,7 @@
       "source_file": "backend/src/GhostScan.Application/Queries/GetScanHistory/GetScanHistoryQuery.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_application_queries_getscanhistory_getscanhistoryquery_cs",
-      "community": 66,
+      "community": 74,
       "norm_label": "getscanhistoryquery.cs"
     },
     {
@@ -720,7 +729,7 @@
       "source_file": "backend/src/GhostScan.Application/Queries/GetScanReport/GetScanReportQuery.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_application_queries_getscanreport_getscanreportquery_cs",
-      "community": 67,
+      "community": 75,
       "norm_label": "getscanreportquery.cs"
     },
     {
@@ -891,7 +900,7 @@
       "source_file": "backend/src/GhostScan.Application/Queries/GetScanStatus/GetScanStatusQuery.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_application_queries_getscanstatus_getscanstatusquery_cs",
-      "community": 68,
+      "community": 76,
       "norm_label": "getscanstatusquery.cs"
     },
     {
@@ -963,7 +972,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_domain_aggregates_scans_scan_cs",
-      "community": 10,
+      "community": 9,
       "norm_label": "scan.cs"
     },
     {
@@ -972,7 +981,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L8",
       "id": "scans_scan_scan",
-      "community": 10,
+      "community": 9,
       "norm_label": "scan"
     },
     {
@@ -981,7 +990,7 @@
       "source_file": "",
       "source_location": "",
       "id": "aggregateroot",
-      "community": 10,
+      "community": 9,
       "norm_label": "aggregateroot"
     },
     {
@@ -990,7 +999,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L10",
       "id": "findingcollection",
-      "community": 10,
+      "community": 9,
       "norm_label": "findingcollection"
     },
     {
@@ -1008,7 +1017,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L27",
       "id": "scans_scan_scan_setmoduledata",
-      "community": 10,
+      "community": 9,
       "norm_label": ".setmoduledata()"
     },
     {
@@ -1017,7 +1026,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L37",
       "id": "scans_scan_scan_create",
-      "community": 10,
+      "community": 9,
       "norm_label": ".create()"
     },
     {
@@ -1026,7 +1035,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L44",
       "id": "scans_scan_scan_start",
-      "community": 10,
+      "community": 9,
       "norm_label": ".start()"
     },
     {
@@ -1035,7 +1044,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L56",
       "id": "scans_scan_scan_updateprogress",
-      "community": 10,
+      "community": 9,
       "norm_label": ".updateprogress()"
     },
     {
@@ -1044,7 +1053,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L66",
       "id": "scans_scan_scan_addfinding",
-      "community": 10,
+      "community": 9,
       "norm_label": ".addfinding()"
     },
     {
@@ -1053,7 +1062,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L76",
       "id": "scans_scan_scan_addfindings",
-      "community": 10,
+      "community": 9,
       "norm_label": ".addfindings()"
     },
     {
@@ -1062,7 +1071,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L86",
       "id": "scans_scan_scan_complete",
-      "community": 10,
+      "community": 9,
       "norm_label": ".complete()"
     },
     {
@@ -1071,7 +1080,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L98",
       "id": "scans_scan_scan_fail",
-      "community": 10,
+      "community": 9,
       "norm_label": ".fail()"
     },
     {
@@ -1080,7 +1089,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L110",
       "id": "scans_scan_scan_cancel",
-      "community": 10,
+      "community": 9,
       "norm_label": ".cancel()"
     },
     {
@@ -1089,7 +1098,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L121",
       "id": "scans_scan_scan_getfindingsfiltered",
-      "community": 10,
+      "community": 9,
       "norm_label": ".getfindingsfiltered()"
     },
     {
@@ -1098,7 +1107,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L124",
       "id": "scans_scan_scan_getdeduplicatedfindings",
-      "community": 10,
+      "community": 9,
       "norm_label": ".getdeduplicatedfindings()"
     },
     {
@@ -1107,7 +1116,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L127",
       "id": "scans_scan_scan_getfindingcountsbyseverity",
-      "community": 10,
+      "community": 9,
       "norm_label": ".getfindingcountsbyseverity()"
     },
     {
@@ -1116,7 +1125,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L130",
       "id": "scans_scan_scan_hascriticalfindings",
-      "community": 10,
+      "community": 9,
       "norm_label": ".hascriticalfindings()"
     },
     {
@@ -1125,7 +1134,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L131",
       "id": "scans_scan_scan_hashighorabovefindings",
-      "community": 10,
+      "community": 9,
       "norm_label": ".hashighorabovefindings()"
     },
     {
@@ -1134,7 +1143,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L133",
       "id": "scans_scan_scan_iscomplete",
-      "community": 10,
+      "community": 9,
       "norm_label": ".iscomplete()"
     },
     {
@@ -1143,7 +1152,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L134",
       "id": "scans_scan_scan_isrunning",
-      "community": 10,
+      "community": 9,
       "norm_label": ".isrunning()"
     },
     {
@@ -1269,7 +1278,7 @@
       "source_file": "backend/src/GhostScan.Domain/Common/AggregateRoot.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_domain_common_aggregateroot_cs",
-      "community": 23,
+      "community": 24,
       "norm_label": "aggregateroot.cs"
     },
     {
@@ -1278,7 +1287,7 @@
       "source_file": "backend/src/GhostScan.Domain/Common/AggregateRoot.cs",
       "source_location": "L3",
       "id": "common_aggregateroot_aggregateroot",
-      "community": 23,
+      "community": 24,
       "norm_label": "aggregateroot"
     },
     {
@@ -1287,7 +1296,7 @@
       "source_file": "",
       "source_location": "",
       "id": "entity",
-      "community": 23,
+      "community": 24,
       "norm_label": "entity"
     },
     {
@@ -1296,7 +1305,7 @@
       "source_file": "backend/src/GhostScan.Domain/Common/Entity.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_domain_common_entity_cs",
-      "community": 14,
+      "community": 13,
       "norm_label": "entity.cs"
     },
     {
@@ -1305,7 +1314,7 @@
       "source_file": "backend/src/GhostScan.Domain/Common/Entity.cs",
       "source_location": "L3",
       "id": "common_entity_entity",
-      "community": 14,
+      "community": 13,
       "norm_label": "entity"
     },
     {
@@ -1314,7 +1323,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/Scope/ScopeEnforcer.cs",
       "source_location": "L17",
       "id": "list",
-      "community": 14,
+      "community": 13,
       "norm_label": "list"
     },
     {
@@ -1323,7 +1332,7 @@
       "source_file": "backend/src/GhostScan.Domain/Common/Entity.cs",
       "source_location": "L12",
       "id": "common_entity_entity_raisedomainevent",
-      "community": 10,
+      "community": 9,
       "norm_label": ".raisedomainevent()"
     },
     {
@@ -1332,7 +1341,7 @@
       "source_file": "backend/src/GhostScan.Domain/Common/Entity.cs",
       "source_location": "L15",
       "id": "common_entity_entity_cleardomainevents",
-      "community": 14,
+      "community": 13,
       "norm_label": ".cleardomainevents()"
     },
     {
@@ -1341,7 +1350,7 @@
       "source_file": "backend/src/GhostScan.Domain/Common/Entity.cs",
       "source_location": "L17",
       "id": "common_entity_entity_equals",
-      "community": 14,
+      "community": 13,
       "norm_label": ".equals()"
     },
     {
@@ -1350,7 +1359,7 @@
       "source_file": "backend/src/GhostScan.Domain/Common/Entity.cs",
       "source_location": "L24",
       "id": "common_entity_entity_gethashcode",
-      "community": 14,
+      "community": 13,
       "norm_label": ".gethashcode()"
     },
     {
@@ -1359,7 +1368,7 @@
       "source_file": "backend/src/GhostScan.Domain/Common/IDomainEvent.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_domain_common_idomainevent_cs",
-      "community": 49,
+      "community": 56,
       "norm_label": "idomainevent.cs"
     },
     {
@@ -1368,7 +1377,7 @@
       "source_file": "backend/src/GhostScan.Domain/Common/IDomainEvent.cs",
       "source_location": "L3",
       "id": "common_idomainevent_idomainevent",
-      "community": 49,
+      "community": 56,
       "norm_label": "idomainevent"
     },
     {
@@ -1377,7 +1386,7 @@
       "source_file": "backend/src/GhostScan.Domain/Common/Result.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_domain_common_result_cs",
-      "community": 35,
+      "community": 38,
       "norm_label": "result.cs"
     },
     {
@@ -1386,7 +1395,7 @@
       "source_file": "backend/src/GhostScan.Domain/Common/Result.cs",
       "source_location": "L3",
       "id": "common_result_result",
-      "community": 35,
+      "community": 38,
       "norm_label": "result"
     },
     {
@@ -1395,7 +1404,7 @@
       "source_file": "backend/src/GhostScan.Domain/Common/Result.cs",
       "source_location": "L15",
       "id": "common_result_result_success",
-      "community": 35,
+      "community": 38,
       "norm_label": ".success()"
     },
     {
@@ -1404,7 +1413,7 @@
       "source_file": "backend/src/GhostScan.Domain/Common/Result.cs",
       "source_location": "L16",
       "id": "common_result_result_failure",
-      "community": 35,
+      "community": 38,
       "norm_label": ".failure()"
     },
     {
@@ -1413,7 +1422,7 @@
       "source_file": "backend/src/GhostScan.Domain/Common/ValueObject.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_domain_common_valueobject_cs",
-      "community": 30,
+      "community": 32,
       "norm_label": "valueobject.cs"
     },
     {
@@ -1422,7 +1431,7 @@
       "source_file": "backend/src/GhostScan.Domain/Common/ValueObject.cs",
       "source_location": "L3",
       "id": "common_valueobject_valueobject",
-      "community": 30,
+      "community": 32,
       "norm_label": "valueobject"
     },
     {
@@ -1431,7 +1440,7 @@
       "source_file": "backend/src/GhostScan.Domain/Common/ValueObject.cs",
       "source_location": "L5",
       "id": "common_valueobject_valueobject_getequalitycomponents",
-      "community": 30,
+      "community": 32,
       "norm_label": ".getequalitycomponents()"
     },
     {
@@ -1440,7 +1449,7 @@
       "source_file": "backend/src/GhostScan.Domain/Common/ValueObject.cs",
       "source_location": "L7",
       "id": "common_valueobject_valueobject_equals",
-      "community": 30,
+      "community": 32,
       "norm_label": ".equals()"
     },
     {
@@ -1449,7 +1458,7 @@
       "source_file": "backend/src/GhostScan.Domain/Common/ValueObject.cs",
       "source_location": "L14",
       "id": "common_valueobject_valueobject_gethashcode",
-      "community": 30,
+      "community": 32,
       "norm_label": ".gethashcode()"
     },
     {
@@ -1458,7 +1467,7 @@
       "source_file": "backend/src/GhostScan.Domain/Entities/Finding.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_domain_entities_finding_cs",
-      "community": 23,
+      "community": 24,
       "norm_label": "finding.cs"
     },
     {
@@ -1467,7 +1476,7 @@
       "source_file": "backend/src/GhostScan.Domain/Entities/Finding.cs",
       "source_location": "L6",
       "id": "entities_finding_finding",
-      "community": 23,
+      "community": 24,
       "norm_label": "finding"
     },
     {
@@ -1476,7 +1485,7 @@
       "source_file": "backend/src/GhostScan.Domain/Entities/Finding.cs",
       "source_location": "L54",
       "id": "entities_finding_finding_create",
-      "community": 23,
+      "community": 24,
       "norm_label": ".create()"
     },
     {
@@ -1485,7 +1494,7 @@
       "source_file": "backend/src/GhostScan.Domain/Entities/Finding.cs",
       "source_location": "L80",
       "id": "entities_finding_finding_escalateseverity",
-      "community": 23,
+      "community": 24,
       "norm_label": ".escalateseverity()"
     },
     {
@@ -1494,7 +1503,7 @@
       "source_file": "backend/src/GhostScan.Domain/Entities/Finding.cs",
       "source_location": "L91",
       "id": "entities_finding_finding_confirmfinding",
-      "community": 23,
+      "community": 24,
       "norm_label": ".confirmfinding()"
     },
     {
@@ -1503,7 +1512,7 @@
       "source_file": "backend/src/GhostScan.Domain/Entities/Finding.cs",
       "source_location": "L96",
       "id": "entities_finding_finding_applycontextboost",
-      "community": 23,
+      "community": 24,
       "norm_label": ".applycontextboost()"
     },
     {
@@ -1512,7 +1521,7 @@
       "source_file": "backend/src/GhostScan.Domain/Entities/Finding.cs",
       "source_location": "L108",
       "id": "entities_finding_finding_meetsseveritythreshold",
-      "community": 23,
+      "community": 24,
       "norm_label": ".meetsseveritythreshold()"
     },
     {
@@ -1521,7 +1530,7 @@
       "source_file": "backend/src/GhostScan.Domain/Entities/Finding.cs",
       "source_location": "L111",
       "id": "entities_finding_finding_tostring",
-      "community": 23,
+      "community": 24,
       "norm_label": ".tostring()"
     },
     {
@@ -1530,7 +1539,7 @@
       "source_file": "backend/src/GhostScan.Domain/Entities/FindingCollection.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_domain_entities_findingcollection_cs",
-      "community": 14,
+      "community": 13,
       "norm_label": "findingcollection.cs"
     },
     {
@@ -1539,7 +1548,7 @@
       "source_file": "backend/src/GhostScan.Domain/Entities/FindingCollection.cs",
       "source_location": "L6",
       "id": "entities_findingcollection_findingcollection",
-      "community": 14,
+      "community": 13,
       "norm_label": "findingcollection"
     },
     {
@@ -1548,7 +1557,7 @@
       "source_file": "backend/src/GhostScan.Domain/Entities/FindingCollection.cs",
       "source_location": "L14",
       "id": "entities_findingcollection_findingcollection_add",
-      "community": 14,
+      "community": 13,
       "norm_label": ".add()"
     },
     {
@@ -1557,7 +1566,7 @@
       "source_file": "backend/src/GhostScan.Domain/Entities/FindingCollection.cs",
       "source_location": "L16",
       "id": "entities_findingcollection_findingcollection_addrange",
-      "community": 14,
+      "community": 13,
       "norm_label": ".addrange()"
     },
     {
@@ -1566,7 +1575,7 @@
       "source_file": "backend/src/GhostScan.Domain/Entities/FindingCollection.cs",
       "source_location": "L18",
       "id": "entities_findingcollection_findingcollection_filterbyseverity",
-      "community": 14,
+      "community": 13,
       "norm_label": ".filterbyseverity()"
     },
     {
@@ -1575,7 +1584,7 @@
       "source_file": "backend/src/GhostScan.Domain/Entities/FindingCollection.cs",
       "source_location": "L21",
       "id": "entities_findingcollection_findingcollection_filterbycategory",
-      "community": 14,
+      "community": 13,
       "norm_label": ".filterbycategory()"
     },
     {
@@ -1584,7 +1593,7 @@
       "source_file": "backend/src/GhostScan.Domain/Entities/FindingCollection.cs",
       "source_location": "L24",
       "id": "entities_findingcollection_findingcollection_orderedbyscore",
-      "community": 14,
+      "community": 13,
       "norm_label": ".orderedbyscore()"
     },
     {
@@ -1593,7 +1602,7 @@
       "source_file": "backend/src/GhostScan.Domain/Entities/FindingCollection.cs",
       "source_location": "L27",
       "id": "entities_findingcollection_findingcollection_countbyseverity",
-      "community": 14,
+      "community": 13,
       "norm_label": ".countbyseverity()"
     },
     {
@@ -1602,7 +1611,7 @@
       "source_file": "backend/src/GhostScan.Domain/Entities/FindingCollection.cs",
       "source_location": "L31",
       "id": "entities_findingcollection_findingcollection_countcritical",
-      "community": 14,
+      "community": 13,
       "norm_label": ".countcritical()"
     },
     {
@@ -1611,7 +1620,7 @@
       "source_file": "backend/src/GhostScan.Domain/Entities/FindingCollection.cs",
       "source_location": "L32",
       "id": "entities_findingcollection_findingcollection_counthighandabove",
-      "community": 14,
+      "community": 13,
       "norm_label": ".counthighandabove()"
     },
     {
@@ -1620,7 +1629,7 @@
       "source_file": "backend/src/GhostScan.Domain/Entities/FindingCollection.cs",
       "source_location": "L34",
       "id": "entities_findingcollection_findingcollection_deduplicated",
-      "community": 14,
+      "community": 13,
       "norm_label": ".deduplicated()"
     },
     {
@@ -1629,7 +1638,7 @@
       "source_file": "backend/src/GhostScan.Domain/Entities/FindingCollection.cs",
       "source_location": "L47",
       "id": "entities_findingcollection_findingcollection_from",
-      "community": 14,
+      "community": 13,
       "norm_label": ".from()"
     },
     {
@@ -1638,7 +1647,7 @@
       "source_file": "backend/src/GhostScan.Domain/Events/FindingDiscoveredEvent.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_domain_events_findingdiscoveredevent_cs",
-      "community": 69,
+      "community": 77,
       "norm_label": "findingdiscoveredevent.cs"
     },
     {
@@ -1647,7 +1656,7 @@
       "source_file": "backend/src/GhostScan.Domain/Events/ScanCancelledEvent.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_domain_events_scancancelledevent_cs",
-      "community": 70,
+      "community": 78,
       "norm_label": "scancancelledevent.cs"
     },
     {
@@ -1656,7 +1665,7 @@
       "source_file": "backend/src/GhostScan.Domain/Events/ScanCompletedEvent.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_domain_events_scancompletedevent_cs",
-      "community": 71,
+      "community": 79,
       "norm_label": "scancompletedevent.cs"
     },
     {
@@ -1665,7 +1674,7 @@
       "source_file": "backend/src/GhostScan.Domain/Events/ScanCreatedEvent.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_domain_events_scancreatedevent_cs",
-      "community": 72,
+      "community": 80,
       "norm_label": "scancreatedevent.cs"
     },
     {
@@ -1674,7 +1683,7 @@
       "source_file": "backend/src/GhostScan.Domain/Events/ScanFailedEvent.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_domain_events_scanfailedevent_cs",
-      "community": 73,
+      "community": 81,
       "norm_label": "scanfailedevent.cs"
     },
     {
@@ -1683,7 +1692,7 @@
       "source_file": "backend/src/GhostScan.Domain/Events/ScanProgressUpdatedEvent.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_domain_events_scanprogressupdatedevent_cs",
-      "community": 74,
+      "community": 82,
       "norm_label": "scanprogressupdatedevent.cs"
     },
     {
@@ -1692,7 +1701,7 @@
       "source_file": "backend/src/GhostScan.Domain/Events/ScanStartedEvent.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_domain_events_scanstartedevent_cs",
-      "community": 75,
+      "community": 83,
       "norm_label": "scanstartedevent.cs"
     },
     {
@@ -1701,7 +1710,7 @@
       "source_file": "backend/src/GhostScan.Domain/obj/Debug/net8.0/GhostScan.Domain.AssemblyInfo.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_domain_obj_debug_net8_0_ghostscan_domain_assemblyinfo_cs",
-      "community": 76,
+      "community": 84,
       "norm_label": "ghostscan.domain.assemblyinfo.cs"
     },
     {
@@ -1710,7 +1719,7 @@
       "source_file": "backend/src/GhostScan.Domain/obj/Debug/net8.0/GhostScan.Domain.GlobalUsings.g.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_domain_obj_debug_net8_0_ghostscan_domain_globalusings_g_cs",
-      "community": 77,
+      "community": 85,
       "norm_label": "ghostscan.domain.globalusings.g.cs"
     },
     {
@@ -1719,7 +1728,7 @@
       "source_file": "backend/src/GhostScan.Domain/obj/Release/net8.0/GhostScan.Domain.AssemblyInfo.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_domain_obj_release_net8_0_ghostscan_domain_assemblyinfo_cs",
-      "community": 78,
+      "community": 86,
       "norm_label": "ghostscan.domain.assemblyinfo.cs"
     },
     {
@@ -1728,7 +1737,7 @@
       "source_file": "backend/src/GhostScan.Domain/obj/Release/net8.0/GhostScan.Domain.GlobalUsings.g.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_domain_obj_release_net8_0_ghostscan_domain_globalusings_g_cs",
-      "community": 79,
+      "community": 87,
       "norm_label": "ghostscan.domain.globalusings.g.cs"
     },
     {
@@ -1737,7 +1746,7 @@
       "source_file": "backend/src/GhostScan.Domain/Repositories/IScanRepository.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_domain_repositories_iscanrepository_cs",
-      "community": 26,
+      "community": 28,
       "norm_label": "iscanrepository.cs"
     },
     {
@@ -1746,7 +1755,7 @@
       "source_file": "backend/src/GhostScan.Domain/Repositories/IScanRepository.cs",
       "source_location": "L5",
       "id": "repositories_iscanrepository_iscanrepository",
-      "community": 26,
+      "community": 28,
       "norm_label": "iscanrepository"
     },
     {
@@ -1755,7 +1764,7 @@
       "source_file": "backend/src/GhostScan.Domain/Repositories/IScanRepository.cs",
       "source_location": "L7",
       "id": "repositories_iscanrepository_iscanrepository_getbyidasync",
-      "community": 26,
+      "community": 28,
       "norm_label": ".getbyidasync()"
     },
     {
@@ -1764,7 +1773,7 @@
       "source_file": "backend/src/GhostScan.Domain/Repositories/IScanRepository.cs",
       "source_location": "L8",
       "id": "repositories_iscanrepository_iscanrepository_getallasync",
-      "community": 26,
+      "community": 28,
       "norm_label": ".getallasync()"
     },
     {
@@ -1773,7 +1782,7 @@
       "source_file": "backend/src/GhostScan.Domain/Repositories/IScanRepository.cs",
       "source_location": "L9",
       "id": "repositories_iscanrepository_iscanrepository_getbytargetasync",
-      "community": 26,
+      "community": 28,
       "norm_label": ".getbytargetasync()"
     },
     {
@@ -1782,7 +1791,7 @@
       "source_file": "backend/src/GhostScan.Domain/Repositories/IScanRepository.cs",
       "source_location": "L10",
       "id": "repositories_iscanrepository_iscanrepository_saveasync",
-      "community": 26,
+      "community": 28,
       "norm_label": ".saveasync()"
     },
     {
@@ -1791,7 +1800,7 @@
       "source_file": "backend/src/GhostScan.Domain/Repositories/IScanRepository.cs",
       "source_location": "L11",
       "id": "repositories_iscanrepository_iscanrepository_existsasync",
-      "community": 26,
+      "community": 28,
       "norm_label": ".existsasync()"
     },
     {
@@ -1800,7 +1809,7 @@
       "source_file": "backend/src/GhostScan.Domain/Services/IScanOrchestrator.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_domain_services_iscanorchestrator_cs",
-      "community": 41,
+      "community": 48,
       "norm_label": "iscanorchestrator.cs"
     },
     {
@@ -1809,7 +1818,7 @@
       "source_file": "backend/src/GhostScan.Domain/Services/IScanOrchestrator.cs",
       "source_location": "L5",
       "id": "services_iscanorchestrator_iscanorchestrator",
-      "community": 41,
+      "community": 48,
       "norm_label": "iscanorchestrator"
     },
     {
@@ -1818,7 +1827,7 @@
       "source_file": "backend/src/GhostScan.Domain/Services/IScanOrchestrator.cs",
       "source_location": "L7",
       "id": "services_iscanorchestrator_iscanorchestrator_executeasync",
-      "community": 41,
+      "community": 48,
       "norm_label": ".executeasync()"
     },
     {
@@ -1827,7 +1836,7 @@
       "source_file": "backend/src/GhostScan.Domain/Services/IScanProgressNotifier.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_domain_services_iscanprogressnotifier_cs",
-      "community": 31,
+      "community": 33,
       "norm_label": "iscanprogressnotifier.cs"
     },
     {
@@ -1836,7 +1845,7 @@
       "source_file": "backend/src/GhostScan.Domain/Services/IScanProgressNotifier.cs",
       "source_location": "L3",
       "id": "services_iscanprogressnotifier_iscanprogressnotifier",
-      "community": 31,
+      "community": 33,
       "norm_label": "iscanprogressnotifier"
     },
     {
@@ -1845,7 +1854,7 @@
       "source_file": "backend/src/GhostScan.Domain/Services/IScanProgressNotifier.cs",
       "source_location": "L5",
       "id": "services_iscanprogressnotifier_iscanprogressnotifier_notifyprogressasync",
-      "community": 31,
+      "community": 33,
       "norm_label": ".notifyprogressasync()"
     },
     {
@@ -1854,7 +1863,7 @@
       "source_file": "backend/src/GhostScan.Domain/Services/IScanProgressNotifier.cs",
       "source_location": "L8",
       "id": "services_iscanprogressnotifier_iscanprogressnotifier_notifycompletedasync",
-      "community": 31,
+      "community": 33,
       "norm_label": ".notifycompletedasync()"
     },
     {
@@ -1863,7 +1872,7 @@
       "source_file": "backend/src/GhostScan.Domain/Services/IScanProgressNotifier.cs",
       "source_location": "L11",
       "id": "services_iscanprogressnotifier_iscanprogressnotifier_notifyfailedasync",
-      "community": 31,
+      "community": 33,
       "norm_label": ".notifyfailedasync()"
     },
     {
@@ -1888,7 +1897,7 @@
       "label": ".FromString()",
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Domain/ValueObjects/FindingCategory.cs",
-      "source_location": "L29",
+      "source_location": "L31",
       "id": "valueobjects_findingcategory_findingcategory_fromstring",
       "community": 1,
       "norm_label": ".fromstring()"
@@ -1897,7 +1906,7 @@
       "label": ".GetEqualityComponents()",
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Domain/ValueObjects/FindingCategory.cs",
-      "source_location": "L40",
+      "source_location": "L42",
       "id": "valueobjects_findingcategory_findingcategory_getequalitycomponents",
       "community": 1,
       "norm_label": ".getequalitycomponents()"
@@ -1906,7 +1915,7 @@
       "label": ".ToString()",
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Domain/ValueObjects/FindingCategory.cs",
-      "source_location": "L45",
+      "source_location": "L47",
       "id": "valueobjects_findingcategory_findingcategory_tostring",
       "community": 1,
       "norm_label": ".tostring()"
@@ -2007,7 +2016,7 @@
       "source_file": "backend/src/GhostScan.Domain/ValueObjects/ScanTarget.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_domain_valueobjects_scantarget_cs",
-      "community": 3,
+      "community": 15,
       "norm_label": "scantarget.cs"
     },
     {
@@ -2016,16 +2025,16 @@
       "source_file": "backend/src/GhostScan.Domain/ValueObjects/ScanTarget.cs",
       "source_location": "L7",
       "id": "valueobjects_scantarget_scantarget",
-      "community": 3,
+      "community": 15,
       "norm_label": "scantarget"
     },
     {
       "label": "Regex",
       "file_type": "code",
-      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/VulnDetectionScanModule.cs",
-      "source_location": "L41",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/SecretScanner.cs",
+      "source_location": "L23",
       "id": "regex",
-      "community": 3,
+      "community": 15,
       "norm_label": "regex"
     },
     {
@@ -2034,7 +2043,7 @@
       "source_file": "backend/src/GhostScan.Domain/ValueObjects/ScanTarget.cs",
       "source_location": "L26",
       "id": "valueobjects_scantarget_scantarget_create",
-      "community": 3,
+      "community": 15,
       "norm_label": ".create()"
     },
     {
@@ -2043,7 +2052,7 @@
       "source_file": "backend/src/GhostScan.Domain/ValueObjects/ScanTarget.cs",
       "source_location": "L55",
       "id": "valueobjects_scantarget_scantarget_tobaseurl",
-      "community": 3,
+      "community": 15,
       "norm_label": ".tobaseurl()"
     },
     {
@@ -2052,7 +2061,7 @@
       "source_file": "backend/src/GhostScan.Domain/ValueObjects/ScanTarget.cs",
       "source_location": "L58",
       "id": "valueobjects_scantarget_scantarget_getequalitycomponents",
-      "community": 3,
+      "community": 15,
       "norm_label": ".getequalitycomponents()"
     },
     {
@@ -2061,7 +2070,7 @@
       "source_file": "backend/src/GhostScan.Domain/ValueObjects/ScanTarget.cs",
       "source_location": "L63",
       "id": "valueobjects_scantarget_scantarget_tostring",
-      "community": 3,
+      "community": 15,
       "norm_label": ".tostring()"
     },
     {
@@ -2196,7 +2205,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/DependencyInjection.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_infrastructure_dependencyinjection_cs",
-      "community": 42,
+      "community": 49,
       "norm_label": "dependencyinjection.cs"
     },
     {
@@ -2205,7 +2214,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/DependencyInjection.cs",
       "source_location": "L13",
       "id": "ghostscan_infrastructure_dependencyinjection_dependencyinjection",
-      "community": 42,
+      "community": 49,
       "norm_label": "dependencyinjection"
     },
     {
@@ -2214,8 +2223,17 @@
       "source_file": "backend/src/GhostScan.Infrastructure/DependencyInjection.cs",
       "source_location": "L15",
       "id": "ghostscan_infrastructure_dependencyinjection_dependencyinjection_addinfrastructure",
-      "community": 42,
+      "community": 49,
       "norm_label": ".addinfrastructure()"
+    },
+    {
+      "label": "playwright.ps1",
+      "file_type": "code",
+      "source_file": "backend/src/GhostScan.Infrastructure/bin/Debug/net8.0/playwright.ps1",
+      "source_location": "L1",
+      "id": "backend_src_ghostscan_infrastructure_bin_debug_net8_0_playwright_ps1",
+      "community": 88,
+      "norm_label": "playwright.ps1"
     },
     {
       "label": "GhostScan.Infrastructure.AssemblyInfo.cs",
@@ -2223,7 +2241,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/obj/Debug/net8.0/GhostScan.Infrastructure.AssemblyInfo.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_infrastructure_obj_debug_net8_0_ghostscan_infrastructure_assemblyinfo_cs",
-      "community": 80,
+      "community": 89,
       "norm_label": "ghostscan.infrastructure.assemblyinfo.cs"
     },
     {
@@ -2232,7 +2250,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/obj/Debug/net8.0/GhostScan.Infrastructure.GlobalUsings.g.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_infrastructure_obj_debug_net8_0_ghostscan_infrastructure_globalusings_g_cs",
-      "community": 81,
+      "community": 90,
       "norm_label": "ghostscan.infrastructure.globalusings.g.cs"
     },
     {
@@ -2241,7 +2259,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/obj/Release/net8.0/GhostScan.Infrastructure.AssemblyInfo.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_infrastructure_obj_release_net8_0_ghostscan_infrastructure_assemblyinfo_cs",
-      "community": 82,
+      "community": 91,
       "norm_label": "ghostscan.infrastructure.assemblyinfo.cs"
     },
     {
@@ -2250,7 +2268,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/obj/Release/net8.0/GhostScan.Infrastructure.GlobalUsings.g.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_infrastructure_obj_release_net8_0_ghostscan_infrastructure_globalusings_g_cs",
-      "community": 83,
+      "community": 92,
       "norm_label": "ghostscan.infrastructure.globalusings.g.cs"
     },
     {
@@ -2457,7 +2475,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/BrowserScanModule.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_infrastructure_scanmodules_browserscanmodule_cs",
-      "community": 3,
+      "community": 5,
       "norm_label": "browserscanmodule.cs"
     },
     {
@@ -2466,7 +2484,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/BrowserScanModule.cs",
       "source_location": "L18",
       "id": "scanmodules_browserscanmodule_browserscanmodule",
-      "community": 3,
+      "community": 5,
       "norm_label": "browserscanmodule"
     },
     {
@@ -2475,7 +2493,7 @@
       "source_file": "",
       "source_location": "",
       "id": "iscanmodule",
-      "community": 3,
+      "community": 5,
       "norm_label": "iscanmodule"
     },
     {
@@ -2484,7 +2502,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/VulnDetectionScanModule.cs",
       "source_location": "L13",
       "id": "ihttpclientfactory",
-      "community": 3,
+      "community": 5,
       "norm_label": "ihttpclientfactory"
     },
     {
@@ -2502,7 +2520,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/BrowserScanModule.cs",
       "source_location": "L75",
       "id": "scanmodules_browserscanmodule_browserscanmodule_executeasync",
-      "community": 3,
+      "community": 5,
       "norm_label": ".executeasync()"
     },
     {
@@ -2511,7 +2529,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/BrowserScanModule.cs",
       "source_location": "L168",
       "id": "scanmodules_browserscanmodule_browserscanmodule_analysedomxssstaticasync",
-      "community": 3,
+      "community": 5,
       "norm_label": ".analysedomxssstaticasync()"
     },
     {
@@ -2520,7 +2538,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/BrowserScanModule.cs",
       "source_location": "L224",
       "id": "scanmodules_browserscanmodule_browserscanmodule_discoverwebsocketsasync",
-      "community": 3,
+      "community": 5,
       "norm_label": ".discoverwebsocketsasync()"
     },
     {
@@ -2529,7 +2547,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/BrowserScanModule.cs",
       "source_location": "L256",
       "id": "scanmodules_browserscanmodule_browserscanmodule_analyseclientstorageasync",
-      "community": 3,
+      "community": 5,
       "norm_label": ".analyseclientstorageasync()"
     },
     {
@@ -2538,7 +2556,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/BrowserScanModule.cs",
       "source_location": "L296",
       "id": "scanmodules_browserscanmodule_browserscanmodule_checksourcemapsasync",
-      "community": 3,
+      "community": 5,
       "norm_label": ".checksourcemapsasync()"
     },
     {
@@ -2547,7 +2565,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/BrowserScanModule.cs",
       "source_location": "L341",
       "id": "scanmodules_browserscanmodule_browserscanmodule_detectdanglingjsasync",
-      "community": 3,
+      "community": 5,
       "norm_label": ".detectdanglingjsasync()"
     },
     {
@@ -2556,7 +2574,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/BrowserScanModule.cs",
       "source_location": "L387",
       "id": "scanmodules_browserscanmodule_browserscanmodule_runplaywrightanalysisasync",
-      "community": 3,
+      "community": 5,
       "norm_label": ".runplaywrightanalysisasync()"
     },
     {
@@ -2565,7 +2583,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/BrowserScanModule.cs",
       "source_location": "L496",
       "id": "scanmodules_browserscanmodule_browserscanmodule_createhttpclient",
-      "community": 3,
+      "community": 5,
       "norm_label": ".createhttpclient()"
     },
     {
@@ -2898,7 +2916,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/VulnDetectionScanModule.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_infrastructure_scanmodules_vulndetectionscanmodule_cs",
-      "community": 3,
+      "community": 5,
       "norm_label": "vulndetectionscanmodule.cs"
     },
     {
@@ -2907,7 +2925,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/VulnDetectionScanModule.cs",
       "source_location": "L11",
       "id": "scanmodules_vulndetectionscanmodule_vulndetectionscanmodule",
-      "community": 3,
+      "community": 5,
       "norm_label": "vulndetectionscanmodule"
     },
     {
@@ -2916,7 +2934,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/VulnDetectionScanModule.cs",
       "source_location": "L68",
       "id": "scanmodules_vulndetectionscanmodule_vulndetectionscanmodule_executeasync",
-      "community": 3,
+      "community": 5,
       "norm_label": ".executeasync()"
     },
     {
@@ -2925,7 +2943,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/VulnDetectionScanModule.cs",
       "source_location": "L196",
       "id": "scanmodules_vulndetectionscanmodule_vulndetectionscanmodule_testsqliasync",
-      "community": 3,
+      "community": 5,
       "norm_label": ".testsqliasync()"
     },
     {
@@ -2934,7 +2952,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/VulnDetectionScanModule.cs",
       "source_location": "L296",
       "id": "scanmodules_vulndetectionscanmodule_vulndetectionscanmodule_testxssasync",
-      "community": 3,
+      "community": 5,
       "norm_label": ".testxssasync()"
     },
     {
@@ -2943,7 +2961,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/VulnDetectionScanModule.cs",
       "source_location": "L344",
       "id": "scanmodules_vulndetectionscanmodule_vulndetectionscanmodule_correlatecves",
-      "community": 3,
+      "community": 5,
       "norm_label": ".correlatecves()"
     },
     {
@@ -2952,7 +2970,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/VulnDetectionScanModule.cs",
       "source_location": "L383",
       "id": "scanmodules_vulndetectionscanmodule_vulndetectionscanmodule_analyzesslasync",
-      "community": 3,
+      "community": 5,
       "norm_label": ".analyzesslasync()"
     },
     {
@@ -2961,7 +2979,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/VulnDetectionScanModule.cs",
       "source_location": "L431",
       "id": "scanmodules_vulndetectionscanmodule_vulndetectionscanmodule_testopenredirectsasync",
-      "community": 3,
+      "community": 5,
       "norm_label": ".testopenredirectsasync()"
     },
     {
@@ -2970,7 +2988,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/VulnDetectionScanModule.cs",
       "source_location": "L480",
       "id": "scanmodules_vulndetectionscanmodule_vulndetectionscanmodule_runbruteforceasync",
-      "community": 3,
+      "community": 5,
       "norm_label": ".runbruteforceasync()"
     },
     {
@@ -2979,7 +2997,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/VulnDetectionScanModule.cs",
       "source_location": "L526",
       "id": "scanmodules_vulndetectionscanmodule_vulndetectionscanmodule_testpostformsxssasync",
-      "community": 3,
+      "community": 5,
       "norm_label": ".testpostformsxssasync()"
     },
     {
@@ -2988,7 +3006,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/VulnDetectionScanModule.cs",
       "source_location": "L573",
       "id": "scanmodules_vulndetectionscanmodule_vulndetectionscanmodule_checkhttptohttpsredirectasync",
-      "community": 3,
+      "community": 5,
       "norm_label": ".checkhttptohttpsredirectasync()"
     },
     {
@@ -2997,7 +3015,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/VulnDetectionScanModule.cs",
       "source_location": "L625",
       "id": "scanmodules_vulndetectionscanmodule_vulndetectionscanmodule_auditcsphardnessasync",
-      "community": 3,
+      "community": 5,
       "norm_label": ".auditcsphardnessasync()"
     },
     {
@@ -3006,7 +3024,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/VulnDetectionScanModule.cs",
       "source_location": "L715",
       "id": "scanmodules_vulndetectionscanmodule_vulndetectionscanmodule_parsecspdirectives",
-      "community": 3,
+      "community": 5,
       "norm_label": ".parsecspdirectives()"
     },
     {
@@ -3015,7 +3033,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/VulnDetectionScanModule.cs",
       "source_location": "L745",
       "id": "scanmodules_vulndetectionscanmodule_vulndetectionscanmodule_runhttpformbruteforceasync",
-      "community": 3,
+      "community": 5,
       "norm_label": ".runhttpformbruteforceasync()"
     },
     {
@@ -3024,7 +3042,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/VulnDetectionScanModule.cs",
       "source_location": "L805",
       "id": "scanmodules_vulndetectionscanmodule_vulndetectionscanmodule_buildinjectableendpoints",
-      "community": 3,
+      "community": 5,
       "norm_label": ".buildinjectableendpoints()"
     },
     {
@@ -3033,7 +3051,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/VulnDetectionScanModule.cs",
       "source_location": "L828",
       "id": "scanmodules_vulndetectionscanmodule_vulndetectionscanmodule_parsequerystring",
-      "community": 3,
+      "community": 5,
       "norm_label": ".parsequerystring()"
     },
     {
@@ -3042,7 +3060,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/VulnDetectionScanModule.cs",
       "source_location": "L842",
       "id": "scanmodules_vulndetectionscanmodule_vulndetectionscanmodule_createhttpclient",
-      "community": 3,
+      "community": 5,
       "norm_label": ".createhttpclient()"
     },
     {
@@ -3051,7 +3069,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/VulnDetectionScanModule.cs",
       "source_location": "L851",
       "id": "scanmodules_vulndetectionscanmodule_vulndetectionscanmodule_buildcvedatabase",
-      "community": 3,
+      "community": 5,
       "norm_label": ".buildcvedatabase()"
     },
     {
@@ -3060,17 +3078,8 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_infrastructure_scanmodules_webanalysisscanmodule_cs",
-      "community": 5,
+      "community": 4,
       "norm_label": "webanalysisscanmodule.cs"
-    },
-    {
-      "label": "GhostScan.Infrastructure.ScanModules",
-      "file_type": "code",
-      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
-      "source_location": "L8",
-      "id": "scanmodules_webanalysisscanmodule_ghostscan_infrastructure_scanmodules",
-      "community": 5,
-      "norm_label": "ghostscan.infrastructure.scanmodules"
     },
     {
       "label": "WebAnalysisScanModule",
@@ -3078,16 +3087,16 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
       "source_location": "L10",
       "id": "scanmodules_webanalysisscanmodule_webanalysisscanmodule",
-      "community": 5,
+      "community": 4,
       "norm_label": "webanalysisscanmodule"
     },
     {
       "label": ".ExecuteAsync()",
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
-      "source_location": "L22",
+      "source_location": "L25",
       "id": "scanmodules_webanalysisscanmodule_webanalysisscanmodule_executeasync",
-      "community": 5,
+      "community": 4,
       "norm_label": ".executeasync()"
     },
     {
@@ -3213,7 +3222,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Adapters/IToolAdapter.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_infrastructure_scanmodules_web_adapters_itooladapter_cs",
-      "community": 36,
+      "community": 39,
       "norm_label": "itooladapter.cs"
     },
     {
@@ -3222,7 +3231,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Adapters/IToolAdapter.cs",
       "source_location": "L2",
       "id": "adapters_itooladapter_ghostscan_infrastructure_scanmodules_web_adapters",
-      "community": 36,
+      "community": 39,
       "norm_label": "ghostscan.infrastructure.scanmodules.web.adapters"
     },
     {
@@ -3231,7 +3240,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Adapters/IToolAdapter.cs",
       "source_location": "L4",
       "id": "adapters_itooladapter_itooladapter",
-      "community": 36,
+      "community": 39,
       "norm_label": "itooladapter"
     },
     {
@@ -3240,7 +3249,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Adapters/IToolAdapter.cs",
       "source_location": "L6",
       "id": "adapters_itooladapter_itooladapter_executeasync",
-      "community": 36,
+      "community": 39,
       "norm_label": ".executeasync()"
     },
     {
@@ -3249,7 +3258,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Adapters/NiktoAdapter.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_infrastructure_scanmodules_web_adapters_niktoadapter_cs",
-      "community": 24,
+      "community": 25,
       "norm_label": "niktoadapter.cs"
     },
     {
@@ -3258,7 +3267,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Adapters/NiktoAdapter.cs",
       "source_location": "L11",
       "id": "adapters_niktoadapter_ghostscan_infrastructure_scanmodules_web_adapters",
-      "community": 24,
+      "community": 25,
       "norm_label": "ghostscan.infrastructure.scanmodules.web.adapters"
     },
     {
@@ -3267,7 +3276,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Adapters/NiktoAdapter.cs",
       "source_location": "L13",
       "id": "adapters_niktoadapter_niktoadapter",
-      "community": 24,
+      "community": 25,
       "norm_label": "niktoadapter"
     },
     {
@@ -3276,7 +3285,7 @@
       "source_file": "",
       "source_location": "",
       "id": "itooladapter",
-      "community": 24,
+      "community": 25,
       "norm_label": "itooladapter"
     },
     {
@@ -3285,7 +3294,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Adapters/NiktoAdapter.cs",
       "source_location": "L15",
       "id": "adapters_niktoadapter_niktoadapter_executeasync",
-      "community": 24,
+      "community": 25,
       "norm_label": ".executeasync()"
     },
     {
@@ -3294,7 +3303,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Adapters/NucleiAdapter.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_infrastructure_scanmodules_web_adapters_nucleiadapter_cs",
-      "community": 24,
+      "community": 25,
       "norm_label": "nucleiadapter.cs"
     },
     {
@@ -3303,7 +3312,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Adapters/NucleiAdapter.cs",
       "source_location": "L11",
       "id": "adapters_nucleiadapter_ghostscan_infrastructure_scanmodules_web_adapters",
-      "community": 24,
+      "community": 25,
       "norm_label": "ghostscan.infrastructure.scanmodules.web.adapters"
     },
     {
@@ -3312,7 +3321,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Adapters/NucleiAdapter.cs",
       "source_location": "L13",
       "id": "adapters_nucleiadapter_nucleiadapter",
-      "community": 24,
+      "community": 25,
       "norm_label": "nucleiadapter"
     },
     {
@@ -3321,8 +3330,53 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Adapters/NucleiAdapter.cs",
       "source_location": "L15",
       "id": "adapters_nucleiadapter_nucleiadapter_executeasync",
-      "community": 24,
+      "community": 25,
       "norm_label": ".executeasync()"
+    },
+    {
+      "label": "ApiFuzzerEngine.cs",
+      "file_type": "code",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ApiFuzzerEngine.cs",
+      "source_location": "L1",
+      "id": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_apifuzzerengine_cs",
+      "community": 34,
+      "norm_label": "apifuzzerengine.cs"
+    },
+    {
+      "label": "GhostScan.Infrastructure.ScanModules.Web.Engines",
+      "file_type": "code",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ApiFuzzerEngine.cs",
+      "source_location": "L10",
+      "id": "engines_apifuzzerengine_ghostscan_infrastructure_scanmodules_web_engines",
+      "community": 34,
+      "norm_label": "ghostscan.infrastructure.scanmodules.web.engines"
+    },
+    {
+      "label": "ApiFuzzerEngine",
+      "file_type": "code",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ApiFuzzerEngine.cs",
+      "source_location": "L12",
+      "id": "engines_apifuzzerengine_apifuzzerengine",
+      "community": 34,
+      "norm_label": "apifuzzerengine"
+    },
+    {
+      "label": "IApiFuzzerEngine",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "id": "iapifuzzerengine",
+      "community": 34,
+      "norm_label": "iapifuzzerengine"
+    },
+    {
+      "label": ".FuzzAsync()",
+      "file_type": "code",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ApiFuzzerEngine.cs",
+      "source_location": "L14",
+      "id": "engines_apifuzzerengine_apifuzzerengine_fuzzasync",
+      "community": 34,
+      "norm_label": ".fuzzasync()"
     },
     {
       "label": "CrawlerEngine.cs",
@@ -3330,7 +3384,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/CrawlerEngine.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_crawlerengine_cs",
-      "community": 37,
+      "community": 40,
       "norm_label": "crawlerengine.cs"
     },
     {
@@ -3339,7 +3393,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/CrawlerEngine.cs",
       "source_location": "L5",
       "id": "engines_crawlerengine_crawlerengine",
-      "community": 37,
+      "community": 40,
       "norm_label": "crawlerengine"
     },
     {
@@ -3348,7 +3402,7 @@
       "source_file": "",
       "source_location": "",
       "id": "icrawlerengine",
-      "community": 37,
+      "community": 40,
       "norm_label": "icrawlerengine"
     },
     {
@@ -3357,8 +3411,125 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/CrawlerEngine.cs",
       "source_location": "L7",
       "id": "engines_crawlerengine_crawlerengine_crawlasync",
-      "community": 37,
+      "community": 40,
       "norm_label": ".crawlasync()"
+    },
+    {
+      "label": "DnsTakeoverEngine.cs",
+      "file_type": "code",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/DnsTakeoverEngine.cs",
+      "source_location": "L1",
+      "id": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_dnstakeoverengine_cs",
+      "community": 0,
+      "norm_label": "dnstakeoverengine.cs"
+    },
+    {
+      "label": "GhostScan.Infrastructure.ScanModules.Web.Engines",
+      "file_type": "code",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/DnsTakeoverEngine.cs",
+      "source_location": "L10",
+      "id": "engines_dnstakeoverengine_ghostscan_infrastructure_scanmodules_web_engines",
+      "community": 0,
+      "norm_label": "ghostscan.infrastructure.scanmodules.web.engines"
+    },
+    {
+      "label": "DnsTakeoverEngine",
+      "file_type": "code",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/DnsTakeoverEngine.cs",
+      "source_location": "L12",
+      "id": "engines_dnstakeoverengine_dnstakeoverengine",
+      "community": 0,
+      "norm_label": "dnstakeoverengine"
+    },
+    {
+      "label": "IDnsTakeoverEngine",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "id": "idnstakeoverengine",
+      "community": 0,
+      "norm_label": "idnstakeoverengine"
+    },
+    {
+      "label": ".CheckTakeoverAsync()",
+      "file_type": "code",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/DnsTakeoverEngine.cs",
+      "source_location": "L22",
+      "id": "engines_dnstakeoverengine_dnstakeoverengine_checktakeoverasync",
+      "community": 0,
+      "norm_label": ".checktakeoverasync()"
+    },
+    {
+      "label": "ErrorAnalyzer.cs",
+      "file_type": "code",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ErrorAnalyzer.cs",
+      "source_location": "L1",
+      "id": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_erroranalyzer_cs",
+      "community": 15,
+      "norm_label": "erroranalyzer.cs"
+    },
+    {
+      "label": "GhostScan.Infrastructure.ScanModules.Web.Engines",
+      "file_type": "code",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ErrorAnalyzer.cs",
+      "source_location": "L5",
+      "id": "engines_erroranalyzer_ghostscan_infrastructure_scanmodules_web_engines",
+      "community": 15,
+      "norm_label": "ghostscan.infrastructure.scanmodules.web.engines"
+    },
+    {
+      "label": "ErrorAnalyzer",
+      "file_type": "code",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ErrorAnalyzer.cs",
+      "source_location": "L7",
+      "id": "engines_erroranalyzer_erroranalyzer",
+      "community": 15,
+      "norm_label": "erroranalyzer"
+    },
+    {
+      "label": ".AnalyzeAsync()",
+      "file_type": "code",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ErrorAnalyzer.cs",
+      "source_location": "L11",
+      "id": "engines_erroranalyzer_erroranalyzer_analyzeasync",
+      "community": 15,
+      "norm_label": ".analyzeasync()"
+    },
+    {
+      "label": "IApiFuzzerEngine.cs",
+      "file_type": "code",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IApiFuzzerEngine.cs",
+      "source_location": "L1",
+      "id": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_iapifuzzerengine_cs",
+      "community": 41,
+      "norm_label": "iapifuzzerengine.cs"
+    },
+    {
+      "label": "GhostScan.Infrastructure.ScanModules.Web.Engines",
+      "file_type": "code",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IApiFuzzerEngine.cs",
+      "source_location": "L5",
+      "id": "engines_iapifuzzerengine_ghostscan_infrastructure_scanmodules_web_engines",
+      "community": 41,
+      "norm_label": "ghostscan.infrastructure.scanmodules.web.engines"
+    },
+    {
+      "label": "IApiFuzzerEngine",
+      "file_type": "code",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IApiFuzzerEngine.cs",
+      "source_location": "L7",
+      "id": "engines_iapifuzzerengine_iapifuzzerengine",
+      "community": 41,
+      "norm_label": "iapifuzzerengine"
+    },
+    {
+      "label": ".FuzzAsync()",
+      "file_type": "code",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IApiFuzzerEngine.cs",
+      "source_location": "L9",
+      "id": "engines_iapifuzzerengine_iapifuzzerengine_fuzzasync",
+      "community": 41,
+      "norm_label": ".fuzzasync()"
     },
     {
       "label": "ICrawlerEngine.cs",
@@ -3366,7 +3537,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ICrawlerEngine.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_icrawlerengine_cs",
-      "community": 38,
+      "community": 42,
       "norm_label": "icrawlerengine.cs"
     },
     {
@@ -3375,7 +3546,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ICrawlerEngine.cs",
       "source_location": "L5",
       "id": "engines_icrawlerengine_ghostscan_infrastructure_scanmodules_web_engines",
-      "community": 38,
+      "community": 42,
       "norm_label": "ghostscan.infrastructure.scanmodules.web.engines"
     },
     {
@@ -3384,7 +3555,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ICrawlerEngine.cs",
       "source_location": "L7",
       "id": "engines_icrawlerengine_icrawlerengine",
-      "community": 38,
+      "community": 42,
       "norm_label": "icrawlerengine"
     },
     {
@@ -3393,8 +3564,44 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ICrawlerEngine.cs",
       "source_location": "L9",
       "id": "engines_icrawlerengine_icrawlerengine_crawlasync",
-      "community": 38,
+      "community": 42,
       "norm_label": ".crawlasync()"
+    },
+    {
+      "label": "IDnsTakeoverEngine.cs",
+      "file_type": "code",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IDnsTakeoverEngine.cs",
+      "source_location": "L1",
+      "id": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_idnstakeoverengine_cs",
+      "community": 43,
+      "norm_label": "idnstakeoverengine.cs"
+    },
+    {
+      "label": "GhostScan.Infrastructure.ScanModules.Web.Engines",
+      "file_type": "code",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IDnsTakeoverEngine.cs",
+      "source_location": "L3",
+      "id": "engines_idnstakeoverengine_ghostscan_infrastructure_scanmodules_web_engines",
+      "community": 43,
+      "norm_label": "ghostscan.infrastructure.scanmodules.web.engines"
+    },
+    {
+      "label": "IDnsTakeoverEngine",
+      "file_type": "code",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IDnsTakeoverEngine.cs",
+      "source_location": "L5",
+      "id": "engines_idnstakeoverengine_idnstakeoverengine",
+      "community": 43,
+      "norm_label": "idnstakeoverengine"
+    },
+    {
+      "label": ".CheckTakeoverAsync()",
+      "file_type": "code",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IDnsTakeoverEngine.cs",
+      "source_location": "L7",
+      "id": "engines_idnstakeoverengine_idnstakeoverengine_checktakeoverasync",
+      "community": 43,
+      "norm_label": ".checktakeoverasync()"
     },
     {
       "label": "IPathProber.cs",
@@ -3402,7 +3609,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IPathProber.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_ipathprober_cs",
-      "community": 39,
+      "community": 44,
       "norm_label": "ipathprober.cs"
     },
     {
@@ -3411,7 +3618,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IPathProber.cs",
       "source_location": "L5",
       "id": "engines_ipathprober_ghostscan_infrastructure_scanmodules_web_engines",
-      "community": 39,
+      "community": 44,
       "norm_label": "ghostscan.infrastructure.scanmodules.web.engines"
     },
     {
@@ -3420,7 +3627,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IPathProber.cs",
       "source_location": "L7",
       "id": "engines_ipathprober_ipathprober",
-      "community": 39,
+      "community": 44,
       "norm_label": "ipathprober"
     },
     {
@@ -3429,8 +3636,44 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IPathProber.cs",
       "source_location": "L9",
       "id": "engines_ipathprober_ipathprober_probeasync",
-      "community": 39,
+      "community": 44,
       "norm_label": ".probeasync()"
+    },
+    {
+      "label": "IScreenshotEngine.cs",
+      "file_type": "code",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IScreenshotEngine.cs",
+      "source_location": "L1",
+      "id": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_iscreenshotengine_cs",
+      "community": 45,
+      "norm_label": "iscreenshotengine.cs"
+    },
+    {
+      "label": "GhostScan.Infrastructure.ScanModules.Web.Engines",
+      "file_type": "code",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IScreenshotEngine.cs",
+      "source_location": "L7",
+      "id": "engines_iscreenshotengine_ghostscan_infrastructure_scanmodules_web_engines",
+      "community": 45,
+      "norm_label": "ghostscan.infrastructure.scanmodules.web.engines"
+    },
+    {
+      "label": "IScreenshotEngine",
+      "file_type": "code",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IScreenshotEngine.cs",
+      "source_location": "L9",
+      "id": "engines_iscreenshotengine_iscreenshotengine",
+      "community": 45,
+      "norm_label": "iscreenshotengine"
+    },
+    {
+      "label": ".CaptureAsync()",
+      "file_type": "code",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IScreenshotEngine.cs",
+      "source_location": "L11",
+      "id": "engines_iscreenshotengine_iscreenshotengine_captureasync",
+      "community": 45,
+      "norm_label": ".captureasync()"
     },
     {
       "label": "ISecretScanner.cs",
@@ -3438,7 +3681,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ISecretScanner.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_isecretscanner_cs",
-      "community": 32,
+      "community": 35,
       "norm_label": "isecretscanner.cs"
     },
     {
@@ -3447,7 +3690,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ISecretScanner.cs",
       "source_location": "L5",
       "id": "engines_isecretscanner_ghostscan_infrastructure_scanmodules_web_engines",
-      "community": 32,
+      "community": 35,
       "norm_label": "ghostscan.infrastructure.scanmodules.web.engines"
     },
     {
@@ -3456,7 +3699,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ISecretScanner.cs",
       "source_location": "L7",
       "id": "engines_isecretscanner_isecretscanner",
-      "community": 32,
+      "community": 35,
       "norm_label": "isecretscanner"
     },
     {
@@ -3465,7 +3708,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ISecretScanner.cs",
       "source_location": "L9",
       "id": "engines_isecretscanner_isecretscanner_scanasync",
-      "community": 32,
+      "community": 35,
       "norm_label": ".scanasync()"
     },
     {
@@ -3474,7 +3717,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ISecretScanner.cs",
       "source_location": "L10",
       "id": "engines_isecretscanner_isecretscanner_extractapiendpointsfromjsasync",
-      "community": 32,
+      "community": 35,
       "norm_label": ".extractapiendpointsfromjsasync()"
     },
     {
@@ -3483,7 +3726,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ISecurityAuditEngine.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_isecurityauditengine_cs",
-      "community": 40,
+      "community": 46,
       "norm_label": "isecurityauditengine.cs"
     },
     {
@@ -3492,7 +3735,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ISecurityAuditEngine.cs",
       "source_location": "L8",
       "id": "engines_isecurityauditengine_ghostscan_infrastructure_scanmodules_web_engines",
-      "community": 40,
+      "community": 46,
       "norm_label": "ghostscan.infrastructure.scanmodules.web.engines"
     },
     {
@@ -3501,7 +3744,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ISecurityAuditEngine.cs",
       "source_location": "L10",
       "id": "engines_isecurityauditengine_isecurityauditengine",
-      "community": 40,
+      "community": 46,
       "norm_label": "isecurityauditengine"
     },
     {
@@ -3510,7 +3753,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ISecurityAuditEngine.cs",
       "source_location": "L12",
       "id": "engines_isecurityauditengine_isecurityauditengine_auditasync",
-      "community": 40,
+      "community": 46,
       "norm_label": ".auditasync()"
     },
     {
@@ -3519,7 +3762,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ITechDetector.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_itechdetector_cs",
-      "community": 33,
+      "community": 36,
       "norm_label": "itechdetector.cs"
     },
     {
@@ -3528,7 +3771,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ITechDetector.cs",
       "source_location": "L5",
       "id": "engines_itechdetector_ghostscan_infrastructure_scanmodules_web_engines",
-      "community": 33,
+      "community": 36,
       "norm_label": "ghostscan.infrastructure.scanmodules.web.engines"
     },
     {
@@ -3537,7 +3780,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ITechDetector.cs",
       "source_location": "L7",
       "id": "engines_itechdetector_itechdetector",
-      "community": 33,
+      "community": 36,
       "norm_label": "itechdetector"
     },
     {
@@ -3546,7 +3789,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ITechDetector.cs",
       "source_location": "L9",
       "id": "engines_itechdetector_itechdetector_detectasync",
-      "community": 33,
+      "community": 36,
       "norm_label": ".detectasync()"
     },
     {
@@ -3555,7 +3798,7 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ITechDetector.cs",
       "source_location": "L10",
       "id": "engines_itechdetector_itechdetector_detectwafasync",
-      "community": 33,
+      "community": 36,
       "norm_label": ".detectwafasync()"
     },
     {
@@ -3598,7 +3841,7 @@
       "label": ".IsSpaFallback()",
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/PathProber.cs",
-      "source_location": "L41",
+      "source_location": "L43",
       "id": "engines_pathprober_pathprober_isspafallback",
       "community": 17,
       "norm_label": ".isspafallback()"
@@ -3607,7 +3850,7 @@
       "label": ".IsContentVerified()",
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/PathProber.cs",
-      "source_location": "L43",
+      "source_location": "L45",
       "id": "engines_pathprober_pathprober_iscontentverified",
       "community": 17,
       "norm_label": ".iscontentverified()"
@@ -3616,10 +3859,46 @@
       "label": ".FetchRootFingerprint()",
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/PathProber.cs",
-      "source_location": "L50",
+      "source_location": "L54",
       "id": "engines_pathprober_pathprober_fetchrootfingerprint",
       "community": 17,
       "norm_label": ".fetchrootfingerprint()"
+    },
+    {
+      "label": "ScreenshotEngine.cs",
+      "file_type": "code",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ScreenshotEngine.cs",
+      "source_location": "L1",
+      "id": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_screenshotengine_cs",
+      "community": 47,
+      "norm_label": "screenshotengine.cs"
+    },
+    {
+      "label": "ScreenshotEngine",
+      "file_type": "code",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ScreenshotEngine.cs",
+      "source_location": "L6",
+      "id": "engines_screenshotengine_screenshotengine",
+      "community": 47,
+      "norm_label": "screenshotengine"
+    },
+    {
+      "label": "IScreenshotEngine",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "id": "iscreenshotengine",
+      "community": 47,
+      "norm_label": "iscreenshotengine"
+    },
+    {
+      "label": ".CaptureAsync()",
+      "file_type": "code",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ScreenshotEngine.cs",
+      "source_location": "L8",
+      "id": "engines_screenshotengine_screenshotengine_captureasync",
+      "community": 47,
+      "norm_label": ".captureasync()"
     },
     {
       "label": "SecretScanner.cs",
@@ -3627,16 +3906,16 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/SecretScanner.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_secretscanner_cs",
-      "community": 0,
+      "community": 15,
       "norm_label": "secretscanner.cs"
     },
     {
       "label": "SecretScanner",
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/SecretScanner.cs",
-      "source_location": "L7",
+      "source_location": "L8",
       "id": "engines_secretscanner_secretscanner",
-      "community": 0,
+      "community": 15,
       "norm_label": "secretscanner"
     },
     {
@@ -3645,25 +3924,25 @@
       "source_file": "",
       "source_location": "",
       "id": "isecretscanner",
-      "community": 0,
+      "community": 15,
       "norm_label": "isecretscanner"
     },
     {
       "label": ".ScanAsync()",
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/SecretScanner.cs",
-      "source_location": "L22",
+      "source_location": "L32",
       "id": "engines_secretscanner_secretscanner_scanasync",
-      "community": 0,
+      "community": 15,
       "norm_label": ".scanasync()"
     },
     {
       "label": ".ExtractApiEndpointsFromJsAsync()",
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/SecretScanner.cs",
-      "source_location": "L45",
+      "source_location": "L82",
       "id": "engines_secretscanner_secretscanner_extractapiendpointsfromjsasync",
-      "community": 0,
+      "community": 15,
       "norm_label": ".extractapiendpointsfromjsasync()"
     },
     {
@@ -3679,7 +3958,7 @@
       "label": "SecurityAuditEngine",
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/SecurityAuditEngine.cs",
-      "source_location": "L7",
+      "source_location": "L6",
       "id": "engines_securityauditengine_securityauditengine",
       "community": 17,
       "norm_label": "securityauditengine"
@@ -3697,7 +3976,7 @@
       "label": ".AuditAsync()",
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/SecurityAuditEngine.cs",
-      "source_location": "L21",
+      "source_location": "L16",
       "id": "engines_securityauditengine_securityauditengine_auditasync",
       "community": 17,
       "norm_label": ".auditasync()"
@@ -3708,16 +3987,16 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/TechDetector.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_techdetector_cs",
-      "community": 34,
+      "community": 37,
       "norm_label": "techdetector.cs"
     },
     {
       "label": "TechDetector",
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/TechDetector.cs",
-      "source_location": "L6",
+      "source_location": "L5",
       "id": "engines_techdetector_techdetector",
-      "community": 34,
+      "community": 37,
       "norm_label": "techdetector"
     },
     {
@@ -3726,25 +4005,25 @@
       "source_file": "",
       "source_location": "",
       "id": "itechdetector",
-      "community": 34,
+      "community": 37,
       "norm_label": "itechdetector"
     },
     {
       "label": ".DetectAsync()",
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/TechDetector.cs",
-      "source_location": "L8",
+      "source_location": "L7",
       "id": "engines_techdetector_techdetector_detectasync",
-      "community": 34,
+      "community": 37,
       "norm_label": ".detectasync()"
     },
     {
       "label": ".DetectWafAsync()",
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/TechDetector.cs",
-      "source_location": "L37",
+      "source_location": "L35",
       "id": "engines_techdetector_techdetector_detectwafasync",
-      "community": 34,
+      "community": 37,
       "norm_label": ".detectwafasync()"
     },
     {
@@ -4320,7 +4599,7 @@
       "source_file": "backend/tests/GhostScan.Application.Tests/StartScanCommandValidatorTests.cs",
       "source_location": "L1",
       "id": "backend_tests_ghostscan_application_tests_startscancommandvalidatortests_cs",
-      "community": 25,
+      "community": 27,
       "norm_label": "startscancommandvalidatortests.cs"
     },
     {
@@ -4329,7 +4608,7 @@
       "source_file": "backend/tests/GhostScan.Application.Tests/StartScanCommandValidatorTests.cs",
       "source_location": "L10",
       "id": "ghostscan_application_tests_startscancommandvalidatortests_startscancommandvalidatortests",
-      "community": 25,
+      "community": 27,
       "norm_label": "startscancommandvalidatortests"
     },
     {
@@ -4338,7 +4617,7 @@
       "source_file": "backend/tests/GhostScan.Application.Tests/StartScanCommandValidatorTests.cs",
       "source_location": "L12",
       "id": "startscancommandvalidator",
-      "community": 25,
+      "community": 27,
       "norm_label": "startscancommandvalidator"
     },
     {
@@ -4347,7 +4626,7 @@
       "source_file": "backend/tests/GhostScan.Application.Tests/StartScanCommandValidatorTests.cs",
       "source_location": "L14",
       "id": "ghostscan_application_tests_startscancommandvalidatortests_startscancommandvalidatortests_validate_withvalidrequest_shouldpass",
-      "community": 25,
+      "community": 27,
       "norm_label": ".validate_withvalidrequest_shouldpass()"
     },
     {
@@ -4356,7 +4635,7 @@
       "source_file": "backend/tests/GhostScan.Application.Tests/StartScanCommandValidatorTests.cs",
       "source_location": "L28",
       "id": "ghostscan_application_tests_startscancommandvalidatortests_startscancommandvalidatortests_validate_withemptytarget_shouldfail",
-      "community": 25,
+      "community": 27,
       "norm_label": ".validate_withemptytarget_shouldfail()"
     },
     {
@@ -4365,7 +4644,7 @@
       "source_file": "backend/tests/GhostScan.Application.Tests/StartScanCommandValidatorTests.cs",
       "source_location": "L37",
       "id": "ghostscan_application_tests_startscancommandvalidatortests_startscancommandvalidatortests_validate_withinvalidprofile_shouldfail",
-      "community": 25,
+      "community": 27,
       "norm_label": ".validate_withinvalidprofile_shouldfail()"
     },
     {
@@ -4374,7 +4653,7 @@
       "source_file": "backend/tests/GhostScan.Application.Tests/StartScanCommandValidatorTests.cs",
       "source_location": "L49",
       "id": "ghostscan_application_tests_startscancommandvalidatortests_startscancommandvalidatortests_validate_withvalidprofile_shouldpass",
-      "community": 25,
+      "community": 27,
       "norm_label": ".validate_withvalidprofile_shouldpass()"
     },
     {
@@ -4383,7 +4662,7 @@
       "source_file": "backend/tests/GhostScan.Application.Tests/StartScanCommandValidatorTests.cs",
       "source_location": "L65",
       "id": "ghostscan_application_tests_startscancommandvalidatortests_startscancommandvalidatortests_validate_withcrawldepthoutofrange_shouldfail",
-      "community": 25,
+      "community": 27,
       "norm_label": ".validate_withcrawldepthoutofrange_shouldfail()"
     },
     {
@@ -4392,7 +4671,7 @@
       "source_file": "backend/tests/GhostScan.Application.Tests/obj/Debug/net8.0/GhostScan.Application.Tests.AssemblyInfo.cs",
       "source_location": "L1",
       "id": "backend_tests_ghostscan_application_tests_obj_debug_net8_0_ghostscan_application_tests_assemblyinfo_cs",
-      "community": 84,
+      "community": 93,
       "norm_label": "ghostscan.application.tests.assemblyinfo.cs"
     },
     {
@@ -4401,7 +4680,7 @@
       "source_file": "backend/tests/GhostScan.Application.Tests/obj/Debug/net8.0/GhostScan.Application.Tests.GlobalUsings.g.cs",
       "source_location": "L1",
       "id": "backend_tests_ghostscan_application_tests_obj_debug_net8_0_ghostscan_application_tests_globalusings_g_cs",
-      "community": 85,
+      "community": 94,
       "norm_label": "ghostscan.application.tests.globalusings.g.cs"
     },
     {
@@ -4410,7 +4689,7 @@
       "source_file": "backend/tests/GhostScan.Application.Tests/obj/Release/net8.0/GhostScan.Application.Tests.AssemblyInfo.cs",
       "source_location": "L1",
       "id": "backend_tests_ghostscan_application_tests_obj_release_net8_0_ghostscan_application_tests_assemblyinfo_cs",
-      "community": 86,
+      "community": 95,
       "norm_label": "ghostscan.application.tests.assemblyinfo.cs"
     },
     {
@@ -4419,7 +4698,7 @@
       "source_file": "backend/tests/GhostScan.Application.Tests/obj/Release/net8.0/GhostScan.Application.Tests.GlobalUsings.g.cs",
       "source_location": "L1",
       "id": "backend_tests_ghostscan_application_tests_obj_release_net8_0_ghostscan_application_tests_globalusings_g_cs",
-      "community": 87,
+      "community": 96,
       "norm_label": "ghostscan.application.tests.globalusings.g.cs"
     },
     {
@@ -4428,7 +4707,7 @@
       "source_file": "backend/tests/GhostScan.Domain.Tests/ScanAggregateTests.cs",
       "source_location": "L1",
       "id": "backend_tests_ghostscan_domain_tests_scanaggregatetests_cs",
-      "community": 13,
+      "community": 12,
       "norm_label": "scanaggregatetests.cs"
     },
     {
@@ -4437,7 +4716,7 @@
       "source_file": "backend/tests/GhostScan.Domain.Tests/ScanAggregateTests.cs",
       "source_location": "L9",
       "id": "ghostscan_domain_tests_scanaggregatetests_scanaggregatetests",
-      "community": 13,
+      "community": 12,
       "norm_label": "scanaggregatetests"
     },
     {
@@ -4446,7 +4725,7 @@
       "source_file": "backend/tests/GhostScan.Domain.Tests/ScanAggregateTests.cs",
       "source_location": "L11",
       "id": "ghostscan_domain_tests_scanaggregatetests_scanaggregatetests_create_withvalidtarget_shouldbeinpendingstatus",
-      "community": 13,
+      "community": 12,
       "norm_label": ".create_withvalidtarget_shouldbeinpendingstatus()"
     },
     {
@@ -4455,7 +4734,7 @@
       "source_file": "backend/tests/GhostScan.Domain.Tests/ScanAggregateTests.cs",
       "source_location": "L27",
       "id": "ghostscan_domain_tests_scanaggregatetests_scanaggregatetests_start_frompending_shouldtransitiontorunning",
-      "community": 13,
+      "community": 12,
       "norm_label": ".start_frompending_shouldtransitiontorunning()"
     },
     {
@@ -4464,7 +4743,7 @@
       "source_file": "backend/tests/GhostScan.Domain.Tests/ScanAggregateTests.cs",
       "source_location": "L42",
       "id": "ghostscan_domain_tests_scanaggregatetests_scanaggregatetests_complete_fromrunning_shouldtransitiontocompleted",
-      "community": 13,
+      "community": 12,
       "norm_label": ".complete_fromrunning_shouldtransitiontocompleted()"
     },
     {
@@ -4473,7 +4752,7 @@
       "source_file": "backend/tests/GhostScan.Domain.Tests/ScanAggregateTests.cs",
       "source_location": "L59",
       "id": "ghostscan_domain_tests_scanaggregatetests_scanaggregatetests_addfinding_whenrunning_shouldincreasecount",
-      "community": 13,
+      "community": 12,
       "norm_label": ".addfinding_whenrunning_shouldincreasecount()"
     },
     {
@@ -4482,7 +4761,7 @@
       "source_file": "backend/tests/GhostScan.Domain.Tests/ScanAggregateTests.cs",
       "source_location": "L76",
       "id": "ghostscan_domain_tests_scanaggregatetests_scanaggregatetests_addfinding_whennotrunning_shouldfail",
-      "community": 13,
+      "community": 12,
       "norm_label": ".addfinding_whennotrunning_shouldfail()"
     },
     {
@@ -4491,7 +4770,7 @@
       "source_file": "backend/tests/GhostScan.Domain.Tests/ScanAggregateTests.cs",
       "source_location": "L90",
       "id": "ghostscan_domain_tests_scanaggregatetests_scanaggregatetests_cancel_frompending_shouldsucceed",
-      "community": 13,
+      "community": 12,
       "norm_label": ".cancel_frompending_shouldsucceed()"
     },
     {
@@ -4500,7 +4779,7 @@
       "source_file": "backend/tests/GhostScan.Domain.Tests/ScanAggregateTests.cs",
       "source_location": "L104",
       "id": "ghostscan_domain_tests_scanaggregatetests_scanaggregatetests_hascriticalfindings_withcriticalfinding_shouldreturntrue",
-      "community": 13,
+      "community": 12,
       "norm_label": ".hascriticalfindings_withcriticalfinding_shouldreturntrue()"
     },
     {
@@ -4509,7 +4788,7 @@
       "source_file": "backend/tests/GhostScan.Domain.Tests/ScanAggregateTests.cs",
       "source_location": "L118",
       "id": "ghostscan_domain_tests_scanaggregatetests_scanaggregatetests_createscan",
-      "community": 13,
+      "community": 12,
       "norm_label": ".createscan()"
     },
     {
@@ -4518,7 +4797,7 @@
       "source_file": "backend/tests/GhostScan.Domain.Tests/ScanAggregateTests.cs",
       "source_location": "L124",
       "id": "ghostscan_domain_tests_scanaggregatetests_scantargettests",
-      "community": 13,
+      "community": 12,
       "norm_label": "scantargettests"
     },
     {
@@ -4527,7 +4806,7 @@
       "source_file": "backend/tests/GhostScan.Domain.Tests/ScanAggregateTests.cs",
       "source_location": "L126",
       "id": "ghostscan_domain_tests_scanaggregatetests_scantargettests_create_withvaliddomain_shouldsucceed",
-      "community": 13,
+      "community": 12,
       "norm_label": ".create_withvaliddomain_shouldsucceed()"
     },
     {
@@ -4536,7 +4815,7 @@
       "source_file": "backend/tests/GhostScan.Domain.Tests/ScanAggregateTests.cs",
       "source_location": "L138",
       "id": "ghostscan_domain_tests_scanaggregatetests_scantargettests_create_withvalidip_shouldsucceed",
-      "community": 13,
+      "community": 12,
       "norm_label": ".create_withvalidip_shouldsucceed()"
     },
     {
@@ -4545,7 +4824,7 @@
       "source_file": "backend/tests/GhostScan.Domain.Tests/ScanAggregateTests.cs",
       "source_location": "L148",
       "id": "ghostscan_domain_tests_scanaggregatetests_scantargettests_create_withvalidcidr_shouldsucceed",
-      "community": 13,
+      "community": 12,
       "norm_label": ".create_withvalidcidr_shouldsucceed()"
     },
     {
@@ -4554,7 +4833,7 @@
       "source_file": "backend/tests/GhostScan.Domain.Tests/ScanAggregateTests.cs",
       "source_location": "L158",
       "id": "ghostscan_domain_tests_scanaggregatetests_scantargettests_create_withinvalidinput_shouldfail",
-      "community": 13,
+      "community": 12,
       "norm_label": ".create_withinvalidinput_shouldfail()"
     },
     {
@@ -4563,7 +4842,7 @@
       "source_file": "backend/tests/GhostScan.Domain.Tests/ScanAggregateTests.cs",
       "source_location": "L169",
       "id": "ghostscan_domain_tests_scanaggregatetests_vulnerabilityscoretests",
-      "community": 13,
+      "community": 12,
       "norm_label": "vulnerabilityscoretests"
     },
     {
@@ -4572,7 +4851,7 @@
       "source_file": "backend/tests/GhostScan.Domain.Tests/ScanAggregateTests.cs",
       "source_location": "L171",
       "id": "ghostscan_domain_tests_scanaggregatetests_vulnerabilityscoretests_calculate_sqliconfirmed_shouldbecritical",
-      "community": 13,
+      "community": 12,
       "norm_label": ".calculate_sqliconfirmed_shouldbecritical()"
     },
     {
@@ -4581,7 +4860,7 @@
       "source_file": "backend/tests/GhostScan.Domain.Tests/ScanAggregateTests.cs",
       "source_location": "L180",
       "id": "ghostscan_domain_tests_scanaggregatetests_vulnerabilityscoretests_calculate_missingheader_shouldbeatleastmedium",
-      "community": 13,
+      "community": 12,
       "norm_label": ".calculate_missingheader_shouldbeatleastmedium()"
     },
     {
@@ -4590,7 +4869,7 @@
       "source_file": "backend/tests/GhostScan.Domain.Tests/ScanAggregateTests.cs",
       "source_location": "L189",
       "id": "ghostscan_domain_tests_scanaggregatetests_vulnerabilityscoretests_withcontextmultiplier_loginsqli_shouldescalatetocritical",
-      "community": 13,
+      "community": 12,
       "norm_label": ".withcontextmultiplier_loginsqli_shouldescalatetocritical()"
     },
     {
@@ -4599,7 +4878,7 @@
       "source_file": "backend/tests/GhostScan.Domain.Tests/obj/Debug/net8.0/GhostScan.Domain.Tests.AssemblyInfo.cs",
       "source_location": "L1",
       "id": "backend_tests_ghostscan_domain_tests_obj_debug_net8_0_ghostscan_domain_tests_assemblyinfo_cs",
-      "community": 88,
+      "community": 97,
       "norm_label": "ghostscan.domain.tests.assemblyinfo.cs"
     },
     {
@@ -4608,7 +4887,7 @@
       "source_file": "backend/tests/GhostScan.Domain.Tests/obj/Debug/net8.0/GhostScan.Domain.Tests.GlobalUsings.g.cs",
       "source_location": "L1",
       "id": "backend_tests_ghostscan_domain_tests_obj_debug_net8_0_ghostscan_domain_tests_globalusings_g_cs",
-      "community": 89,
+      "community": 98,
       "norm_label": "ghostscan.domain.tests.globalusings.g.cs"
     },
     {
@@ -4617,7 +4896,7 @@
       "source_file": "backend/tests/GhostScan.Domain.Tests/obj/Release/net8.0/GhostScan.Domain.Tests.AssemblyInfo.cs",
       "source_location": "L1",
       "id": "backend_tests_ghostscan_domain_tests_obj_release_net8_0_ghostscan_domain_tests_assemblyinfo_cs",
-      "community": 90,
+      "community": 99,
       "norm_label": "ghostscan.domain.tests.assemblyinfo.cs"
     },
     {
@@ -4626,7 +4905,7 @@
       "source_file": "backend/tests/GhostScan.Domain.Tests/obj/Release/net8.0/GhostScan.Domain.Tests.GlobalUsings.g.cs",
       "source_location": "L1",
       "id": "backend_tests_ghostscan_domain_tests_obj_release_net8_0_ghostscan_domain_tests_globalusings_g_cs",
-      "community": 91,
+      "community": 100,
       "norm_label": "ghostscan.domain.tests.globalusings.g.cs"
     },
     {
@@ -4635,7 +4914,7 @@
       "source_file": "frontend/capacitor.config.ts",
       "source_location": "L1",
       "id": "frontend_capacitor_config_ts",
-      "community": 50,
+      "community": 57,
       "norm_label": "capacitor.config.ts"
     },
     {
@@ -4644,7 +4923,7 @@
       "source_file": "frontend/capacitor.config.ts",
       "source_location": "L3",
       "id": "frontend_capacitor_config_config",
-      "community": 50,
+      "community": 57,
       "norm_label": "config"
     },
     {
@@ -4653,7 +4932,7 @@
       "source_file": "frontend/postcss.config.js",
       "source_location": "L1",
       "id": "frontend_postcss_config_js",
-      "community": 92,
+      "community": 101,
       "norm_label": "postcss.config.js"
     },
     {
@@ -4662,7 +4941,7 @@
       "source_file": "frontend/tailwind.config.ts",
       "source_location": "L1",
       "id": "frontend_tailwind_config_ts",
-      "community": 51,
+      "community": 58,
       "norm_label": "tailwind.config.ts"
     },
     {
@@ -4671,7 +4950,7 @@
       "source_file": "frontend/tailwind.config.ts",
       "source_location": "L4",
       "id": "frontend_tailwind_config_config",
-      "community": 51,
+      "community": 58,
       "norm_label": "config"
     },
     {
@@ -4680,7 +4959,7 @@
       "source_file": "frontend/vite.config.ts",
       "source_location": "L1",
       "id": "frontend_vite_config_ts",
-      "community": 52,
+      "community": 59,
       "norm_label": "vite.config.ts"
     },
     {
@@ -4689,7 +4968,7 @@
       "source_file": "frontend/vite.config.ts",
       "source_location": "L28",
       "id": "frontend_vite_config_onwarn",
-      "community": 52,
+      "community": 59,
       "norm_label": "onwarn()"
     },
     {
@@ -4698,7 +4977,7 @@
       "source_file": "frontend/vite.config.ts.timestamp-1776852845851-5250eb16bda46.mjs",
       "source_location": "L1",
       "id": "frontend_vite_config_ts_timestamp_1776852845851_5250eb16bda46_mjs",
-      "community": 93,
+      "community": 102,
       "norm_label": "vite.config.ts.timestamp-1776852845851-5250eb16bda46.mjs"
     },
     {
@@ -4707,7 +4986,7 @@
       "source_file": "frontend/vite.config.ts.timestamp-1776852886477-aaa8713dae6c2.mjs",
       "source_location": "L1",
       "id": "frontend_vite_config_ts_timestamp_1776852886477_aaa8713dae6c2_mjs",
-      "community": 94,
+      "community": 103,
       "norm_label": "vite.config.ts.timestamp-1776852886477-aaa8713dae6c2.mjs"
     },
     {
@@ -4716,7 +4995,7 @@
       "source_file": "frontend/android/build.gradle",
       "source_location": "L1",
       "id": "frontend_android_build_gradle",
-      "community": 95,
+      "community": 104,
       "norm_label": "build.gradle"
     },
     {
@@ -4725,7 +5004,7 @@
       "source_file": "frontend/android/capacitor.settings.gradle",
       "source_location": "L1",
       "id": "frontend_android_capacitor_settings_gradle",
-      "community": 96,
+      "community": 105,
       "norm_label": "capacitor.settings.gradle"
     },
     {
@@ -4734,7 +5013,7 @@
       "source_file": "frontend/android/settings.gradle",
       "source_location": "L1",
       "id": "frontend_android_settings_gradle",
-      "community": 97,
+      "community": 106,
       "norm_label": "settings.gradle"
     },
     {
@@ -4743,7 +5022,7 @@
       "source_file": "frontend/android/variables.gradle",
       "source_location": "L1",
       "id": "frontend_android_variables_gradle",
-      "community": 98,
+      "community": 107,
       "norm_label": "variables.gradle"
     },
     {
@@ -4752,7 +5031,7 @@
       "source_file": "frontend/android/app/build.gradle",
       "source_location": "L1",
       "id": "frontend_android_app_build_gradle",
-      "community": 99,
+      "community": 108,
       "norm_label": "build.gradle"
     },
     {
@@ -4761,7 +5040,7 @@
       "source_file": "frontend/android/app/capacitor.build.gradle",
       "source_location": "L1",
       "id": "frontend_android_app_capacitor_build_gradle",
-      "community": 100,
+      "community": 109,
       "norm_label": "capacitor.build.gradle"
     },
     {
@@ -4770,7 +5049,7 @@
       "source_file": "frontend/android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java",
       "source_location": "L1",
       "id": "frontend_android_app_src_androidtest_java_com_getcapacitor_myapp_exampleinstrumentedtest_java",
-      "community": 43,
+      "community": 50,
       "norm_label": "exampleinstrumentedtest.java"
     },
     {
@@ -4779,7 +5058,7 @@
       "source_file": "frontend/android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java",
       "source_location": "L16",
       "id": "myapp_exampleinstrumentedtest_exampleinstrumentedtest",
-      "community": 43,
+      "community": 50,
       "norm_label": "exampleinstrumentedtest"
     },
     {
@@ -4788,7 +5067,7 @@
       "source_file": "frontend/android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java",
       "source_location": "L19",
       "id": "myapp_exampleinstrumentedtest_exampleinstrumentedtest_useappcontext",
-      "community": 43,
+      "community": 50,
       "norm_label": ".useappcontext()"
     },
     {
@@ -4797,7 +5076,7 @@
       "source_file": "frontend/android/app/src/main/java/br/com/scanghost/app/MainActivity.java",
       "source_location": "L1",
       "id": "frontend_android_app_src_main_java_br_com_scanghost_app_mainactivity_java",
-      "community": 44,
+      "community": 51,
       "norm_label": "mainactivity.java"
     },
     {
@@ -4806,7 +5085,7 @@
       "source_file": "frontend/android/app/src/main/java/br/com/scanghost/app/MainActivity.java",
       "source_location": "L5",
       "id": "app_mainactivity_mainactivity",
-      "community": 44,
+      "community": 51,
       "norm_label": "mainactivity"
     },
     {
@@ -4815,7 +5094,7 @@
       "source_file": "",
       "source_location": "",
       "id": "bridgeactivity",
-      "community": 44,
+      "community": 51,
       "norm_label": "bridgeactivity"
     },
     {
@@ -4824,7 +5103,7 @@
       "source_file": "frontend/android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java",
       "source_location": "L1",
       "id": "frontend_android_app_src_test_java_com_getcapacitor_myapp_exampleunittest_java",
-      "community": 45,
+      "community": 52,
       "norm_label": "exampleunittest.java"
     },
     {
@@ -4833,7 +5112,7 @@
       "source_file": "frontend/android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java",
       "source_location": "L12",
       "id": "myapp_exampleunittest_exampleunittest",
-      "community": 45,
+      "community": 52,
       "norm_label": "exampleunittest"
     },
     {
@@ -4842,7 +5121,7 @@
       "source_file": "frontend/android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java",
       "source_location": "L14",
       "id": "myapp_exampleunittest_exampleunittest_addition_iscorrect",
-      "community": 45,
+      "community": 52,
       "norm_label": ".addition_iscorrect()"
     },
     {
@@ -4851,7 +5130,7 @@
       "source_file": "frontend/src/App.tsx",
       "source_location": "L1",
       "id": "frontend_src_app_tsx",
-      "community": 4,
+      "community": 3,
       "norm_label": "app.tsx"
     },
     {
@@ -4860,7 +5139,7 @@
       "source_file": "frontend/src/App.tsx",
       "source_location": "L8",
       "id": "src_app_dashboard",
-      "community": 4,
+      "community": 3,
       "norm_label": "dashboard"
     },
     {
@@ -4869,7 +5148,7 @@
       "source_file": "frontend/src/App.tsx",
       "source_location": "L9",
       "id": "src_app_scanterminal",
-      "community": 4,
+      "community": 3,
       "norm_label": "scanterminal"
     },
     {
@@ -4878,7 +5157,7 @@
       "source_file": "frontend/src/App.tsx",
       "source_location": "L10",
       "id": "src_app_report",
-      "community": 4,
+      "community": 3,
       "norm_label": "report"
     },
     {
@@ -4887,7 +5166,7 @@
       "source_file": "frontend/src/App.tsx",
       "source_location": "L11",
       "id": "src_app_history",
-      "community": 4,
+      "community": 3,
       "norm_label": "history"
     },
     {
@@ -4896,7 +5175,7 @@
       "source_file": "frontend/src/App.tsx",
       "source_location": "L13",
       "id": "src_app_pageloader",
-      "community": 4,
+      "community": 3,
       "norm_label": "pageloader()"
     },
     {
@@ -4905,7 +5184,7 @@
       "source_file": "frontend/src/App.tsx",
       "source_location": "L23",
       "id": "src_app_app",
-      "community": 4,
+      "community": 3,
       "norm_label": "app()"
     },
     {
@@ -4914,7 +5193,7 @@
       "source_file": "frontend/src/main.tsx",
       "source_location": "L1",
       "id": "frontend_src_main_tsx",
-      "community": 4,
+      "community": 3,
       "norm_label": "main.tsx"
     },
     {
@@ -4923,7 +5202,7 @@
       "source_file": "frontend/src/main.tsx",
       "source_location": "L10",
       "id": "src_main_queryclient",
-      "community": 4,
+      "community": 3,
       "norm_label": "queryclient"
     },
     {
@@ -4932,7 +5211,7 @@
       "source_file": "frontend/src/api/client.ts",
       "source_location": "L1",
       "id": "frontend_src_api_client_ts",
-      "community": 9,
+      "community": 10,
       "norm_label": "client.ts"
     },
     {
@@ -4941,7 +5220,7 @@
       "source_file": "frontend/src/api/client.ts",
       "source_location": "L17",
       "id": "api_client_api",
-      "community": 9,
+      "community": 10,
       "norm_label": "api"
     },
     {
@@ -4950,7 +5229,7 @@
       "source_file": "frontend/src/api/client.ts",
       "source_location": "L25",
       "id": "api_client_startscan",
-      "community": 9,
+      "community": 14,
       "norm_label": "startscan()"
     },
     {
@@ -4959,7 +5238,7 @@
       "source_file": "frontend/src/api/client.ts",
       "source_location": "L30",
       "id": "api_client_getscanstatus",
-      "community": 18,
+      "community": 10,
       "norm_label": "getscanstatus()"
     },
     {
@@ -4968,7 +5247,7 @@
       "source_file": "frontend/src/api/client.ts",
       "source_location": "L35",
       "id": "api_client_getscanreport",
-      "community": 20,
+      "community": 19,
       "norm_label": "getscanreport()"
     },
     {
@@ -4977,7 +5256,7 @@
       "source_file": "frontend/src/api/client.ts",
       "source_location": "L44",
       "id": "api_client_cancelscan",
-      "community": 18,
+      "community": 20,
       "norm_label": "cancelscan()"
     },
     {
@@ -4986,7 +5265,7 @@
       "source_file": "frontend/src/api/client.ts",
       "source_location": "L48",
       "id": "api_client_getscans",
-      "community": 9,
+      "community": 26,
       "norm_label": "getscans()"
     },
     {
@@ -4995,7 +5274,7 @@
       "source_file": "frontend/src/api/client.ts",
       "source_location": "L58",
       "id": "api_client_quickscan",
-      "community": 9,
+      "community": 10,
       "norm_label": "quickscan()"
     },
     {
@@ -5004,7 +5283,7 @@
       "source_file": "frontend/src/components/layout/Layout.tsx",
       "source_location": "L1",
       "id": "frontend_src_components_layout_layout_tsx",
-      "community": 4,
+      "community": 3,
       "norm_label": "layout.tsx"
     },
     {
@@ -5013,7 +5292,7 @@
       "source_file": "frontend/src/components/layout/Layout.tsx",
       "source_location": "L14",
       "id": "layout_layout_nav_items",
-      "community": 4,
+      "community": 3,
       "norm_label": "nav_items"
     },
     {
@@ -5022,7 +5301,7 @@
       "source_file": "frontend/src/components/layout/Layout.tsx",
       "source_location": "L21",
       "id": "layout_layout_langs",
-      "community": 4,
+      "community": 3,
       "norm_label": "langs"
     },
     {
@@ -5031,7 +5310,7 @@
       "source_file": "frontend/src/components/layout/Layout.tsx",
       "source_location": "L31",
       "id": "layout_layout_normalizelangcode",
-      "community": 4,
+      "community": 3,
       "norm_label": "normalizelangcode()"
     },
     {
@@ -5040,7 +5319,7 @@
       "source_file": "frontend/src/components/layout/Layout.tsx",
       "source_location": "L38",
       "id": "layout_layout_layoutprops",
-      "community": 4,
+      "community": 3,
       "norm_label": "layoutprops"
     },
     {
@@ -5049,7 +5328,7 @@
       "source_file": "frontend/src/components/layout/Layout.tsx",
       "source_location": "L42",
       "id": "layout_layout_layout",
-      "community": 4,
+      "community": 3,
       "norm_label": "layout()"
     },
     {
@@ -5058,7 +5337,7 @@
       "source_file": "frontend/src/components/shared/CopyButton.tsx",
       "source_location": "L1",
       "id": "frontend_src_components_shared_copybutton_tsx",
-      "community": 15,
+      "community": 22,
       "norm_label": "copybutton.tsx"
     },
     {
@@ -5067,7 +5346,7 @@
       "source_file": "frontend/src/components/shared/CopyButton.tsx",
       "source_location": "L6",
       "id": "shared_copybutton_copybuttonprops",
-      "community": 15,
+      "community": 22,
       "norm_label": "copybuttonprops"
     },
     {
@@ -5076,7 +5355,7 @@
       "source_file": "frontend/src/components/shared/CopyButton.tsx",
       "source_location": "L11",
       "id": "shared_copybutton_copybutton",
-      "community": 15,
+      "community": 22,
       "norm_label": "copybutton()"
     },
     {
@@ -5085,7 +5364,7 @@
       "source_file": "frontend/src/components/shared/ErrorBoundary.tsx",
       "source_location": "L1",
       "id": "frontend_src_components_shared_errorboundary_tsx",
-      "community": 4,
+      "community": 3,
       "norm_label": "errorboundary.tsx"
     },
     {
@@ -5094,7 +5373,7 @@
       "source_file": "frontend/src/components/shared/ErrorBoundary.tsx",
       "source_location": "L3",
       "id": "shared_errorboundary_props",
-      "community": 4,
+      "community": 3,
       "norm_label": "props"
     },
     {
@@ -5103,7 +5382,7 @@
       "source_file": "frontend/src/components/shared/ErrorBoundary.tsx",
       "source_location": "L8",
       "id": "shared_errorboundary_state",
-      "community": 4,
+      "community": 3,
       "norm_label": "state"
     },
     {
@@ -5112,7 +5391,7 @@
       "source_file": "frontend/src/components/shared/ErrorBoundary.tsx",
       "source_location": "L12",
       "id": "shared_errorboundary_errorboundary",
-      "community": 4,
+      "community": 3,
       "norm_label": "errorboundary"
     },
     {
@@ -5121,7 +5400,7 @@
       "source_file": "frontend/src/components/shared/ErrorBoundary.tsx",
       "source_location": "L13",
       "id": "shared_errorboundary_errorboundary_constructor",
-      "community": 4,
+      "community": 3,
       "norm_label": ".constructor()"
     },
     {
@@ -5130,7 +5409,7 @@
       "source_file": "frontend/src/components/shared/ErrorBoundary.tsx",
       "source_location": "L18",
       "id": "shared_errorboundary_errorboundary_getderivedstatefromerror",
-      "community": 4,
+      "community": 3,
       "norm_label": ".getderivedstatefromerror()"
     },
     {
@@ -5139,7 +5418,7 @@
       "source_file": "frontend/src/components/shared/ErrorBoundary.tsx",
       "source_location": "L22",
       "id": "shared_errorboundary_errorboundary_componentdidcatch",
-      "community": 4,
+      "community": 3,
       "norm_label": ".componentdidcatch()"
     },
     {
@@ -5148,7 +5427,7 @@
       "source_file": "frontend/src/components/shared/ErrorBoundary.tsx",
       "source_location": "L26",
       "id": "shared_errorboundary_errorboundary_render",
-      "community": 4,
+      "community": 3,
       "norm_label": ".render()"
     },
     {
@@ -5157,7 +5436,7 @@
       "source_file": "frontend/src/components/shared/GlitchText.tsx",
       "source_location": "L1",
       "id": "frontend_src_components_shared_glitchtext_tsx",
-      "community": 12,
+      "community": 22,
       "norm_label": "glitchtext.tsx"
     },
     {
@@ -5166,7 +5445,7 @@
       "source_file": "frontend/src/components/shared/GlitchText.tsx",
       "source_location": "L4",
       "id": "shared_glitchtext_glitchtextprops",
-      "community": 12,
+      "community": 22,
       "norm_label": "glitchtextprops"
     },
     {
@@ -5175,7 +5454,7 @@
       "source_file": "frontend/src/components/shared/GlitchText.tsx",
       "source_location": "L14",
       "id": "shared_glitchtext_glitchtext",
-      "community": 12,
+      "community": 22,
       "norm_label": "glitchtext()"
     },
     {
@@ -5184,7 +5463,7 @@
       "source_file": "frontend/src/components/shared/MatrixRain.tsx",
       "source_location": "L1",
       "id": "frontend_src_components_shared_matrixrain_tsx",
-      "community": 12,
+      "community": 14,
       "norm_label": "matrixrain.tsx"
     },
     {
@@ -5193,7 +5472,7 @@
       "source_file": "frontend/src/components/shared/MatrixRain.tsx",
       "source_location": "L3",
       "id": "shared_matrixrain_matrixrainprops",
-      "community": 12,
+      "community": 14,
       "norm_label": "matrixrainprops"
     },
     {
@@ -5202,7 +5481,7 @@
       "source_file": "frontend/src/components/shared/MatrixRain.tsx",
       "source_location": "L10",
       "id": "shared_matrixrain_chars",
-      "community": 12,
+      "community": 14,
       "norm_label": "chars"
     },
     {
@@ -5211,7 +5490,7 @@
       "source_file": "frontend/src/components/shared/MatrixRain.tsx",
       "source_location": "L12",
       "id": "shared_matrixrain_matrixrain",
-      "community": 12,
+      "community": 14,
       "norm_label": "matrixrain()"
     },
     {
@@ -5220,7 +5499,7 @@
       "source_file": "frontend/src/components/shared/ScanDocs.tsx",
       "source_location": "L1",
       "id": "frontend_src_components_shared_scandocs_tsx",
-      "community": 12,
+      "community": 14,
       "norm_label": "scandocs.tsx"
     },
     {
@@ -5229,7 +5508,7 @@
       "source_file": "frontend/src/components/shared/ScanDocs.tsx",
       "source_location": "L10",
       "id": "shared_scandocs_profiles",
-      "community": 12,
+      "community": 14,
       "norm_label": "profiles"
     },
     {
@@ -5238,7 +5517,7 @@
       "source_file": "frontend/src/components/shared/ScanDocs.tsx",
       "source_location": "L78",
       "id": "shared_scandocs_pipeline",
-      "community": 12,
+      "community": 14,
       "norm_label": "pipeline"
     },
     {
@@ -5247,7 +5526,7 @@
       "source_file": "frontend/src/components/shared/ScanDocs.tsx",
       "source_location": "L87",
       "id": "shared_scandocs_score_steps",
-      "community": 12,
+      "community": 14,
       "norm_label": "score_steps"
     },
     {
@@ -5256,7 +5535,7 @@
       "source_file": "frontend/src/components/shared/ScanDocs.tsx",
       "source_location": "L95",
       "id": "shared_scandocs_bool",
-      "community": 12,
+      "community": 14,
       "norm_label": "bool()"
     },
     {
@@ -5265,7 +5544,7 @@
       "source_file": "frontend/src/components/shared/ScanDocs.tsx",
       "source_location": "L102",
       "id": "shared_scandocs_scandocs",
-      "community": 12,
+      "community": 14,
       "norm_label": "scandocs()"
     },
     {
@@ -5274,7 +5553,7 @@
       "source_file": "frontend/src/components/shared/SeverityBadge.tsx",
       "source_location": "L1",
       "id": "frontend_src_components_shared_severitybadge_tsx",
-      "community": 20,
+      "community": 19,
       "norm_label": "severitybadge.tsx"
     },
     {
@@ -5283,7 +5562,7 @@
       "source_file": "frontend/src/components/shared/SeverityBadge.tsx",
       "source_location": "L4",
       "id": "shared_severitybadge_severitybadgeprops",
-      "community": 20,
+      "community": 19,
       "norm_label": "severitybadgeprops"
     },
     {
@@ -5292,7 +5571,7 @@
       "source_file": "frontend/src/components/shared/SeverityBadge.tsx",
       "source_location": "L9",
       "id": "shared_severitybadge_severitymap",
-      "community": 20,
+      "community": 19,
       "norm_label": "severitymap"
     },
     {
@@ -5301,7 +5580,7 @@
       "source_file": "frontend/src/components/shared/SeverityBadge.tsx",
       "source_location": "L17",
       "id": "shared_severitybadge_severitybadge",
-      "community": 20,
+      "community": 19,
       "norm_label": "severitybadge()"
     },
     {
@@ -5310,7 +5589,7 @@
       "source_file": "frontend/src/components/shared/StatCard.tsx",
       "source_location": "L1",
       "id": "frontend_src_components_shared_statcard_tsx",
-      "community": 12,
+      "community": 14,
       "norm_label": "statcard.tsx"
     },
     {
@@ -5319,7 +5598,7 @@
       "source_file": "frontend/src/components/shared/StatCard.tsx",
       "source_location": "L5",
       "id": "shared_statcard_statcardprops",
-      "community": 12,
+      "community": 14,
       "norm_label": "statcardprops"
     },
     {
@@ -5328,7 +5607,7 @@
       "source_file": "frontend/src/components/shared/StatCard.tsx",
       "source_location": "L14",
       "id": "shared_statcard_statcard",
-      "community": 12,
+      "community": 14,
       "norm_label": "statcard()"
     },
     {
@@ -5337,7 +5616,7 @@
       "source_file": "frontend/src/components/shared/StatusBadge.tsx",
       "source_location": "L1",
       "id": "frontend_src_components_shared_statusbadge_tsx",
-      "community": 15,
+      "community": 22,
       "norm_label": "statusbadge.tsx"
     },
     {
@@ -5346,7 +5625,7 @@
       "source_file": "frontend/src/components/shared/StatusBadge.tsx",
       "source_location": "L4",
       "id": "shared_statusbadge_statusbadgeprops",
-      "community": 15,
+      "community": 22,
       "norm_label": "statusbadgeprops"
     },
     {
@@ -5355,7 +5634,7 @@
       "source_file": "frontend/src/components/shared/StatusBadge.tsx",
       "source_location": "L10",
       "id": "shared_statusbadge_statusbadge",
-      "community": 15,
+      "community": 22,
       "norm_label": "statusbadge()"
     },
     {
@@ -5364,7 +5643,7 @@
       "source_file": "frontend/src/components/shared/TerminalCard.tsx",
       "source_location": "L1",
       "id": "frontend_src_components_shared_terminalcard_tsx",
-      "community": 15,
+      "community": 26,
       "norm_label": "terminalcard.tsx"
     },
     {
@@ -5373,7 +5652,7 @@
       "source_file": "frontend/src/components/shared/TerminalCard.tsx",
       "source_location": "L4",
       "id": "shared_terminalcard_terminalcardprops",
-      "community": 15,
+      "community": 26,
       "norm_label": "terminalcardprops"
     },
     {
@@ -5382,7 +5661,7 @@
       "source_file": "frontend/src/components/shared/TerminalCard.tsx",
       "source_location": "L13",
       "id": "shared_terminalcard_terminalcard",
-      "community": 15,
+      "community": 26,
       "norm_label": "terminalcard()"
     },
     {
@@ -5391,7 +5670,7 @@
       "source_file": "frontend/src/components/shared/ThemeSwitcher.tsx",
       "source_location": "L1",
       "id": "frontend_src_components_shared_themeswitcher_tsx",
-      "community": 4,
+      "community": 3,
       "norm_label": "themeswitcher.tsx"
     },
     {
@@ -5400,7 +5679,7 @@
       "source_file": "frontend/src/components/shared/ThemeSwitcher.tsx",
       "source_location": "L6",
       "id": "shared_themeswitcher_theme_icon",
-      "community": 4,
+      "community": 3,
       "norm_label": "theme_icon"
     },
     {
@@ -5409,7 +5688,7 @@
       "source_file": "frontend/src/components/shared/ThemeSwitcher.tsx",
       "source_location": "L13",
       "id": "shared_themeswitcher_themeswitcher",
-      "community": 4,
+      "community": 3,
       "norm_label": "themeswitcher()"
     },
     {
@@ -5418,7 +5697,7 @@
       "source_file": "frontend/src/contexts/ThemeContext.tsx",
       "source_location": "L1",
       "id": "frontend_src_contexts_themecontext_tsx",
-      "community": 4,
+      "community": 3,
       "norm_label": "themecontext.tsx"
     },
     {
@@ -5427,7 +5706,7 @@
       "source_file": "frontend/src/contexts/ThemeContext.tsx",
       "source_location": "L3",
       "id": "contexts_themecontext_theme",
-      "community": 4,
+      "community": 3,
       "norm_label": "theme"
     },
     {
@@ -5436,7 +5715,7 @@
       "source_file": "frontend/src/contexts/ThemeContext.tsx",
       "source_location": "L5",
       "id": "contexts_themecontext_themeconfig",
-      "community": 4,
+      "community": 3,
       "norm_label": "themeconfig"
     },
     {
@@ -5445,7 +5724,7 @@
       "source_file": "frontend/src/contexts/ThemeContext.tsx",
       "source_location": "L11",
       "id": "contexts_themecontext_themes",
-      "community": 4,
+      "community": 3,
       "norm_label": "themes"
     },
     {
@@ -5454,7 +5733,7 @@
       "source_file": "frontend/src/contexts/ThemeContext.tsx",
       "source_location": "L18",
       "id": "contexts_themecontext_themecontextvalue",
-      "community": 4,
+      "community": 3,
       "norm_label": "themecontextvalue"
     },
     {
@@ -5463,7 +5742,7 @@
       "source_file": "frontend/src/contexts/ThemeContext.tsx",
       "source_location": "L24",
       "id": "contexts_themecontext_themecontext",
-      "community": 4,
+      "community": 3,
       "norm_label": "themecontext"
     },
     {
@@ -5472,7 +5751,7 @@
       "source_file": "frontend/src/contexts/ThemeContext.tsx",
       "source_location": "L32",
       "id": "contexts_themecontext_applytheme",
-      "community": 4,
+      "community": 3,
       "norm_label": "applytheme()"
     },
     {
@@ -5481,7 +5760,7 @@
       "source_file": "frontend/src/contexts/ThemeContext.tsx",
       "source_location": "L41",
       "id": "contexts_themecontext_themeprovider",
-      "community": 4,
+      "community": 3,
       "norm_label": "themeprovider()"
     },
     {
@@ -5490,7 +5769,7 @@
       "source_file": "frontend/src/contexts/ThemeContext.tsx",
       "source_location": "L67",
       "id": "contexts_themecontext_usetheme",
-      "community": 4,
+      "community": 3,
       "norm_label": "usetheme()"
     },
     {
@@ -5499,7 +5778,7 @@
       "source_file": "frontend/src/hooks/useSignalR.ts",
       "source_location": "L1",
       "id": "frontend_src_hooks_usesignalr_ts",
-      "community": 18,
+      "community": 20,
       "norm_label": "usesignalr.ts"
     },
     {
@@ -5508,7 +5787,7 @@
       "source_file": "frontend/src/hooks/useSignalR.ts",
       "source_location": "L5",
       "id": "hooks_usesignalr_connectionstate",
-      "community": 18,
+      "community": 20,
       "norm_label": "connectionstate"
     },
     {
@@ -5517,7 +5796,7 @@
       "source_file": "frontend/src/hooks/useSignalR.ts",
       "source_location": "L7",
       "id": "hooks_usesignalr_usesignalroptions",
-      "community": 18,
+      "community": 20,
       "norm_label": "usesignalroptions"
     },
     {
@@ -5526,7 +5805,7 @@
       "source_file": "frontend/src/hooks/useSignalR.ts",
       "source_location": "L14",
       "id": "hooks_usesignalr_usesignalr",
-      "community": 18,
+      "community": 20,
       "norm_label": "usesignalr()"
     },
     {
@@ -5535,7 +5814,7 @@
       "source_file": "frontend/src/i18n/index.ts",
       "source_location": "L1",
       "id": "frontend_src_i18n_index_ts",
-      "community": 4,
+      "community": 3,
       "norm_label": "index.ts"
     },
     {
@@ -5544,7 +5823,7 @@
       "source_file": "frontend/src/lib/utils.ts",
       "source_location": "L1",
       "id": "frontend_src_lib_utils_ts",
-      "community": 15,
+      "community": 22,
       "norm_label": "utils.ts"
     },
     {
@@ -5553,7 +5832,7 @@
       "source_file": "frontend/src/lib/utils.ts",
       "source_location": "L4",
       "id": "lib_utils_cn",
-      "community": 15,
+      "community": 22,
       "norm_label": "cn()"
     },
     {
@@ -5562,7 +5841,7 @@
       "source_file": "frontend/src/lib/utils.ts",
       "source_location": "L8",
       "id": "lib_utils_formatduration",
-      "community": 15,
+      "community": 26,
       "norm_label": "formatduration()"
     },
     {
@@ -5571,7 +5850,7 @@
       "source_file": "frontend/src/lib/utils.ts",
       "source_location": "L23",
       "id": "lib_utils_formatdate",
-      "community": 20,
+      "community": 19,
       "norm_label": "formatdate()"
     },
     {
@@ -5580,7 +5859,7 @@
       "source_file": "frontend/src/lib/utils.ts",
       "source_location": "L28",
       "id": "lib_utils_severitycolor",
-      "community": 20,
+      "community": 19,
       "norm_label": "severitycolor()"
     },
     {
@@ -5589,7 +5868,7 @@
       "source_file": "frontend/src/lib/utils.ts",
       "source_location": "L38",
       "id": "lib_utils_severityorder",
-      "community": 15,
+      "community": 22,
       "norm_label": "severityorder()"
     },
     {
@@ -5598,7 +5877,7 @@
       "source_file": "frontend/src/lib/utils.ts",
       "source_location": "L48",
       "id": "lib_utils_statusvariant",
-      "community": 15,
+      "community": 22,
       "norm_label": "statusvariant()"
     },
     {
@@ -5607,7 +5886,7 @@
       "source_file": "frontend/src/pages/Dashboard.tsx",
       "source_location": "L1",
       "id": "frontend_src_pages_dashboard_tsx",
-      "community": 12,
+      "community": 14,
       "norm_label": "dashboard.tsx"
     },
     {
@@ -5616,7 +5895,7 @@
       "source_file": "frontend/src/pages/Dashboard.tsx",
       "source_location": "L23",
       "id": "pages_dashboard_profiles",
-      "community": 12,
+      "community": 14,
       "norm_label": "profiles"
     },
     {
@@ -5625,7 +5904,7 @@
       "source_file": "frontend/src/pages/Dashboard.tsx",
       "source_location": "L25",
       "id": "pages_dashboard_dashboard",
-      "community": 12,
+      "community": 14,
       "norm_label": "dashboard()"
     },
     {
@@ -5634,7 +5913,7 @@
       "source_file": "frontend/src/pages/History.tsx",
       "source_location": "L1",
       "id": "frontend_src_pages_history_tsx",
-      "community": 15,
+      "community": 26,
       "norm_label": "history.tsx"
     },
     {
@@ -5643,7 +5922,7 @@
       "source_file": "frontend/src/pages/History.tsx",
       "source_location": "L17",
       "id": "pages_history_status_options",
-      "community": 15,
+      "community": 26,
       "norm_label": "status_options"
     },
     {
@@ -5652,7 +5931,7 @@
       "source_file": "frontend/src/pages/History.tsx",
       "source_location": "L21",
       "id": "pages_history_history",
-      "community": 15,
+      "community": 26,
       "norm_label": "history()"
     },
     {
@@ -5661,7 +5940,7 @@
       "source_file": "frontend/src/pages/Report.tsx",
       "source_location": "L1",
       "id": "frontend_src_pages_report_tsx",
-      "community": 20,
+      "community": 19,
       "norm_label": "report.tsx"
     },
     {
@@ -5670,7 +5949,7 @@
       "source_file": "frontend/src/pages/Report.tsx",
       "source_location": "L23",
       "id": "pages_report_severity_order",
-      "community": 20,
+      "community": 19,
       "norm_label": "severity_order"
     },
     {
@@ -5679,7 +5958,7 @@
       "source_file": "frontend/src/pages/Report.tsx",
       "source_location": "L27",
       "id": "pages_report_matrixtooltip",
-      "community": 20,
+      "community": 19,
       "norm_label": "matrixtooltip()"
     },
     {
@@ -5688,7 +5967,7 @@
       "source_file": "frontend/src/pages/Report.tsx",
       "source_location": "L40",
       "id": "pages_report_findingrow",
-      "community": 20,
+      "community": 19,
       "norm_label": "findingrow()"
     },
     {
@@ -5697,7 +5976,7 @@
       "source_file": "frontend/src/pages/Report.tsx",
       "source_location": "L154",
       "id": "pages_report_report",
-      "community": 20,
+      "community": 19,
       "norm_label": "report()"
     },
     {
@@ -5706,7 +5985,7 @@
       "source_file": "frontend/src/pages/ScanTerminal.tsx",
       "source_location": "L1",
       "id": "frontend_src_pages_scanterminal_tsx",
-      "community": 18,
+      "community": 20,
       "norm_label": "scanterminal.tsx"
     },
     {
@@ -5715,7 +5994,7 @@
       "source_file": "frontend/src/pages/ScanTerminal.tsx",
       "source_location": "L18",
       "id": "pages_scanterminal_logline",
-      "community": 18,
+      "community": 20,
       "norm_label": "logline"
     },
     {
@@ -5724,7 +6003,7 @@
       "source_file": "frontend/src/pages/ScanTerminal.tsx",
       "source_location": "L26",
       "id": "pages_scanterminal_now",
-      "community": 18,
+      "community": 20,
       "norm_label": "now()"
     },
     {
@@ -5733,7 +6012,7 @@
       "source_file": "frontend/src/pages/ScanTerminal.tsx",
       "source_location": "L30",
       "id": "pages_scanterminal_linecolor",
-      "community": 18,
+      "community": 20,
       "norm_label": "linecolor()"
     },
     {
@@ -5742,7 +6021,7 @@
       "source_file": "frontend/src/pages/ScanTerminal.tsx",
       "source_location": "L40",
       "id": "pages_scanterminal_lineprefix",
-      "community": 18,
+      "community": 20,
       "norm_label": "lineprefix()"
     },
     {
@@ -5751,7 +6030,7 @@
       "source_file": "frontend/src/pages/ScanTerminal.tsx",
       "source_location": "L50",
       "id": "pages_scanterminal_scanterminal",
-      "community": 18,
+      "community": 20,
       "norm_label": "scanterminal()"
     },
     {
@@ -5760,7 +6039,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L1",
       "id": "frontend_src_types_index_ts",
-      "community": 9,
+      "community": 10,
       "norm_label": "index.ts"
     },
     {
@@ -5769,7 +6048,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L3",
       "id": "types_index_scanstatus",
-      "community": 15,
+      "community": 26,
       "norm_label": "scanstatus"
     },
     {
@@ -5778,7 +6057,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L10",
       "id": "types_index_scanprofile",
-      "community": 12,
+      "community": 14,
       "norm_label": "scanprofile"
     },
     {
@@ -5787,7 +6066,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L12",
       "id": "types_index_severity",
-      "community": 20,
+      "community": 19,
       "norm_label": "severity"
     },
     {
@@ -5796,7 +6075,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L16",
       "id": "types_index_startscanrequest",
-      "community": 9,
+      "community": 10,
       "norm_label": "startscanrequest"
     },
     {
@@ -5805,7 +6084,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L21",
       "id": "types_index_scanlistitem",
-      "community": 9,
+      "community": 10,
       "norm_label": "scanlistitem"
     },
     {
@@ -5814,7 +6093,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L32",
       "id": "types_index_scanstatusresponse",
-      "community": 9,
+      "community": 10,
       "norm_label": "scanstatusresponse"
     },
     {
@@ -5823,7 +6102,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L46",
       "id": "types_index_findingdto",
-      "community": 20,
+      "community": 19,
       "norm_label": "findingdto"
     },
     {
@@ -5832,7 +6111,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L67",
       "id": "types_index_summarydto",
-      "community": 9,
+      "community": 10,
       "norm_label": "summarydto"
     },
     {
@@ -5841,7 +6120,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L77",
       "id": "types_index_portinfodto",
-      "community": 9,
+      "community": 10,
       "norm_label": "portinfodto"
     },
     {
@@ -5850,7 +6129,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L83",
       "id": "types_index_reconresultdto",
-      "community": 9,
+      "community": 10,
       "norm_label": "reconresultdto"
     },
     {
@@ -5859,7 +6138,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L91",
       "id": "types_index_wafdetectiondto",
-      "community": 9,
+      "community": 10,
       "norm_label": "wafdetectiondto"
     },
     {
@@ -5868,7 +6147,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L97",
       "id": "types_index_jssecretdto",
-      "community": 9,
+      "community": 10,
       "norm_label": "jssecretdto"
     },
     {
@@ -5877,7 +6156,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L104",
       "id": "types_index_headerauditdto",
-      "community": 9,
+      "community": 10,
       "norm_label": "headerauditdto"
     },
     {
@@ -5886,7 +6165,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L109",
       "id": "types_index_webanalysisresultdto",
-      "community": 9,
+      "community": 10,
       "norm_label": "webanalysisresultdto"
     },
     {
@@ -5895,7 +6174,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L118",
       "id": "types_index_correlationdto",
-      "community": 9,
+      "community": 10,
       "norm_label": "correlationdto"
     },
     {
@@ -5904,7 +6183,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L128",
       "id": "types_index_rankedtargetdto",
-      "community": 9,
+      "community": 10,
       "norm_label": "rankedtargetdto"
     },
     {
@@ -5913,7 +6192,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L135",
       "id": "types_index_recommendationdto",
-      "community": 9,
+      "community": 10,
       "norm_label": "recommendationdto"
     },
     {
@@ -5922,7 +6201,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L142",
       "id": "types_index_intelligenceresultdto",
-      "community": 9,
+      "community": 10,
       "norm_label": "intelligenceresultdto"
     },
     {
@@ -5931,7 +6210,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L151",
       "id": "types_index_vulnerabilityreportdto",
-      "community": 9,
+      "community": 10,
       "norm_label": "vulnerabilityreportdto"
     },
     {
@@ -5940,7 +6219,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L169",
       "id": "types_index_pagedresult",
-      "community": 9,
+      "community": 10,
       "norm_label": "pagedresult"
     },
     {
@@ -5949,7 +6228,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L179",
       "id": "types_index_scanprogressevent",
-      "community": 18,
+      "community": 20,
       "norm_label": "scanprogressevent"
     },
     {
@@ -5958,7 +6237,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L187",
       "id": "types_index_scancompletedevent",
-      "community": 18,
+      "community": 20,
       "norm_label": "scancompletedevent"
     },
     {
@@ -5967,7 +6246,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L193",
       "id": "types_index_scanfailedevent",
-      "community": 18,
+      "community": 20,
       "norm_label": "scanfailedevent"
     },
     {
@@ -5976,7 +6255,7 @@
       "source_file": "frontend/src/types/modules.d.ts",
       "source_location": "L1",
       "id": "frontend_src_types_modules_d_ts",
-      "community": 27,
+      "community": 29,
       "norm_label": "modules.d.ts"
     },
     {
@@ -5985,7 +6264,7 @@
       "source_file": "frontend/src/types/modules.d.ts",
       "source_location": "L4",
       "id": "types_modules_d_importmetaenv",
-      "community": 27,
+      "community": 29,
       "norm_label": "importmetaenv"
     },
     {
@@ -5994,7 +6273,7 @@
       "source_file": "frontend/src/types/modules.d.ts",
       "source_location": "L7",
       "id": "types_modules_d_importmeta",
-      "community": 27,
+      "community": 29,
       "norm_label": "importmeta"
     },
     {
@@ -6003,7 +6282,7 @@
       "source_file": "frontend/src/types/modules.d.ts",
       "source_location": "L17",
       "id": "types_modules_d_variant",
-      "community": 27,
+      "community": 29,
       "norm_label": "variant"
     },
     {
@@ -6012,7 +6291,7 @@
       "source_file": "frontend/src/types/modules.d.ts",
       "source_location": "L18",
       "id": "types_modules_d_motionprops",
-      "community": 27,
+      "community": 29,
       "norm_label": "motionprops"
     },
     {
@@ -6021,7 +6300,7 @@
       "source_file": "frontend/src/types/modules.d.ts",
       "source_location": "L70",
       "id": "types_modules_d_datakey",
-      "community": 27,
+      "community": 29,
       "norm_label": "datakey"
     },
     {
@@ -6030,7 +6309,7 @@
       "source_file": "frontend/src/types/modules.d.ts",
       "source_location": "L72",
       "id": "types_modules_d_baseaxisprops",
-      "community": 27,
+      "community": 29,
       "norm_label": "baseaxisprops"
     },
     {
@@ -6039,7 +6318,7 @@
       "source_file": "GEMINI.md",
       "source_location": "L1",
       "id": "gemini_md",
-      "community": 53,
+      "community": 60,
       "norm_label": "gemini.md"
     },
     {
@@ -6048,7 +6327,7 @@
       "source_file": "GEMINI.md",
       "source_location": "L1",
       "id": "scanghost_gemini_graphify",
-      "community": 53,
+      "community": 60,
       "norm_label": "graphify"
     },
     {
@@ -6057,7 +6336,7 @@
       "source_file": "README.md",
       "source_location": "L1",
       "id": "readme_md",
-      "community": 28,
+      "community": 30,
       "norm_label": "readme.md"
     },
     {
@@ -6066,7 +6345,7 @@
       "source_file": "README.md",
       "source_location": "L1",
       "id": "scanghost_readme_ghostscan_v3_manual_t_cnico",
-      "community": 28,
+      "community": 30,
       "norm_label": "ghostscan v3 - manual tecnico"
     },
     {
@@ -6075,7 +6354,7 @@
       "source_file": "README.md",
       "source_location": "L3",
       "id": "scanghost_readme_introdu_o",
-      "community": 28,
+      "community": 30,
       "norm_label": "introducao"
     },
     {
@@ -6084,7 +6363,7 @@
       "source_file": "README.md",
       "source_location": "L6",
       "id": "scanghost_readme_funcionalidades_principais",
-      "community": 28,
+      "community": 30,
       "norm_label": "funcionalidades principais"
     },
     {
@@ -6093,7 +6372,7 @@
       "source_file": "README.md",
       "source_location": "L12",
       "id": "scanghost_readme_comandos_r_pidos",
-      "community": 28,
+      "community": 30,
       "norm_label": "comandos rapidos"
     },
     {
@@ -6102,7 +6381,7 @@
       "source_file": "README.md",
       "source_location": "L17",
       "id": "scanghost_readme_estrutura_do_projeto",
-      "community": 28,
+      "community": 30,
       "norm_label": "estrutura do projeto"
     },
     {
@@ -6250,11 +6529,20 @@
       "norm_label": "dependencias externas (opcionais)"
     },
     {
+      "label": "GhostScan.Infrastructure.ScanModules",
+      "file_type": "code",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
+      "source_location": "L8",
+      "community": 4,
+      "norm_label": "ghostscan.infrastructure.scanmodules",
+      "id": "scanmodules_webanalysisscanmodule_ghostscan_infrastructure_scanmodules"
+    },
+    {
       "label": ".DetectWafAsync()",
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
       "source_location": "L232",
-      "community": 5,
+      "community": 4,
       "norm_label": ".detectwafasync()",
       "id": "scanmodules_webanalysisscanmodule_webanalysisscanmodule_detectwafasync"
     },
@@ -6263,7 +6551,7 @@
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
       "source_location": "L282",
-      "community": 5,
+      "community": 4,
       "norm_label": ".probeinterestingpathsasync()",
       "id": "scanmodules_webanalysisscanmodule_webanalysisscanmodule_probeinterestingpathsasync"
     },
@@ -6272,7 +6560,7 @@
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
       "source_location": "L365",
-      "community": 5,
+      "community": 4,
       "norm_label": ".fetchrootbodyfingerprintasync()",
       "id": "scanmodules_webanalysisscanmodule_webanalysisscanmodule_fetchrootbodyfingerprintasync"
     },
@@ -6281,7 +6569,7 @@
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
       "source_location": "L385",
-      "community": 5,
+      "community": 4,
       "norm_label": ".isspafallback()",
       "id": "scanmodules_webanalysisscanmodule_webanalysisscanmodule_isspafallback"
     },
@@ -6290,7 +6578,7 @@
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
       "source_location": "L412",
-      "community": 5,
+      "community": 4,
       "norm_label": ".iscontentverifiedforpath()",
       "id": "scanmodules_webanalysisscanmodule_webanalysisscanmodule_iscontentverifiedforpath"
     },
@@ -6299,7 +6587,7 @@
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
       "source_location": "L486",
-      "community": 5,
+      "community": 4,
       "norm_label": ".createappsettingsfinding()",
       "id": "scanmodules_webanalysisscanmodule_webanalysisscanmodule_createappsettingsfinding"
     },
@@ -6308,7 +6596,7 @@
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
       "source_location": "L511",
-      "community": 5,
+      "community": 4,
       "norm_label": ".buildredactedappsettings()",
       "id": "scanmodules_webanalysisscanmodule_webanalysisscanmodule_buildredactedappsettings"
     },
@@ -6317,7 +6605,7 @@
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
       "source_location": "L545",
-      "community": 5,
+      "community": 4,
       "norm_label": ".createfindingforsensitivepath()",
       "id": "scanmodules_webanalysisscanmodule_webanalysisscanmodule_createfindingforsensitivepath"
     },
@@ -6326,7 +6614,7 @@
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
       "source_location": "L592",
-      "community": 5,
+      "community": 4,
       "norm_label": ".crawlasync()",
       "id": "scanmodules_webanalysisscanmodule_webanalysisscanmodule_crawlasync"
     },
@@ -6335,7 +6623,7 @@
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
       "source_location": "L655",
-      "community": 5,
+      "community": 4,
       "norm_label": ".auditsecurityheadersasync()",
       "id": "scanmodules_webanalysisscanmodule_webanalysisscanmodule_auditsecurityheadersasync"
     },
@@ -6344,7 +6632,7 @@
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
       "source_location": "L751",
-      "community": 5,
+      "community": 4,
       "norm_label": ".scanjavascriptsecretsasync()",
       "id": "scanmodules_webanalysisscanmodule_webanalysisscanmodule_scanjavascriptsecretsasync"
     },
@@ -6353,7 +6641,7 @@
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
       "source_location": "L805",
-      "community": 5,
+      "community": 4,
       "norm_label": ".detecttechnologiesfromhttpasync()",
       "id": "scanmodules_webanalysisscanmodule_webanalysisscanmodule_detecttechnologiesfromhttpasync"
     },
@@ -6362,7 +6650,7 @@
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
       "source_location": "L922",
-      "community": 5,
+      "community": 4,
       "norm_label": ".runwhatwebasync()",
       "id": "scanmodules_webanalysisscanmodule_webanalysisscanmodule_runwhatwebasync"
     },
@@ -6371,7 +6659,7 @@
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
       "source_location": "L947",
-      "community": 5,
+      "community": 4,
       "norm_label": ".rundirectorybruteasync()",
       "id": "scanmodules_webanalysisscanmodule_webanalysisscanmodule_rundirectorybruteasync"
     },
@@ -6380,7 +6668,7 @@
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
       "source_location": "L991",
-      "community": 5,
+      "community": 4,
       "norm_label": ".getwordlistpath()",
       "id": "scanmodules_webanalysisscanmodule_webanalysisscanmodule_getwordlistpath"
     },
@@ -6389,7 +6677,7 @@
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
       "source_location": "L999",
-      "community": 5,
+      "community": 4,
       "norm_label": ".findwordlist()",
       "id": "scanmodules_webanalysisscanmodule_webanalysisscanmodule_findwordlist"
     },
@@ -6398,7 +6686,7 @@
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
       "source_location": "L1002",
-      "community": 5,
+      "community": 4,
       "norm_label": ".createhttpclient()",
       "id": "scanmodules_webanalysisscanmodule_webanalysisscanmodule_createhttpclient"
     },
@@ -6407,7 +6695,7 @@
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
       "source_location": "L1011",
-      "community": 5,
+      "community": 4,
       "norm_label": ".buildbaseurls()",
       "id": "scanmodules_webanalysisscanmodule_webanalysisscanmodule_buildbaseurls"
     },
@@ -6416,7 +6704,7 @@
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
       "source_location": "L1019",
-      "community": 5,
+      "community": 4,
       "norm_label": ".resolveurl()",
       "id": "scanmodules_webanalysisscanmodule_webanalysisscanmodule_resolveurl"
     },
@@ -6425,7 +6713,7 @@
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
       "source_location": "L1039",
-      "community": 5,
+      "community": 4,
       "norm_label": ".isinscope()",
       "id": "scanmodules_webanalysisscanmodule_webanalysisscanmodule_isinscope"
     },
@@ -6434,7 +6722,7 @@
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
       "source_location": "L1058",
-      "community": 5,
+      "community": 4,
       "norm_label": ".settarget()",
       "id": "scanmodules_webanalysisscanmodule_webanalysisscanmodule_settarget"
     },
@@ -6443,7 +6731,7 @@
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
       "source_location": "L1064",
-      "community": 5,
+      "community": 4,
       "norm_label": ".resolveeffectivebaseurlasync()",
       "id": "scanmodules_webanalysisscanmodule_webanalysisscanmodule_resolveeffectivebaseurlasync"
     },
@@ -6452,7 +6740,7 @@
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
       "source_location": "L1105",
-      "community": 5,
+      "community": 4,
       "norm_label": ".extractapiendpointsfromjsasync()",
       "id": "scanmodules_webanalysisscanmodule_webanalysisscanmodule_extractapiendpointsfromjsasync"
     },
@@ -6461,7 +6749,7 @@
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
       "source_location": "L1160",
-      "community": 5,
+      "community": 4,
       "norm_label": ".detecterrordisclosureasync()",
       "id": "scanmodules_webanalysisscanmodule_webanalysisscanmodule_detecterrordisclosureasync"
     },
@@ -6470,7 +6758,7 @@
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
       "source_location": "L1208",
-      "community": 5,
+      "community": 4,
       "norm_label": ".runsslscanasync()",
       "id": "scanmodules_webanalysisscanmodule_webanalysisscanmodule_runsslscanasync"
     },
@@ -6479,7 +6767,7 @@
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
       "source_location": "L1265",
-      "community": 5,
+      "community": 4,
       "norm_label": ".runniktoasync()",
       "id": "scanmodules_webanalysisscanmodule_webanalysisscanmodule_runniktoasync"
     },
@@ -6488,7 +6776,7 @@
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
       "source_location": "L1304",
-      "community": 5,
+      "community": 4,
       "norm_label": ".runwpscanasync()",
       "id": "scanmodules_webanalysisscanmodule_webanalysisscanmodule_runwpscanasync"
     },
@@ -6497,7 +6785,7 @@
       "file_type": "code",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
       "source_location": "L1375",
-      "community": 5,
+      "community": 4,
       "norm_label": ".runnucleiasync()",
       "id": "scanmodules_webanalysisscanmodule_webanalysisscanmodule_runnucleiasync"
     }
@@ -7657,20 +7945,9 @@
       "source_location": "L9",
       "weight": 1.0,
       "context": "field",
+      "confidence_score": 1.0,
       "source": "engines_pathprober_pathprober",
-      "target": "string",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/SecurityAuditEngine.cs",
-      "source_location": "L19",
-      "weight": 1.0,
-      "context": "field",
-      "source": "engines_securityauditengine_securityauditengine",
-      "target": "string",
-      "confidence_score": 1.0
+      "target": "string"
     },
     {
       "relation": "references",
@@ -7692,6 +7969,17 @@
       "context": "field",
       "confidence_score": 1.0,
       "source": "wafbypass_wafbypassengine_wafbypassengine",
+      "target": "string"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/SecurityAuditEngine.cs",
+      "source_location": "L19",
+      "weight": 1.0,
+      "context": "field",
+      "confidence_score": 1.0,
+      "source": "engines_securityauditengine_securityauditengine",
       "target": "string"
     },
     {
@@ -7954,13 +8242,24 @@
     {
       "relation": "references",
       "confidence": "EXTRACTED",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/DnsTakeoverEngine.cs",
+      "source_location": "L14",
+      "weight": 1.0,
+      "context": "field",
+      "source": "engines_dnstakeoverengine_dnstakeoverengine",
+      "target": "dictionary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/SecretScanner.cs",
       "source_location": "L9",
       "weight": 1.0,
       "context": "field",
+      "confidence_score": 1.0,
       "source": "engines_secretscanner_secretscanner",
-      "target": "dictionary",
-      "confidence_score": 1.0
+      "target": "dictionary"
     },
     {
       "relation": "references",
@@ -7969,9 +8268,9 @@
       "source_location": "L9",
       "weight": 1.0,
       "context": "field",
+      "confidence_score": 1.0,
       "source": "engines_securityauditengine_securityauditengine",
-      "target": "dictionary",
-      "confidence_score": 1.0
+      "target": "dictionary"
     },
     {
       "relation": "references",
@@ -9090,6 +9389,28 @@
       "confidence_score": 1.0,
       "source": "scanmodules_vulndetectionscanmodule_vulndetectionscanmodule",
       "target": "regex"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ErrorAnalyzer.cs",
+      "source_location": "L9",
+      "weight": 1.0,
+      "context": "field",
+      "source": "engines_erroranalyzer_erroranalyzer",
+      "target": "regex",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/SecretScanner.cs",
+      "source_location": "L23",
+      "weight": 1.0,
+      "context": "field",
+      "source": "engines_secretscanner_secretscanner",
+      "target": "regex",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -10863,21 +11184,21 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
-      "source_location": "L8",
-      "weight": 1.0,
-      "source": "backend_src_ghostscan_infrastructure_scanmodules_webanalysisscanmodule_cs",
-      "target": "scanmodules_webanalysisscanmodule_ghostscan_infrastructure_scanmodules",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
       "source_location": "L11",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_webanalysisscanmodule_cs",
       "target": "scanmodules_webanalysisscanmodule_webanalysisscanmodule"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/WebAnalysisScanModule.cs",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_src_ghostscan_infrastructure_scanmodules_webanalysisscanmodule_cs",
+      "target": "scanmodules_webanalysisscanmodule_ghostscan_infrastructure_scanmodules"
     },
     {
       "relation": "method",
@@ -11493,9 +11814,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Adapters/IToolAdapter.cs",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_adapters_itooladapter_cs",
-      "target": "adapters_itooladapter_ghostscan_infrastructure_scanmodules_web_adapters",
-      "confidence_score": 1.0
+      "target": "adapters_itooladapter_ghostscan_infrastructure_scanmodules_web_adapters"
     },
     {
       "relation": "contains",
@@ -11503,9 +11824,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Adapters/IToolAdapter.cs",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_adapters_itooladapter_cs",
-      "target": "adapters_itooladapter_itooladapter",
-      "confidence_score": 1.0
+      "target": "adapters_itooladapter_itooladapter"
     },
     {
       "relation": "method",
@@ -11513,9 +11834,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Adapters/IToolAdapter.cs",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_itooladapter_itooladapter",
-      "target": "adapters_itooladapter_itooladapter_executeasync",
-      "confidence_score": 1.0
+      "target": "adapters_itooladapter_itooladapter_executeasync"
     },
     {
       "relation": "contains",
@@ -11523,9 +11844,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Adapters/NiktoAdapter.cs",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_adapters_niktoadapter_cs",
-      "target": "adapters_niktoadapter_ghostscan_infrastructure_scanmodules_web_adapters",
-      "confidence_score": 1.0
+      "target": "adapters_niktoadapter_ghostscan_infrastructure_scanmodules_web_adapters"
     },
     {
       "relation": "contains",
@@ -11533,9 +11854,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Adapters/NiktoAdapter.cs",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_adapters_niktoadapter_cs",
-      "target": "adapters_niktoadapter_niktoadapter",
-      "confidence_score": 1.0
+      "target": "adapters_niktoadapter_niktoadapter"
     },
     {
       "relation": "inherits",
@@ -11543,9 +11864,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Adapters/NiktoAdapter.cs",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_niktoadapter_niktoadapter",
-      "target": "itooladapter",
-      "confidence_score": 1.0
+      "target": "itooladapter"
     },
     {
       "relation": "method",
@@ -11553,9 +11874,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Adapters/NiktoAdapter.cs",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_niktoadapter_niktoadapter",
-      "target": "adapters_niktoadapter_niktoadapter_executeasync",
-      "confidence_score": 1.0
+      "target": "adapters_niktoadapter_niktoadapter_executeasync"
     },
     {
       "relation": "inherits",
@@ -11563,9 +11884,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Adapters/NucleiAdapter.cs",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_nucleiadapter_nucleiadapter",
-      "target": "itooladapter",
-      "confidence_score": 1.0
+      "target": "itooladapter"
     },
     {
       "relation": "contains",
@@ -11573,9 +11894,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Adapters/NucleiAdapter.cs",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_adapters_nucleiadapter_cs",
-      "target": "adapters_nucleiadapter_ghostscan_infrastructure_scanmodules_web_adapters",
-      "confidence_score": 1.0
+      "target": "adapters_nucleiadapter_ghostscan_infrastructure_scanmodules_web_adapters"
     },
     {
       "relation": "contains",
@@ -11583,9 +11904,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Adapters/NucleiAdapter.cs",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_adapters_nucleiadapter_cs",
-      "target": "adapters_nucleiadapter_nucleiadapter",
-      "confidence_score": 1.0
+      "target": "adapters_nucleiadapter_nucleiadapter"
     },
     {
       "relation": "method",
@@ -11593,8 +11914,48 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Adapters/NucleiAdapter.cs",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "adapters_nucleiadapter_nucleiadapter",
-      "target": "adapters_nucleiadapter_nucleiadapter_executeasync",
+      "target": "adapters_nucleiadapter_nucleiadapter_executeasync"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ApiFuzzerEngine.cs",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_apifuzzerengine_cs",
+      "target": "engines_apifuzzerengine_ghostscan_infrastructure_scanmodules_web_engines",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ApiFuzzerEngine.cs",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_apifuzzerengine_cs",
+      "target": "engines_apifuzzerengine_apifuzzerengine",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ApiFuzzerEngine.cs",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "engines_apifuzzerengine_apifuzzerengine",
+      "target": "iapifuzzerengine",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ApiFuzzerEngine.cs",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "engines_apifuzzerengine_apifuzzerengine",
+      "target": "engines_apifuzzerengine_apifuzzerengine_fuzzasync",
       "confidence_score": 1.0
     },
     {
@@ -11603,9 +11964,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/CrawlerEngine.cs",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_crawlerengine_cs",
-      "target": "engines_crawlerengine_crawlerengine",
-      "confidence_score": 1.0
+      "target": "engines_crawlerengine_crawlerengine"
     },
     {
       "relation": "inherits",
@@ -11613,9 +11974,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/CrawlerEngine.cs",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_crawlerengine_crawlerengine",
-      "target": "icrawlerengine",
-      "confidence_score": 1.0
+      "target": "icrawlerengine"
     },
     {
       "relation": "method",
@@ -11623,8 +11984,108 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/CrawlerEngine.cs",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_crawlerengine_crawlerengine",
-      "target": "engines_crawlerengine_crawlerengine_crawlasync",
+      "target": "engines_crawlerengine_crawlerengine_crawlasync"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/DnsTakeoverEngine.cs",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_dnstakeoverengine_cs",
+      "target": "engines_dnstakeoverengine_ghostscan_infrastructure_scanmodules_web_engines",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/DnsTakeoverEngine.cs",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_dnstakeoverengine_cs",
+      "target": "engines_dnstakeoverengine_dnstakeoverengine",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/DnsTakeoverEngine.cs",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "engines_dnstakeoverengine_dnstakeoverengine",
+      "target": "idnstakeoverengine",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/DnsTakeoverEngine.cs",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "engines_dnstakeoverengine_dnstakeoverengine",
+      "target": "engines_dnstakeoverengine_dnstakeoverengine_checktakeoverasync",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ErrorAnalyzer.cs",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_erroranalyzer_cs",
+      "target": "engines_erroranalyzer_ghostscan_infrastructure_scanmodules_web_engines",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ErrorAnalyzer.cs",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_erroranalyzer_cs",
+      "target": "engines_erroranalyzer_erroranalyzer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ErrorAnalyzer.cs",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "engines_erroranalyzer_erroranalyzer",
+      "target": "engines_erroranalyzer_erroranalyzer_analyzeasync",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IApiFuzzerEngine.cs",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_iapifuzzerengine_cs",
+      "target": "engines_iapifuzzerengine_ghostscan_infrastructure_scanmodules_web_engines",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IApiFuzzerEngine.cs",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_iapifuzzerengine_cs",
+      "target": "engines_iapifuzzerengine_iapifuzzerengine",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IApiFuzzerEngine.cs",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "engines_iapifuzzerengine_iapifuzzerengine",
+      "target": "engines_iapifuzzerengine_iapifuzzerengine_fuzzasync",
       "confidence_score": 1.0
     },
     {
@@ -11633,9 +12094,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ICrawlerEngine.cs",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_icrawlerengine_cs",
-      "target": "engines_icrawlerengine_ghostscan_infrastructure_scanmodules_web_engines",
-      "confidence_score": 1.0
+      "target": "engines_icrawlerengine_ghostscan_infrastructure_scanmodules_web_engines"
     },
     {
       "relation": "contains",
@@ -11643,9 +12104,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ICrawlerEngine.cs",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_icrawlerengine_cs",
-      "target": "engines_icrawlerengine_icrawlerengine",
-      "confidence_score": 1.0
+      "target": "engines_icrawlerengine_icrawlerengine"
     },
     {
       "relation": "method",
@@ -11653,8 +12114,38 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ICrawlerEngine.cs",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_icrawlerengine_icrawlerengine",
-      "target": "engines_icrawlerengine_icrawlerengine_crawlasync",
+      "target": "engines_icrawlerengine_icrawlerengine_crawlasync"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IDnsTakeoverEngine.cs",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_idnstakeoverengine_cs",
+      "target": "engines_idnstakeoverengine_ghostscan_infrastructure_scanmodules_web_engines",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IDnsTakeoverEngine.cs",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_idnstakeoverengine_cs",
+      "target": "engines_idnstakeoverengine_idnstakeoverengine",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IDnsTakeoverEngine.cs",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "engines_idnstakeoverengine_idnstakeoverengine",
+      "target": "engines_idnstakeoverengine_idnstakeoverengine_checktakeoverasync",
       "confidence_score": 1.0
     },
     {
@@ -11663,9 +12154,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IPathProber.cs",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_ipathprober_cs",
-      "target": "engines_ipathprober_ghostscan_infrastructure_scanmodules_web_engines",
-      "confidence_score": 1.0
+      "target": "engines_ipathprober_ghostscan_infrastructure_scanmodules_web_engines"
     },
     {
       "relation": "contains",
@@ -11673,9 +12164,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IPathProber.cs",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_ipathprober_cs",
-      "target": "engines_ipathprober_ipathprober",
-      "confidence_score": 1.0
+      "target": "engines_ipathprober_ipathprober"
     },
     {
       "relation": "method",
@@ -11683,8 +12174,38 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IPathProber.cs",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_ipathprober_ipathprober",
-      "target": "engines_ipathprober_ipathprober_probeasync",
+      "target": "engines_ipathprober_ipathprober_probeasync"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IScreenshotEngine.cs",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_iscreenshotengine_cs",
+      "target": "engines_iscreenshotengine_ghostscan_infrastructure_scanmodules_web_engines",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IScreenshotEngine.cs",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_iscreenshotengine_cs",
+      "target": "engines_iscreenshotengine_iscreenshotengine",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IScreenshotEngine.cs",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "engines_iscreenshotengine_iscreenshotengine",
+      "target": "engines_iscreenshotengine_iscreenshotengine_captureasync",
       "confidence_score": 1.0
     },
     {
@@ -11693,9 +12214,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ISecretScanner.cs",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_isecretscanner_cs",
-      "target": "engines_isecretscanner_ghostscan_infrastructure_scanmodules_web_engines",
-      "confidence_score": 1.0
+      "target": "engines_isecretscanner_ghostscan_infrastructure_scanmodules_web_engines"
     },
     {
       "relation": "contains",
@@ -11703,9 +12224,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ISecretScanner.cs",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_isecretscanner_cs",
-      "target": "engines_isecretscanner_isecretscanner",
-      "confidence_score": 1.0
+      "target": "engines_isecretscanner_isecretscanner"
     },
     {
       "relation": "method",
@@ -11713,9 +12234,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ISecretScanner.cs",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_isecretscanner_isecretscanner",
-      "target": "engines_isecretscanner_isecretscanner_scanasync",
-      "confidence_score": 1.0
+      "target": "engines_isecretscanner_isecretscanner_scanasync"
     },
     {
       "relation": "method",
@@ -11723,9 +12244,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ISecretScanner.cs",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_isecretscanner_isecretscanner",
-      "target": "engines_isecretscanner_isecretscanner_extractapiendpointsfromjsasync",
-      "confidence_score": 1.0
+      "target": "engines_isecretscanner_isecretscanner_extractapiendpointsfromjsasync"
     },
     {
       "relation": "contains",
@@ -11733,9 +12254,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ISecurityAuditEngine.cs",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_isecurityauditengine_cs",
-      "target": "engines_isecurityauditengine_ghostscan_infrastructure_scanmodules_web_engines",
-      "confidence_score": 1.0
+      "target": "engines_isecurityauditengine_ghostscan_infrastructure_scanmodules_web_engines"
     },
     {
       "relation": "contains",
@@ -11743,9 +12264,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ISecurityAuditEngine.cs",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_isecurityauditengine_cs",
-      "target": "engines_isecurityauditengine_isecurityauditengine",
-      "confidence_score": 1.0
+      "target": "engines_isecurityauditengine_isecurityauditengine"
     },
     {
       "relation": "method",
@@ -11753,9 +12274,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ISecurityAuditEngine.cs",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_isecurityauditengine_isecurityauditengine",
-      "target": "engines_isecurityauditengine_isecurityauditengine_auditasync",
-      "confidence_score": 1.0
+      "target": "engines_isecurityauditengine_isecurityauditengine_auditasync"
     },
     {
       "relation": "contains",
@@ -11763,9 +12284,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ITechDetector.cs",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_itechdetector_cs",
-      "target": "engines_itechdetector_ghostscan_infrastructure_scanmodules_web_engines",
-      "confidence_score": 1.0
+      "target": "engines_itechdetector_ghostscan_infrastructure_scanmodules_web_engines"
     },
     {
       "relation": "contains",
@@ -11773,9 +12294,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ITechDetector.cs",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_itechdetector_cs",
-      "target": "engines_itechdetector_itechdetector",
-      "confidence_score": 1.0
+      "target": "engines_itechdetector_itechdetector"
     },
     {
       "relation": "method",
@@ -11783,9 +12304,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ITechDetector.cs",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_itechdetector_itechdetector",
-      "target": "engines_itechdetector_itechdetector_detectasync",
-      "confidence_score": 1.0
+      "target": "engines_itechdetector_itechdetector_detectasync"
     },
     {
       "relation": "method",
@@ -11793,9 +12314,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ITechDetector.cs",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_itechdetector_itechdetector",
-      "target": "engines_itechdetector_itechdetector_detectwafasync",
-      "confidence_score": 1.0
+      "target": "engines_itechdetector_itechdetector_detectwafasync"
     },
     {
       "relation": "contains",
@@ -11803,9 +12324,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/PathProber.cs",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_pathprober_cs",
-      "target": "engines_pathprober_pathprober",
-      "confidence_score": 1.0
+      "target": "engines_pathprober_pathprober"
     },
     {
       "relation": "inherits",
@@ -11813,9 +12334,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/PathProber.cs",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_pathprober_pathprober",
-      "target": "ipathprober",
-      "confidence_score": 1.0
+      "target": "ipathprober"
     },
     {
       "relation": "method",
@@ -11823,9 +12344,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/PathProber.cs",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_pathprober_pathprober",
-      "target": "engines_pathprober_pathprober_probeasync",
-      "confidence_score": 1.0
+      "target": "engines_pathprober_pathprober_probeasync"
     },
     {
       "relation": "method",
@@ -11833,9 +12354,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/PathProber.cs",
       "source_location": "L41",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_pathprober_pathprober",
-      "target": "engines_pathprober_pathprober_isspafallback",
-      "confidence_score": 1.0
+      "target": "engines_pathprober_pathprober_isspafallback"
     },
     {
       "relation": "method",
@@ -11843,9 +12364,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/PathProber.cs",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_pathprober_pathprober",
-      "target": "engines_pathprober_pathprober_iscontentverified",
-      "confidence_score": 1.0
+      "target": "engines_pathprober_pathprober_iscontentverified"
     },
     {
       "relation": "method",
@@ -11853,9 +12374,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/PathProber.cs",
       "source_location": "L50",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_pathprober_pathprober",
-      "target": "engines_pathprober_pathprober_fetchrootfingerprint",
-      "confidence_score": 1.0
+      "target": "engines_pathprober_pathprober_fetchrootfingerprint"
     },
     {
       "relation": "calls",
@@ -11864,9 +12385,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/PathProber.cs",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_pathprober_pathprober_probeasync",
-      "target": "engines_pathprober_pathprober_fetchrootfingerprint",
-      "confidence_score": 1.0
+      "target": "engines_pathprober_pathprober_fetchrootfingerprint"
     },
     {
       "relation": "calls",
@@ -11875,9 +12396,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/PathProber.cs",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_pathprober_pathprober_probeasync",
-      "target": "engines_pathprober_pathprober_isspafallback",
-      "confidence_score": 1.0
+      "target": "engines_pathprober_pathprober_isspafallback"
     },
     {
       "relation": "calls",
@@ -11886,8 +12407,38 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/PathProber.cs",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_pathprober_pathprober_probeasync",
-      "target": "engines_pathprober_pathprober_iscontentverified",
+      "target": "engines_pathprober_pathprober_iscontentverified"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ScreenshotEngine.cs",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_screenshotengine_cs",
+      "target": "engines_screenshotengine_screenshotengine",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ScreenshotEngine.cs",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "engines_screenshotengine_screenshotengine",
+      "target": "iscreenshotengine",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ScreenshotEngine.cs",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "engines_screenshotengine_screenshotengine",
+      "target": "engines_screenshotengine_screenshotengine_captureasync",
       "confidence_score": 1.0
     },
     {
@@ -11896,9 +12447,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/SecretScanner.cs",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_secretscanner_cs",
-      "target": "engines_secretscanner_secretscanner",
-      "confidence_score": 1.0
+      "target": "engines_secretscanner_secretscanner"
     },
     {
       "relation": "inherits",
@@ -11906,9 +12457,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/SecretScanner.cs",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_secretscanner_secretscanner",
-      "target": "isecretscanner",
-      "confidence_score": 1.0
+      "target": "isecretscanner"
     },
     {
       "relation": "method",
@@ -11916,9 +12467,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/SecretScanner.cs",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_secretscanner_secretscanner",
-      "target": "engines_secretscanner_secretscanner_scanasync",
-      "confidence_score": 1.0
+      "target": "engines_secretscanner_secretscanner_scanasync"
     },
     {
       "relation": "method",
@@ -11926,9 +12477,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/SecretScanner.cs",
       "source_location": "L45",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_secretscanner_secretscanner",
-      "target": "engines_secretscanner_secretscanner_extractapiendpointsfromjsasync",
-      "confidence_score": 1.0
+      "target": "engines_secretscanner_secretscanner_extractapiendpointsfromjsasync"
     },
     {
       "relation": "contains",
@@ -11936,9 +12487,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/SecurityAuditEngine.cs",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_securityauditengine_cs",
-      "target": "engines_securityauditengine_securityauditengine",
-      "confidence_score": 1.0
+      "target": "engines_securityauditengine_securityauditengine"
     },
     {
       "relation": "inherits",
@@ -11946,9 +12497,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/SecurityAuditEngine.cs",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_securityauditengine_securityauditengine",
-      "target": "isecurityauditengine",
-      "confidence_score": 1.0
+      "target": "isecurityauditengine"
     },
     {
       "relation": "method",
@@ -11956,9 +12507,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/SecurityAuditEngine.cs",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_securityauditengine_securityauditengine",
-      "target": "engines_securityauditengine_securityauditengine_auditasync",
-      "confidence_score": 1.0
+      "target": "engines_securityauditengine_securityauditengine_auditasync"
     },
     {
       "relation": "contains",
@@ -11966,9 +12517,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/TechDetector.cs",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_techdetector_cs",
-      "target": "engines_techdetector_techdetector",
-      "confidence_score": 1.0
+      "target": "engines_techdetector_techdetector"
     },
     {
       "relation": "inherits",
@@ -11976,9 +12527,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/TechDetector.cs",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_techdetector_techdetector",
-      "target": "itechdetector",
-      "confidence_score": 1.0
+      "target": "itechdetector"
     },
     {
       "relation": "method",
@@ -11986,9 +12537,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/TechDetector.cs",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_techdetector_techdetector",
-      "target": "engines_techdetector_techdetector_detectasync",
-      "confidence_score": 1.0
+      "target": "engines_techdetector_techdetector_detectasync"
     },
     {
       "relation": "method",
@@ -11996,9 +12547,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/TechDetector.cs",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_techdetector_techdetector",
-      "target": "engines_techdetector_techdetector_detectwafasync",
-      "confidence_score": 1.0
+      "target": "engines_techdetector_techdetector_detectwafasync"
     },
     {
       "relation": "contains",
@@ -16241,5 +16792,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "1c5bf6fd4ab8d0bf83d00d77c0d01c776079fff9"
+  "built_at_commit": "28d31b2847ad457ec51de9932b68a2a21cd83e72"
 }

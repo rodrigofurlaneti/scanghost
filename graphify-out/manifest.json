@@ -3,6 +3,10 @@
     "mtime": 1778493435.6720145,
     "hash": "fb948688ed9909f051a03a87e85f9899"
   },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Api\\bin\\Debug\\net8.0\\playwright.ps1": {
+    "mtime": 1775750494.0,
+    "hash": "ae0ca37ce9fd94196ecdbc74526895f8"
+  },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Api\\Controllers\\ScansController.cs": {
     "mtime": 1778493435.6720145,
     "hash": "79dc00194230391e1e56ff5195401d44"
@@ -16,15 +20,15 @@
     "hash": "fc646fa08f69066e5f0650477360a289"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Api\\obj\\Debug\\net8.0\\GhostScan.Api.AssemblyInfo.cs": {
-    "mtime": 1778494069.7173524,
-    "hash": "c92bafa0f652f445bb7d0d85a2369c5b"
+    "mtime": 1778497476.5835931,
+    "hash": "19e0cc6faed6232752fc43c554cfc317"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Api\\obj\\Debug\\net8.0\\GhostScan.Api.GlobalUsings.g.cs": {
     "mtime": 1778494069.402839,
     "hash": "27a3303725b3d7fb45be5fb2a2844928"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Api\\obj\\Debug\\net8.0\\GhostScan.Api.MvcApplicationPartsAssemblyInfo.cs": {
-    "mtime": 1778495621.337562,
+    "mtime": 1778497511.9030645,
     "hash": "ba1a9b3370016ab8799d6dba129494b2"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Api\\obj\\Release\\net8.0\\GhostScan.Api.AssemblyInfo.cs": {
@@ -72,8 +76,8 @@
     "hash": "236848ce0dc829b3feea34cd2c2e137a"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Application\\obj\\Debug\\net8.0\\GhostScan.Application.AssemblyInfo.cs": {
-    "mtime": 1778494069.5106387,
-    "hash": "a881bb5db2d5cee8b062421d23363cd2"
+    "mtime": 1778497598.8330054,
+    "hash": "e2ac658e3ff829adaa8dfa1905dc8744"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Application\\obj\\Debug\\net8.0\\GhostScan.Application.GlobalUsings.g.cs": {
     "mtime": 1778494069.2120728,
@@ -184,8 +188,8 @@
     "hash": "6158bddb561b475b788b0a9b090f7603"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Domain\\obj\\Debug\\net8.0\\GhostScan.Domain.AssemblyInfo.cs": {
-    "mtime": 1778494069.548891,
-    "hash": "b1ac5c9e599dd9208d41d493bf6d4828"
+    "mtime": 1778497598.3830082,
+    "hash": "c67455e5dba898bf62701a44bc38e3e1"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Domain\\obj\\Debug\\net8.0\\GhostScan.Domain.GlobalUsings.g.cs": {
     "mtime": 1778494069.2120728,
@@ -212,8 +216,8 @@
     "hash": "8d69396e79a67e7f8b896dbaf616f9c1"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Domain\\ValueObjects\\FindingCategory.cs": {
-    "mtime": 1778493435.7032943,
-    "hash": "0d1c2ffaef047b695eb4e5c68c565705"
+    "mtime": 1778497591.0605037,
+    "hash": "a185ac6c50d381d04ec5ffe369779957"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Domain\\ValueObjects\\ScanConfiguration.cs": {
     "mtime": 1778493435.7032943,
@@ -236,20 +240,24 @@
     "hash": "1adc5c5dbee9fe9a4f4f0e049ad8bd7d"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\DependencyInjection.cs": {
-    "mtime": 1778496400.494613,
-    "hash": "c5783c3982d3bf319472817bde9c2616"
+    "mtime": 1778497309.432341,
+    "hash": "c520bcb1aca132aa53beefba6453b8ea"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\bin\\Debug\\net8.0\\playwright.ps1": {
+    "mtime": 1775750494.0,
+    "hash": "ae0ca37ce9fd94196ecdbc74526895f8"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\obj\\Debug\\net8.0\\GhostScan.Infrastructure.AssemblyInfo.cs": {
-    "mtime": 1778494069.6121924,
-    "hash": "8e2f9f5bd3e74b4cfe0020445fd281bf"
+    "mtime": 1778496750.1469724,
+    "hash": "568265e4a9c4ffed8de4e03fbbf4c148"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\obj\\Debug\\net8.0\\GhostScan.Infrastructure.GlobalUsings.g.cs": {
     "mtime": 1778494069.3700688,
     "hash": "0ca42cbc4f22da0578a209aaeb544bf8"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\obj\\Release\\net8.0\\GhostScan.Infrastructure.AssemblyInfo.cs": {
-    "mtime": 1778494070.0700579,
-    "hash": "73fac7011f3b1bb9bc595d0c4ccd9309"
+    "mtime": 1778496752.2829225,
+    "hash": "a309a06cbbdb25267304419144225635"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\obj\\Release\\net8.0\\GhostScan.Infrastructure.GlobalUsings.g.cs": {
     "mtime": 1778494070.015475,
@@ -280,8 +288,8 @@
     "hash": "8552e429ab02aeb50aa74243b730da31"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\ScanModules\\WebAnalysisScanModule.cs": {
-    "mtime": 1778496332.6032207,
-    "hash": "7078a9acc8b88a23e3b0bc709bd39664"
+    "mtime": 1778497390.1896596,
+    "hash": "0bd9c2a9908174d58a6d1e6aa884d816"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\ScanModules\\Base\\IScanModule.cs": {
     "mtime": 1778493435.7032943,
@@ -292,24 +300,48 @@
     "hash": "a6adb0a77b936e81b89e1acf55168024"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\ScanModules\\Web\\Adapters\\NiktoAdapter.cs": {
-    "mtime": 1778496128.4412212,
+    "mtime": 1778496879.360872,
     "hash": "f3c1e0c67541b922503a9fe76e8c4b65"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\ScanModules\\Web\\Adapters\\NucleiAdapter.cs": {
-    "mtime": 1778496140.680344,
-    "hash": "8e6ea35994faa9ca566a200224228c1b"
+    "mtime": 1778496893.0863912,
+    "hash": "0ac54b5464cbc48e1fcef91c3a5ecba8"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\ScanModules\\Web\\Engines\\ApiFuzzerEngine.cs": {
+    "mtime": 1778497141.5701323,
+    "hash": "3f7139651e182bec1f9847bbbe7a27f6"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\ScanModules\\Web\\Engines\\CrawlerEngine.cs": {
-    "mtime": 1778495721.4325986,
-    "hash": "cd4fb5dd7a917a9fca5384166bb0381a"
+    "mtime": 1778496900.8627,
+    "hash": "20cab7decbce3a9927cb9f04531f4635"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\ScanModules\\Web\\Engines\\DnsTakeoverEngine.cs": {
+    "mtime": 1778497200.1436956,
+    "hash": "0aaff23a0aa49abf5aa8813ab04ebb2c"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\ScanModules\\Web\\Engines\\ErrorAnalyzer.cs": {
+    "mtime": 1778496764.6665242,
+    "hash": "8c923975784c43d86a9d3d0ce45b1d36"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\ScanModules\\Web\\Engines\\IApiFuzzerEngine.cs": {
+    "mtime": 1778497121.84963,
+    "hash": "afd0524c6bcb0a756f7e3c6deca0b6bb"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\ScanModules\\Web\\Engines\\ICrawlerEngine.cs": {
     "mtime": 1778495891.9008973,
     "hash": "fb040fae132bd74d77aba9a646849d47"
   },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\ScanModules\\Web\\Engines\\IDnsTakeoverEngine.cs": {
+    "mtime": 1778497176.3974671,
+    "hash": "61000d0f28324983db22dd169e1da779"
+  },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\ScanModules\\Web\\Engines\\IPathProber.cs": {
     "mtime": 1778495921.2755232,
     "hash": "da2bcb2277cd0121f9df0c35872d7fc4"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\ScanModules\\Web\\Engines\\IScreenshotEngine.cs": {
+    "mtime": 1778497223.2008574,
+    "hash": "efed8cecc46923aeb0d596c7a929063e"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\ScanModules\\Web\\Engines\\ISecretScanner.cs": {
     "mtime": 1778495906.269131,
@@ -324,20 +356,24 @@
     "hash": "a68b0f6ccf34349620f00f2691b4c457"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\ScanModules\\Web\\Engines\\PathProber.cs": {
-    "mtime": 1778496263.2649353,
-    "hash": "e910469329b4bb012b281c8440ea0ee0"
+    "mtime": 1778496856.0148826,
+    "hash": "b7369452cea581492b6dd5ff6b96d196"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\ScanModules\\Web\\Engines\\ScreenshotEngine.cs": {
+    "mtime": 1778497674.7614536,
+    "hash": "1e2f6612cde754e27f0e8d5432c2b384"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\ScanModules\\Web\\Engines\\SecretScanner.cs": {
-    "mtime": 1778496252.316441,
-    "hash": "69f520d5e7f838957c6c5c2a4da25615"
+    "mtime": 1778497046.72034,
+    "hash": "ae9ba90749327923c36a7e1e310e58d4"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\ScanModules\\Web\\Engines\\SecurityAuditEngine.cs": {
-    "mtime": 1778496282.0237863,
-    "hash": "5db1265dc554b096187dc0f8774825f1"
+    "mtime": 1778496863.4270415,
+    "hash": "70503675187bd00aaa0b2db38a2bba7e"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\ScanModules\\Web\\Engines\\TechDetector.cs": {
-    "mtime": 1778496078.04313,
-    "hash": "9cf61fc203facaea1021bd40ccd26d51"
+    "mtime": 1778496737.005911,
+    "hash": "fe9ed8a1047c668d16783061f039a89f"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\Scope\\ScopeEnforcer.cs": {
     "mtime": 1778493435.7032943,
@@ -360,8 +396,8 @@
     "hash": "3e1676a0730a4a00b848553ee8264352"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\tests\\GhostScan.Application.Tests\\obj\\Debug\\net8.0\\GhostScan.Application.Tests.AssemblyInfo.cs": {
-    "mtime": 1778494069.6438582,
-    "hash": "4673f3dd42c01ba24035b6ccc9150d8e"
+    "mtime": 1778497599.150006,
+    "hash": "b5014c512c8ef419cfc98260d03407f5"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\tests\\GhostScan.Application.Tests\\obj\\Debug\\net8.0\\GhostScan.Application.Tests.GlobalUsings.g.cs": {
     "mtime": 1778494069.398689,
@@ -380,8 +416,8 @@
     "hash": "044561fae59b5aa1f46594ac1125bc7e"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\tests\\GhostScan.Domain.Tests\\obj\\Debug\\net8.0\\GhostScan.Domain.Tests.AssemblyInfo.cs": {
-    "mtime": 1778494069.6061726,
-    "hash": "f6c120ab2021c16a0d0654b239fec55c"
+    "mtime": 1778497598.6270065,
+    "hash": "d8b850f8884f06b69bdf77b2d70cf16b"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\tests\\GhostScan.Domain.Tests\\obj\\Debug\\net8.0\\GhostScan.Domain.Tests.GlobalUsings.g.cs": {
     "mtime": 1778494069.3237529,
@@ -568,8 +604,8 @@
     "hash": "3fd88d8d4ec020f7f5049efcc8254bc0"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Api\\obj\\Debug\\net8.0\\GhostScan.Api.csproj.FileListAbsolute.txt": {
-    "mtime": 1778495622.296993,
-    "hash": "28f99ad46fa5716439f2d09d37af7613"
+    "mtime": 1778497601.6520064,
+    "hash": "ab7655270707d4754094943c165b4570"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Api\\obj\\Debug\\net8.0\\staticwebassets.references.upToDateCheck.txt": {
     "mtime": 1778495622.110993,
@@ -588,8 +624,8 @@
     "hash": "5f31e9ca9ededcc6b40e24e341704653"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\obj\\Debug\\net8.0\\GhostScan.Infrastructure.csproj.FileListAbsolute.txt": {
-    "mtime": 1778495621.117113,
-    "hash": "d1a481598fe975b5d4ab264a9dd9abfd"
+    "mtime": 1778497599.8940084,
+    "hash": "00237d0538831fe6fff0b1c3a2e461e7"
   },
   "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\tests\\GhostScan.Application.Tests\\obj\\Debug\\net8.0\\GhostScan.Application.Tests.csproj.FileListAbsolute.txt": {
     "mtime": 1778495622.3341632,

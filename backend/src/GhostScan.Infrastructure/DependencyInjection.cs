@@ -1,8 +1,10 @@
-using GhostScan.Domain.Repositories;
+﻿using GhostScan.Domain.Repositories;
 using GhostScan.Domain.Services;
 using GhostScan.Infrastructure.Orchestration;
 using GhostScan.Infrastructure.Repositories;
 using GhostScan.Infrastructure.ScanModules;
+using GhostScan.Infrastructure.ScanModules.Web.Adapters;
+using GhostScan.Infrastructure.ScanModules.Web.Engines;
 using GhostScan.Infrastructure.Tools;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -41,6 +43,16 @@ public static class DependencyInjection
         services.AddScoped<VulnDetectionScanModule>();
         services.AddScoped<BrowserScanModule>();
         services.AddScoped<IntelligenceEngineScanModule>();
+        services.AddScoped<ICrawlerEngine, CrawlerEngine>();
+        services.AddScoped<ISecretScanner, SecretScanner>();
+        services.AddScoped<IPathProber, PathProber>();
+        services.AddScoped<ITechDetector, TechDetector>();
+        services.AddScoped<ISecurityAuditEngine, SecurityAuditEngine>();
+        services.AddScoped<IToolAdapter, NiktoAdapter>();
+        services.AddScoped<IToolAdapter, NucleiAdapter>();
+        services.AddScoped<IApiFuzzerEngine, ApiFuzzerEngine>();
+        services.AddScoped<IDnsTakeoverEngine, DnsTakeoverEngine>();
+        services.AddScoped<IScreenshotEngine, ScreenshotEngine>();
 
         // Orchestration
         services.AddScoped<IScanOrchestrator, ScanOrchestrator>();

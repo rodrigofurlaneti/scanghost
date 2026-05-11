@@ -1,4 +1,4 @@
-using GhostScan.Domain.Common;
+﻿using GhostScan.Domain.Common;
 
 namespace GhostScan.Domain.ValueObjects;
 
@@ -21,6 +21,8 @@ public sealed class FindingCategory : ValueObject
     public static readonly FindingCategory CSP = new("CSP");
     public static readonly FindingCategory Intelligence = new("Intelligence");
     public static readonly FindingCategory Cms = new("CMS");
+
+    public static readonly FindingCategory Infrastructure = new("Infrastructure");
 
     public string Name { get; }
 

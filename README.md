@@ -19,6 +19,9 @@ O **GhostScan** é um framework de Penetration Testing para Kali Linux focado em
 - `/plugins`: Sistema extensível para novos checks em Python.
 - `/results`: Output em JSON, PDF e HTML.
 
+## Graphify
+[Graphify Out]([http://exemplo.com/](https://github.com/rodrigofurlaneti/scanghost/blob/main/graphify-out/graph.html))
+
 ---
 **⚠️ Use com responsabilidade.**
 

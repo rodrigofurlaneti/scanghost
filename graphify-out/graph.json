@@ -972,7 +972,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L1",
       "id": "backend_src_ghostscan_domain_aggregates_scans_scan_cs",
-      "community": 9,
+      "community": 10,
       "norm_label": "scan.cs"
     },
     {
@@ -981,7 +981,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L8",
       "id": "scans_scan_scan",
-      "community": 9,
+      "community": 10,
       "norm_label": "scan"
     },
     {
@@ -990,7 +990,7 @@
       "source_file": "",
       "source_location": "",
       "id": "aggregateroot",
-      "community": 9,
+      "community": 10,
       "norm_label": "aggregateroot"
     },
     {
@@ -999,7 +999,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L10",
       "id": "findingcollection",
-      "community": 9,
+      "community": 10,
       "norm_label": "findingcollection"
     },
     {
@@ -1017,7 +1017,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L27",
       "id": "scans_scan_scan_setmoduledata",
-      "community": 9,
+      "community": 10,
       "norm_label": ".setmoduledata()"
     },
     {
@@ -1026,7 +1026,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L37",
       "id": "scans_scan_scan_create",
-      "community": 9,
+      "community": 10,
       "norm_label": ".create()"
     },
     {
@@ -1035,7 +1035,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L44",
       "id": "scans_scan_scan_start",
-      "community": 9,
+      "community": 10,
       "norm_label": ".start()"
     },
     {
@@ -1044,7 +1044,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L56",
       "id": "scans_scan_scan_updateprogress",
-      "community": 9,
+      "community": 10,
       "norm_label": ".updateprogress()"
     },
     {
@@ -1053,7 +1053,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L66",
       "id": "scans_scan_scan_addfinding",
-      "community": 9,
+      "community": 10,
       "norm_label": ".addfinding()"
     },
     {
@@ -1062,7 +1062,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L76",
       "id": "scans_scan_scan_addfindings",
-      "community": 9,
+      "community": 10,
       "norm_label": ".addfindings()"
     },
     {
@@ -1071,7 +1071,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L86",
       "id": "scans_scan_scan_complete",
-      "community": 9,
+      "community": 10,
       "norm_label": ".complete()"
     },
     {
@@ -1080,7 +1080,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L98",
       "id": "scans_scan_scan_fail",
-      "community": 9,
+      "community": 10,
       "norm_label": ".fail()"
     },
     {
@@ -1089,7 +1089,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L110",
       "id": "scans_scan_scan_cancel",
-      "community": 9,
+      "community": 10,
       "norm_label": ".cancel()"
     },
     {
@@ -1098,7 +1098,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L121",
       "id": "scans_scan_scan_getfindingsfiltered",
-      "community": 9,
+      "community": 10,
       "norm_label": ".getfindingsfiltered()"
     },
     {
@@ -1107,7 +1107,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L124",
       "id": "scans_scan_scan_getdeduplicatedfindings",
-      "community": 9,
+      "community": 10,
       "norm_label": ".getdeduplicatedfindings()"
     },
     {
@@ -1116,7 +1116,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L127",
       "id": "scans_scan_scan_getfindingcountsbyseverity",
-      "community": 9,
+      "community": 10,
       "norm_label": ".getfindingcountsbyseverity()"
     },
     {
@@ -1125,7 +1125,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L130",
       "id": "scans_scan_scan_hascriticalfindings",
-      "community": 9,
+      "community": 10,
       "norm_label": ".hascriticalfindings()"
     },
     {
@@ -1134,7 +1134,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L131",
       "id": "scans_scan_scan_hashighorabovefindings",
-      "community": 9,
+      "community": 10,
       "norm_label": ".hashighorabovefindings()"
     },
     {
@@ -1143,7 +1143,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L133",
       "id": "scans_scan_scan_iscomplete",
-      "community": 9,
+      "community": 10,
       "norm_label": ".iscomplete()"
     },
     {
@@ -1152,7 +1152,7 @@
       "source_file": "backend/src/GhostScan.Domain/Aggregates/Scans/Scan.cs",
       "source_location": "L134",
       "id": "scans_scan_scan_isrunning",
-      "community": 9,
+      "community": 10,
       "norm_label": ".isrunning()"
     },
     {
@@ -1332,7 +1332,7 @@
       "source_file": "backend/src/GhostScan.Domain/Common/Entity.cs",
       "source_location": "L12",
       "id": "common_entity_entity_raisedomainevent",
-      "community": 9,
+      "community": 10,
       "norm_label": ".raisedomainevent()"
     },
     {
@@ -5211,7 +5211,7 @@
       "source_file": "frontend/src/api/client.ts",
       "source_location": "L1",
       "id": "frontend_src_api_client_ts",
-      "community": 10,
+      "community": 9,
       "norm_label": "client.ts"
     },
     {
@@ -5220,7 +5220,7 @@
       "source_file": "frontend/src/api/client.ts",
       "source_location": "L17",
       "id": "api_client_api",
-      "community": 10,
+      "community": 9,
       "norm_label": "api"
     },
     {
@@ -5229,7 +5229,7 @@
       "source_file": "frontend/src/api/client.ts",
       "source_location": "L25",
       "id": "api_client_startscan",
-      "community": 14,
+      "community": 9,
       "norm_label": "startscan()"
     },
     {
@@ -5238,7 +5238,7 @@
       "source_file": "frontend/src/api/client.ts",
       "source_location": "L30",
       "id": "api_client_getscanstatus",
-      "community": 10,
+      "community": 9,
       "norm_label": "getscanstatus()"
     },
     {
@@ -5247,7 +5247,7 @@
       "source_file": "frontend/src/api/client.ts",
       "source_location": "L35",
       "id": "api_client_getscanreport",
-      "community": 19,
+      "community": 20,
       "norm_label": "getscanreport()"
     },
     {
@@ -5256,7 +5256,7 @@
       "source_file": "frontend/src/api/client.ts",
       "source_location": "L44",
       "id": "api_client_cancelscan",
-      "community": 20,
+      "community": 19,
       "norm_label": "cancelscan()"
     },
     {
@@ -5274,7 +5274,7 @@
       "source_file": "frontend/src/api/client.ts",
       "source_location": "L58",
       "id": "api_client_quickscan",
-      "community": 10,
+      "community": 9,
       "norm_label": "quickscan()"
     },
     {
@@ -5553,7 +5553,7 @@
       "source_file": "frontend/src/components/shared/SeverityBadge.tsx",
       "source_location": "L1",
       "id": "frontend_src_components_shared_severitybadge_tsx",
-      "community": 19,
+      "community": 20,
       "norm_label": "severitybadge.tsx"
     },
     {
@@ -5562,7 +5562,7 @@
       "source_file": "frontend/src/components/shared/SeverityBadge.tsx",
       "source_location": "L4",
       "id": "shared_severitybadge_severitybadgeprops",
-      "community": 19,
+      "community": 20,
       "norm_label": "severitybadgeprops"
     },
     {
@@ -5571,7 +5571,7 @@
       "source_file": "frontend/src/components/shared/SeverityBadge.tsx",
       "source_location": "L9",
       "id": "shared_severitybadge_severitymap",
-      "community": 19,
+      "community": 20,
       "norm_label": "severitymap"
     },
     {
@@ -5580,7 +5580,7 @@
       "source_file": "frontend/src/components/shared/SeverityBadge.tsx",
       "source_location": "L17",
       "id": "shared_severitybadge_severitybadge",
-      "community": 19,
+      "community": 20,
       "norm_label": "severitybadge()"
     },
     {
@@ -5778,7 +5778,7 @@
       "source_file": "frontend/src/hooks/useSignalR.ts",
       "source_location": "L1",
       "id": "frontend_src_hooks_usesignalr_ts",
-      "community": 20,
+      "community": 19,
       "norm_label": "usesignalr.ts"
     },
     {
@@ -5787,7 +5787,7 @@
       "source_file": "frontend/src/hooks/useSignalR.ts",
       "source_location": "L5",
       "id": "hooks_usesignalr_connectionstate",
-      "community": 20,
+      "community": 19,
       "norm_label": "connectionstate"
     },
     {
@@ -5796,7 +5796,7 @@
       "source_file": "frontend/src/hooks/useSignalR.ts",
       "source_location": "L7",
       "id": "hooks_usesignalr_usesignalroptions",
-      "community": 20,
+      "community": 19,
       "norm_label": "usesignalroptions"
     },
     {
@@ -5805,7 +5805,7 @@
       "source_file": "frontend/src/hooks/useSignalR.ts",
       "source_location": "L14",
       "id": "hooks_usesignalr_usesignalr",
-      "community": 20,
+      "community": 19,
       "norm_label": "usesignalr()"
     },
     {
@@ -5850,7 +5850,7 @@
       "source_file": "frontend/src/lib/utils.ts",
       "source_location": "L23",
       "id": "lib_utils_formatdate",
-      "community": 19,
+      "community": 20,
       "norm_label": "formatdate()"
     },
     {
@@ -5859,7 +5859,7 @@
       "source_file": "frontend/src/lib/utils.ts",
       "source_location": "L28",
       "id": "lib_utils_severitycolor",
-      "community": 19,
+      "community": 20,
       "norm_label": "severitycolor()"
     },
     {
@@ -5940,7 +5940,7 @@
       "source_file": "frontend/src/pages/Report.tsx",
       "source_location": "L1",
       "id": "frontend_src_pages_report_tsx",
-      "community": 19,
+      "community": 20,
       "norm_label": "report.tsx"
     },
     {
@@ -5949,7 +5949,7 @@
       "source_file": "frontend/src/pages/Report.tsx",
       "source_location": "L23",
       "id": "pages_report_severity_order",
-      "community": 19,
+      "community": 20,
       "norm_label": "severity_order"
     },
     {
@@ -5958,7 +5958,7 @@
       "source_file": "frontend/src/pages/Report.tsx",
       "source_location": "L27",
       "id": "pages_report_matrixtooltip",
-      "community": 19,
+      "community": 20,
       "norm_label": "matrixtooltip()"
     },
     {
@@ -5967,7 +5967,7 @@
       "source_file": "frontend/src/pages/Report.tsx",
       "source_location": "L40",
       "id": "pages_report_findingrow",
-      "community": 19,
+      "community": 20,
       "norm_label": "findingrow()"
     },
     {
@@ -5976,7 +5976,7 @@
       "source_file": "frontend/src/pages/Report.tsx",
       "source_location": "L154",
       "id": "pages_report_report",
-      "community": 19,
+      "community": 20,
       "norm_label": "report()"
     },
     {
@@ -5985,7 +5985,7 @@
       "source_file": "frontend/src/pages/ScanTerminal.tsx",
       "source_location": "L1",
       "id": "frontend_src_pages_scanterminal_tsx",
-      "community": 20,
+      "community": 19,
       "norm_label": "scanterminal.tsx"
     },
     {
@@ -5994,7 +5994,7 @@
       "source_file": "frontend/src/pages/ScanTerminal.tsx",
       "source_location": "L18",
       "id": "pages_scanterminal_logline",
-      "community": 20,
+      "community": 19,
       "norm_label": "logline"
     },
     {
@@ -6003,7 +6003,7 @@
       "source_file": "frontend/src/pages/ScanTerminal.tsx",
       "source_location": "L26",
       "id": "pages_scanterminal_now",
-      "community": 20,
+      "community": 19,
       "norm_label": "now()"
     },
     {
@@ -6012,7 +6012,7 @@
       "source_file": "frontend/src/pages/ScanTerminal.tsx",
       "source_location": "L30",
       "id": "pages_scanterminal_linecolor",
-      "community": 20,
+      "community": 19,
       "norm_label": "linecolor()"
     },
     {
@@ -6021,7 +6021,7 @@
       "source_file": "frontend/src/pages/ScanTerminal.tsx",
       "source_location": "L40",
       "id": "pages_scanterminal_lineprefix",
-      "community": 20,
+      "community": 19,
       "norm_label": "lineprefix()"
     },
     {
@@ -6030,7 +6030,7 @@
       "source_file": "frontend/src/pages/ScanTerminal.tsx",
       "source_location": "L50",
       "id": "pages_scanterminal_scanterminal",
-      "community": 20,
+      "community": 19,
       "norm_label": "scanterminal()"
     },
     {
@@ -6039,7 +6039,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L1",
       "id": "frontend_src_types_index_ts",
-      "community": 10,
+      "community": 9,
       "norm_label": "index.ts"
     },
     {
@@ -6066,7 +6066,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L12",
       "id": "types_index_severity",
-      "community": 19,
+      "community": 20,
       "norm_label": "severity"
     },
     {
@@ -6075,7 +6075,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L16",
       "id": "types_index_startscanrequest",
-      "community": 10,
+      "community": 9,
       "norm_label": "startscanrequest"
     },
     {
@@ -6084,7 +6084,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L21",
       "id": "types_index_scanlistitem",
-      "community": 10,
+      "community": 9,
       "norm_label": "scanlistitem"
     },
     {
@@ -6093,7 +6093,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L32",
       "id": "types_index_scanstatusresponse",
-      "community": 10,
+      "community": 9,
       "norm_label": "scanstatusresponse"
     },
     {
@@ -6102,7 +6102,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L46",
       "id": "types_index_findingdto",
-      "community": 19,
+      "community": 20,
       "norm_label": "findingdto"
     },
     {
@@ -6111,7 +6111,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L67",
       "id": "types_index_summarydto",
-      "community": 10,
+      "community": 9,
       "norm_label": "summarydto"
     },
     {
@@ -6120,7 +6120,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L77",
       "id": "types_index_portinfodto",
-      "community": 10,
+      "community": 9,
       "norm_label": "portinfodto"
     },
     {
@@ -6129,7 +6129,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L83",
       "id": "types_index_reconresultdto",
-      "community": 10,
+      "community": 9,
       "norm_label": "reconresultdto"
     },
     {
@@ -6138,7 +6138,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L91",
       "id": "types_index_wafdetectiondto",
-      "community": 10,
+      "community": 9,
       "norm_label": "wafdetectiondto"
     },
     {
@@ -6147,7 +6147,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L97",
       "id": "types_index_jssecretdto",
-      "community": 10,
+      "community": 9,
       "norm_label": "jssecretdto"
     },
     {
@@ -6156,7 +6156,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L104",
       "id": "types_index_headerauditdto",
-      "community": 10,
+      "community": 9,
       "norm_label": "headerauditdto"
     },
     {
@@ -6165,7 +6165,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L109",
       "id": "types_index_webanalysisresultdto",
-      "community": 10,
+      "community": 9,
       "norm_label": "webanalysisresultdto"
     },
     {
@@ -6174,7 +6174,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L118",
       "id": "types_index_correlationdto",
-      "community": 10,
+      "community": 9,
       "norm_label": "correlationdto"
     },
     {
@@ -6183,7 +6183,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L128",
       "id": "types_index_rankedtargetdto",
-      "community": 10,
+      "community": 9,
       "norm_label": "rankedtargetdto"
     },
     {
@@ -6192,7 +6192,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L135",
       "id": "types_index_recommendationdto",
-      "community": 10,
+      "community": 9,
       "norm_label": "recommendationdto"
     },
     {
@@ -6201,7 +6201,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L142",
       "id": "types_index_intelligenceresultdto",
-      "community": 10,
+      "community": 9,
       "norm_label": "intelligenceresultdto"
     },
     {
@@ -6210,7 +6210,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L151",
       "id": "types_index_vulnerabilityreportdto",
-      "community": 10,
+      "community": 9,
       "norm_label": "vulnerabilityreportdto"
     },
     {
@@ -6219,7 +6219,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L169",
       "id": "types_index_pagedresult",
-      "community": 10,
+      "community": 9,
       "norm_label": "pagedresult"
     },
     {
@@ -6228,7 +6228,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L179",
       "id": "types_index_scanprogressevent",
-      "community": 20,
+      "community": 19,
       "norm_label": "scanprogressevent"
     },
     {
@@ -6237,7 +6237,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L187",
       "id": "types_index_scancompletedevent",
-      "community": 20,
+      "community": 19,
       "norm_label": "scancompletedevent"
     },
     {
@@ -6246,7 +6246,7 @@
       "source_file": "frontend/src/types/index.ts",
       "source_location": "L193",
       "id": "types_index_scanfailedevent",
-      "community": 20,
+      "community": 19,
       "norm_label": "scanfailedevent"
     },
     {
@@ -8246,9 +8246,9 @@
       "source_location": "L14",
       "weight": 1.0,
       "context": "field",
+      "confidence_score": 1.0,
       "source": "engines_dnstakeoverengine_dnstakeoverengine",
-      "target": "dictionary",
-      "confidence_score": 1.0
+      "target": "dictionary"
     },
     {
       "relation": "references",
@@ -9397,9 +9397,9 @@
       "source_location": "L9",
       "weight": 1.0,
       "context": "field",
+      "confidence_score": 1.0,
       "source": "engines_erroranalyzer_erroranalyzer",
-      "target": "regex",
-      "confidence_score": 1.0
+      "target": "regex"
     },
     {
       "relation": "references",
@@ -9408,9 +9408,9 @@
       "source_location": "L23",
       "weight": 1.0,
       "context": "field",
+      "confidence_score": 1.0,
       "source": "engines_secretscanner_secretscanner",
-      "target": "regex",
-      "confidence_score": 1.0
+      "target": "regex"
     },
     {
       "relation": "references",
@@ -11924,9 +11924,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ApiFuzzerEngine.cs",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_apifuzzerengine_cs",
-      "target": "engines_apifuzzerengine_ghostscan_infrastructure_scanmodules_web_engines",
-      "confidence_score": 1.0
+      "target": "engines_apifuzzerengine_ghostscan_infrastructure_scanmodules_web_engines"
     },
     {
       "relation": "contains",
@@ -11934,9 +11934,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ApiFuzzerEngine.cs",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_apifuzzerengine_cs",
-      "target": "engines_apifuzzerengine_apifuzzerengine",
-      "confidence_score": 1.0
+      "target": "engines_apifuzzerengine_apifuzzerengine"
     },
     {
       "relation": "inherits",
@@ -11944,9 +11944,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ApiFuzzerEngine.cs",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_apifuzzerengine_apifuzzerengine",
-      "target": "iapifuzzerengine",
-      "confidence_score": 1.0
+      "target": "iapifuzzerengine"
     },
     {
       "relation": "method",
@@ -11954,9 +11954,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ApiFuzzerEngine.cs",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_apifuzzerengine_apifuzzerengine",
-      "target": "engines_apifuzzerengine_apifuzzerengine_fuzzasync",
-      "confidence_score": 1.0
+      "target": "engines_apifuzzerengine_apifuzzerengine_fuzzasync"
     },
     {
       "relation": "contains",
@@ -11994,9 +11994,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/DnsTakeoverEngine.cs",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_dnstakeoverengine_cs",
-      "target": "engines_dnstakeoverengine_ghostscan_infrastructure_scanmodules_web_engines",
-      "confidence_score": 1.0
+      "target": "engines_dnstakeoverengine_ghostscan_infrastructure_scanmodules_web_engines"
     },
     {
       "relation": "contains",
@@ -12004,9 +12004,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/DnsTakeoverEngine.cs",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_dnstakeoverengine_cs",
-      "target": "engines_dnstakeoverengine_dnstakeoverengine",
-      "confidence_score": 1.0
+      "target": "engines_dnstakeoverengine_dnstakeoverengine"
     },
     {
       "relation": "inherits",
@@ -12014,9 +12014,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/DnsTakeoverEngine.cs",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_dnstakeoverengine_dnstakeoverengine",
-      "target": "idnstakeoverengine",
-      "confidence_score": 1.0
+      "target": "idnstakeoverengine"
     },
     {
       "relation": "method",
@@ -12024,9 +12024,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/DnsTakeoverEngine.cs",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_dnstakeoverengine_dnstakeoverengine",
-      "target": "engines_dnstakeoverengine_dnstakeoverengine_checktakeoverasync",
-      "confidence_score": 1.0
+      "target": "engines_dnstakeoverengine_dnstakeoverengine_checktakeoverasync"
     },
     {
       "relation": "contains",
@@ -12034,9 +12034,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ErrorAnalyzer.cs",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_erroranalyzer_cs",
-      "target": "engines_erroranalyzer_ghostscan_infrastructure_scanmodules_web_engines",
-      "confidence_score": 1.0
+      "target": "engines_erroranalyzer_ghostscan_infrastructure_scanmodules_web_engines"
     },
     {
       "relation": "contains",
@@ -12044,9 +12044,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ErrorAnalyzer.cs",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_erroranalyzer_cs",
-      "target": "engines_erroranalyzer_erroranalyzer",
-      "confidence_score": 1.0
+      "target": "engines_erroranalyzer_erroranalyzer"
     },
     {
       "relation": "method",
@@ -12054,9 +12054,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ErrorAnalyzer.cs",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_erroranalyzer_erroranalyzer",
-      "target": "engines_erroranalyzer_erroranalyzer_analyzeasync",
-      "confidence_score": 1.0
+      "target": "engines_erroranalyzer_erroranalyzer_analyzeasync"
     },
     {
       "relation": "contains",
@@ -12064,9 +12064,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IApiFuzzerEngine.cs",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_iapifuzzerengine_cs",
-      "target": "engines_iapifuzzerengine_ghostscan_infrastructure_scanmodules_web_engines",
-      "confidence_score": 1.0
+      "target": "engines_iapifuzzerengine_ghostscan_infrastructure_scanmodules_web_engines"
     },
     {
       "relation": "contains",
@@ -12074,9 +12074,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IApiFuzzerEngine.cs",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_iapifuzzerengine_cs",
-      "target": "engines_iapifuzzerengine_iapifuzzerengine",
-      "confidence_score": 1.0
+      "target": "engines_iapifuzzerengine_iapifuzzerengine"
     },
     {
       "relation": "method",
@@ -12084,9 +12084,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IApiFuzzerEngine.cs",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_iapifuzzerengine_iapifuzzerengine",
-      "target": "engines_iapifuzzerengine_iapifuzzerengine_fuzzasync",
-      "confidence_score": 1.0
+      "target": "engines_iapifuzzerengine_iapifuzzerengine_fuzzasync"
     },
     {
       "relation": "contains",
@@ -12124,9 +12124,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IDnsTakeoverEngine.cs",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_idnstakeoverengine_cs",
-      "target": "engines_idnstakeoverengine_ghostscan_infrastructure_scanmodules_web_engines",
-      "confidence_score": 1.0
+      "target": "engines_idnstakeoverengine_ghostscan_infrastructure_scanmodules_web_engines"
     },
     {
       "relation": "contains",
@@ -12134,9 +12134,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IDnsTakeoverEngine.cs",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_idnstakeoverengine_cs",
-      "target": "engines_idnstakeoverengine_idnstakeoverengine",
-      "confidence_score": 1.0
+      "target": "engines_idnstakeoverengine_idnstakeoverengine"
     },
     {
       "relation": "method",
@@ -12144,9 +12144,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IDnsTakeoverEngine.cs",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_idnstakeoverengine_idnstakeoverengine",
-      "target": "engines_idnstakeoverengine_idnstakeoverengine_checktakeoverasync",
-      "confidence_score": 1.0
+      "target": "engines_idnstakeoverengine_idnstakeoverengine_checktakeoverasync"
     },
     {
       "relation": "contains",
@@ -12184,9 +12184,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IScreenshotEngine.cs",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_iscreenshotengine_cs",
-      "target": "engines_iscreenshotengine_ghostscan_infrastructure_scanmodules_web_engines",
-      "confidence_score": 1.0
+      "target": "engines_iscreenshotengine_ghostscan_infrastructure_scanmodules_web_engines"
     },
     {
       "relation": "contains",
@@ -12194,9 +12194,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IScreenshotEngine.cs",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_iscreenshotengine_cs",
-      "target": "engines_iscreenshotengine_iscreenshotengine",
-      "confidence_score": 1.0
+      "target": "engines_iscreenshotengine_iscreenshotengine"
     },
     {
       "relation": "method",
@@ -12204,9 +12204,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/IScreenshotEngine.cs",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_iscreenshotengine_iscreenshotengine",
-      "target": "engines_iscreenshotengine_iscreenshotengine_captureasync",
-      "confidence_score": 1.0
+      "target": "engines_iscreenshotengine_iscreenshotengine_captureasync"
     },
     {
       "relation": "contains",
@@ -12417,9 +12417,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ScreenshotEngine.cs",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_ghostscan_infrastructure_scanmodules_web_engines_screenshotengine_cs",
-      "target": "engines_screenshotengine_screenshotengine",
-      "confidence_score": 1.0
+      "target": "engines_screenshotengine_screenshotengine"
     },
     {
       "relation": "inherits",
@@ -12427,9 +12427,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ScreenshotEngine.cs",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_screenshotengine_screenshotengine",
-      "target": "iscreenshotengine",
-      "confidence_score": 1.0
+      "target": "iscreenshotengine"
     },
     {
       "relation": "method",
@@ -12437,9 +12437,9 @@
       "source_file": "backend/src/GhostScan.Infrastructure/ScanModules/Web/Engines/ScreenshotEngine.cs",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "engines_screenshotengine_screenshotengine",
-      "target": "engines_screenshotengine_screenshotengine_captureasync",
-      "confidence_score": 1.0
+      "target": "engines_screenshotengine_screenshotengine_captureasync"
     },
     {
       "relation": "contains",
@@ -16792,5 +16792,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "28d31b2847ad457ec51de9932b68a2a21cd83e72"
+  "built_at_commit": "88a9d2472f481a5934fb655762c29cec7aa4e324"
 }

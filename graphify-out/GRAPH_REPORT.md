@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `28d31b28`
+- Built from commit: `88a9d247`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -135,12 +135,12 @@ Cohesion: 0.17
 Nodes (6): bool, Exception, HashSet, ScopeEnforcer, ScopeStats, ScopeViolationException
 
 ### Community 9 - "Community 9"
-Cohesion: 0.13
-Nodes (3): AggregateRoot, FindingCollection, Scan
+Cohesion: 0.11
+Nodes (19): api, getScanStatus(), startScan(), CorrelationDto, HeaderAuditDto, IntelligenceResultDto, JsSecretDto, PagedResult (+11 more)
 
 ### Community 10 - "Community 10"
-Cohesion: 0.12
-Nodes (18): api, getScanStatus(), CorrelationDto, HeaderAuditDto, IntelligenceResultDto, JsSecretDto, PagedResult, PortInfoDto (+10 more)
+Cohesion: 0.13
+Nodes (3): AggregateRoot, FindingCollection, Scan
 
 ### Community 12 - "Community 12"
 Cohesion: 0.14
@@ -151,8 +151,8 @@ Cohesion: 0.14
 Nodes (3): Entity, FindingCollection, List
 
 ### Community 14 - "Community 14"
-Cohesion: 0.13
-Nodes (13): startScan(), Dashboard(), PROFILES, CHARS, MatrixRain(), MatrixRainProps, PIPELINE, PROFILES (+5 more)
+Cohesion: 0.14
+Nodes (12): Dashboard(), PROFILES, CHARS, MatrixRain(), MatrixRainProps, PIPELINE, PROFILES, ScanDocs() (+4 more)
 
 ### Community 15 - "Community 15"
 Cohesion: 0.12
@@ -171,12 +171,12 @@ Cohesion: 0.14
 Nodes (13): CorrelationDto, DirectoryBruteResultDto, HeaderAuditDto, IntelligenceResultDto, JsSecretDto, PortInfoDto, RankedTargetDto, RecommendationDto (+5 more)
 
 ### Community 19 - "Community 19"
-Cohesion: 0.19
-Nodes (11): getScanReport(), formatDate(), severityColor(), FindingRow(), Report(), SEVERITY_ORDER, SeverityBadge(), SeverityBadgeProps (+3 more)
-
-### Community 20 - "Community 20"
 Cohesion: 0.21
 Nodes (10): cancelScan(), ConnectionState, useSignalR(), UseSignalROptions, LogLine, now(), ScanTerminal(), ScanCompletedEvent (+2 more)
+
+### Community 20 - "Community 20"
+Cohesion: 0.19
+Nodes (11): getScanReport(), formatDate(), severityColor(), FindingRow(), Report(), SEVERITY_ORDER, SeverityBadge(), SeverityBadgeProps (+3 more)
 
 ### Community 21 - "Community 21"
 Cohesion: 0.15
@@ -230,7 +230,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.100) - this node is a cross-community bridge._
 - **Why does `ScanOrchestrator` connect `Community 7` to `Community 0`, `Community 2`?**
   _High betweenness centrality (0.073) - this node is a cross-community bridge._
-- **Why does `Dictionary` connect `Community 0` to `Community 4`, `Community 5`, `Community 6`, `Community 9`, `Community 11`, `Community 15`, `Community 17`, `Community 21`?**
+- **Why does `Dictionary` connect `Community 0` to `Community 4`, `Community 5`, `Community 6`, `Community 10`, `Community 11`, `Community 15`, `Community 17`, `Community 21`?**
   _High betweenness centrality (0.064) - this node is a cross-community bridge._
 - **What connects `IMediator`, `StartScanResponse`, `IHubContext` to the rest of the system?**
   _122 weakly-connected nodes found - possible documentation gaps or missing edges._

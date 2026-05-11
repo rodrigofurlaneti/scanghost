@@ -1,16 +1,16 @@
 # Graph Report - scanghost  (2026-05-11)
 
 ## Corpus Check
-- 104 files · ~52,073 words
+- 142 files · ~50,136 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 636 nodes · 881 edges · 63 communities (44 shown, 19 thin omitted)
+- 722 nodes · 937 edges · 101 communities (74 shown, 27 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 6 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `66b37766`
+- Built from commit: `1c5bf6fd`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -54,7 +54,20 @@
 - [[_COMMUNITY_Community 36|Community 36]]
 - [[_COMMUNITY_Community 37|Community 37]]
 - [[_COMMUNITY_Community 38|Community 38]]
+- [[_COMMUNITY_Community 39|Community 39]]
 - [[_COMMUNITY_Community 40|Community 40]]
+- [[_COMMUNITY_Community 41|Community 41]]
+- [[_COMMUNITY_Community 42|Community 42]]
+- [[_COMMUNITY_Community 43|Community 43]]
+- [[_COMMUNITY_Community 44|Community 44]]
+- [[_COMMUNITY_Community 45|Community 45]]
+- [[_COMMUNITY_Community 46|Community 46]]
+- [[_COMMUNITY_Community 47|Community 47]]
+- [[_COMMUNITY_Community 48|Community 48]]
+- [[_COMMUNITY_Community 49|Community 49]]
+- [[_COMMUNITY_Community 50|Community 50]]
+- [[_COMMUNITY_Community 51|Community 51]]
+- [[_COMMUNITY_Community 53|Community 53]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `WebAnalysisScanModule` - 37 edges
@@ -69,6 +82,8 @@
 10. `BrowserScanModule` - 15 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `Dashboard()` --calls--> `useTheme()`  [EXTRACTED]
+  frontend/src/pages/Dashboard.tsx → frontend/src/contexts/ThemeContext.tsx
 - `SignalRScanProgressNotifier` --inherits--> `IScanProgressNotifier`  [EXTRACTED]
   backend/src/GhostScan.Api/Hubs/ScanProgressHub.cs → backend/src/GhostScan.Infrastructure/Orchestration/ScanOrchestrator.cs
 - `ScanOrchestrator` --references--> `ILogger`  [EXTRACTED]
@@ -77,14 +92,12 @@
   backend/src/GhostScan.Infrastructure/ScanModules/BrowserScanModule.cs → backend/src/GhostScan.Infrastructure/Tools/SafeExecutor.cs
 - `ReconScanModule` --references--> `ILogger`  [EXTRACTED]
   backend/src/GhostScan.Infrastructure/ScanModules/ReconScanModule.cs → backend/src/GhostScan.Infrastructure/Tools/SafeExecutor.cs
-- `VulnDetectionScanModule` --references--> `ILogger`  [EXTRACTED]
-  backend/src/GhostScan.Infrastructure/ScanModules/VulnDetectionScanModule.cs → backend/src/GhostScan.Infrastructure/Tools/SafeExecutor.cs
 
-## Communities (63 total, 19 thin omitted)
+## Communities (101 total, 27 thin omitted)
 
 ### Community 0 - "Community 0"
-Cohesion: 0.05
-Nodes (50): getScanReport(), getScans(), startScan(), Theme, ThemeConfig, ThemeContext, ThemeContextValue, THEMES (+42 more)
+Cohesion: 0.07
+Nodes (15): Dictionary, SecretScanner, ExternalToolRunner, ILogger, int, ISecretScanner, ValidationExceptionMiddleware, RequestDelegate (+7 more)
 
 ### Community 1 - "Community 1"
 Cohesion: 0.05
@@ -95,95 +108,115 @@ Cohesion: 0.06
 Nodes (10): CancelScanCommandHandler, ConcurrentDictionary, GetScanHistoryQueryHandler, GetScanReportQueryHandler, GetScanStatusQueryHandler, IRequestHandler, IScanRepository, IServiceScopeFactory (+2 more)
 
 ### Community 3 - "Community 3"
-Cohesion: 0.08
-Nodes (9): AbstractValidator, IHttpClientFactory, IScanModule, Regex, BrowserScanModule, VulnDetectionScanModule, string, StartScanCommandValidator (+1 more)
+Cohesion: 0.09
+Nodes (6): IHttpClientFactory, IScanModule, Regex, BrowserScanModule, VulnDetectionScanModule, ScanTarget
 
 ### Community 4 - "Community 4"
 Cohesion: 0.08
-Nodes (13): Dictionary, ExternalToolRunner, ILogger, int, ValidationExceptionMiddleware, RequestDelegate, IntelligenceEngineScanModule, ScopeEnforcer (+5 more)
+Nodes (22): Theme, ThemeConfig, ThemeContext, ThemeContextValue, ThemeProvider(), THEMES, useTheme(), LANGS (+14 more)
 
-### Community 5 - "Community 5"
-Cohesion: 0.09
-Nodes (29): api, cancelScan(), getScanStatus(), ConnectionState, useSignalR(), UseSignalROptions, LogLine, now() (+21 more)
-
-### Community 7 - "Community 7"
+### Community 6 - "Community 6"
 Cohesion: 0.12
 Nodes (5): Random, WafBypassEngine, WafBypassFactory, WafProfile, WafProfile
 
-### Community 8 - "Community 8"
+### Community 7 - "Community 7"
 Cohesion: 0.1
 Nodes (12): BrowserScanModule, Hub, ScanProgressHub, SignalRScanProgressNotifier, IHubContext, IntelligenceEngineScanModule, IScanOrchestrator, IScanProgressNotifier (+4 more)
 
-### Community 9 - "Community 9"
+### Community 8 - "Community 8"
 Cohesion: 0.17
 Nodes (6): bool, Exception, HashSet, ScopeEnforcer, ScopeStats, ScopeViolationException
+
+### Community 9 - "Community 9"
+Cohesion: 0.11
+Nodes (19): api, getScans(), startScan(), CorrelationDto, HeaderAuditDto, IntelligenceResultDto, JsSecretDto, PagedResult (+11 more)
 
 ### Community 10 - "Community 10"
 Cohesion: 0.13
 Nodes (3): AggregateRoot, FindingCollection, Scan
 
 ### Community 12 - "Community 12"
-Cohesion: 0.14
-Nodes (3): ScanAggregateTests, ScanTargetTests, VulnerabilityScoreTests
+Cohesion: 0.12
+Nodes (14): Dashboard(), PROFILES, GlitchText(), GlitchTextProps, CHARS, MatrixRain(), MatrixRainProps, PIPELINE (+6 more)
 
 ### Community 13 - "Community 13"
-Cohesion: 0.11
-Nodes (9): ThemeProvider(), ErrorBoundary, Props, State, Dashboard, History, Report, ScanTerminal (+1 more)
+Cohesion: 0.14
+Nodes (3): ScanAggregateTests, ScanTargetTests, VulnerabilityScoreTests
 
 ### Community 14 - "Community 14"
 Cohesion: 0.14
 Nodes (3): Entity, FindingCollection, List
 
 ### Community 15 - "Community 15"
+Cohesion: 0.2
+Nodes (11): cn(), formatDuration(), statusVariant(), STATUS_OPTIONS, CopyButton(), CopyButtonProps, StatusBadge(), StatusBadgeProps (+3 more)
+
+### Community 16 - "Community 16"
 Cohesion: 0.12
 Nodes (15): Arquitetura, code:block1 (GhostScan.Backend/), code:bash (cd src/GhostScan.Api), code:json ({), code:block4 (score = (impact × 0.6) + (confidence × 0.4) × exploitability), code:javascript (const connection = new signalR.HubConnectionBuilder()), Como rodar, Dependências externas (opcionais) (+7 more)
 
-### Community 16 - "Community 16"
+### Community 17 - "Community 17"
+Cohesion: 0.16
+Nodes (7): AbstractValidator, PathProber, SecurityAuditEngine, IPathProber, ISecurityAuditEngine, string, StartScanCommandValidator
+
+### Community 18 - "Community 18"
+Cohesion: 0.19
+Nodes (11): cancelScan(), getScanStatus(), ConnectionState, useSignalR(), UseSignalROptions, LogLine, now(), ScanTerminal() (+3 more)
+
+### Community 19 - "Community 19"
 Cohesion: 0.14
 Nodes (13): CorrelationDto, DirectoryBruteResultDto, HeaderAuditDto, IntelligenceResultDto, JsSecretDto, PortInfoDto, RankedTargetDto, RecommendationDto (+5 more)
 
-### Community 17 - "Community 17"
+### Community 20 - "Community 20"
+Cohesion: 0.19
+Nodes (11): getScanReport(), formatDate(), severityColor(), FindingRow(), Report(), SEVERITY_ORDER, SeverityBadge(), SeverityBadgeProps (+3 more)
+
+### Community 21 - "Community 21"
 Cohesion: 0.15
 Nodes (3): IScanModule, ScanContext, ScanModuleResult
 
-### Community 18 - "Community 18"
+### Community 22 - "Community 22"
 Cohesion: 0.18
 Nodes (4): ControllerBase, ScansController, StartScanResponse, IMediator
 
-### Community 19 - "Community 19"
+### Community 23 - "Community 23"
 Cohesion: 0.18
 Nodes (3): AggregateRoot, Finding, Entity
 
-### Community 22 - "Community 22"
+### Community 24 - "Community 24"
+Cohesion: 0.22
+Nodes (5): GhostScan.Infrastructure.ScanModules.Web.Adapters, NiktoAdapter, GhostScan.Infrastructure.ScanModules.Web.Adapters, NucleiAdapter, IToolAdapter
+
+### Community 27 - "Community 27"
 Cohesion: 0.29
 Nodes (6): BaseAxisProps, DataKey, ImportMeta, ImportMetaEnv, MotionProps, Variant
 
-### Community 23 - "Community 23"
+### Community 28 - "Community 28"
 Cohesion: 0.33
 Nodes (5): Comandos Rápidos, Estrutura do Projeto, Funcionalidades Principais, GhostScan v3 - Manual Técnico, Introdução
 
-### Community 24 - "Community 24"
+### Community 29 - "Community 29"
 Cohesion: 0.4
 Nodes (3): ValidationPipelineBehavior, IEnumerable, IPipelineBehavior
 
 ## Knowledge Gaps
-- **107 isolated node(s):** `IMediator`, `StartScanResponse`, `IHubContext`, `RequestDelegate`, `IEnumerable` (+102 more)
+- **116 isolated node(s):** `IMediator`, `StartScanResponse`, `IHubContext`, `RequestDelegate`, `IEnumerable` (+111 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **19 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **27 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `ILogger` connect `Community 4` to `Community 3`, `Community 6`, `Community 8`, `Community 9`, `Community 11`?**
-  _High betweenness centrality (0.129) - this node is a cross-community bridge._
-- **Why does `ScanOrchestrator` connect `Community 8` to `Community 2`, `Community 4`?**
-  _High betweenness centrality (0.094) - this node is a cross-community bridge._
-- **Why does `WebAnalysisScanModule` connect `Community 6` to `Community 3`, `Community 4`?**
-  _High betweenness centrality (0.069) - this node is a cross-community bridge._
+- **Why does `ILogger` connect `Community 0` to `Community 3`, `Community 5`, `Community 7`, `Community 8`, `Community 11`?**
+  _High betweenness centrality (0.106) - this node is a cross-community bridge._
+- **Why does `ScanOrchestrator` connect `Community 7` to `Community 0`, `Community 2`?**
+  _High betweenness centrality (0.077) - this node is a cross-community bridge._
+- **Why does `string` connect `Community 17` to `Community 1`, `Community 3`, `Community 5`, `Community 6`, `Community 8`?**
+  _High betweenness centrality (0.067) - this node is a cross-community bridge._
 - **What connects `IMediator`, `StartScanResponse`, `IHubContext` to the rest of the system?**
-  _107 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _116 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
-  _Cohesion score 0.05 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
   _Cohesion score 0.05 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**

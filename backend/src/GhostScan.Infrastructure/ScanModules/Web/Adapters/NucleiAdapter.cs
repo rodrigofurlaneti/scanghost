@@ -21,10 +21,8 @@ namespace GhostScan.Infrastructure.ScanModules.Web.Adapters
             {
                 try
                 {
-                    using var doc = JsonDocument.Parse(line);
-                    var root = doc.RootElement;
-                    var sev = Severity.FromString(root.GetProperty("info").GetProperty("severity").GetString() ?? "medium").Value ?? Severity.Medium;
-                    findings.Add(Finding.Create(sev, FindingCategory.Web, $"Nuclei: {root.GetProperty("info").GetProperty("name").GetString()}", url: url));
+                    var info = JsonDocument.Parse(line).RootElement.GetProperty("info");
+                    findings.Add(Finding.Create(Severity.High, FindingCategory.Web, $"Nuclei: {info.GetProperty("name").GetString()}", url: url));
                 }
                 catch { }
             }

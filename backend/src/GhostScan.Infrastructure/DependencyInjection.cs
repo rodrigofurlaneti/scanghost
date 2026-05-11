@@ -50,6 +50,9 @@ public static class DependencyInjection
         services.AddScoped<ISecurityAuditEngine, SecurityAuditEngine>();
         services.AddScoped<IToolAdapter, NiktoAdapter>();
         services.AddScoped<IToolAdapter, NucleiAdapter>();
+        services.AddScoped<IApiFuzzerEngine, ApiFuzzerEngine>();
+        services.AddScoped<IDnsTakeoverEngine, DnsTakeoverEngine>();
+        services.AddScoped<IScreenshotEngine, ScreenshotEngine>();
 
         // Orchestration
         services.AddScoped<IScanOrchestrator, ScanOrchestrator>();

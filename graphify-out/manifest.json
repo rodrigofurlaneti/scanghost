@@ -1,0 +1,534 @@
+{
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Api\\Program.cs": {
+    "mtime": 1778493435.6720145,
+    "hash": "fb948688ed9909f051a03a87e85f9899"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Api\\Controllers\\ScansController.cs": {
+    "mtime": 1778493435.6720145,
+    "hash": "79dc00194230391e1e56ff5195401d44"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Api\\Hubs\\ScanProgressHub.cs": {
+    "mtime": 1778493435.6720145,
+    "hash": "28693d55f2d7f494bab9be9f0e1dbec5"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Api\\Middleware\\ValidationExceptionMiddleware.cs": {
+    "mtime": 1778493435.6720145,
+    "hash": "fc646fa08f69066e5f0650477360a289"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Application\\Behaviors\\ValidationPipelineBehavior.cs": {
+    "mtime": 1778493435.6720145,
+    "hash": "991019c038938015578ee80a9785a03a"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Application\\Commands\\CancelScan\\CancelScanCommand.cs": {
+    "mtime": 1778493435.6720145,
+    "hash": "c6d58360648742fa656ea0f83f6b20da"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Application\\Commands\\CancelScan\\CancelScanCommandHandler.cs": {
+    "mtime": 1778493435.6720145,
+    "hash": "0de68899ca867bf0adb17daab7518b82"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Application\\Commands\\StartScan\\StartScanCommand.cs": {
+    "mtime": 1778493435.6720145,
+    "hash": "fa1e4933771a0b01aed4931d4a998f94"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Application\\Commands\\StartScan\\StartScanCommandHandler.cs": {
+    "mtime": 1778493435.6720145,
+    "hash": "d7cb6d8a6b82c30fa1deebceb585c8f6"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Application\\DTOs\\FindingDto.cs": {
+    "mtime": 1778493435.6720145,
+    "hash": "36f0ab49dd36f31b82cea8e44eb6510a"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Application\\DTOs\\ScanStatusDto.cs": {
+    "mtime": 1778493435.6876476,
+    "hash": "89e35fba4ac375061c37ecc56043d4ba"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Application\\DTOs\\StartScanRequest.cs": {
+    "mtime": 1778493435.6876476,
+    "hash": "94ab1f0d9e633dde51ad0bb3ef13e0ba"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Application\\DTOs\\VulnerabilityReportDto.cs": {
+    "mtime": 1778493435.6876476,
+    "hash": "236848ce0dc829b3feea34cd2c2e137a"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Application\\Queries\\GetScanHistory\\GetScanHistoryQuery.cs": {
+    "mtime": 1778493435.6876476,
+    "hash": "2c7dab1954bd882f48c5b72c913dd67e"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Application\\Queries\\GetScanHistory\\GetScanHistoryQueryHandler.cs": {
+    "mtime": 1778493435.6876476,
+    "hash": "356767b10bc20f1564dfb98b7f9e14e5"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Application\\Queries\\GetScanReport\\GetScanReportQuery.cs": {
+    "mtime": 1778493435.6876476,
+    "hash": "5c62083cb023ada870af749465136dd2"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Application\\Queries\\GetScanReport\\GetScanReportQueryHandler.cs": {
+    "mtime": 1778493435.6876476,
+    "hash": "46ecd2e0fc25e7502e0092aac6103c8e"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Application\\Queries\\GetScanStatus\\GetScanStatusQuery.cs": {
+    "mtime": 1778493435.6876476,
+    "hash": "4163420bc4f1f8b3ad50f79a91383bd9"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Application\\Queries\\GetScanStatus\\GetScanStatusQueryHandler.cs": {
+    "mtime": 1778493435.6876476,
+    "hash": "c1877182bc9af23cc38a3e732990ad35"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Application\\Validators\\StartScanCommandValidator.cs": {
+    "mtime": 1778493435.6876476,
+    "hash": "908cb73792aab54543c2e0a9150174e2"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Domain\\Aggregates\\Scans\\Scan.cs": {
+    "mtime": 1778493435.6876476,
+    "hash": "00428e220a0bc71876f76f91dd36bbbb"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Domain\\Aggregates\\Scans\\ScanProgress.cs": {
+    "mtime": 1778493435.6876476,
+    "hash": "98377091cbdaca15bc92296dc58030d5"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Domain\\Aggregates\\Scans\\ScanStatus.cs": {
+    "mtime": 1778493435.6876476,
+    "hash": "8a8421a082cc402e77294886eff328a4"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Domain\\Common\\AggregateRoot.cs": {
+    "mtime": 1778493435.6876476,
+    "hash": "b18d71193a31afccc6fa3244c673c4c3"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Domain\\Common\\Entity.cs": {
+    "mtime": 1778493435.6876476,
+    "hash": "6143e5bca225d84f1d4a83ef3354ec38"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Domain\\Common\\IDomainEvent.cs": {
+    "mtime": 1778493435.6876476,
+    "hash": "43493686349a86a5c438f83a1c5fe144"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Domain\\Common\\Result.cs": {
+    "mtime": 1778493435.6876476,
+    "hash": "5f6c9942323b0befb4b912123759a096"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Domain\\Common\\ValueObject.cs": {
+    "mtime": 1778493435.6876476,
+    "hash": "05d8f142603045e664f1e7c386e23a9a"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Domain\\Entities\\Finding.cs": {
+    "mtime": 1778493435.6876476,
+    "hash": "53a1bdbbb53af5fb4a1c1d1d8add9daf"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Domain\\Entities\\FindingCollection.cs": {
+    "mtime": 1778493435.6876476,
+    "hash": "1a9900e2bedc35cd3c8457e02eb6a8c6"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Domain\\Events\\FindingDiscoveredEvent.cs": {
+    "mtime": 1778493435.6876476,
+    "hash": "8458d6689748c58ab506841752f8123e"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Domain\\Events\\ScanCancelledEvent.cs": {
+    "mtime": 1778493435.6876476,
+    "hash": "759133049b7f733be351ee0352376157"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Domain\\Events\\ScanCompletedEvent.cs": {
+    "mtime": 1778493435.6876476,
+    "hash": "d0af9c4a4c86c022ac1ae93e87c788ff"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Domain\\Events\\ScanCreatedEvent.cs": {
+    "mtime": 1778493435.6876476,
+    "hash": "ab27b98403d8dce27dec09265ad15dde"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Domain\\Events\\ScanFailedEvent.cs": {
+    "mtime": 1778493435.6876476,
+    "hash": "a4c0d5a82c6cbb509d534cc5452e5268"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Domain\\Events\\ScanProgressUpdatedEvent.cs": {
+    "mtime": 1778493435.6876476,
+    "hash": "8cd2acb2c514388532dd9470486b5a55"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Domain\\Events\\ScanStartedEvent.cs": {
+    "mtime": 1778493435.6876476,
+    "hash": "6158bddb561b475b788b0a9b090f7603"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Domain\\Repositories\\IScanRepository.cs": {
+    "mtime": 1778493435.6876476,
+    "hash": "2ff217cd8909f77fc1eab6aac20fe33d"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Domain\\Services\\IScanOrchestrator.cs": {
+    "mtime": 1778493435.7032943,
+    "hash": "b64fce076ae9a980b5f580d9cbbf960a"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Domain\\Services\\IScanProgressNotifier.cs": {
+    "mtime": 1778493435.7032943,
+    "hash": "8d69396e79a67e7f8b896dbaf616f9c1"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Domain\\ValueObjects\\FindingCategory.cs": {
+    "mtime": 1778493435.7032943,
+    "hash": "0d1c2ffaef047b695eb4e5c68c565705"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Domain\\ValueObjects\\ScanConfiguration.cs": {
+    "mtime": 1778493435.7032943,
+    "hash": "1d266aae9d2add4e38936811df8528a3"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Domain\\ValueObjects\\ScanProfile.cs": {
+    "mtime": 1778493435.7032943,
+    "hash": "9c59c6f4e2b86133ae04390fde31440a"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Domain\\ValueObjects\\ScanTarget.cs": {
+    "mtime": 1778493435.7032943,
+    "hash": "5ce2bc08e44f46f74da794234bb2e76a"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Domain\\ValueObjects\\Severity.cs": {
+    "mtime": 1778493435.7032943,
+    "hash": "1e6b443462c24c3272fad05c7d116b09"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Domain\\ValueObjects\\VulnerabilityScore.cs": {
+    "mtime": 1778493435.7032943,
+    "hash": "1adc5c5dbee9fe9a4f4f0e049ad8bd7d"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\DependencyInjection.cs": {
+    "mtime": 1778493435.7032943,
+    "hash": "546787b23ee5831e1757a0caa9757df9"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\Orchestration\\ScanOrchestrator.cs": {
+    "mtime": 1778493435.7032943,
+    "hash": "ba349f2643020afb2d67fb6db4096b91"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\Repositories\\InMemoryScanRepository.cs": {
+    "mtime": 1778493435.7032943,
+    "hash": "dba226c61c4a8ca8ff9f8c9622f4bf5a"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\ScanModules\\BrowserScanModule.cs": {
+    "mtime": 1778493435.7032943,
+    "hash": "0d1d2f10b74d5b8f445d4966de8025f3"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\ScanModules\\IntelligenceEngineScanModule.cs": {
+    "mtime": 1778493435.7032943,
+    "hash": "175cb10d0870cf4a9115769ceccde461"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\ScanModules\\ReconScanModule.cs": {
+    "mtime": 1778493435.7032943,
+    "hash": "e94668c64f46e4e3844b6e77925c8e4c"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\ScanModules\\VulnDetectionScanModule.cs": {
+    "mtime": 1778493435.7032943,
+    "hash": "8552e429ab02aeb50aa74243b730da31"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\ScanModules\\WebAnalysisScanModule.cs": {
+    "mtime": 1778493435.7032943,
+    "hash": "b73bd2c16e2cb087d1dbcb46b61704ce"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\ScanModules\\Base\\IScanModule.cs": {
+    "mtime": 1778493435.7032943,
+    "hash": "5d3fe601bb0b50d90d004a12bdd1764e"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\Scope\\ScopeEnforcer.cs": {
+    "mtime": 1778493435.7032943,
+    "hash": "09fba0bf25e96beefb55a1598cac4d54"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\Tools\\ExternalToolRunner.cs": {
+    "mtime": 1778493435.7032943,
+    "hash": "dc018b3b21c99d2bb20776ed2a893043"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\Tools\\SafeExecutor.cs": {
+    "mtime": 1778493435.7032943,
+    "hash": "2897a247375a5c29199b3e48727c912d"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\src\\GhostScan.Infrastructure\\WafBypass\\WafBypassEngine.cs": {
+    "mtime": 1778493435.7032943,
+    "hash": "d54404e478747a5817994d9c26b1c240"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\tests\\GhostScan.Application.Tests\\StartScanCommandValidatorTests.cs": {
+    "mtime": 1778493435.7032943,
+    "hash": "3e1676a0730a4a00b848553ee8264352"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\tests\\GhostScan.Domain.Tests\\ScanAggregateTests.cs": {
+    "mtime": 1778493435.719034,
+    "hash": "044561fae59b5aa1f46594ac1125bc7e"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\capacitor.config.ts": {
+    "mtime": 1778493435.7506452,
+    "hash": "c35ea70f2de35eea172a1655fa24d4b1"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\postcss.config.js": {
+    "mtime": 1778493435.7506452,
+    "hash": "5b84f4567208c7c747079c0477373231"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\tailwind.config.ts": {
+    "mtime": 1778493435.776623,
+    "hash": "491b7e2353463f263f76377b1714327c"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\vite.config.ts": {
+    "mtime": 1778493435.776623,
+    "hash": "85c2257b3ad13c3d2570d535bf52ade6"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\vite.config.ts.timestamp-1776852845851-5250eb16bda46.mjs": {
+    "mtime": 1778493435.776623,
+    "hash": "1bcf0b70f23e5eae56611e05ec5ae032"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\vite.config.ts.timestamp-1776852886477-aaa8713dae6c2.mjs": {
+    "mtime": 1778493435.776623,
+    "hash": "aee1a681ea1ccee0d39ae5d238f1bd96"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\build.gradle": {
+    "mtime": 1778493435.7506452,
+    "hash": "d60322b72c4da98aea26e7f9e20b30e1"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\capacitor.settings.gradle": {
+    "mtime": 1778493435.7506452,
+    "hash": "7e44c776e1fdcbc628d65648f351a243"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\gradlew": {
+    "mtime": 1778493435.7506452,
+    "hash": "1def6fea490817ad2829c02ac91d65cf"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\settings.gradle": {
+    "mtime": 1778493435.7506452,
+    "hash": "c609df618dbeec637255380c9f707ccf"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\variables.gradle": {
+    "mtime": 1778493435.7506452,
+    "hash": "0b4a03daa618138b294af83c637217a6"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\app\\build.gradle": {
+    "mtime": 1778493435.719034,
+    "hash": "b7766b06756af0dc14cf725e28961736"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\app\\capacitor.build.gradle": {
+    "mtime": 1778493435.719034,
+    "hash": "c2def0c6e4206c4a2e1de6ef6c8d009d"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\app\\src\\androidTest\\java\\com\\getcapacitor\\myapp\\ExampleInstrumentedTest.java": {
+    "mtime": 1778493435.719034,
+    "hash": "c777a4127ae7213f7da22c4105bdfeab"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\app\\src\\main\\java\\br\\com\\scanghost\\app\\MainActivity.java": {
+    "mtime": 1778493435.719034,
+    "hash": "bade968f4ded5fec3fded4042a6dcaa9"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\app\\src\\test\\java\\com\\getcapacitor\\myapp\\ExampleUnitTest.java": {
+    "mtime": 1778493435.7506452,
+    "hash": "3f8a2768101e4de10f606ea4516fd339"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\src\\App.tsx": {
+    "mtime": 1778493435.7506452,
+    "hash": "8b1413c29ebc30db07acd9e648d157fa"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\src\\main.tsx": {
+    "mtime": 1778493435.7662797,
+    "hash": "f1d789a0390690e90a86c1e9f7a4a27e"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\src\\api\\client.ts": {
+    "mtime": 1778493435.7506452,
+    "hash": "90f7d452e95205c6d694d5f84df2e1c2"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\src\\components\\layout\\Layout.tsx": {
+    "mtime": 1778493435.7506452,
+    "hash": "db1d0de0a6736346e2c34535df6a4820"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\src\\components\\shared\\CopyButton.tsx": {
+    "mtime": 1778493435.7506452,
+    "hash": "d8a68b3c3ea39c384e36a25ddd0efa29"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\src\\components\\shared\\ErrorBoundary.tsx": {
+    "mtime": 1778493435.7506452,
+    "hash": "bd23c0ca659dfd9dbc3d17f35816cade"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\src\\components\\shared\\GlitchText.tsx": {
+    "mtime": 1778493435.7662797,
+    "hash": "b7f3ef65ea0b59fb6301faacc089f48a"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\src\\components\\shared\\MatrixRain.tsx": {
+    "mtime": 1778493435.7662797,
+    "hash": "1b3213b9073b566a000c4591c75bfbc4"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\src\\components\\shared\\ScanDocs.tsx": {
+    "mtime": 1778493435.7662797,
+    "hash": "2f26fffbca72e1bf6eb70e8dab0d5389"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\src\\components\\shared\\SeverityBadge.tsx": {
+    "mtime": 1778493435.7662797,
+    "hash": "d267d1e58cff08e2b4eb7188beb39cd7"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\src\\components\\shared\\StatCard.tsx": {
+    "mtime": 1778493435.7662797,
+    "hash": "937582ca079b548d778f849ac175242e"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\src\\components\\shared\\StatusBadge.tsx": {
+    "mtime": 1778493435.7662797,
+    "hash": "045f3b9bfd421159d91fa98f769b6594"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\src\\components\\shared\\TerminalCard.tsx": {
+    "mtime": 1778493435.7662797,
+    "hash": "c018b49d5b2a0ca665fb3539a791a8e6"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\src\\components\\shared\\ThemeSwitcher.tsx": {
+    "mtime": 1778493435.7662797,
+    "hash": "3ec34822eeb252b49bcf6b41df14a7fb"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\src\\contexts\\ThemeContext.tsx": {
+    "mtime": 1778493435.7662797,
+    "hash": "43fd600ae0ec8bf2cc498fa2c106a267"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\src\\hooks\\useSignalR.ts": {
+    "mtime": 1778493435.7662797,
+    "hash": "719b188e27838173e4c62690609daa88"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\src\\i18n\\index.ts": {
+    "mtime": 1778493435.7662797,
+    "hash": "7524d527abb3387a3525e2e937da5c30"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\src\\lib\\utils.ts": {
+    "mtime": 1778493435.7662797,
+    "hash": "b00d8b094287999bac268671f2eb77d6"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\src\\pages\\Dashboard.tsx": {
+    "mtime": 1778493435.7662797,
+    "hash": "d2293b4f2bf05d62a28eb5863235d9ce"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\src\\pages\\History.tsx": {
+    "mtime": 1778493435.7662797,
+    "hash": "862797172876a8901f01b8a8cf32a260"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\src\\pages\\Report.tsx": {
+    "mtime": 1778493435.7662797,
+    "hash": "f0a06b8e856879df3818296ee39503fb"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\src\\pages\\ScanTerminal.tsx": {
+    "mtime": 1778493435.776623,
+    "hash": "7f72c6372640ec75e769db67272bf924"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\src\\types\\index.ts": {
+    "mtime": 1778493435.776623,
+    "hash": "f8c908deb1296094ce6b3e83ac1db3a6"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\src\\types\\modules.d.ts": {
+    "mtime": 1778493435.776623,
+    "hash": "e4017309b554425afce16769a0002189"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\GEMINI.md": {
+    "mtime": 1778493805.331237,
+    "hash": "747e73a5e1af4b72c0d65c9169c23199"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\README.md": {
+    "mtime": 1778493435.6720145,
+    "hash": "9e29d9bdb8249c66e77df6922127df5b"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\backend\\README.md": {
+    "mtime": 1778493435.6720145,
+    "hash": "3fd88d8d4ec020f7f5049efcc8254bc0"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\index.html": {
+    "mtime": 1778493435.7506452,
+    "hash": "4178b4d28418aa38a98cddfc70d7f060"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\Documentacao_GhostScan_v3.pdf": {
+    "mtime": 1778493435.6720145,
+    "hash": "1923f9f6ab4e0d03d2a7431cd4abac4a"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\app\\src\\main\\res\\drawable\\splash.png": {
+    "mtime": 1778493435.7348716,
+    "hash": "acc976d4a36479233371a53021525c0c"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\app\\src\\main\\res\\drawable-land-hdpi\\splash.png": {
+    "mtime": 1778493435.719034,
+    "hash": "f7a80786dd355bd39014e58027aa6e19"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\app\\src\\main\\res\\drawable-land-mdpi\\splash.png": {
+    "mtime": 1778493435.719034,
+    "hash": "acc976d4a36479233371a53021525c0c"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\app\\src\\main\\res\\drawable-land-xhdpi\\splash.png": {
+    "mtime": 1778493435.719034,
+    "hash": "b8c72969bc1f78aab71a76035360d4af"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\app\\src\\main\\res\\drawable-land-xxhdpi\\splash.png": {
+    "mtime": 1778493435.719034,
+    "hash": "f87e988387b07d843905f38b084929fb"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\app\\src\\main\\res\\drawable-land-xxxhdpi\\splash.png": {
+    "mtime": 1778493435.719034,
+    "hash": "055a69553b16b0bf5f72094a2e459fc7"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\app\\src\\main\\res\\drawable-port-hdpi\\splash.png": {
+    "mtime": 1778493435.719034,
+    "hash": "5eb10d16c81338abe8bbc033d49638a8"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\app\\src\\main\\res\\drawable-port-mdpi\\splash.png": {
+    "mtime": 1778493435.719034,
+    "hash": "d855a76a5070c8e6fcfd83a27549bdce"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\app\\src\\main\\res\\drawable-port-xhdpi\\splash.png": {
+    "mtime": 1778493435.719034,
+    "hash": "df100b2a36bdb98b711cca58941728de"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\app\\src\\main\\res\\drawable-port-xxhdpi\\splash.png": {
+    "mtime": 1778493435.7348716,
+    "hash": "2c1b668364e815256f67b71dcdfa4d6e"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\app\\src\\main\\res\\drawable-port-xxxhdpi\\splash.png": {
+    "mtime": 1778493435.7348716,
+    "hash": "b5b1b22b59abe686c1df0d74a423d034"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png": {
+    "mtime": 1778493435.7348716,
+    "hash": "1956941339dd5fe36d5c66601c89a08d"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png": {
+    "mtime": 1778493435.7348716,
+    "hash": "73b1e06d769fa08a9c3b8328cc15fd75"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png": {
+    "mtime": 1778493435.7348716,
+    "hash": "f43e5674865a00186dd76183cf1f2f8e"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png": {
+    "mtime": 1778493435.7348716,
+    "hash": "7ed1b3739b83215d0c4a0b4a7f2dcab4"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.png": {
+    "mtime": 1778493435.7348716,
+    "hash": "5b77e8aec8b17eed320a97567c7cb8bf"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png": {
+    "mtime": 1778493435.7348716,
+    "hash": "a49547a32c7d9b529af607b033811d81"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png": {
+    "mtime": 1778493435.7348716,
+    "hash": "5689511ee4e41a367d0342f37ac48bdf"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png": {
+    "mtime": 1778493435.7348716,
+    "hash": "15cdded29b9877ac98c5931024c5da5d"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png": {
+    "mtime": 1778493435.7348716,
+    "hash": "c890fa4af62a63486d5dea62441ce7ab"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png": {
+    "mtime": 1778493435.7348716,
+    "hash": "a3285eeaedda8201f04e7737b9df8421"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_foreground.png": {
+    "mtime": 1778493435.7348716,
+    "hash": "4e9584ecc16d1fc75afb798688ce576f"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png": {
+    "mtime": 1778493435.7348716,
+    "hash": "14cde87848553e24d7106f56eb8ceb6f"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png": {
+    "mtime": 1778493435.7348716,
+    "hash": "9e029293ab1ae8e3a6a7b7d0b7177e46"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png": {
+    "mtime": 1778493435.7348716,
+    "hash": "ed3696b7c52d9747411a475dbe3fa34a"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png": {
+    "mtime": 1778493435.7348716,
+    "hash": "85addb4159ecd3f76f02fbacd5ec86de"
+  },
+  "C:\\Users\\AMD\\OneDrive\\Documentos\\Claude\\Projects\\scanghost\\frontend\\public\\ghost.svg": {
+    "mtime": 1778493435.7506452,
+    "hash": "0aad91f591261afd6e266134e55866b6"
+  }
+}
